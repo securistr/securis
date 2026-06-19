@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Securis">
+    <meta name="application-name" content="Securis">
+    <meta name="theme-color" content="#0f2040">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- iOS (iPhone/iPad) Ana Ekran İkonu -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Android / PWA İkonları -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Securis Güvenlik ve Ağ Teknolojileri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg: #f8fafc; 
+            --bg2: #ffffff;
+            --card: #ffffff;
+            --card-border: #e2e8f0;
+            --primary: #1e3a8a; 
+            --primary-hover: #1d4ed8;
+            --primary-light: #eff6ff;
+            --primary-dim: rgba(30, 58, 138, 0.05);
+            --text: #0f172a;
+            --text-dim: #475569;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            --shadow-hover: 0 12px 30px rgba(30, 58, 138, 0.06);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --nav-h: 80px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--font); background: var(--bg); color: var(--text); 
+            overflow-x: hidden; line-height: 1.6; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 40px; z-index: 1000;
+            background: rgba(255, 255, 255, 0.90); 
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--card-border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.01);
+            transform: translateZ(0);
+        }
+        nav .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; z-index: 1001; }
+        nav .logo img { height: 64px; width: auto; object-fit: contain; display: block; }
+
+        nav ul { display: flex; list-style: none; gap: 32px; align-items: center; }
+        nav ul a { color: var(--text-dim); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .25s; position: relative; }
+        nav ul a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width .3s; }
+        nav ul a:hover { color: var(--primary); }
+        nav ul a:hover::after { width: 100%; }
+        
+        .nav-cta { background: var(--primary); color: #ffffff !important; padding: 10px 24px; border-radius: 8px; font-weight: 600 !important; transition: background .2s; }
+        .nav-cta:hover { background: var(--primary-hover); transform: translateY(-1px); }
+        .nav-cta::after { display: none !important; }
+
+        .menu-toggle {
+            display: none; background: none; border: none; color: var(--text);
+            cursor: pointer; padding: 8px; z-index: 1001;
+        }
+
+        section { position: relative; z-index: 1; min-height: 100dvh; padding: 120px 40px 80px; max-width: 1200px; margin: 0 auto; }
+        .section-label { font-size: .8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); font-weight: 700; margin-bottom: 12px; }
+        .section-title { font-size: clamp(2rem,4vw,2.8rem); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 16px; color: var(--text); }
+        .section-desc { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; line-height: 1.7; }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 85dvh; display: flex; align-items: center; justify-content: space-between;
+            gap: 60px; padding-top: calc(var(--nav-h) + 20px); padding-bottom: 40px; overflow: visible;
+        }
+        .hero-left { flex: 1.2; min-width: 0; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--primary-light); color: var(--primary);
+            padding: 6px 16px; border-radius: 100px; font-size: .85rem; font-weight: 600;
+            margin-bottom: 20px; border: 1px solid rgba(30, 58, 138, 0.1);
+        }
+        .hero-left h1 { font-size: clamp(2.4rem,5vw,3.6rem); font-weight: 800; letter-spacing: -1px; line-height: 1.15; margin-bottom: 20px; color: var(--text); }
+        .hero-left h1 .highlight { color: var(--primary); }
+        .hero-left p { color: var(--text-dim); font-size: 1.15rem; max-width: 580px; line-height: 1.7; margin-bottom: 32px; }
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 14px 28px; border-radius: 8px; font-weight: 600;
+            font-size: .95rem; text-decoration: none; transition: all .25s; cursor: pointer; border: none; font-family: var(--font);
+        }
+        .btn-primary { background: var(--primary); color: #ffffff; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15); }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25); }
+        .btn-whatsapp { background: #25d366; color: #fff; }
+        .btn-whatsapp:hover { background: #1da851; transform: translateY(-1px); box-shadow: 0 6px 15px rgba(37,211,102,0.2); }
+        .btn-call { background: #ffffff; color: var(--text); border: 1px solid var(--card-border); }
+        .btn-call:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+
+        .stats-bar { display: flex; gap: 40px; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--card-border); }
+        .stat-item h3 { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .stat-item p { font-size: .85rem; color: var(--text-dim); font-weight: 500; }
+
+        /* ── HERO RIGHT ── */
+        .hero-right {
+            flex: 0.8; width: 100%; max-width: 420px;
+            -webkit-perspective: 1200px;
+            perspective: 1200px; 
+        }
+        .hero-devices {
+            display: flex; flex-direction: column; gap: 16px;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        }
+        .showcase-card {
+            background: var(--bg2); border: 1px solid var(--card-border); border-radius: 12px;
+            padding: 20px; display: flex; align-items: center; gap: 20px; box-shadow: var(--shadow);
+            -webkit-transform: translateZ(0);
+        }
+        .showcase-icon {
+            width: 52px; height: 52px; border-radius: 10px;
+            background: var(--primary-light); color: var(--primary);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .showcase-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .showcase-info h4 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+        .showcase-info p { font-size: .85rem; color: var(--text-dim); }
+
+        /* ── BRANDS ── */
+        #brands { min-height:0; padding:50px 40px; text-align:center; background: #ffffff; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+        .brands-label { font-size:.8rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-dim); margin-bottom:24px; font-weight: 600; }
+        .brands-grid { display:flex; justify-content:center; align-items:center; gap:64px; flex-wrap:wrap; }
+        .brand-item { display:flex; flex-direction:column; align-items:center; opacity:.5; transition:opacity .3s; }
+        .brand-item:hover { opacity:1; }
+        .brand-item .brand-logo { font-size:1.4rem; font-weight:800; letter-spacing:0.5px; color:var(--text); }
+
+        /* ── SERVICES ── */
+        #services { padding-top:100px; }
+        .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; margin-top:40px; }
+        .service-card { background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:32px; transition:all .3s ease; box-shadow:var(--shadow); }
+        .service-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color: var(--primary); }
+        .service-icon-box { width:48px; height:48px; border-radius:8px; background:var(--primary-light); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+        .service-icon-box svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .service-card h3 { font-size:1.15rem; font-weight:700; margin-bottom:10px; color:var(--text); }
+        .service-card p { color:var(--text-dim); font-size:.92rem; line-height:1.6; }
+
+        /* ── REGION ── */
+        #region { min-height:0; padding:100px 40px; text-align:center; background: #ffffff; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+        #region .section-title, #region .section-desc { text-align:center; margin: 0 auto; }
+        #region .section-desc { margin-bottom: 40px; }
+        .region-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; max-width:800px; margin:0 auto; }
+        .region-chip { background:var(--bg); border:1px solid var(--card-border); padding:10px 20px; border-radius:8px; font-size:.9rem; font-weight:600; transition:all .25s; display:inline-flex; align-items:center; gap:8px; color:var(--text); }
+        .region-chip:hover { border-color:var(--primary); color:var(--primary); background: #ffffff; transform:translateY(-1px); }
+        .region-chip .pin { color:var(--primary); }
+        .region-note { color:var(--text-dim); font-size:.9rem; margin-top:32px; font-weight: 500; }
+        .region-note strong { color: var(--primary); }
+
+        /* ── ABOUT ── */
+        #about { padding-top:100px; }
+        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:40px; align-items:center; }
+        .about-text p { color:var(--text-dim); font-size:1.05rem; line-height:1.7; margin-bottom:20px; }
+        .about-features { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px; }
+        .about-feature { display:flex; align-items:center; gap:10px; font-size:.95rem; color:var(--text); font-weight: 500; }
+        .about-feature .check { width:22px; height:22px; border-radius:50%; background:var(--primary-light); color:var(--primary); display:flex; align-items:center; justify-content:center; font-size:.75rem; flex-shrink:0; font-weight: bold; }
+        .about-visual { display:flex; align-items:center; justify-content:center; }
+        .about-stats-card { background:#ffffff; border:1px solid var(--card-border); border-radius:16px; padding:36px; width:100%; max-width:380px; box-shadow:var(--shadow); }
+        .about-stats-card .big-number { font-size:3.5rem; font-weight:800; color:var(--primary); letter-spacing:-1px; line-height:1; }
+        .about-stats-card .big-label { color:var(--text-dim); font-size:.95rem; margin-top:6px; margin-bottom:24px; font-weight: 500; }
+        .about-stats-card .stat-row { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--card-border); font-size:.95rem; }
+        .about-stats-card .stat-row:last-child { border-bottom:none; }
+        .about-stats-card .stat-row span:last-child { color:var(--primary); font-weight:700; }
+
+        /* ── CONTACT ── */
+        #contact { padding-top:100px; padding-bottom:100px; }
+        .contact-grid {
+            display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:24px; margin-top:40px;
+        }
+        .contact-info-item {
+            display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px;
+            background:var(--card); border:1px solid var(--card-border); border-radius:12px;
+            padding:32px 24px; box-shadow:var(--shadow); transition: all .3s ease;
+        }
+        .contact-info-item:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color: var(--primary); }
+        .contact-info-item .icon { width:48px; height:48px; border-radius:10px; background:var(--primary-light); color: var(--primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.3rem; }
+        .contact-info-item h4 { font-size:1.05rem; font-weight:700; margin-bottom:2px; color:var(--text); }
+        .contact-info-item p { color:var(--text-dim); font-size:.95rem; line-height:1.5; }
+        .contact-buttons { display:flex; gap:12px; margin-top:auto; padding-top:12px; flex-wrap:wrap; justify-content:center; }
+
+        footer { border-top:1px solid var(--card-border); padding:40px; text-align:center; color:var(--text-dim); font-size:.9rem; background: #ffffff; }
+        footer span { color:var(--primary); font-weight: 600; }
+
+        /* Fade animasyonları */
+        .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease-out, transform .6s ease-out; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        .reveal-delay-1 { transition-delay:.1s; }
+        .reveal-delay-2 { transition-delay:.2s; }
+        .reveal-delay-3 { transition-delay:.3s; }
+
+        /* ── RESPONSIVE / MOBİL AYARLAR ── */
+        @media (max-width:900px) {
+            nav { padding: 0 20px; }
+            nav .logo img { height: 52px; }
+            .menu-toggle { display: flex; align-items: center; justify-content: center; }
+            
+            nav ul {
+                position: fixed; top: var(--nav-h); left: 0; right: 0; 
+                background: rgba(255, 255, 255, 0.95); flex-direction: column; gap: 0;
+                padding: 20px 0; border-bottom: 1px solid var(--card-border);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+                -webkit-backdrop-filter: blur(15px);
+                backdrop-filter: blur(15px);
+                opacity: 0; transform: translateY(-10px); pointer-events: none;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+            nav ul.mobile-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+            nav ul li { width: 100%; text-align: center; }
+            nav ul a { display: block; padding: 16px 0; font-size: 1.1rem; color: var(--text); }
+            nav ul a::after { display: none; }
+            .nav-cta-wrap { padding: 10px 20px; }
+            .nav-cta { display: block; width: 100%; padding: 14px; text-align: center; font-size: 1rem; }
+
+            #hero { flex-direction: column; text-align: center; gap: 40px; padding-top: calc(var(--nav-h) + 10px); }
+            .hero-left p { margin: 0 auto 24px; }
+            .hero-actions { justify-content: center; width: 100%; }
+            .hero-actions .btn { flex: 1; min-width: 140px; font-size: 0.9rem; padding: 12px 20px; }
+            .stats-bar { justify-content: center; gap: 24px; }
+            
+            .hero-right { margin: 0 auto; width: 100%; }
+            
+            section { padding: 80px 20px 50px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-visual { order: -1; }
+            .about-features { grid-template-columns: 1fr; }
+            .brands-grid { gap: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#hero" class="logo">
+            <img src="securis-logo.png" alt="Securis Güvenlik ve Ağ Sistemleri">
+        </a>
+        
+        <button class="menu-toggle" id="menuBtn" aria-label="Menüyü Aç">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+
+        <ul id="navLinks">
+            <li><a href="#hero">Ana Sayfa</a></li>
+            <li><a href="#services">Hizmetler</a></li>
+            <li><a href="#region">Bölgeler</a></li>
+            <li><a href="#about">Hakkımızda</a></li>
+            <li><a href="#contact">İletişim</a></li>
+            <li class="nav-cta-wrap"><a href="#contact" class="nav-cta">Teklif Al</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-left">
+            <div class="hero-badge">Profesyonel Kurulum &amp; Destek</div>
+            <h1>
+                İşletmeniz ve Eviniz İçin<br />
+                <span class="highlight">Güvenilir Altyapı</span> Çözümleri
+            </h1>
+            <p>
+                Securis olarak, yüksek çözünürlüklü IP kamera ağlarından kurumsal siber duvar sistemlerine kadar tüm teknolojik altyapınızı anahtar teslim kuruyor ve kesintisiz teknik destek sağlıyoruz.
+            </p>
+            <div class="hero-actions">
+                <a href="tel:+905419248987" class="btn btn-call">📞 Hemen Ara</a>
+                <a href="https://wa.me/905419248987" target="_blank" class="btn btn-whatsapp">WhatsApp</a>
+                <a href="#contact" class="btn btn-primary">Ücretsiz Keşif İsteği</a>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-item"><h3>100+</h3><p>Aktif Proje</p></div>
+                <div class="stat-item"><h3>Hızlı</h3><p>Yerinde Servis</p></div>
+                <div class="stat-item"><h3>7/24</h3><p>Teknik Destek</p></div>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-devices" id="deviceGroup">
+                
+                <div class="showcase-card">
+                    <div class="showcase-icon">
+                        <svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <div class="showcase-info">
+                        <h4>Kamera Sistemleri</h4>
+                        <p>Yüksek Çözünürlüklü İzleme</p>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <div class="showcase-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="showcase-info">
+                        <h4>Firewall Güvenliği</h4>
+                        <p>Veri ve Ağ Koruma Kalkanı</p>
+                    </div>
+                </div>
+
+                <div class="showcase-card">
+                    <div class="showcase-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg>
+                    </div>
+                    <div class="showcase-info">
+                        <h4>Yüksek Hızlı Bağlantı</h4>
+                        <p>Switch &amp; Access Point Çözümleri</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="brands">
+        <div class="brands-label reveal">Projelerimizde Tercih Ettiğimiz Çözümler</div>
+        <div class="brands-grid">
+            <div class="brand-item reveal reveal-delay-1"><div class="brand-logo">DAHUA</div></div>
+            <div class="brand-item reveal reveal-delay-2"><div class="brand-logo">HIKVISION</div></div>
+            <div class="brand-item reveal reveal-delay-3"><div class="brand-logo">FORTINET</div></div>
+            <div class="brand-item reveal reveal-delay-4"><div class="brand-logo">RUJIE / TP-LINK</div></div>
+            <div class="brand-item reveal reveal-delay-5"><div class="brand-logo">MILESIGHT</div></div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-label reveal">Hizmet Alanlarımız</div>
+        <h2 class="section-title reveal reveal-delay-1">Neler Yapıyoruz?</h2>
+        <p class="section-desc reveal reveal-delay-2">İhtiyacınız olan tüm zayıf akım and network altyapısını profesyonel standartlarda kuruyoruz.</p>
+        <div class="services-grid">
+            
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3>Kamera Sistemleri Kurulum ve Destek</h3>
+                <p>Ev, ofis veya fabrika alanlarınız için yüksek çözünürlüklü IP ve Analog kamera sistemlerinin montajı, temiz kablolaması ve arıza durumlarında hızlı teknik destek hizmeti.</p>
+            </div>
+
+            <div class="service-card reveal reveal-delay-2">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Firewall Config (Yapılandırma)</h3>
+                <p>Şirket verilerinizi dış siber saldırılardan korumak için FortiGate ve benzeri kurumsal siber duvar ünitelerinin ağınıza entegrasyonu, kural tanımlamaları ve güvenli VPN ayarları.</p>
+            </div>
+
+            <div class="service-card reveal reveal-delay-3">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg>
+                </div>
+                <h3>Switch Config (Ağ Yönetimi)</h3>
+                <p>Kablolu ağ trafiğinizin takılmadan, hızlı çalışması için kurumsal yönetilebilir switch cihazlarının montajı, hat bölümlendirmesi (VLAN) ve performans optimizasyonu.</p>
+            </div>
+
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.5 16.05a6 6 0 0 1 7 0M12 20h.01"/></svg>
+                </div>
+                <h3>Access Point (Kablosuz İnternet)</h3>
+                <p>İş yerinizde internetin yavaşladığı veya çekmediği tüm "ölü noktaları" yok ediyoruz. Yüksek performanslı Access Point üniteleriyle kesintisiz tek bir Wi-Fi ağı kuruyoruz.</p>
+            </div>
+
+            <div class="service-card reveal reveal-delay-2">
+                <div class="service-icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="20" x2="22" y2="20"/><line x1="12" y1="17" x2="12" y2="20"/></svg>
+                </div>
+                <h3>NVR ve Depolama Çözümleri</h3>
+                <p>Kamera kayıtlarınızın geriye dönük güvenle saklanması için NVR (Ağ Kayıt Cihazı) kurulumu, yüksek kapasiteli disk entegrasyonu ve cepten izleme için mobil tanımlamalar.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="region">
+        <div class="section-label reveal">Hizmet Bölgelerimiz</div>
+        <h2 class="section-title reveal reveal-delay-1">Size Çok Yakınız</h2>
+        <p class="section-desc reveal reveal-delay-2">Trakya ve İstanbul Batı bölgesindeki tüm işletmelere yerinde hızlı kurulum ve teknik servis desteği götürüyoruz.</p>
+        <div class="region-grid">
+            <span class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Silivri</span>
+            <span class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Çatalca</span>
+            <span class="region-chip reveal reveal-delay-2"><span class="pin">📍</span>Büyükçekmece</span>
+            <span class="region-chip reveal reveal-delay-2"><span class="pin">📍</span>Beylikdüzü</span>
+            <span class="region-chip reveal reveal-delay-3"><span class="pin">📍</span>Çorlu</span>
+            <span class="region-chip reveal reveal-delay-3"><span class="pin">📍</span>Çerkezköy</span>
+            <span class="region-chip reveal reveal-delay-4"><span class="pin">📍</span>Marmaraereğlisi</span>
+            <span class="region-chip reveal reveal-delay-4"><span class="pin">📍</span>Kapaklı</span>
+            <span class="region-chip reveal reveal-delay-5"><span class="pin">📍</span>Tekirdağ / Süleymanpaşa</span>
+        </div>
+        <div class="region-note reveal reveal-delay-3">⚡ Sistem arızalarında maksimum <strong>3 saat</strong> içinde yerinde müdahale garantisi.</div>
+    </section>
+
+    <section id="about">
+        <div class="section-label reveal">Hakkımızda</div>
+        <h2 class="section-title reveal reveal-delay-1">Neden Securis?</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p class="reveal reveal-delay-2">
+                    <strong>Securis Güvenlik ve Ağ Sistemleri</strong> olarak, karmaşık teknik süreçleri sadeleştiriyor; son kullanıcının, esnafın ve şirket yöneticilerinin en kolay şekilde yönetebileceği sorunsuz altyapılar inşa ediyoruz.
+                </p>
+                <p class="reveal reveal-delay-3">
+                    Kurduğumuz tüm kamera ve internet dağıtım sistemlerini telefonunuzdan tek tıkla izleyip kontrol edebileceğiniz basitlikte teslim ediyoruz. Satış sonrası sunduğumuz hızlı teknik servis desteğiyle de sisteminizi asla yalnız bırakmıyoruz.
+                </p>
+                <div class="about-features reveal reveal-delay-3">
+                    <div class="about-feature"><span class="check">✓</span> Deneyimli Teknik Ekip</div>
+                    <div class="about-feature"><span class="check">✓</span> Profesyonel ve Temiz İşçilik</div>
+                    <div class="about-feature"><span class="check">✓</span> Kolay Kullanımlı Mobil Paneller</div>
+                    <div class="about-feature"><span class="check">✓</span> Şeffaf ve Net Fiyatlandırma</div>
+                </div>
+            </div>
+            <div class="about-visual reveal reveal-delay-2">
+                <div class="about-stats-card">
+                    <div class="big-number">100%</div>
+                    <div class="big-label">Müşteri Memnuniyeti Hedefi</div>
+                    <div class="stat-row"><span>Ücretsiz Keşif</span><span>Aynı Hafta</span></div>
+                    <div class="stat-row"><span>Sistem Garantisi</span><span>1 Yıl Servis</span></div>
+                    <div class="stat-row"><span>Teknik Servis Hızı</span><span>Hızlı Müdahale</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-label reveal">İletişim</div>
+        <h2 class="section-title reveal reveal-delay-1">Bizimle İletişime Geçin</h2>
+        <p class="section-desc reveal reveal-delay-2">Aşağıdaki kanallardan doğrudan bize ulaşın, ihtiyacınız olan sistemi birlikte planlayalım.</p>
+        <div class="contact-grid">
+            <div class="contact-info-item reveal reveal-delay-1">
+                <div class="icon">📞</div>
+                <div>
+                    <h4>Telefon (Destek 1)</h4>
+                    <p>+90 541 924 8987</p>
+                </div>
+                <div class="contact-buttons">
+                    <a href="tel:+905419248987" class="btn btn-call" style="padding:8px 16px;font-size:.85rem;">Hemen Ara</a>
+                    <a href="https://wa.me/905419248987" target="_blank" class="btn btn-whatsapp" style="padding:8px 16px;font-size:.85rem;">WhatsApp</a>
+                </div>
+            </div>
+            <div class="contact-info-item reveal reveal-delay-2">
+                <div class="icon">📞</div>
+                <div>
+                    <h4>Telefon (Destek 2)</h4>
+                    <p>+90 531 264 1812</p>
+                </div>
+                <div class="contact-buttons">
+                    <a href="tel:+905312641812" class="btn btn-call" style="padding:8px 16px;font-size:.85rem;">Hemen Ara</a>
+                    <a href="https://wa.me/905312641812" target="_blank" class="btn btn-whatsapp" style="padding:8px 16px;font-size:.85rem;">WhatsApp</a>
+                </div>
+            </div>
+            <div class="contact-info-item reveal reveal-delay-3">
+                <div class="icon">✉️</div>
+                <div>
+                    <h4>E-Posta</h4>
+                    <p>bilgi@securis.com.tr</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>&copy; 2026 <span>Securis</span> Güvenlik ve Ağ Sistemleri. Tüm hakları saklıdır.</footer>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-open');
+        });
+
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+            });
+        });
+
+        const group = document.getElementById('deviceGroup');
+        const hero = document.getElementById('hero');
+        let ticking = false;
+
+        function updateGroup() {
+            if (!group || !hero) return;
+            const r = hero.getBoundingClientRect();
+            const isMobile = window.innerWidth <= 900;
+            let s = 0;
+            
+            if (isMobile) {
+                const groupRect = group.getBoundingClientRect();
+                const triggerPoint = window.innerHeight * 0.55; 
+                s = Math.max(0, Math.min(1, (triggerPoint - groupRect.top) / (groupRect.height || 1)));
+            } else {
+                s = Math.max(0, Math.min(1, -r.top / r.height));
+            }
+            
+            const tx = s * (isMobile ? 220 : 260);
+const ry = s * (isMobile ? 30 : 45);
+const sc = 1 - s * 0.3;
+const op = 1 - s * 2;
+
+group.style.transform =
+  `translateX(${tx}px) rotateY(${ry}deg) scale(${Math.max(0.6, sc)})`;
+
+group.style.opacity = Math.max(0, op);
+
+if (op <= 0.02) {
+    group.style.visibility = 'hidden';
+    group.style.pointerEvents = 'none';
+} else {
+    group.style.visibility = 'visible';
+    group.style.pointerEvents = 'auto';
+}
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => { 
+            if (!ticking) { 
+                requestAnimationFrame(updateGroup); 
+                ticking = true; 
+            } 
+        });
+        
+        window.addEventListener('resize', updateGroup);
+        updateGroup();
+
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
