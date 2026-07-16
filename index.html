@@ -22,8 +22,33 @@
     <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
     <link rel="manifest" href="manifest.json">
 
-    <title>Securis Güvenlik ve Ağ Teknolojileri</title>
+    <title>Securis Güvenlik ve Ağ Teknolojileri | Kamera, Firewall, Network Kurulumu</title>
+    <meta name="description" content="Securis; Silivri, Çatalca, Büyükçekmece, Çorlu ve Tekirdağ bölgesinde IP kamera sistemleri, firewall yapılandırması, switch ve access point kurulumu ile 7/24 teknik destek sunar." />
+    <meta name="keywords" content="kamera sistemleri, güvenlik kamerası, firewall kurulumu, network altyapısı, Silivri, Çorlu, Çerkezköy, Tekirdağ" />
+    <link rel="canonical" href="https://www.securis.com.tr/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Securis Güvenlik ve Ağ Sistemleri" />
+    <meta property="og:title" content="Securis Güvenlik ve Ağ Teknolojileri" />
+    <meta property="og:description" content="Kamera sistemleri, firewall ve network altyapı kurulumunda Trakya ve İstanbul Batı bölgesinde profesyonel çözüm ortağınız." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Securis Güvenlik ve Ağ Sistemleri",
+        "description": "IP kamera sistemleri, firewall yapılandırması, switch ve access point kurulumu, NVR ve depolama çözümleri.",
+        "telephone": ["+905419248987", "+905312641812"],
+        "email": "securistr@gmail.com.tr",
+        "areaServed": ["Silivri", "Çatalca", "Büyükçekmece", "Beylikdüzü", "Çorlu", "Çerkezköy", "Marmaraereğlisi", "Kapaklı", "Tekirdağ"],
+        "priceRange": "$$"
+    }
+    </script>
     <style>
         *,
         *::before,
@@ -240,6 +265,27 @@
         .reveal-delay-1 { transition-delay:.1s; }
         .reveal-delay-2 { transition-delay:.2s; }
         .reveal-delay-3 { transition-delay:.3s; }
+        .reveal-delay-4 { transition-delay:.4s; }
+        .reveal-delay-5 { transition-delay:.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-devices { transition: none; }
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .skip-link {
+            position: absolute; left: -9999px; top: 0; z-index: 2000;
+            background: var(--primary); color: #fff; padding: 12px 20px;
+            border-radius: 0 0 8px 0; font-weight: 600; text-decoration: none;
+        }
+        .skip-link:focus { left: 0; }
 
         /* ── RESPONSIVE / MOBİL AYARLAR ── */
         @media (max-width:900px) {
@@ -282,12 +328,15 @@
 </head>
 <body>
 
-    <nav>
+    <a href="#hero-heading" class="skip-link">İçeriğe geç</a>
+
+    <header>
+    <nav aria-label="Ana menü">
         <a href="#hero" class="logo">
             <img src="securis-logo.png" alt="Securis Güvenlik ve Ağ Sistemleri">
         </a>
         
-        <button class="menu-toggle" id="menuBtn" aria-label="Menüyü Aç">
+        <button class="menu-toggle" id="menuBtn" aria-label="Menüyü Aç" aria-expanded="false" aria-controls="navLinks">
             <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
 
@@ -300,11 +349,13 @@
             <li class="nav-cta-wrap"><a href="#contact" class="nav-cta">Teklif Al</a></li>
         </ul>
     </nav>
+    </header>
 
+    <main>
     <section id="hero">
         <div class="hero-left">
             <div class="hero-badge">Profesyonel Kurulum &amp; Destek</div>
-            <h1>
+            <h1 id="hero-heading">
                 İşletmeniz ve Eviniz İçin<br />
                 <span class="highlight">Güvenilir Altyapı</span> Çözümleri
             </h1>
@@ -313,7 +364,7 @@
             </p>
             <div class="hero-actions">
                 <a href="tel:+905419248987" class="btn btn-call">📞 Hemen Ara</a>
-                <a href="https://wa.me/905419248987" target="_blank" class="btn btn-whatsapp">WhatsApp</a>
+                <a href="https://wa.me/905419248987" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp</a>
                 <a href="#contact" class="btn btn-primary">Ücretsiz Keşif İsteği</a>
             </div>
 
@@ -375,7 +426,7 @@
     <section id="services">
         <div class="section-label reveal">Hizmet Alanlarımız</div>
         <h2 class="section-title reveal reveal-delay-1">Neler Yapıyoruz?</h2>
-        <p class="section-desc reveal reveal-delay-2">İhtiyacınız olan tüm zayıf akım and network altyapısını profesyonel standartlarda kuruyoruz.</p>
+        <p class="section-desc reveal reveal-delay-2">İhtiyacınız olan tüm zayıf akım ve network altyapısını profesyonel standartlarda kuruyoruz.</p>
         <div class="services-grid">
             
             <div class="service-card reveal reveal-delay-1">
@@ -482,7 +533,7 @@
                 </div>
                 <div class="contact-buttons">
                     <a href="tel:+905419248987" class="btn btn-call" style="padding:8px 16px;font-size:.85rem;">Hemen Ara</a>
-                    <a href="https://wa.me/905419248987" target="_blank" class="btn btn-whatsapp" style="padding:8px 16px;font-size:.85rem;">WhatsApp</a>
+                    <a href="https://wa.me/905419248987" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding:8px 16px;font-size:.85rem;">WhatsApp</a>
                 </div>
             </div>
             <div class="contact-info-item reveal reveal-delay-2">
@@ -493,7 +544,7 @@
                 </div>
                 <div class="contact-buttons">
                     <a href="tel:+905312641812" class="btn btn-call" style="padding:8px 16px;font-size:.85rem;">Hemen Ara</a>
-                    <a href="https://wa.me/905312641812" target="_blank" class="btn btn-whatsapp" style="padding:8px 16px;font-size:.85rem;">WhatsApp</a>
+                    <a href="https://wa.me/905312641812" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding:8px 16px;font-size:.85rem;">WhatsApp</a>
                 </div>
             </div>
             <div class="contact-info-item reveal reveal-delay-3">
@@ -502,9 +553,13 @@
                     <h4>E-Posta</h4>
                     <p>securistr@gmail.com.tr</p>
                 </div>
+                <div class="contact-buttons">
+                    <a href="mailto:securistr@gmail.com.tr" class="btn btn-call" style="padding:8px 16px;font-size:.85rem;">E-posta Gönder</a>
+                </div>
             </div>
         </div>
     </section>
+    </main>
 
     <footer>&copy; 2026 <span>Securis</span> Güvenlik ve Ağ Sistemleri. Tüm hakları saklıdır.</footer>
 
@@ -513,12 +568,14 @@
         const navLinks = document.getElementById('navLinks');
 
         menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-open');
+            const isOpen = navLinks.classList.toggle('mobile-open');
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
         });
 
         document.querySelectorAll('#navLinks a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('mobile-open');
+                menuBtn.setAttribute('aria-expanded', 'false');
             });
         });
 
