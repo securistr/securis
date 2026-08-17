@@ -1,0 +1,113 @@
+SECURIS.COM.TR — SEO SAYFALARI KURULUM TALİMATLARI
+====================================================
+
+Bu pakette şunlar var:
+  /assets/seo-pages.css                     → yeni sayfaların ortak CSS'i
+  /hizmetler/ip-kamera-sistemleri/index.html
+  /hizmetler/firewall-yapilandirma/index.html
+  /hizmetler/switch-konfigurasyonu/index.html
+  /hizmetler/access-point-kurulumu/index.html
+  /hizmetler/nvr-depolama/index.html
+  /bolgeler/silivri/index.html
+  /bolgeler/catalca/index.html
+  /bolgeler/buyukcekmece/index.html
+  /bolgeler/beylikduzu/index.html
+  /bolgeler/corlu/index.html
+  /bolgeler/cerkezkoy/index.html
+  /bolgeler/marmaraereglisi/index.html
+  /bolgeler/kapakli/index.html
+  /bolgeler/tekirdag/index.html
+  /sitemap.xml
+  /robots.txt
+
+Not: Kamera hizmet metinlerinden analog kamera ifadeleri kaldırıldı, sadece
+IP kamera sistemleri kurulumu öne çıkarılıyor. Ayrıca sitenizdeki 9 hizmet
+bölgesinin (Silivri, Çatalca, Büyükçekmece, Beylikdüzü, Çorlu, Çerkezköy,
+Marmaraereğlisi, Kapaklı, Tekirdağ/Süleymanpaşa) HEPSİ için ayrı bölge
+sayfası hazırlandı.
+
+
+1) FTP/cPanel İLE YÜKLEME
+--------------------------
+Bu klasördeki TÜM yapıyı (klasör isimleri dahil) sitenizin kök dizinine (public_html
+veya www) AYNEN kopyalayın. Yani cPanel'de şu görünüm oluşmalı:
+
+  public_html/
+    index.html            (mevcut ana sayfanız — değişmiyor, sadece H1 düzeltilecek, aşağıya bakın)
+    securis-logo.png       (zaten sitede var)
+    assets/seo-pages.css   (YENİ)
+    hizmetler/...          (YENİ)
+    bolgeler/...           (YENİ)
+    sitemap.xml            (YENİ)
+    robots.txt             (YENİ — eğer zaten bir robots.txt varsa, içeriğini birleştirin,
+                             üzerine yazmadan önce mevcut dosyayı kontrol edin)
+
+Yükledikten sonra tarayıcıdan test edin:
+  https://www.securis.com.tr/hizmetler/ip-kamera-sistemleri/
+  https://www.securis.com.tr/bolgeler/silivri/
+  https://www.securis.com.tr/bolgeler/catalca/
+  https://www.securis.com.tr/sitemap.xml
+
+
+2) ANA SAYFADAKİ H1 BAŞLIĞINI GÜNCELLEYİN
+-------------------------------------------
+Mevcut index.html dosyanızda şu satırı bulun:
+
+  <h1 id="hero-heading">
+      İşletmeniz ve Eviniz İçin<br />
+      <span class="highlight">Güvenilir Altyapı</span> Çözümleri
+  </h1>
+
+Bunu şununla değiştirin (anahtar kelime + bölge adı içeriyor, tasarımı bozmaz):
+
+  <h1 id="hero-heading">
+      Silivri, Çorlu ve Tekirdağ'da<br />
+      <span class="highlight">Kamera Sistemleri</span> ve Network Kurulumu
+  </h1>
+
+
+3) ANA SAYFAYA YENİ SAYFALARA LİNK EKLEYİN (önerilir)
+-------------------------------------------------------
+Google'ın yeni sayfaları bulması için ana sayfadan iç link vermeniz gerekiyor.
+"Hizmetler" bölümündeki her kart başlığını (<h3>...</h3>) ilgili sayfaya link yapın.
+Örnek — mevcut:
+
+  <h3>Kamera Sistemleri Kurulum ve Destek</h3>
+
+Yeni:
+
+  <h3><a href="hizmetler/ip-kamera-sistemleri/index.html" style="color:inherit;text-decoration:none;">Kamera Sistemleri Kurulum ve Destek</a></h3>
+
+Aynı mantıkla "Bölgeler" kısmındaki her region-chip'i de ilgili bölge sayfasına
+bağlayın (artık 9 bölgenin de sayfası hazır). Örnek — mevcut:
+
+  <span class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Silivri</span>
+
+Yeni:
+
+  <a href="bolgeler/silivri/index.html" class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Silivri</a>
+
+Aşağıdaki eşleşmeleri kullanarak her chip'i linkleyin:
+  Silivri            → bolgeler/silivri/index.html
+  Çatalca            → bolgeler/catalca/index.html
+  Büyükçekmece       → bolgeler/buyukcekmece/index.html
+  Beylikdüzü         → bolgeler/beylikduzu/index.html
+  Çorlu              → bolgeler/corlu/index.html
+  Çerkezköy          → bolgeler/cerkezkoy/index.html
+  Marmaraereğlisi    → bolgeler/marmaraereglisi/index.html
+  Kapaklı            → bolgeler/kapakli/index.html
+  Tekirdağ / Süleymanpaşa → bolgeler/tekirdag/index.html
+
+NOT: span etiketini a etiketine çevirirken class listesini (reveal reveal-delay-X)
+olduğu gibi koruyun, sadece <span> yerine <a href="..."> ve kapanışta </a> kullanın.
+
+
+4) GOOGLE SEARCH CONSOLE
+--------------------------
+Yükleme tamamlanınca Google Search Console'a girip:
+  - Sitemaps bölümünden "sitemap.xml" gönderin
+  - URL Inspection ile yeni sayfaların indexlenmesini talep edin (Request Indexing)
+
+
+NOT: Tüm yeni sayfalar aynı marka renklerini (koyu lacivert #1e3a8a) ve fontu (Inter)
+kullanıyor, mobil uyumludur ve mevcut sitenizin navigasyon/footer yapısına bağlanır.
