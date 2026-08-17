@@ -211,6 +211,8 @@
         .service-icon-box { width:48px; height:48px; border-radius:8px; background:var(--primary-light); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
         .service-icon-box svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .service-card h3 { font-size:1.15rem; font-weight:700; margin-bottom:10px; color:var(--text); }
+        .service-card h3 a { color: inherit; text-decoration: none; }
+        .service-card h3 a:hover { color: var(--primary); }
         .service-card p { color:var(--text-dim); font-size:.92rem; line-height:1.6; }
 
         /* ── REGION ── */
@@ -218,7 +220,7 @@
         #region .section-title, #region .section-desc { text-align:center; margin: 0 auto; }
         #region .section-desc { margin-bottom: 40px; }
         .region-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; max-width:800px; margin:0 auto; }
-        .region-chip { background:var(--bg); border:1px solid var(--card-border); padding:10px 20px; border-radius:8px; font-size:.9rem; font-weight:600; transition:all .25s; display:inline-flex; align-items:center; gap:8px; color:var(--text); }
+        .region-chip { background:var(--bg); border:1px solid var(--card-border); padding:10px 20px; border-radius:8px; font-size:.9rem; font-weight:600; transition:all .25s; display:inline-flex; align-items:center; gap:8px; color:var(--text); text-decoration: none; }
         .region-chip:hover { border-color:var(--primary); color:var(--primary); background: #ffffff; transform:translateY(-1px); }
         .region-chip .pin { color:var(--primary); }
         .region-note { color:var(--text-dim); font-size:.9rem; margin-top:32px; font-weight: 500; }
@@ -433,15 +435,15 @@
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                 </div>
-                <h3>Kamera Sistemleri Kurulum ve Destek</h3>
-                <p>Ev, ofis veya fabrika alanlarınız için yüksek çözünürlüklü IP ve Analog kamera sistemlerinin montajı, temiz kablolaması ve arıza durumlarında hızlı teknik destek hizmeti.</p>
+                <h3><a href="hizmetler/ip-kamera-sistemleri/index.html">Kamera Sistemleri Kurulum ve Destek</a></h3>
+                <p>Ev, ofis veya fabrika alanlarınız için yüksek çözünürlüklü IP kamera sistemlerinin montajı, temiz kablolaması ve arıza durumlarında hızlı teknik destek hizmeti.</p>
             </div>
 
             <div class="service-card reveal reveal-delay-2">
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
-                <h3>Firewall Config (Yapılandırma)</h3>
+                <h3><a href="hizmetler/firewall-yapilandirma/index.html">Firewall Config (Yapılandırma)</a></h3>
                 <p>Şirket verilerinizi dış siber saldırılardan korumak için FortiGate ve benzeri kurumsal siber duvar ünitelerinin ağınıza entegrasyonu, kural tanımlamaları ve güvenli VPN ayarları.</p>
             </div>
 
@@ -449,7 +451,7 @@
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg>
                 </div>
-                <h3>Switch Config (Ağ Yönetimi)</h3>
+                <h3><a href="hizmetler/switch-konfigurasyonu/index.html">Switch Config (Ağ Yönetimi)</a></h3>
                 <p>Kablolu ağ trafiğinizin takılmadan, hızlı çalışması için kurumsal yönetilebilir switch cihazlarının montajı, hat bölümlendirmesi (VLAN) ve performans optimizasyonu.</p>
             </div>
 
@@ -457,7 +459,7 @@
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.5 16.05a6 6 0 0 1 7 0M12 20h.01"/></svg>
                 </div>
-                <h3>Access Point (Kablosuz İnternet)</h3>
+                <h3><a href="hizmetler/access-point-kurulumu/index.html">Access Point (Kablosuz İnternet)</a></h3>
                 <p>İş yerinizde internetin yavaşladığı veya çekmediği tüm "ölü noktaları" yok ediyoruz. Yüksek performanslı Access Point üniteleriyle kesintisiz tek bir Wi-Fi ağı kuruyoruz.</p>
             </div>
 
@@ -465,7 +467,7 @@
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="20" x2="22" y2="20"/><line x1="12" y1="17" x2="12" y2="20"/></svg>
                 </div>
-                <h3>NVR ve Depolama Çözümleri</h3>
+                <h3><a href="hizmetler/nvr-depolama/index.html">NVR ve Depolama Çözümleri</a></h3>
                 <p>Kamera kayıtlarınızın geriye dönük güvenle saklanması için NVR (Ağ Kayıt Cihazı) kurulumu, yüksek kapasiteli disk entegrasyonu ve cepten izleme için mobil tanımlamalar.</p>
             </div>
 
@@ -477,15 +479,15 @@
         <h2 class="section-title reveal reveal-delay-1">Size Çok Yakınız</h2>
         <p class="section-desc reveal reveal-delay-2">Trakya ve İstanbul Batı bölgesindeki tüm işletmelere yerinde hızlı kurulum ve teknik servis desteği götürüyoruz.</p>
         <div class="region-grid">
-            <span class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Silivri</span>
-            <span class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Çatalca</span>
-            <span class="region-chip reveal reveal-delay-2"><span class="pin">📍</span>Büyükçekmece</span>
-            <span class="region-chip reveal reveal-delay-2"><span class="pin">📍</span>Beylikdüzü</span>
-            <span class="region-chip reveal reveal-delay-3"><span class="pin">📍</span>Çorlu</span>
-            <span class="region-chip reveal reveal-delay-3"><span class="pin">📍</span>Çerkezköy</span>
-            <span class="region-chip reveal reveal-delay-4"><span class="pin">📍</span>Marmaraereğlisi</span>
-            <span class="region-chip reveal reveal-delay-4"><span class="pin">📍</span>Kapaklı</span>
-            <span class="region-chip reveal reveal-delay-5"><span class="pin">📍</span>Tekirdağ / Süleymanpaşa</span>
+            <a href="bolgeler/silivri/index.html" class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Silivri</a>
+            <a href="bolgeler/catalca/index.html" class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Çatalca</a>
+            <a href="bolgeler/buyukcekmece/index.html" class="region-chip reveal reveal-delay-2"><span class="pin">📍</span>Büyükçekmece</a>
+            <a href="bolgeler/beylikduzu/index.html" class="region-chip reveal reveal-delay-2"><span class="pin">📍</span>Beylikdüzü</a>
+            <a href="bolgeler/corlu/index.html" class="region-chip reveal reveal-delay-3"><span class="pin">📍</span>Çorlu</a>
+            <a href="bolgeler/cerkezkoy/index.html" class="region-chip reveal reveal-delay-3"><span class="pin">📍</span>Çerkezköy</a>
+            <a href="bolgeler/marmaraereglisi/index.html" class="region-chip reveal reveal-delay-4"><span class="pin">📍</span>Marmaraereğlisi</a>
+            <a href="bolgeler/kapakli/index.html" class="region-chip reveal reveal-delay-4"><span class="pin">📍</span>Kapaklı</a>
+            <a href="bolgeler/tekirdag/index.html" class="region-chip reveal reveal-delay-5"><span class="pin">📍</span>Tekirdağ / Süleymanpaşa</a>
         </div>
         <div class="region-note reveal reveal-delay-3">⚡ Sistem arızalarında maksimum <strong>3 saat</strong> içinde yerinde müdahale garantisi.</div>
     </section>
