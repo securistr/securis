@@ -1,0 +1,40 @@
+{
+  "sss": {
+    "label": "Sık Sorulan Sorular",
+    "title": "Merak Edilenler",
+    "desc": "Keşif, fiyatlandırma, kurulum süresi ve teknik destek hakkında en çok aldığımız sorular.",
+    "items": [
+      {
+        "q": "Keşif hizmeti ücretli mi?",
+        "a": "Hayır, yerinde keşif ücretsizdir. Keşifte kör noktalar, gereken kamera sayısı, kayıt süresi ve kablolama güzergâhı birlikte belirlenir; teklif bu keşfin sonucuna göre çıkarılır."
+      },
+      {
+        "q": "Kamera sistemi fiyatı neye göre belirlenir?",
+        "a": "Fiyat tek bir kalemle değil, kamera sayısı ve çözünürlüğü, istenen geriye dönük kayıt süresi, kablo mesafesi ve montaj zorluğu, PoE/switch ihtiyacı ile plaka veya yüz tanıma gibi ek analiz özelliklerine göre belirlenir. Net rakam ancak keşiften sonra verilebilir."
+      },
+      {
+        "q": "Kurulum ne kadar sürer?",
+        "a": "Standart bir ev veya ofis kurulumu genellikle bir gün içinde tamamlanır. Fabrika, depo veya çok noktalı projelerde süre keşif sonrasında netleşir."
+      },
+      {
+        "q": "Kayıtları telefonumdan izleyebilir miyim?",
+        "a": "Evet. Kurulum sonrasında NVR cihazınız mobil uygulamaya tanımlanır; canlı izleme ve geriye dönük kayıtlara telefonunuzdan erişebilirsiniz."
+      },
+      {
+        "q": "Arıza durumunda ne kadar sürede geliyorsunuz?",
+        "a": "Hizmet bölgelerimizde sistem arızalarına maksimum 3 saat içinde yerinde müdahale ediyoruz. Kurulumunu yaptığımız sistemler 1 yıl servis garantisi kapsamındadır.",
+        "aSchema": "Hizmet bölgelerimizde sistem arızalarına maksimum 3 saat içinde yerinde müdahale ediyoruz."
+      },
+      {
+        "q": "Hangi markalarla çalışıyorsunuz?",
+        "a": "Kamera tarafında Dahua, Hikvision ve Milesight; güvenlik duvarında Fortinet; ağ tarafında Ruijie ve TP-Link ürünleriyle çalışıyoruz. Marka seçimi, alanın ihtiyacına ve bütçeye göre keşifte netleşir.",
+        "aSchema": "Kamera tarafında Dahua, Hikvision ve Milesight; güvenlik duvarında Fortinet; ağ tarafında Ruijie ve TP-Link ürünleriyle çalışıyoruz."
+      },
+      {
+        "q": "Hangi bölgelere hizmet veriyorsunuz?",
+        "a": "Silivri, Çatalca, Büyükçekmece, Beylikdüzü, Çorlu, Çerkezköy, Marmaraereğlisi, Kapaklı ve Tekirdağ/Süleymanpaşa bölgelerine yerinde kurulum ve teknik servis desteği veriyoruz.",
+        "aSchema": "Silivri, Çatalca, Büyükçekmece, Beylikdüzü, Çorlu, Çerkezköy, Marmaraereğlisi, Kapaklı ve Tekirdağ/Süleymanpaşa bölgelerine yerinde hizmet veriyoruz."
+      }
+    ]
+  }
+}

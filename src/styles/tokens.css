@@ -1,0 +1,45 @@
+/* ─────────────────────────────────────────────────────────────────────
+   Securis — Global Design Tokens (TEK KAYNAK)
+
+   Buradaki değerler, migration öncesi iki ayrı stil kaynağında
+   (index.html inline <style> ve assets/seo-pages.css) BİREBİR AYNI
+   olduğu doğrulanan token'lardır. Yani bu dosyaya taşınmaları
+   production görünümünü değiştirmez.
+
+   Değeri iki kaynakta FARKLI olan token'lar bilinçli olarak buraya
+   ALINMADI; onlar kendi sayfa stil dosyalarında kalır ve orada
+   nedenleriyle birlikte belgelenmiştir:
+
+     --shadow, --shadow-hover, --space-xs, --space-sm,
+     --space-md, --space-lg, --space-xl
+
+   Bu token'lar runtime'da çakışmıyor: ana sayfa yalnızca home.css'i,
+   alt sayfalar yalnızca seo-pages.css'i yükler. Birleştirme kararı
+   Faz 2'ye (Visual Upgrade) bırakıldı — Faz 1'in kuralı görsel
+   pariteyi bozmamak.
+   ───────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Zemin ve yüzeyler ── */
+  --bg: #f8fafc;
+  --bg2: #ffffff;
+  --card: #ffffff;
+  --card-border: #e2e8f0;
+
+  /* ── Marka rengi ── */
+  --primary: #1e3a8a;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
+
+  /* ── Metin ── */
+  --text: #0f172a;
+  --text-dim: #475569;
+
+  /* ── Tipografi ── */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+
+  /* ── Yerleşim ── */
+  --nav-h: 80px;
+  --space-2xs: 8px;
+}

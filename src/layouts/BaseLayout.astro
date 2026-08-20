@@ -1,0 +1,89 @@
+---
+/**
+ * Securis — Ortak sayfa iskeleti
+ *
+ * Production'da 17 dosyada tekrar eden her şey burada toplandı:
+ * <html>/<head>/<body> iskeleti, CSP, viewport, PWA/favicon linkleri,
+ * Google Fonts yükleme stratejisi, skip-link, Header, Footer, MobileCTA.
+ *
+ * FONT NOTU (§20): Google Fonts bağımlılığı ve `media="print" onload`
+ * async yükleme tekniği production'dakiyle BİREBİR aynıdır. Self-hosting
+ * bilinçli olarak Faz 1 kapsamına alınmadı.
+ */
+import site from '../data/site.json';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileCTA from '../components/MobileCTA.astro';
+import '../styles/tokens.css';
+
+interface Props {
+  variant?: 'home' | 'sub';
+  /** Mobil CTA barındaki WhatsApp hazır metni */
+  whatsappText?: string;
+  /** Skip-link hedefi: ana sayfada #hero-heading, alt sayfalarda #main */
+  skipTarget?: string;
+  /** Mobil CTA barı basılsın mı */
+  mobileCta?: boolean;
+}
+
+const {
+  variant = 'sub',
+  whatsappText = site.defaultWhatsappText,
+  skipTarget = '#main',
+  mobileCta = true,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content={site.csp} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content={site.shortName} />
+    <meta name="application-name" content={site.shortName} />
+    <meta name="theme-color" content="#0f2040" />
+
+    {/* iOS düz metindeki numaraları kendi mavi linkine çevirmesin;
+        elle kurulan <a href="tel:"> linkleri bundan etkilenmez */}
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="date=no, address=no, email=no" />
+
+    {/* Favicon + PWA ikonları */}
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <slot name="seo" />
+
+    {/* Font kaynağına erken bağlantı: render-blocking süresini kısaltır */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <slot name="head-extra" />
+
+    <link rel="preload" as="style" href={site.fontsHref} />
+    <link rel="stylesheet" href={site.fontsHref} media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href={site.fontsHref} /></noscript>
+  </head>
+
+  <body>
+    <a href={skipTarget} class="skip-link">İçeriğe geç</a>
+
+    <Header variant={variant} />
+
+    <slot />
+
+    <Footer variant={variant} />
+
+    {mobileCta && <MobileCTA whatsappText={whatsappText} />}
+
+
+  </body>
+</html>

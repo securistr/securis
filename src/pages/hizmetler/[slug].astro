@@ -1,0 +1,96 @@
+---
+/**
+ * Securis — Hizmet sayfaları (5 adet, tek şablondan)
+ *
+ * URL: /hizmetler/<slug>/  — production URL yapısı birebir korunur.
+ * Veri: src/data/hizmetler.json (mevcut HTML'lerden kayıpsız çıkarıldı)
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import FAQ from '../../components/FAQ.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import RegionGrid from '../../components/RegionGrid.astro';
+import site from '../../data/site.json';
+import bolgeler from '../../data/bolgeler.json';
+import hizmetler from '../../data/hizmetler.json';
+import { hizmetSchema } from '../../lib/schema.js';
+import { waHref } from '../../lib/links.js';
+import '../../styles/seo-pages.css';
+
+export function getStaticPaths() {
+  return hizmetler.map((hizmet) => ({ params: { slug: hizmet.slug }, props: { hizmet } }));
+}
+
+const { hizmet } = Astro.props;
+const path = `/hizmetler/${hizmet.slug}/`;
+const p = site.phones[0];
+const wa = waHref(p.wa, hizmet.whatsappText);
+---
+
+<BaseLayout whatsappText={hizmet.whatsappText}>
+  <SEO
+    slot="seo"
+    title={hizmet.title}
+    description={hizmet.description}
+    path={path}
+    jsonLd={hizmetSchema(hizmet, bolgeler)}
+  />
+
+  <main id="main">
+    <div class="breadcrumb">
+      <a href="/">Ana Sayfa</a> / <a href="/#services">Hizmetler</a> / {hizmet.breadcrumbName}
+    </div>
+
+    <div class="page-hero">
+      <div class="hero-badge">{hizmet.heroBadge}</div>
+      <h1>{hizmet.h1}</h1>
+      <p class="lead">{hizmet.lead}</p>
+      <div class="hero-actions">
+        <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"
+          >{site.labels.waButton}</a
+        >
+        <a href={`tel:${p.e164}`} class="btn btn-call" aria-label={`Securis'i ara: ${p.aria}`}
+          >{site.labels.callButton}</a
+        >
+        <a href="/#contact" class="btn btn-ghost">{site.labels.kesifButton}</a>
+      </div>
+      <p class="cta-note">{site.ctaNote}</p>
+    </div>
+
+    <section>
+      <div class="section-label">{site.labels.detaylar}</div>
+      <h2 class="section-title">{site.labels.hizmetDetayTitle}</h2>
+      <div class="card-grid">
+        {
+          hizmet.detayKartlari.map((k) => (
+            <div class="info-card">
+              <h3>{k.h3}</h3>
+              <p>{k.p}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">{site.labels.bolgeler}</div>
+      <h2 class="section-title">{site.labels.hizmetBolgeTitle}</h2>
+      <p class="section-desc">{site.labels.hizmetBolgeDesc}</p>
+      <RegionGrid />
+    </section>
+
+    <section>
+      <div class="section-label">{site.labels.sss}</div>
+      <h2 class="section-title">{hizmet.sss.title}</h2>
+      <FAQ items={hizmet.sss.items} />
+    </section>
+
+    <section>
+      <CtaBand whatsappText={hizmet.whatsappText} />
+    </section>
+  </main>
+
+  <script>
+    import '../../scripts/sub-pages.js';
+  </script>
+</BaseLayout>

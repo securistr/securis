@@ -1,0 +1,32 @@
+---
+/**
+ * Securis — "Ücretsiz Keşif için Bize Ulaşın" bandı
+ *
+ * Production'da 14 alt sayfada birebir aynıydı (yalnızca WhatsApp hazır
+ * metni değişiyordu). Gizlilik sayfasında ise farklı başlık/metin ve
+ * WhatsApp yerine e-posta butonu vardı — o sayfa kendi bandını yazar.
+ */
+import site from '../data/site.json';
+import { waHref } from '../lib/links.js';
+
+interface Props {
+  whatsappText?: string;
+}
+const { whatsappText = site.defaultWhatsappText } = Astro.props;
+const p = site.phones[0];
+const wa = waHref(p.wa, whatsappText);
+---
+
+<div class="cta-band">
+  <h2>{site.ctaBand.h2}</h2>
+  <p>{site.ctaBand.p}</p>
+  <div class="hero-actions" style="justify-content:center;">
+    <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"
+      >{site.labels.waButton}</a
+    >
+    <a href={`tel:${p.e164}`} class="btn btn-call" aria-label={`Securis'i ara: ${p.aria}`}
+      >{site.labels.callButton}</a
+    >
+  </div>
+  <p class="cta-note">{site.ctaNote}</p>
+</div>

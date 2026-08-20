@@ -1,0 +1,106 @@
+---
+/**
+ * Securis — Bölge sayfaları (9 adet, tek şablondan)
+ *
+ * URL: /bolgeler/<slug>/   — production URL yapısı birebir korunur.
+ * Veri: src/data/bolgeler.json (mevcut HTML'lerden kayıpsız çıkarıldı)
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import FAQ from '../../components/FAQ.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import RegionGrid from '../../components/RegionGrid.astro';
+import PinIcon from '../../components/PinIcon.astro';
+import site from '../../data/site.json';
+import bolgeler from '../../data/bolgeler.json';
+import hizmetler from '../../data/hizmetler.json';
+import { bolgeSchema } from '../../lib/schema.js';
+import { waHref } from '../../lib/links.js';
+import '../../styles/seo-pages.css';
+
+export function getStaticPaths() {
+  return bolgeler.map((bolge) => ({ params: { slug: bolge.slug }, props: { bolge } }));
+}
+
+const { bolge } = Astro.props;
+const path = `/bolgeler/${bolge.slug}/`;
+const p = site.phones[0];
+const wa = waHref(p.wa, bolge.whatsappText);
+---
+
+<BaseLayout whatsappText={bolge.whatsappText}>
+  <SEO
+    slot="seo"
+    title={bolge.title}
+    description={bolge.description}
+    path={path}
+    jsonLd={bolgeSchema(bolge)}
+  />
+
+  <main id="main">
+    <div class="breadcrumb">
+      <a href="/">Ana Sayfa</a> / <a href="/#region">Bölgeler</a> / {bolge.ad}
+    </div>
+
+    <div class="page-hero">
+      <div class="hero-badge"><PinIcon />{bolge.ad}</div>
+      <h1>{bolge.h1}</h1>
+      <p class="lead">{bolge.lead}</p>
+      <div class="hero-actions">
+        <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"
+          >{site.labels.waButton}</a
+        >
+        <a href={`tel:${p.e164}`} class="btn btn-call" aria-label={`Securis'i ara: ${p.aria}`}
+          >{site.labels.callButton}</a
+        >
+        <a href="/#contact" class="btn btn-ghost">{site.labels.kesifButton}</a>
+      </div>
+      <p class="cta-note">{site.ctaNote}</p>
+    </div>
+
+    <section>
+      <div class="section-label">{site.labels.bolgeProfili}</div>
+      <h2 class="section-title">{bolge.profil.title}</h2>
+      <p class="section-desc">{bolge.profil.paragraf}</p>
+      <p class="section-desc">
+        <strong>{site.labels.mahalleLabel}</strong> {bolge.profil.mahalleList}
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label">{site.labels.hizmetlerimiz}</div>
+      <h2 class="section-title">{bolge.hizmetlerTitle}</h2>
+      <div class="card-grid">
+        {
+          hizmetler.map((h) => (
+            <a href={`/hizmetler/${h.slug}/`} class="info-card info-card-link">
+              <h3>{h.kisaAd}</h3>
+              <p>{h.kisaAciklama}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">{site.labels.sss}</div>
+      <h2 class="section-title">{bolge.sss.title}</h2>
+      <FAQ items={bolge.sss.items} />
+    </section>
+
+    <section>
+      <div class="section-label">{site.labels.yakinBolgeler}</div>
+      <h2 class="section-title">{bolge.yakinBolgeler.title}</h2>
+      <p class="section-desc">{site.labels.yakinBolgelerDesc}</p>
+      <RegionGrid slugs={bolge.yakinBolgeler.slugs} />
+    </section>
+
+    <section>
+      <CtaBand whatsappText={bolge.whatsappText} />
+    </section>
+  </main>
+
+  <script>
+    import '../../scripts/sub-pages.js';
+  </script>
+</BaseLayout>

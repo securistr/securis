@@ -1,0 +1,21 @@
+{
+  "name": "securis-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Securis Ağ ve Kamera Güvenlik Sistemleri — securis.com.tr statik web sitesi (Astro)",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "engines": {
+    "node": ">=18.20.8"
+  },
+  "dependencies": {
+    "astro": "^5.14.1"
+  }
+}

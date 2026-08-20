@@ -1,0 +1,104 @@
+---
+/**
+ * Securis — 404 (Sayfa Bulunamadı)
+ *
+ * DÜZELTİLEN GERÇEK HATA:
+ * Production'daki 404.html karışık yol stratejisi kullanıyordu — nav ve
+ * footer linkleri mutlak (`/`, `/#services`), buna karşılık stylesheet,
+ * script, logo, favicon, manifest ve tüm hizmet/bölge kartları GÖRELİ
+ * (`assets/seo-pages.css`, `securis-logo.png`, `hizmetler/...`) idi.
+ *
+ * GitHub Pages 404'ü istenen yolda sunar. `/bolgeler/test/olmayan-sayfa`
+ * açıldığında tarayıcı `assets/seo-pages.css`i
+ * `/bolgeler/test/assets/seo-pages.css` olarak çözüyor, dolayısıyla
+ * CSS, JS, logo ve tüm kartlar kırılıyordu.
+ *
+ * Artık her yol kök-göreli (`/...`); CSS ve JS ise Astro bundle'ından
+ * mutlak `/_astro/...` yollarıyla geliyor. Derinlikten bağımsız çalışır.
+ *
+ * NOT: Production'da 404'te OG/Twitter etiketi ve canonical YOKTU;
+ * bu davranış korunuyor (social={false}, noCanonical).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import RegionGrid from '../components/RegionGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import site from '../data/site.json';
+import hizmetler from '../data/hizmetler.json';
+import { waHref } from '../lib/links.js';
+import '../styles/seo-pages.css';
+
+const whatsappText = 'Merhaba, sitenizde aradığım sayfayı bulamadım, yardımcı olur musunuz?';
+const p = site.phones[0];
+const wa = waHref(p.wa, whatsappText);
+---
+
+<BaseLayout whatsappText={whatsappText}>
+  <SEO
+    slot="seo"
+    title="Sayfa Bulunamadı | Securis"
+    description="Aradığınız sayfa bulunamadı. Securis ana sayfasına dönün veya doğrudan bizimle iletişime geçin."
+    robots="noindex, follow"
+    noCanonical
+    social={false}
+  />
+
+  <main id="main">
+    <div class="breadcrumb"><a href="/">Ana Sayfa</a> / Sayfa Bulunamadı</div>
+
+    <div class="page-hero">
+      <div class="hero-badge">
+        <span class="chip-icon"
+          ><svg viewBox="0 0 24 24" aria-hidden="true"
+            ><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"
+            ></path></svg
+          ></span
+        >404
+      </div>
+      <h1>Aradığınız Sayfa Bulunamadı</h1>
+      <p class="lead">
+        Bağlantı eskimiş olabilir ya da adres yanlış yazılmış olabilir. Ana sayfaya dönebilir ya da
+        doğrudan bize ulaşabilirsiniz — size en kısa sürede yardımcı oluruz.
+      </p>
+      <div class="hero-actions">
+        <a href="/" class="btn btn-ghost">Ana Sayfaya Dön</a>
+        <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"
+          >{site.labels.waButton}</a
+        >
+        <a href={`tel:${p.e164}`} class="btn btn-call" aria-label={`Securis'i ara: ${p.aria}`}
+          >{site.labels.callButton}</a
+        >
+      </div>
+      <p class="cta-note">{site.ctaNote}</p>
+    </div>
+
+    <section>
+      <div class="section-label">Popüler Hizmetler</div>
+      <h2 class="section-title">Aradığınız İçerik Bunlardan Biri Olabilir</h2>
+      <div class="card-grid">
+        {
+          hizmetler.map((h) => (
+            <a href={`/hizmetler/${h.slug}/`} class="info-card info-card-link">
+              <h3>{h.kisaAd}</h3>
+              <p>{h.kisaAciklama}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">Hizmet Bölgeleri</div>
+      <h2 class="section-title">Bölgenizdeki Sayfaya Ulaşın</h2>
+      <RegionGrid />
+    </section>
+
+    <section>
+      <CtaBand whatsappText={whatsappText} />
+    </section>
+  </main>
+
+  <script>
+    import '../scripts/sub-pages.js';
+  </script>
+</BaseLayout>

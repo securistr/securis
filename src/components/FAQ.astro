@@ -1,0 +1,28 @@
+---
+/**
+ * Securis — SSS listesi (native <details>/<summary>)
+ *
+ * Aynı veri hem burada görünür içeriği hem de sayfanın FAQPage
+ * şemasını besler (bkz. src/lib/schema.js).
+ *
+ * NOT: Ana sayfada .faq-item öğelerinin ek olarak `reveal` sınıfı vardı
+ * (scroll ile beliren animasyon). Alt sayfalarda yoktu. Fark `reveal`
+ * prop'u ile korunur.
+ */
+interface Props {
+  items: { q: string; a: string; aSchema?: string }[];
+  reveal?: boolean;
+}
+const { items, reveal = false } = Astro.props;
+---
+
+<div class="faq-list">
+  {
+    items.map((item) => (
+      <details class={reveal ? 'faq-item reveal' : 'faq-item'}>
+        <summary>{item.q}</summary>
+        <div class="faq-answer">{item.a}</div>
+      </details>
+    ))
+  }
+</div>

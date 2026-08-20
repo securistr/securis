@@ -1,0 +1,100 @@
+---
+/**
+ * Securis — Site başlığı / navigasyon
+ *
+ * Production'da bu blok 17 dosyada birebir tekrar ediyordu. İki varyant var
+ * ve ikisi de aynen korunmuştur:
+ *
+ *   variant="home"  Ana sayfa: id="siteNav", imleç spotlight katmanı,
+ *                   #anchor linkleri, .nav-link sınıfı (scroll-spy için),
+ *                   logo görselinde eager/fetchpriority (LCP), aria-label
+ *                   "Menüyü Aç" (büyük A — production'daki hâli).
+ *
+ *   variant="sub"   Alt sayfalar: spotlight yok, linkler ana sayfaya
+ *                   (/, /#services ...), aria-label "Menüyü aç".
+ */
+import site from '../data/site.json';
+
+interface Props {
+  variant?: 'home' | 'sub';
+}
+const { variant = 'sub' } = Astro.props;
+const isHome = variant === 'home';
+
+/**
+ * Alt sayfalarda "Ana Sayfa" linki hash'siz köke gider (production'da
+ * `../../` idi), diğerleri ana sayfanın bölümlerine (`/#services` ...).
+ */
+const href = (hash: string) => {
+  if (isHome) return hash;
+  return hash === '#hero' ? '/' : `/${hash}`;
+};
+---
+
+<header>
+  <nav aria-label="Ana menü" id={isHome ? 'siteNav' : undefined}>
+    {
+      isHome && (
+        /* Spotlight katmanı: pointer-events:none, tıklamaları asla engellemez */
+        <div class="nav-spotlight" aria-hidden="true" />
+      )
+    }
+
+    <a href="/" class="logo" aria-label="Securis ana sayfa">
+      {
+        isHome ? (
+          <img
+            src="/securis-logo.png"
+            alt="Securis"
+            width="200"
+            height="64"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        ) : (
+          <img src="/securis-logo.png" alt="Securis" width="200" height="64" />
+        )
+      }
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuBtn"
+      aria-label={isHome ? 'Menüyü Aç' : 'Menüyü aç'}
+      aria-expanded="false"
+      aria-controls="navLinks"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width={isHome ? '28' : '26'}
+        height={isHome ? '28' : '26'}
+        stroke="currentColor"
+        stroke-width="2.5"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden={isHome ? undefined : 'true'}
+      >
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <ul id="navLinks">
+      {
+        site.nav.map((item) => (
+          <li>
+            <a href={href(item.hash)} class={isHome ? 'nav-link' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="nav-cta-wrap">
+        <a href={href(site.navCta.hash)} class="nav-cta">{site.navCta.label}</a>
+      </li>
+    </ul>
+  </nav>
+</header>

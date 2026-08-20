@@ -1,0 +1,90 @@
+---
+/**
+ * Securis — <head> SEO bloğu
+ *
+ * Migration öncesinde title/description/canonical/robots/OG/Twitter ve
+ * JSON-LD 17 dosyada ayrı ayrı yazılıydı. Hepsi buraya taşındı.
+ *
+ * Production'da sayfa tipleri arasında GERÇEK farklar vardı; hepsi prop
+ * olarak korunmuştur:
+ *   - ana sayfa: og:description ve twitter:description, meta description'dan
+ *     FARKLI; ayrıca geo.* meta'ları ve daha uzun og:image:alt var
+ *   - 404: hiç OG/Twitter etiketi yok ve canonical yok (noindex)
+ *   - alt sayfalar: og/twitter description = meta description
+ */
+import site from '../data/site.json';
+import { serialize } from '../lib/schema.js';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Kök-göreli yol, sonu slash'li: '/bolgeler/silivri/' */
+  path?: string;
+  /** Canonical basılmasın (404) */
+  noCanonical?: boolean;
+  /** OG + Twitter bloğu basılsın mı (404'te production'da yoktu) */
+  social?: boolean;
+  robots?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterDescription?: string;
+  ogImageAlt?: string;
+  /** Ana sayfada geo.* meta'ları basılır */
+  geo?: boolean;
+  jsonLd?: unknown;
+}
+
+const {
+  title,
+  description,
+  path = '/',
+  noCanonical = false,
+  social = true,
+  robots = site.robotsDefault,
+  ogTitle = title,
+  ogDescription = description,
+  twitterDescription = description,
+  ogImageAlt = site.ogImageAlt,
+  geo = false,
+  jsonLd,
+} = Astro.props;
+
+const canonical = `${site.url}${path}`;
+const ogImage = `${site.url}${site.ogImage}`;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+{!noCanonical && <link rel="canonical" href={canonical} />}
+<meta name="robots" content={robots} />
+{
+  geo && (
+    <>
+      <meta name="geo.region" content={site.geo.region} />
+      <meta name="geo.placename" content={site.geo.placename} />
+    </>
+  )
+}
+{
+  social && (
+    <>
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content={site.siteName} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:title" content={ogTitle} />
+      <meta property="og:description" content={ogDescription} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={ogImageAlt} />
+      <meta property="og:locale" content={site.locale} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={ogTitle} />
+      <meta name="twitter:description" content={twitterDescription} />
+      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content={site.ogImageAlt} />
+    </>
+  )
+}
+
+{jsonLd && <script type="application/ld+json" is:inline set:html={serialize(jsonLd)} />}

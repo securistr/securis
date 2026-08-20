@@ -1,0 +1,35 @@
+---
+/**
+ * Securis — Footer (NAP + linkler + copyright)
+ *
+ * Production'da 17 dosyada birebir tekrar ediyordu. Tek fark: alt
+ * sayfalarda link listesinin başında bir "Ana Sayfa" bağlantısı vardı,
+ * ana sayfada yoktu. Bu fark `variant` ile korunur.
+ */
+import site from '../data/site.json';
+
+interface Props {
+  variant?: 'home' | 'sub';
+}
+const { variant = 'sub' } = Astro.props;
+const primary = site.phones[0];
+---
+
+<footer>
+  <p class="foot-nap">
+    <strong>{site.name}</strong> · {site.address.footerLine} · <a
+      href={`tel:${primary.e164}`}
+      aria-label={`Securis'i ara: ${primary.aria}`}>{primary.display}</a
+    >
+  </p>
+  <p class="foot-links">
+    {variant === 'sub' && (<><a href="/">Ana Sayfa</a> · </>)}<a
+      href={`mailto:${site.email}`}>{site.email}</a
+    > · <a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a> · <a
+      href={site.mapUrl}
+      target="_blank"
+      rel="noopener noreferrer">Haritada Gör</a
+    > · <a href="/gizlilik-politikasi/">Gizlilik Politikası</a>
+  </p>
+  <p>&copy; {site.copyrightYear} <span>{site.shortName}</span>. Tüm hakları saklıdır.</p>
+</footer>

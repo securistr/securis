@@ -1,0 +1,35 @@
+---
+/**
+ * Securis — Bölge çipi ızgarası
+ *
+ * Kullanan yerler: ana sayfa (#region), hizmet sayfaları (9'lu ızgara),
+ * bölge sayfaları ("Yakın Bölgeler" 3'lüsü) ve 404.
+ */
+import PinIcon from './PinIcon.astro';
+import bolgeler from '../data/bolgeler.json';
+
+interface Props {
+  /** Gösterilecek bölge slug'ları. Verilmezse tüm bölgeler (site sırası). */
+  slugs?: string[];
+  /** Ana sayfadaki reveal gecikme sınıfları (çip başına 1..5) */
+  revealDelays?: number[];
+  /** Ana sayfada pin span'i `pin chip-icon` sınıfını taşır */
+  pinClass?: string;
+}
+const { slugs, revealDelays, pinClass = 'chip-icon' } = Astro.props;
+const list = slugs ? slugs.map((s) => bolgeler.find((b) => b.slug === s)!) : bolgeler;
+---
+
+<div class="region-grid">
+  {
+    list.map((b, i) => (
+      <a
+        href={`/bolgeler/${b.slug}/`}
+        class={revealDelays ? `region-chip reveal reveal-delay-${revealDelays[i]}` : 'region-chip'}
+      >
+        <PinIcon class={pinClass} />
+        {b.chipLabel}
+      </a>
+    ))
+  }
+</div>

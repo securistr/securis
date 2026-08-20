@@ -1,0 +1,262 @@
+[
+  {
+    "slug": "ip-kamera-sistemleri",
+    "kisaAd": "IP Kamera Sistemleri",
+    "kisaAciklama": "Yüksek çözünürlüklü kamera sistemi kurulumu ve teknik destek.",
+    "breadcrumbName": "IP Kamera Sistemleri",
+    "title": "IP Kamera Sistemleri Kurulumu | Silivri, Tekirdağ, Çatalca | Securis",
+    "description": "Silivri, Tekirdağ ve Çatalca çevresinde IP kamera sistemi kurulumu, kablolama ve teknik destek. Ücretsiz keşif, 3 saatte yerinde müdahale.",
+    "heroBadge": "Kamera Sistemleri",
+    "h1": "Silivri, Tekirdağ ve Çatalca'da IP Kamera Sistemleri Kurulumu",
+    "lead": "Ev, ofis ve fabrika alanlarınız için yüksek çözünürlüklü IP kamera sistemleri kuruyoruz. Temiz kablolama, doğru açı planlaması ve arıza durumunda hızlı yerinde teknik destekle sisteminizi teslim ediyoruz.",
+    "whatsappText": "Merhaba, kamera sistemi keşfi için bilgi almak istiyorum.",
+    "detayKartlari": [
+      {
+        "h3": "Keşif ve Planlama",
+        "p": "Alanınızı yerinde inceleyip kör noktaları tespit ediyor, ihtiyacınıza uygun kamera sayısı ve konumlarını birlikte belirliyoruz."
+      },
+      {
+        "h3": "Profesyonel Montaj ve Kablolama",
+        "p": "Dahua ve Hikvision marka IP kameraları temiz kablo tesisatıyla, görüntü kirliliği yaratmadan monte ediyoruz."
+      },
+      {
+        "h3": "NVR Entegrasyonu",
+        "p": "Kayıtlarınızı NVR cihazına bağlıyor, cepten canlı izleme için mobil uygulama tanımlamasını yapıyoruz."
+      },
+      {
+        "h3": "Bakım ve Arıza Desteği",
+        "p": "Kurulum sonrası 1 yıl servis garantisi ve arızalarda maksimum 3 saatte yerinde müdahale sağlıyoruz."
+      }
+    ],
+    "sss": {
+      "title": "IP Kamera Sistemleri Hakkında Merak Edilenler",
+      "items": [
+        {
+          "q": "IP kamera kullanmanın avantajı nedir?",
+          "a": "IP kameralar görüntüyü ağ üzerinden dijital olarak iletir; daha yüksek çözünürlük, esnek konumlandırma ve her yerden mobil uzaktan erişim imkanı sunar."
+        },
+        {
+          "q": "Kurulum ne kadar sürer?",
+          "a": "Standart bir ev veya ofis kurulumu genellikle 1 gün içinde tamamlanır. Fabrika veya çok noktalı projelerde süre keşif sonrası netleşir."
+        },
+        {
+          "q": "Kayıtları telefonumdan izleyebilir miyim?",
+          "a": "Evet, kurulum sonrası NVR cihazınızı mobil uygulamaya tanımlıyor, canlı izleme ve geçmiş kayıt erişimini cebinize taşıyoruz."
+        }
+      ]
+    },
+    "anaSayfaSchema": {
+      "name": "IP Kamera Sistemleri Kurulumu",
+      "serviceType": "IP Kamera Sistemleri Kurulumu",
+      "description": "Ev, ofis ve fabrikalar için IP kamera sistemi keşfi, montajı, kablolaması ve NVR entegrasyonu."
+    }
+  },
+  {
+    "slug": "firewall-yapilandirma",
+    "kisaAd": "Firewall Kurulumu",
+    "kisaAciklama": "FortiGate firewall kurulumu, kural tanımlama ve VPN ayarları.",
+    "breadcrumbName": "Firewall Kurulumu",
+    "title": "FortiGate Firewall Kurulumu ve Yapılandırma | Trakya | Securis",
+    "description": "Trakya ve İstanbul Batı bölgesinde FortiGate firewall kurulumu, kural tanımlama ve güvenli VPN yapılandırması. Şirket ağınızı koruyun.",
+    "heroBadge": "Firewall Güvenliği",
+    "h1": "Firewall Kurulumu — Şirket Ağınızı Koruyun",
+    "lead": "Şirket verilerinizi dış siber saldırılardan korumak için FortiGate ve benzeri kurumsal güvenlik duvarı ünitelerini ağınıza entegre ediyor, kural tanımlamalarını ve güvenli VPN ayarlarını yapılandırıyoruz.",
+    "whatsappText": "Merhaba, firewall kurulumu hakkında bilgi almak istiyorum.",
+    "detayKartlari": [
+      {
+        "h3": "Kurulum ve Entegrasyon",
+        "p": "FortiGate cihazınızı mevcut ağ topolojinize sorunsuz şekilde entegre ediyoruz."
+      },
+      {
+        "h3": "Kural Tanımlama",
+        "p": "İşletmenizin ihtiyacına göre erişim kuralları, port yönlendirme ve trafik filtreleme kuralları oluşturuyoruz."
+      },
+      {
+        "h3": "Güvenli VPN Ayarları",
+        "p": "Şubeler arası veya uzaktan çalışanlar için şifreli VPN bağlantıları kuruyoruz."
+      },
+      {
+        "h3": "Periyodik Kontrol",
+        "p": "Firmware güncellemeleri ve güvenlik kontrolleriyle sisteminizi güncel tutuyoruz."
+      }
+    ],
+    "sss": {
+      "title": "Firewall Kurulumu Hakkında Merak Edilenler",
+      "items": [
+        {
+          "q": "Firewall kurulumu neden gereklidir?",
+          "a": "Firewall, işletmenizin ağını dışarıdan gelen yetkisiz erişim ve siber saldırılara karşı korur; hangi trafiğin içeri ve dışarı çıkabileceğini kontrol eder."
+        },
+        {
+          "q": "Hangi firewall markalarıyla çalışıyorsunuz?",
+          "a": "Ağırlıklı olarak FortiGate (Fortinet) ürünleriyle çalışıyor, işletmenizin ölçeğine uygun model önerisinde bulunuyoruz."
+        },
+        {
+          "q": "Uzaktan çalışanlar için VPN kurabilir misiniz?",
+          "a": "Evet, şirket ağınıza güvenli uzaktan erişim için şifreli VPN yapılandırması yapıyoruz."
+        }
+      ]
+    },
+    "anaSayfaSchema": {
+      "name": "Firewall Yapılandırma",
+      "serviceType": "Firewall Yapılandırma",
+      "description": "FortiGate ve kurumsal güvenlik duvarı kurulumu, erişim kuralları ve şifreli VPN yapılandırması."
+    }
+  },
+  {
+    "slug": "switch-konfigurasyonu",
+    "kisaAd": "Switch ve Ağ Yönetimi",
+    "kisaAciklama": "Kurumsal switch kurulumu ve VLAN yapılandırması.",
+    "breadcrumbName": "Switch ve Ağ Yönetimi",
+    "title": "Kurumsal Switch Kurulumu ve VLAN Yapılandırması | Securis",
+    "description": "Kurumsal yönetilebilir switch kurulumu, VLAN yapılandırması ve ağ performans optimizasyonu. Silivri, Tekirdağ, Çatalca ve Trakya genelinde hizmet.",
+    "heroBadge": "Ağ Yönetimi",
+    "h1": "Switch ve Ağ Yönetimi — Kablolu Ağ Kurulumu",
+    "lead": "Kablolu ağ trafiğinizin takılmadan ve hızlı çalışması için kurumsal yönetilebilir switch cihazlarının montajını, hat bölümlendirmesini (VLAN) ve performans optimizasyonunu yapıyoruz.",
+    "whatsappText": "Merhaba, switch ve ağ kurulumu hakkında bilgi almak istiyorum.",
+    "detayKartlari": [
+      {
+        "h3": "Montaj ve Kablolama",
+        "p": "Ruijie / TP-Link ve benzeri kurumsal switch cihazlarını rack kabinetlerinize düzenli şekilde monte ediyoruz."
+      },
+      {
+        "h3": "VLAN Yapılandırması",
+        "p": "Departmanlar veya cihaz grupları arasında ağ trafiğini izole ederek güvenlik ve performansı artırıyoruz."
+      },
+      {
+        "h3": "Port Yönetimi",
+        "p": "Switch portlarını cihazlarınıza göre etiketliyor ve yönetiyoruz."
+      },
+      {
+        "h3": "Performans Optimizasyonu",
+        "p": "Ağ trafiğinizi analiz ederek darboğazları tespit edip çözüyoruz."
+      }
+    ],
+    "sss": {
+      "title": "Switch ve Ağ Yönetimi Hakkında Merak Edilenler",
+      "items": [
+        {
+          "q": "VLAN nedir, neden gereklidir?",
+          "a": "VLAN, fiziksel olarak aynı switch üzerinde olan cihazları mantıksal olarak ayrı ağlara böler; böylece güvenlik artar ve gereksiz trafik önlenir."
+        },
+        {
+          "q": "Mevcut switch'imi değiştirmeden yapılandırma yapabilir misiniz?",
+          "a": "Evet, cihazınız yönetilebilir (managed) switch ise mevcut donanımınız üzerinde yapılandırma yapabiliyoruz."
+        },
+        {
+          "q": "Kamera sistemi için ayrı ağ kurulabilir mi?",
+          "a": "Evet. Kameraları ayrı bir VLAN'a alarak ofis trafiğinden izole ediyoruz; bu hem güvenlik hem performans açısından önerilen yöntemdir."
+        }
+      ]
+    },
+    "anaSayfaSchema": {
+      "name": "Switch Konfigürasyonu",
+      "serviceType": "Switch Konfigürasyonu",
+      "description": "Yönetilebilir switch montajı, VLAN bölümlendirmesi ve ağ performans optimizasyonu."
+    }
+  },
+  {
+    "slug": "access-point-kurulumu",
+    "kisaAd": "Access Point Kurulumu",
+    "kisaAciklama": "Kesintisiz Wi-Fi için access point kurulumu.",
+    "breadcrumbName": "Access Point Kurulumu",
+    "title": "Access Point Kurulumu - Kesintisiz Wi-Fi | Securis",
+    "description": "İş yerinizdeki Wi-Fi ölü noktalarını ortadan kaldırıyoruz. Yüksek performanslı access point kurulumu ile tek ve kesintisiz kablosuz ağ.",
+    "heroBadge": "Kablosuz İnternet",
+    "h1": "Access Point Kurulumu ile Kesintisiz Wi-Fi Çözümleri",
+    "lead": "İş yerinizde internetin yavaşladığı veya çekmediği tüm ölü noktaları ortadan kaldırıyoruz. Yüksek performanslı access point üniteleriyle tüm alanınızı kapsayan, kesintisiz tek bir Wi-Fi ağı kuruyoruz.",
+    "whatsappText": "Merhaba, kablosuz ağ (access point) kurulumu için bilgi almak istiyorum.",
+    "detayKartlari": [
+      {
+        "h3": "Sinyal Analizi",
+        "p": "Alanınızdaki zayıf sinyal bölgelerini tespit ederek doğru access point sayısı ve konumunu planlıyoruz."
+      },
+      {
+        "h3": "Tek Ağ (Roaming) Kurulumu",
+        "p": "Birden fazla access point'i tek bir ağ adı altında birleştirerek kesintisiz gezinme deneyimi sağlıyoruz."
+      },
+      {
+        "h3": "Misafir Ağı Ayrımı",
+        "p": "Çalışan ve misafir trafiğini ayrı ağlarda tutarak güvenliği artırıyoruz."
+      },
+      {
+        "h3": "Kapasite Planlama",
+        "p": "Yoğun kullanıcı sayısına uygun cihaz ve kanal planlaması yapıyoruz."
+      }
+    ],
+    "sss": {
+      "title": "Access Point Kurulumu Hakkında Merak Edilenler",
+      "items": [
+        {
+          "q": "Kaç access point'e ihtiyacım var?",
+          "a": "Bu; alanın metrekaresine, duvar yapısına ve eş zamanlı kullanıcı sayısına göre değişir. Yerinde keşifle net sayıyı belirliyoruz."
+        },
+        {
+          "q": "Tek Wi-Fi adıyla tüm binada gezinebilir miyim?",
+          "a": "Evet, access point'leri roaming uyumlu şekilde yapılandırarak binanın her yerinde aynı ağ adıyla kesintisiz bağlantı sağlıyoruz."
+        },
+        {
+          "q": "Misafirlerime ayrı ağ verebilir miyim?",
+          "a": "Evet, misafir ağını şirket ağınızdan izole ediyoruz; misafirler internete çıkar ama iç kaynaklarınıza erişemez."
+        }
+      ]
+    },
+    "anaSayfaSchema": {
+      "name": "Access Point Kurulumu",
+      "serviceType": "Access Point Kurulumu",
+      "description": "Kesintisiz Wi-Fi için access point kurulumu, roaming ve misafir ağı yapılandırması."
+    }
+  },
+  {
+    "slug": "nvr-depolama",
+    "kisaAd": "NVR ve Depolama",
+    "kisaAciklama": "NVR kurulumu ve kamera kayıt depolama çözümleri.",
+    "breadcrumbName": "NVR ve Depolama",
+    "title": "NVR Kurulumu ve Kamera Kayıt Depolama Çözümleri | Securis",
+    "description": "NVR kurulumu, yüksek kapasiteli disk entegrasyonu ve cepten izleme için mobil tanımlama. Silivri, Tekirdağ, Çatalca bölgesi.",
+    "heroBadge": "NVR & Depolama",
+    "h1": "NVR Kurulumu ve Kamera Kayıt Depolama Çözümleri",
+    "lead": "Kamera kayıtlarınızın geriye dönük güvenle saklanması için NVR (Ağ Kayıt Cihazı) kurulumu, yüksek kapasiteli disk entegrasyonu ve cepten izleme için mobil tanımlamaları yapıyoruz.",
+    "whatsappText": "Merhaba, NVR ve kayıt depolama hakkında bilgi almak istiyorum.",
+    "detayKartlari": [
+      {
+        "h3": "Cihaz Seçimi ve Kurulum",
+        "p": "Kamera sayınıza ve çözünürlüğe uygun NVR kapasitesini belirleyip kuruyoruz."
+      },
+      {
+        "h3": "Disk Entegrasyonu",
+        "p": "Sürekli kayıt için tasarlanmış yüksek kapasiteli disklerle depolama alanınızı genişletiyoruz."
+      },
+      {
+        "h3": "Mobil Tanımlama",
+        "p": "NVR cihazınızı telefonunuza tanımlayarak her yerden canlı izleme ve kayıt erişimi sağlıyoruz."
+      },
+      {
+        "h3": "Yedekleme Planlaması",
+        "p": "Kritik kayıtlar için yerel yedekleme seçenekleri sunuyoruz."
+      }
+    ],
+    "sss": {
+      "title": "NVR ve Depolama Hakkında Merak Edilenler",
+      "items": [
+        {
+          "q": "Kayıtlar ne kadar süre saklanabilir?",
+          "a": "Bu; disk kapasitesine, kamera sayısına ve çözünürlüğe bağlıdır. İhtiyacınıza göre saklama süresini hesaplayıp uygun disk kapasitesini öneriyoruz."
+        },
+        {
+          "q": "Mevcut NVR'ıma yeni kamera ekleyebilir misiniz?",
+          "a": "Evet, mevcut cihazınızın kanal kapasitesi uygunsa yeni kamera ekleme ve disk yükseltme hizmeti veriyoruz."
+        },
+        {
+          "q": "Elektrik kesintisinde kayıtlar silinir mi?",
+          "a": "Hayır, diske yazılmış kayıtlar kesintiden etkilenmez. Kesinti sırasında kayda devam edilmesi için kesintisiz güç kaynağı (UPS) öneriyoruz."
+        }
+      ]
+    },
+    "anaSayfaSchema": {
+      "name": "NVR ve Depolama Çözümleri",
+      "serviceType": "NVR ve Depolama Çözümleri",
+      "description": "NVR kurulumu, disk kapasitesi planlaması ve mobil uzaktan izleme tanımlaması."
+    }
+  }
+]

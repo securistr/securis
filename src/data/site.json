@@ -1,0 +1,101 @@
+{
+  "url": "https://securis.com.tr",
+  "domain": "securis.com.tr",
+  "name": "Securis Ağ ve Kamera Güvenlik Sistemleri",
+  "alternateName": "Securis Güvenlik ve Ağ Sistemleri",
+  "shortName": "Securis",
+  "siteName": "Securis Ağ ve Kamera Güvenlik Sistemleri",
+  "description": "Silivri, Tekirdağ ve Çatalca çevresinde IP kamera sistemleri, firewall yapılandırması, switch ve access point kurulumu ile NVR depolama çözümleri.",
+  "locale": "tr_TR",
+  "lang": "tr",
+  "inLanguage": "tr-TR",
+  "email": "securistr@gmail.com",
+  "phones": [
+    {
+      "label": "Telefon (Destek 1)",
+      "e164": "+905419248987",
+      "display": "+90 541 924 8987",
+      "aria": "0541 924 89 87",
+      "wa": "905419248987"
+    },
+    {
+      "label": "Telefon (Destek 2)",
+      "e164": "+905312641812",
+      "display": "+90 531 264 1812",
+      "aria": "0531 264 18 12",
+      "wa": "905312641812"
+    }
+  ],
+  "address": {
+    "streetAddress": "Alipaşa Mahallesi, Minare Sokak No:15",
+    "addressLocality": "Silivri",
+    "addressRegion": "İstanbul",
+    "postalCode": "34570",
+    "addressCountry": "TR",
+    "footerLine": "Alipaşa Mah. Minare Sk. No:15, 34570 Silivri / İstanbul"
+  },
+  "geo": {
+    "latitude": 41.1104164,
+    "longitude": 28.2206906,
+    "region": "TR-34",
+    "placename": "Silivri, İstanbul"
+  },
+  "openingHours": [
+    {
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "10:00",
+      "closes": "18:00"
+    },
+    {
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "10:00",
+      "closes": "20:00"
+    }
+  ],
+  "priceRange": "$$",
+  "currenciesAccepted": "TRY",
+  "instagram": "https://www.instagram.com/securistr/",
+  "instagramHandle": "@securistr",
+  "mapUrl": "https://maps.google.com/?cid=5128990963105795421",
+  "logo": "/securis-logo.png",
+  "ogImage": "/og-image.jpg",
+  "ogImageAlt": "Securis Ağ ve Kamera Güvenlik Sistemleri",
+  "ogImageAltHome": "Securis Ağ ve Kamera Güvenlik Sistemleri - kamera, firewall ve network kurulumu",
+  "copyrightYear": 2026,
+  "csp": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self';",
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400&display=swap",
+  "robotsHome": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  "robotsDefault": "index, follow, max-image-preview:large, max-snippet:-1",
+  "defaultWhatsappText": "Merhaba, kamera sistemi keşfi için bilgi almak istiyorum.",
+  "secondaryWhatsappText": "Merhaba, kamera sistemi hakkında bilgi almak istiyorum.",
+  "ctaNote": "Ücretsiz keşif · Taahhüt yok",
+  "ctaBand": {
+    "h2": "Ücretsiz Keşif için Bize Ulaşın",
+    "p": "Aynı hafta içinde yerinde keşif, arızada 3 saat içinde müdahale."
+  },
+  "labels": {
+    "sss": "Sık Sorulan Sorular",
+    "bolgeProfili": "Bölge Profili",
+    "hizmetlerimiz": "Hizmetlerimiz",
+    "yakinBolgeler": "Yakın Bölgeler",
+    "detaylar": "Detaylar",
+    "bolgeler": "Bölgeler",
+    "mahalleLabel": "Hizmet verdiğimiz mahalle ve semtler:",
+    "yakinBolgelerDesc": "Aynı ekip ve aynı servis süresiyle komşu ilçelere de gidiyoruz.",
+    "hizmetBolgeTitle": "Bu Hizmeti Verdiğimiz 9 İlçe",
+    "hizmetBolgeDesc": "Trakya ve İstanbul Batı bölgesindeki dokuz ilçeye yerinde hizmet götürüyoruz.",
+    "hizmetDetayTitle": "Neler Yapıyoruz?",
+    "waButton": "WhatsApp'tan Yaz",
+    "callButton": "Hemen Ara",
+    "kesifButton": "Ücretsiz Keşif Talep Et"
+  },
+  "nav": [
+    { "hash": "#hero", "label": "Ana Sayfa" },
+    { "hash": "#services", "label": "Hizmetler" },
+    { "hash": "#region", "label": "Bölgeler" },
+    { "hash": "#about", "label": "Hakkımızda" },
+    { "hash": "#sss", "label": "SSS" },
+    { "hash": "#contact", "label": "İletişim" }
+  ],
+  "navCta": { "hash": "#contact", "label": "Teklif Al" }
+}

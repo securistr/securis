@@ -1,0 +1,23 @@
+---
+/**
+ * Securis — Konum (pin) ikonu.
+ * Production'da bu SVG 15 dosyada, sayfa başına 3 veya 9 kez tekrar ediyordu.
+ *
+ * NOT: Ana sayfada sarmalayıcı span'in sınıfı `pin chip-icon`, alt
+ * sayfalarda sadece `chip-icon`. Fark gerçek: home.css renk ve nabız
+ * animasyonunu `.region-chip .pin` üzerinden, seo-pages.css ise
+ * `.region-chip .chip-icon` üzerinden veriyor. Bu yüzden sınıf prop.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = 'chip-icon' } = Astro.props;
+---
+<span class={className}
+  ><svg viewBox="0 0 24 24" aria-hidden="true"
+    ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle
+      cx="12"
+      cy="10"
+      r="3"></circle></svg
+  ></span
+>
