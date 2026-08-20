@@ -1,82 +1,200 @@
-/* Securis - Hizmet & Bölge Sayfaları Ortak CSS
-   Ana sitedeki (index.html) renk paleti ile birebir uyumludur. */
+/* ─────────────────────────────────────────────────────────────────────
+   Securis — Hizmet & Bölge Sayfaları Ortak CSS
+   Ana sayfadaki (index.html) tasarım dili ile hizalanmıştır:
+   aynı palet, Space Grotesk başlık, koyu lacivert nav, kart gölgeleri.
+   ───────────────────────────────────────────────────────────────────── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 
 :root{
   --bg:#f8fafc; --bg2:#ffffff; --card:#ffffff; --card-border:#e2e8f0;
-  --primary:#1e3a8a; --primary-hover:#1d4ed8; --primary-light:#eff6ff; --primary-dim:rgba(30,58,138,.05);
+  --primary:#1e3a8a; --primary-hover:#1d4ed8; --primary-light:#eff6ff;
+  --accent:#67e8f9; --accent-deep:#0891b2;
   --text:#0f172a; --text-dim:#475569;
-  --shadow:0 4px 20px rgba(0,0,0,.02); --shadow-hover:0 12px 30px rgba(30,58,138,.06);
+  --shadow:0 4px 20px rgba(0,0,0,.04); --shadow-hover:0 12px 30px rgba(30,58,138,.10);
   --font:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --font-display:'Space Grotesk','Inter',sans-serif;
   --nav-h:80px;
+  --space-2xs:8px; --space-xs:14px; --space-sm:20px; --space-md:28px;
+  --space-lg:clamp(24px,3vw,40px); --space-xl:clamp(64px,8vw,112px);
+  --gutter:clamp(16px,4vw,32px);
 }
 
 html{scroll-behavior:smooth;}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(15px);backdrop-filter:blur(15px);border-bottom:1px solid var(--card-border);}
-nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-nav .logo img{height:56px;width:auto;object-fit:contain;display:block;}
-nav ul{display:flex;list-style:none;gap:28px;align-items:center;}
-nav ul a{color:var(--text-dim);text-decoration:none;font-size:.95rem;font-weight:500;}
-nav ul a:hover{color:var(--primary);}
-.nav-cta{background:var(--primary);color:#fff!important;padding:10px 22px;border-radius:8px;font-weight:600!important;}
-.nav-cta:hover{background:var(--primary-hover);}
-@media(max-width:900px){nav{padding:0 20px;} nav ul{display:none;} }
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
+  padding-bottom:calc(64px + env(safe-area-inset-bottom));}
+@media (min-width:901px){ body{padding-bottom:0;} }
 
-/* BREADCRUMB */
-.breadcrumb{max-width:1000px;margin:0 auto;padding:calc(var(--nav-h) + 24px) 24px 0;font-size:.85rem;color:var(--text-dim);}
+/* Erişilebilirlik (G2) */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:2000;background:var(--primary);
+  color:#fff;padding:12px 20px;border-radius:0 0 8px 0;font-weight:600;text-decoration:none;}
+.skip-link:focus{left:0;}
+a:focus-visible,button:focus-visible,summary:focus-visible{
+  outline:2px solid var(--accent-deep);outline-offset:3px;border-radius:6px;}
+
+/* ── NAV (ana sayfayla aynı koyu lacivert bant) ───────────────────── */
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;
+  align-items:center;justify-content:space-between;padding:0 var(--gutter);z-index:1000;
+  background:rgba(15,26,58,.72);
+  -webkit-backdrop-filter:blur(12px) saturate(1.15);backdrop-filter:blur(12px) saturate(1.15);
+  border-bottom:1px solid rgba(255,255,255,.10);
+  transition:background .35s ease,box-shadow .35s ease;}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  nav{background:rgba(15,26,58,.95);}
+}
+nav.nav--scrolled{background:rgba(15,26,58,.88);box-shadow:0 6px 24px rgba(3,8,25,.28);}
+header{position:relative;z-index:1000;}
+
+nav .logo{display:flex;align-items:center;gap:10px;text-decoration:none;
+  background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.65);
+  border-radius:10px;padding:5px 14px;box-shadow:0 2px 10px rgba(3,8,25,.18);}
+nav .logo img{height:44px;width:auto;object-fit:contain;display:block;}
+
+nav ul{display:flex;list-style:none;gap:26px;align-items:center;}
+nav ul a{color:#e2e8f0;text-decoration:none;font-size:.94rem;font-weight:500;padding:10px 2px;
+  position:relative;transition:color .25s;}
+nav ul a::after{content:'';position:absolute;bottom:2px;left:0;width:0;height:2px;
+  background:var(--accent);transition:width .3s;}
+nav ul a:hover{color:#fff;} nav ul a:hover::after{width:100%;}
+.nav-cta{background:var(--accent);color:#08122e !important;padding:11px 22px;border-radius:8px;
+  font-weight:700 !important;transition:background .2s,transform .2s;}
+.nav-cta:hover{background:#a5f3fc;transform:translateY(-1px);}
+.nav-cta::after{display:none !important;}
+
+.menu-toggle{display:none;background:none;border:none;color:#f8fafc;cursor:pointer;
+  min-width:44px;min-height:44px;align-items:center;justify-content:center;z-index:1002;}
+
+/* Mobil menü (B1 — eskiden hiç yoktu) */
+@media (max-width:900px){
+  .menu-toggle{display:flex;}
+  nav ul{position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(15,26,58,.97);padding:12px 0 20px;
+    -webkit-backdrop-filter:blur(15px);backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 12px 30px rgba(3,8,25,.35);
+    visibility:hidden;opacity:0;transform:translateY(-10px);pointer-events:none;
+    transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s;}
+  nav ul.mobile-open{visibility:visible;opacity:1;transform:translateY(0);pointer-events:auto;
+    transition:opacity .3s ease,transform .3s ease,visibility 0s;}
+  nav ul li{width:100%;text-align:center;}
+  nav ul a{display:block;padding:15px 0;font-size:1.05rem;min-height:44px;}
+  nav ul a::after{display:none;}
+  .nav-cta-wrap{padding:10px 20px;}
+  .nav-cta{display:block;width:100%;text-align:center;padding:14px;}
+  nav .logo img{height:38px;}
+}
+
+/* ── SAYFA HERO ───────────────────────────────────────────────────── */
+.breadcrumb{max-width:1000px;margin:0 auto;padding:calc(var(--nav-h) + 24px) var(--gutter) 0;
+  font-size:.85rem;color:var(--text-dim);}
 .breadcrumb a{color:var(--primary);text-decoration:none;}
 .breadcrumb a:hover{text-decoration:underline;}
 
-/* HERO */
-.page-hero{max-width:1000px;margin:0 auto;padding:32px 24px 40px;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--primary-light);color:var(--primary);padding:6px 16px;border-radius:100px;font-size:.85rem;font-weight:600;margin-bottom:18px;border:1px solid rgba(30,58,138,.1);}
-.page-hero h1{font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800;letter-spacing:-1px;line-height:1.2;color:var(--text);margin-bottom:18px;}
-.page-hero .lead{color:var(--text-dim);font-size:1.1rem;max-width:720px;line-height:1.7;margin-bottom:28px;}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;border:none;font-family:var(--font);cursor:pointer;}
-.btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 12px rgba(30,58,138,.15);}
-.btn-primary:hover{background:var(--primary-hover);}
-.btn-whatsapp{background:#25d366;color:#fff;}
-.btn-whatsapp:hover{background:#1da851;}
+.page-hero{max-width:1000px;margin:0 auto;padding:var(--space-md) var(--gutter) var(--space-lg);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--primary-light);
+  color:var(--primary);padding:7px 16px;border-radius:100px;font-size:.85rem;font-weight:600;
+  margin-bottom:18px;border:1px solid rgba(30,58,138,.12);}
+.hero-badge .chip-icon svg{width:15px;height:15px;}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(1.9rem,4vw,2.6rem);font-weight:700;
+  letter-spacing:-.8px;line-height:1.2;color:var(--text);margin-bottom:18px;}
+.page-hero .lead{color:var(--text-dim);font-size:1.08rem;max-width:760px;line-height:1.75;
+  margin-bottom:var(--space-md);}
+
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 26px;min-height:48px;border-radius:8px;font-weight:600;font-size:.95rem;
+  text-decoration:none;border:none;font-family:var(--font);cursor:pointer;transition:all .2s;}
+.btn-whatsapp{background:#25d366;color:#fff;box-shadow:0 4px 14px rgba(37,211,102,.28);}
+.btn-whatsapp:hover{background:#1da851;transform:translateY(-1px);}
 .btn-call{background:#fff;color:var(--text);border:1px solid var(--card-border);}
 .btn-call:hover{border-color:var(--primary);color:var(--primary);}
+.btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--accent-deep);}
+.btn-ghost:hover{background:var(--primary-light);}
+.cta-note{margin-top:12px;font-size:.85rem;color:var(--text-dim);}
 
-/* SECTIONS */
-main section{max-width:1000px;margin:0 auto;padding:48px 24px;}
-.section-label{font-size:.78rem;text-transform:uppercase;letter-spacing:2px;color:var(--primary);font-weight:700;margin-bottom:10px;}
-.section-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.5px;color:var(--text);margin-bottom:16px;}
-.section-desc{color:var(--text-dim);font-size:1.02rem;line-height:1.7;margin-bottom:24px;max-width:760px;}
+/* tel/mailto/wa — iOS mavi link düzeltmesi */
+a[href^="tel:"],a[href^="mailto:"],a[href^="https://wa.me"]{
+  -webkit-text-decoration:none;text-decoration:none;-webkit-tap-highlight-color:transparent;}
 
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
-.info-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:26px;box-shadow:var(--shadow);}
-.info-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--text);}
-.info-card p{color:var(--text-dim);font-size:.92rem;line-height:1.6;}
+/* ── BÖLÜMLER ─────────────────────────────────────────────────────── */
+main section{max-width:1000px;margin:0 auto;padding:var(--space-xl) var(--gutter);}
+.section-label{font-size:.78rem;text-transform:uppercase;letter-spacing:2px;color:var(--primary);
+  font-weight:700;margin-bottom:10px;}
+.section-title{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;
+  letter-spacing:-.5px;color:var(--text);margin-bottom:var(--space-lg);}
+.section-desc{color:var(--text-dim);font-size:1rem;line-height:1.8;margin-bottom:var(--space-sm);
+  max-width:820px;}
 
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));
+  gap:clamp(20px,2.2vw,28px);}
+.info-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+  padding:var(--space-md);box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s,border-color .3s;}
+.info-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:8px;color:var(--text);}
+.info-card p{color:var(--text-dim);font-size:.93rem;line-height:1.65;}
+a.info-card-link{text-decoration:none;display:block;}
+a.info-card-link:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--primary);}
+a.info-card-link:hover h3{color:var(--primary);}
+
+/* Bölge çipleri — dokunma hedefi >= 44px (B3) */
 .region-grid{display:flex;flex-wrap:wrap;gap:10px;}
-.region-chip{background:var(--bg);border:1px solid var(--card-border);padding:9px 18px;border-radius:8px;font-size:.88rem;font-weight:600;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
-.region-chip:hover{border-color:var(--primary);color:var(--primary);background:#fff;}
+.region-chip{background:var(--bg2);border:1px solid var(--card-border);padding:12px 20px;
+  min-height:44px;border-radius:10px;font-size:.9rem;font-weight:600;color:var(--text);
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .25s;}
+.region-chip:hover{border-color:var(--primary);color:var(--primary);
+  transform:translateY(-1px);box-shadow:var(--shadow);}
+.chip-icon{display:inline-flex;color:var(--accent-deep);}
+.chip-icon svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;}
 
-.faq-item{border-bottom:1px solid var(--card-border);padding:18px 0;}
-.faq-item h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--text);}
-.faq-item p{color:var(--text-dim);font-size:.94rem;line-height:1.65;}
+/* ── SSS (G2 — details/summary) ───────────────────────────────────── */
+.faq-list{display:grid;gap:var(--space-2xs);}
+.faq-item{background:var(--card);border:1px solid var(--card-border);border-radius:12px;
+  box-shadow:var(--shadow);overflow:hidden;}
+.faq-item summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;
+  font-size:.98rem;color:var(--text);display:flex;align-items:center;justify-content:space-between;
+  gap:16px;min-height:44px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';font-size:1.4rem;line-height:1;color:var(--primary);
+  flex-shrink:0;transition:transform .25s ease;}
+.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item summary:hover{color:var(--primary);}
+.faq-answer{padding:0 22px 20px;color:var(--text-dim);font-size:.94rem;line-height:1.75;}
 
-.cta-band{background:var(--primary);border-radius:16px;padding:40px;text-align:center;color:#fff;}
-.cta-band h2{font-size:1.5rem;font-weight:800;margin-bottom:10px;}
-.cta-band p{color:#dbe4f7;margin-bottom:22px;}
+/* ── CTA BANDI ────────────────────────────────────────────────────── */
+.cta-band{background:var(--primary);border-radius:16px;padding:var(--space-lg);text-align:center;color:#fff;
+  box-shadow:0 14px 40px rgba(30,58,138,.22);}
+.cta-band h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:10px;}
+.cta-band p{color:#dbe4f7;margin-bottom:var(--space-sm);}
 .cta-band .btn-call{background:#fff;color:var(--primary);border:none;}
-.cta-band .btn-whatsapp{background:#25d366;}
+.cta-band .cta-note{color:#c7d5f5;}
 
-footer{border-top:1px solid var(--card-border);padding:36px 24px;text-align:center;color:var(--text-dim);font-size:.9rem;background:#fff;}
+/* ── FOOTER ───────────────────────────────────────────────────────── */
+footer{border-top:1px solid var(--card-border);padding:var(--space-lg) var(--gutter);
+  text-align:center;color:var(--text-dim);font-size:.9rem;background:#fff;}
 footer span{color:var(--primary);font-weight:600;}
-footer .foot-links{margin-top:10px;}
-footer .foot-links a{color:var(--text-dim);text-decoration:none;margin:0 8px;}
+footer .foot-nap{margin-bottom:10px;}
+footer .foot-nap a{color:var(--primary);text-decoration:none;}
+footer .foot-links{margin-bottom:10px;}
+footer .foot-links a{color:var(--text-dim);text-decoration:none;}
 footer .foot-links a:hover{color:var(--primary);}
 
-@media(max-width:640px){
-  .breadcrumb{padding-top:calc(var(--nav-h) + 16px);}
-  .hero-actions .btn{flex:1;min-width:130px;}
-  .cta-band{padding:28px 20px;}
+/* ── MOBİL AKSİYON ÇUBUĞU (B2) ────────────────────────────────────── */
+.mobile-action-bar{display:none;}
+@media (max-width:900px){
+  .mobile-action-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;
+    position:fixed;left:0;right:0;bottom:0;z-index:1100;
+    padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+    background:rgba(15,26,58,.94);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border-top:1px solid rgba(255,255,255,.12);}
+  .mab-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;
+    border-radius:10px;font-weight:700;font-size:.95rem;text-decoration:none;}
+  .mab-call{background:#fff;color:#0f172a;}
+  .mab-wa{background:#25d366;color:#fff;}
+  .mab-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;
+    stroke-linecap:round;stroke-linejoin:round;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important;}
 }

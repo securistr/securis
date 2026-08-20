@@ -8,6 +8,10 @@
     <meta name="apple-mobile-web-app-title" content="Securis">
     <meta name="application-name" content="Securis">
     <meta name="theme-color" content="#0f2040">
+    <!-- iOS düz metindeki numaraları kendi mavi linkine çevirmesin;
+         elle kurulan <a href="tel:"> linkleri bundan etkilenmez -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="date=no, address=no, email=no">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -22,33 +26,524 @@
     <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
     <link rel="manifest" href="manifest.json">
 
-    <title>Securis Güvenlik ve Ağ Teknolojileri | Kamera, Firewall, Network Kurulumu</title>
-    <meta name="description" content="Securis; Silivri, Çatalca, Büyükçekmece, Çorlu ve Tekirdağ bölgesinde IP kamera sistemleri, firewall yapılandırması, switch ve access point kurulumu ile 7/24 teknik destek sunar." />
-    <meta name="keywords" content="kamera sistemleri, güvenlik kamerası, firewall kurulumu, network altyapısı, Silivri, Çorlu, Çerkezköy, Tekirdağ" />
-    <link rel="canonical" href="https://www.securis.com.tr/" />
+    <title>Silivri Kamera Sistemleri ve Network Kurulumu | Securis</title>
+    <meta name="description" content="Silivri, Tekirdağ ve Çatalca'da IP kamera sistemleri, firewall ve network kurulumu. Ücretsiz keşif, hafta 7 gün destek. Hemen teklif alın." />
+    <link rel="canonical" href="https://securis.com.tr/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="geo.region" content="TR-34" />
+    <meta name="geo.placename" content="Silivri, İstanbul" />
+
+    <!-- Font kaynağına erken bağlantı: render-blocking süresini kısaltır -->
+    <!-- G1: JS calismazsa icerik gizli kalmasin -->
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}.cyl{transform:none !important;opacity:1 !important;}</style></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Securis Güvenlik ve Ağ Sistemleri" />
-    <meta property="og:title" content="Securis Güvenlik ve Ağ Teknolojileri" />
-    <meta property="og:description" content="Kamera sistemleri, firewall ve network altyapı kurulumunda Trakya ve İstanbul Batı bölgesinde profesyonel çözüm ortağınız." />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:site_name" content="Securis Ağ ve Kamera Güvenlik Sistemleri" />
+    <meta property="og:url" content="https://securis.com.tr/" />
+    <meta property="og:title" content="Silivri Kamera Sistemleri ve Network Kurulumu | Securis" />
+    <meta property="og:description" content="Silivri, Tekirdağ ve Çatalca'da IP kamera sistemleri, firewall ve network kurulumu. Ücretsiz keşif, hafta 7 gün destek." />
+    <meta property="og:image" content="https://securis.com.tr/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Securis Ağ ve Kamera Güvenlik Sistemleri - kamera, firewall ve network kurulumu" />
     <meta property="og:locale" content="tr_TR" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Silivri Kamera Sistemleri ve Network Kurulumu | Securis" />
+    <meta name="twitter:description" content="IP kamera, firewall ve network kurulumu. Silivri, Tekirdağ, Çatalca ve çevresi. Ücretsiz keşif." />
+    <meta name="twitter:image" content="https://securis.com.tr/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Securis Ağ ve Kamera Güvenlik Sistemleri" />
 
     <link rel="preload" as="image" href="assets/img/hero-primary-bg.webp" fetchpriority="high">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400&display=swap"></noscript>
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Securis Güvenlik ve Ağ Sistemleri",
-        "description": "IP kamera sistemleri, firewall yapılandırması, switch ve access point kurulumu, NVR ve depolama çözümleri.",
-        "telephone": ["+905419248987", "+905312641812"],
-        "email": "securistr@gmail.com",
-        "areaServed": ["Silivri", "Çatalca", "Büyükçekmece", "Beylikdüzü", "Çorlu", "Çerkezköy", "Marmaraereğlisi", "Kapaklı", "Tekirdağ"],
-        "priceRange": "$$"
+      "@type": "LocalBusiness",
+      "@id": "https://securis.com.tr/#business",
+      "name": "Securis Ağ ve Kamera Güvenlik Sistemleri",
+      "url": "https://securis.com.tr/",
+      "image": "https://securis.com.tr/og-image.jpg",
+      "logo": "https://securis.com.tr/securis-logo.png",
+      "description": "Silivri, Tekirdağ ve Çatalca çevresinde IP kamera sistemleri, firewall yapılandırması, switch ve access point kurulumu ile NVR depolama çözümleri.",
+      "telephone": [
+        "+905419248987",
+        "+905312641812"
+      ],
+      "email": "securistr@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Alipaşa Mahallesi, Minare Sokak No:15",
+        "addressLocality": "Silivri",
+        "addressRegion": "İstanbul",
+        "postalCode": "34570",
+        "addressCountry": "TR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.1104164,
+        "longitude": 28.2206906
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Silivri"
+        },
+        {
+          "@type": "City",
+          "name": "Çatalca"
+        },
+        {
+          "@type": "City",
+          "name": "Büyükçekmece"
+        },
+        {
+          "@type": "City",
+          "name": "Beylikdüzü"
+        },
+        {
+          "@type": "City",
+          "name": "Çorlu"
+        },
+        {
+          "@type": "City",
+          "name": "Çerkezköy"
+        },
+        {
+          "@type": "City",
+          "name": "Marmaraereğlisi"
+        },
+        {
+          "@type": "City",
+          "name": "Kapaklı"
+        },
+        {
+          "@type": "City",
+          "name": "Tekirdağ"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "10:00",
+          "closes": "20:00"
+        }
+      ],
+      "priceRange": "$$",
+      "currenciesAccepted": "TRY",
+      "sameAs": [
+        "https://maps.google.com/?cid=5128990963105795421",
+        "https://www.instagram.com/securistr/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Hizmetler",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "IP Kamera Sistemleri Kurulumu"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Firewall Yapılandırma"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Switch Konfigürasyonu"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Access Point Kurulumu"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "NVR ve Depolama Çözümleri"
+            }
+          }
+        ]
+      },
+      "alternateName": "Securis Güvenlik ve Ağ Sistemleri",
+      "hasMap": "https://maps.google.com/?cid=5128990963105795421"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securis.com.tr/#website",
+      "url": "https://securis.com.tr/",
+      "name": "Securis Ağ ve Kamera Güvenlik Sistemleri",
+      "inLanguage": "tr-TR",
+      "publisher": {
+        "@id": "https://securis.com.tr/#business"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://securis.com.tr/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://securis.com.tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hizmetler",
+          "item": "https://securis.com.tr/#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hizmet Bölgeleri",
+          "item": "https://securis.com.tr/#region"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://securis.com.tr/hizmetler/ip-kamera-sistemleri/#service",
+      "serviceType": "IP Kamera Sistemleri Kurulumu",
+      "name": "IP Kamera Sistemleri Kurulumu",
+      "description": "Ev, ofis ve fabrikalar için IP kamera sistemi keşfi, montajı, kablolaması ve NVR entegrasyonu.",
+      "url": "https://securis.com.tr/hizmetler/ip-kamera-sistemleri/",
+      "provider": {
+        "@id": "https://securis.com.tr/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Silivri"
+        },
+        {
+          "@type": "City",
+          "name": "Çatalca"
+        },
+        {
+          "@type": "City",
+          "name": "Büyükçekmece"
+        },
+        {
+          "@type": "City",
+          "name": "Beylikdüzü"
+        },
+        {
+          "@type": "City",
+          "name": "Çorlu"
+        },
+        {
+          "@type": "City",
+          "name": "Çerkezköy"
+        },
+        {
+          "@type": "City",
+          "name": "Marmaraereğlisi"
+        },
+        {
+          "@type": "City",
+          "name": "Kapaklı"
+        },
+        {
+          "@type": "City",
+          "name": "Tekirdağ"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://securis.com.tr/hizmetler/firewall-yapilandirma/#service",
+      "serviceType": "Firewall Yapılandırma",
+      "name": "Firewall Yapılandırma",
+      "description": "FortiGate ve kurumsal güvenlik duvarı kurulumu, erişim kuralları ve şifreli VPN yapılandırması.",
+      "url": "https://securis.com.tr/hizmetler/firewall-yapilandirma/",
+      "provider": {
+        "@id": "https://securis.com.tr/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Silivri"
+        },
+        {
+          "@type": "City",
+          "name": "Çatalca"
+        },
+        {
+          "@type": "City",
+          "name": "Büyükçekmece"
+        },
+        {
+          "@type": "City",
+          "name": "Beylikdüzü"
+        },
+        {
+          "@type": "City",
+          "name": "Çorlu"
+        },
+        {
+          "@type": "City",
+          "name": "Çerkezköy"
+        },
+        {
+          "@type": "City",
+          "name": "Marmaraereğlisi"
+        },
+        {
+          "@type": "City",
+          "name": "Kapaklı"
+        },
+        {
+          "@type": "City",
+          "name": "Tekirdağ"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://securis.com.tr/hizmetler/switch-konfigurasyonu/#service",
+      "serviceType": "Switch Konfigürasyonu",
+      "name": "Switch Konfigürasyonu",
+      "description": "Yönetilebilir switch montajı, VLAN bölümlendirmesi ve ağ performans optimizasyonu.",
+      "url": "https://securis.com.tr/hizmetler/switch-konfigurasyonu/",
+      "provider": {
+        "@id": "https://securis.com.tr/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Silivri"
+        },
+        {
+          "@type": "City",
+          "name": "Çatalca"
+        },
+        {
+          "@type": "City",
+          "name": "Büyükçekmece"
+        },
+        {
+          "@type": "City",
+          "name": "Beylikdüzü"
+        },
+        {
+          "@type": "City",
+          "name": "Çorlu"
+        },
+        {
+          "@type": "City",
+          "name": "Çerkezköy"
+        },
+        {
+          "@type": "City",
+          "name": "Marmaraereğlisi"
+        },
+        {
+          "@type": "City",
+          "name": "Kapaklı"
+        },
+        {
+          "@type": "City",
+          "name": "Tekirdağ"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://securis.com.tr/hizmetler/access-point-kurulumu/#service",
+      "serviceType": "Access Point Kurulumu",
+      "name": "Access Point Kurulumu",
+      "description": "Kesintisiz Wi-Fi için access point kurulumu, roaming ve misafir ağı yapılandırması.",
+      "url": "https://securis.com.tr/hizmetler/access-point-kurulumu/",
+      "provider": {
+        "@id": "https://securis.com.tr/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Silivri"
+        },
+        {
+          "@type": "City",
+          "name": "Çatalca"
+        },
+        {
+          "@type": "City",
+          "name": "Büyükçekmece"
+        },
+        {
+          "@type": "City",
+          "name": "Beylikdüzü"
+        },
+        {
+          "@type": "City",
+          "name": "Çorlu"
+        },
+        {
+          "@type": "City",
+          "name": "Çerkezköy"
+        },
+        {
+          "@type": "City",
+          "name": "Marmaraereğlisi"
+        },
+        {
+          "@type": "City",
+          "name": "Kapaklı"
+        },
+        {
+          "@type": "City",
+          "name": "Tekirdağ"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://securis.com.tr/hizmetler/nvr-depolama/#service",
+      "serviceType": "NVR ve Depolama Çözümleri",
+      "name": "NVR ve Depolama Çözümleri",
+      "description": "NVR kurulumu, disk kapasitesi planlaması ve mobil uzaktan izleme tanımlaması.",
+      "url": "https://securis.com.tr/hizmetler/nvr-depolama/",
+      "provider": {
+        "@id": "https://securis.com.tr/#business"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Silivri"
+        },
+        {
+          "@type": "City",
+          "name": "Çatalca"
+        },
+        {
+          "@type": "City",
+          "name": "Büyükçekmece"
+        },
+        {
+          "@type": "City",
+          "name": "Beylikdüzü"
+        },
+        {
+          "@type": "City",
+          "name": "Çorlu"
+        },
+        {
+          "@type": "City",
+          "name": "Çerkezköy"
+        },
+        {
+          "@type": "City",
+          "name": "Marmaraereğlisi"
+        },
+        {
+          "@type": "City",
+          "name": "Kapaklı"
+        },
+        {
+          "@type": "City",
+          "name": "Tekirdağ"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://securis.com.tr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Keşif hizmeti ücretli mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır, yerinde keşif ücretsizdir. Keşifte kör noktalar, gereken kamera sayısı, kayıt süresi ve kablolama güzergâhı birlikte belirlenir; teklif bu keşfin sonucuna göre çıkarılır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kamera sistemi fiyatı neye göre belirlenir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fiyat tek bir kalemle değil, kamera sayısı ve çözünürlüğü, istenen geriye dönük kayıt süresi, kablo mesafesi ve montaj zorluğu, PoE/switch ihtiyacı ile plaka veya yüz tanıma gibi ek analiz özelliklerine göre belirlenir. Net rakam ancak keşiften sonra verilebilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kurulum ne kadar sürer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standart bir ev veya ofis kurulumu genellikle bir gün içinde tamamlanır. Fabrika, depo veya çok noktalı projelerde süre keşif sonrasında netleşir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kayıtları telefonumdan izleyebilir miyim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Kurulum sonrasında NVR cihazınız mobil uygulamaya tanımlanır; canlı izleme ve geriye dönük kayıtlara telefonunuzdan erişebilirsiniz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Arıza durumunda ne kadar sürede geliyorsunuz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hizmet bölgelerimizde sistem arızalarına maksimum 3 saat içinde yerinde müdahale ediyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hangi markalarla çalışıyorsunuz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kamera tarafında Dahua, Hikvision ve Milesight; güvenlik duvarında Fortinet; ağ tarafında Ruijie ve TP-Link ürünleriyle çalışıyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hangi bölgelere hizmet veriyorsunuz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Silivri, Çatalca, Büyükçekmece, Beylikdüzü, Çorlu, Çerkezköy, Marmaraereğlisi, Kapaklı ve Tekirdağ/Süleymanpaşa bölgelerine yerinde hizmet veriyoruz."
+          }
+        }
+      ]
     }
+  ]
+}
     </script>
     <style>
         *,
@@ -116,35 +611,178 @@
         header { position: relative; z-index: 1000; }
         main, footer { position: relative; z-index: 1; }
 
+        /* ── NAVİGASYON: yarı saydam çubuk + imleç spotlight'ı ───────────
+           Zemin alfası 0.72 seçildi: çubuk beyaz bir bölümün (#ffffff)
+           üzerinden geçerken bile menü metni AA'yı geçiyor (ölçüm raporda).
+           Kaydırınca 0.88'e çıkar. Spotlight, imlecin çevresinde zemini
+           YOĞUNLAŞTIRIR — yani saydamlık o noktada kaybolur. */
         nav {
             position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 40px; z-index: 1000;
-            background: rgba(255, 255, 255, 0.90); 
-            -webkit-backdrop-filter: blur(15px);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--card-border);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.01);
+            padding: 0 var(--space-gutter); z-index: 1000;
+            background: rgba(15, 26, 58, 0.72);
+            -webkit-backdrop-filter: blur(12px) saturate(1.15);
+            backdrop-filter: blur(12px) saturate(1.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
             transform: translateZ(0);
+            isolation: isolate;   /* spotlight kendi katmanında kalsın */
+            overflow: hidden;     /* spotlight çubuğun dışına taşmasın */
+            transition: background .35s ease, border-color .35s ease, box-shadow .35s ease;
         }
-        nav .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; z-index: 1001; }
-        nav .logo img { height: 64px; width: auto; object-fit: contain; display: block; }
+        /* backdrop-filter desteklenmiyorsa daha opak düz zemin */
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            nav { background: rgba(15, 26, 58, 0.95); }
+            nav.nav--scrolled { background: rgba(15, 26, 58, 0.98); }
+        }
+        /* Kaydırdıkça okunabilirlik için biraz daha opak */
+        nav.nav--scrolled {
+            background: rgba(15, 26, 58, 0.88);
+            border-bottom-color: rgba(255, 255, 255, 0.14);
+            box-shadow: 0 6px 24px rgba(3, 8, 25, 0.28);
+        }
 
-        nav ul { display: flex; list-style: none; gap: 32px; align-items: center; }
-        nav ul a { color: var(--text-dim); text-decoration: none; font-size: .95rem; font-weight: 500; transition: color .25s; position: relative; }
-        nav ul a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width .3s; }
-        nav ul a:hover { color: var(--primary); }
+        .nav-spotlight {
+            display: none;                 /* yalnızca fare olan cihazlarda */
+            position: absolute; inset: 0; z-index: 0;
+            pointer-events: none;          /* tıklamaları asla yutmaz */
+            opacity: 0;
+            transition: opacity .45s ease; /* imleç çıkınca yumuşak sönme */
+            background:
+                radial-gradient(circle 190px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(103, 232, 249, 0.10) 0%, transparent 70%),
+                radial-gradient(circle 210px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(11, 20, 46, 0.92) 0%, rgba(13, 23, 52, 0.55) 45%, transparent 72%);
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .nav-spotlight { display: block; }
+            nav.nav--lit .nav-spotlight { opacity: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .nav-spotlight { display: none !important; }
+        }
+
+        /* Logo: her zaman tam opak ve net. Kendi açık zemin "chip"i var —
+           hem koyu çubuk üzerinde okunur kalır hem spotlight rengini yemez. */
+        nav .logo {
+            position: relative; z-index: 2;
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 10px;
+            padding: 5px 14px;
+            box-shadow: 0 2px 10px rgba(3, 8, 25, 0.18);
+            opacity: 1 !important;
+        }
+        nav .logo img { height: 46px; width: auto; object-fit: contain; display: block; opacity: 1; }
+        /* Çubuğun geri kalanından ayıran ince dikey çizgi */
+        nav .logo::after {
+            content: ''; position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+            width: 1px; height: 30px;
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.30), transparent);
+        }
+
+        nav ul { display: flex; list-style: none; gap: 30px; align-items: center; position: relative; z-index: 2; }
+        nav ul a {
+            color: #e2e8f0; text-decoration: none; font-size: .95rem; font-weight: 500;
+            transition: color .25s; position: relative;
+            padding: 10px 2px;   /* dokunma hedefi yüksekliği */
+        }
+        nav ul a::after { content: ''; position: absolute; bottom: 2px; left: 0; width: 0; height: 2px; background: #67e8f9; transition: width .3s; }
+        nav ul a:hover { color: #ffffff; }
         nav ul a:hover::after { width: 100%; }
-        
-        nav ul a.nav-link[aria-current="true"] { color: var(--primary); font-weight: 600; }
+
+        nav ul a.nav-link[aria-current="true"] { color: #67e8f9; font-weight: 600; }
         nav ul a.nav-link[aria-current="true"]::after { width: 100%; }
-        .nav-cta { background: var(--primary); color: #ffffff !important; padding: 10px 24px; border-radius: 8px; font-weight: 600 !important; transition: background .2s; }
-        .nav-cta:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+        .nav-cta {
+            background: #67e8f9; color: #08122e !important;
+            padding: 11px 24px; border-radius: 8px; font-weight: 700 !important;
+            transition: background .2s, transform .2s;
+        }
+        .nav-cta:hover { background: #a5f3fc; color: #08122e !important; transform: translateY(-1px); }
         .nav-cta::after { display: none !important; }
 
+        /* ── İLETİŞİM LİNKLERİ (iOS mavi link düzeltmesi) ────────────────
+           iOS Safari tel:/mailto: linklerine kendi mavi rengini ve alt
+           çizgisini dayatır. -webkit- ön ekli text-decoration olmadan
+           bu stil yok sayılabiliyor, bu yüzden ikisi birlikte yazılır. */
+        a[href^="tel:"],
+        a[href^="mailto:"],
+        a[href^="https://wa.me"],
+        a[href^="geo:"],
+        a[href^="https://maps.google"] {
+            color: inherit;
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        /* Numaranın kendisi: tıklanabilir olduğu ikon + alt çizgi ile belli olur */
+        .contact-value {
+            display: inline-flex; align-items: center; gap: 8px;
+            min-height: 44px; padding: 6px 4px;      /* dokunma hedefi >= 44px */
+            font-size: 1rem; font-weight: 600;
+            color: #ffffff;
+            -webkit-text-decoration: underline rgba(103,232,249,0.55) 1.5px;
+            text-decoration: underline rgba(103,232,249,0.55) 1.5px;
+            text-underline-offset: 4px;
+            transition: color .2s, text-decoration-color .2s;
+        }
+        .contact-value .cv-icon { color: #67e8f9; flex-shrink: 0; display: inline-flex; }
+        .contact-value .cv-icon svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        /* Hover/focus metin rengi #a5f3fc: koyu overlay üzerinde 5.05:1 ile
+           AA'yı geçer (#67e8f9 metin olarak 4.34:1'de kalıyordu). */
+        .contact-value:hover { color: #a5f3fc; -webkit-text-decoration-color: #a5f3fc; text-decoration-color: #a5f3fc; }
+        .contact-value:focus-visible { outline: 2px solid #a5f3fc; outline-offset: 3px; border-radius: 6px; color: #a5f3fc; }
+        /* Buton görünümlü iletişim eylemleri de >= 44px dokunma hedefi */
+        .contact-meta { color: #cbd5e1; font-size: .86rem; line-height: 1.5; margin-top: 2px; }
+        .contact-buttons .btn { min-height: 44px; padding: 11px 18px; font-size: .88rem; }
+
+        /* Dar masaüstü / tablet: menü çubuğu taşmasın */
+        @media (min-width: 901px) and (max-width: 1150px) {
+            nav ul { gap: 18px; }
+            nav ul a { font-size: .88rem; }
+            .nav-cta { padding: 10px 16px; }
+            nav .logo { padding: 4px 10px; }
+            nav .logo img { height: 40px; }
+        }
+
+
+        /* ── B2: mobil sabit aksiyon çubuğu ─────────────────────────── */
+        .mobile-action-bar { display: none; }
+        @media (max-width: 900px) {
+            .mobile-action-bar {
+                display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+                position: fixed; left: 0; right: 0; bottom: 0; z-index: 1100;
+                padding: 10px var(--space-gutter) calc(10px + env(safe-area-inset-bottom));
+                background: rgba(15,26,58,.94);
+                -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+                border-top: 1px solid rgba(255,255,255,.12);
+            }
+            .mab-btn { display:flex; align-items:center; justify-content:center; gap:8px;
+                min-height:48px; border-radius:10px; font-weight:700; font-size:.95rem; text-decoration:none; }
+            .mab-call { background:#fff; color:#0f172a; }
+            .mab-wa { background:#25d366; color:#fff; }
+            .mab-icon svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2;
+                stroke-linecap:round; stroke-linejoin:round; }
+            /* çubuğun footer'ı örtmemesi için */
+            body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+
+            /* F1: dekoratif arkaplanlar mobilde kapalı, yerine CSS gradient */
+            .has-bg-layer::before { display: none !important; }
+            #services.has-bg-layer { background: linear-gradient(180deg,#f8fafc 0%,#eef2f9 55%,#f8fafc 100%); }
+            #solutions.has-bg-layer { background: linear-gradient(180deg,#f8fafc 0%,#eff6ff 55%,#f8fafc 100%); }
+            #about.has-bg-layer { background: linear-gradient(180deg,#f8fafc 0%,#eef4fb 55%,#f8fafc 100%); }
+            #region.photo-section, #contact.photo-section {
+                background-image: linear-gradient(160deg,#1e3a8a 0%,#16306e 55%,#0f2050 100%) !important; }
+        }
+
         .menu-toggle {
-            display: none; background: none; border: none; color: var(--text);
-            cursor: pointer; padding: 8px; z-index: 1001;
+            display: none; background: none; border: none; color: #f8fafc;
+            cursor: pointer; padding: 10px; z-index: 1002; position: relative;
+            min-width: 44px; min-height: 44px;   /* dokunma hedefi */
         }
 
         section {
@@ -202,11 +840,15 @@
         .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25); }
         .btn-whatsapp { background: #25d366; color: #fff; }
         .btn-whatsapp:hover { background: #1da851; transform: translateY(-1px); box-shadow: 0 6px 15px rgba(37,211,102,0.2); }
+        .btn-ghost { background: transparent; color: #a5f3fc; border: 1.5px solid rgba(103,232,249,.55); }
+        .btn-ghost:hover { background: rgba(103,232,249,.12); border-color: #67e8f9; color: #cffafe; transform: translateY(-1px); }
+        .cta-note { margin-top: 14px; font-size: .85rem; color: #cbd5e1; }
+        #hero .cta-note { color: #cbd5e1; }
         .btn-call { background: #ffffff; color: var(--text); border: 1px solid var(--card-border); }
         .btn-call:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
 
         .stats-bar { display: flex; gap: 40px; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--card-border); }
-        .stat-item h3 { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .stat-item .stat-num { display:block; font-size: 1.8rem; font-weight: 800; color: var(--primary); }
         .stat-item p { font-size: .85rem; color: var(--text-dim); font-weight: 500; }
 
         /* ── HERO RIGHT ── */
@@ -235,7 +877,7 @@
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .showcase-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .showcase-info h4 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+        .showcase-info .showcase-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
         .showcase-info p { font-size: .85rem; color: var(--text-dim); }
 
         /* ── BRANDS (kayan / infinite marquee) ── */
@@ -277,8 +919,9 @@
         .service-icon-box { width:48px; height:48px; border-radius:8px; background:var(--primary-light); color:var(--primary); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
         .service-icon-box svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .service-card h3 { font-size:1.15rem; font-weight:700; margin-bottom:10px; color:var(--text); }
-        .service-card h3 a { color: inherit; text-decoration: none; }
-        .service-card h3 a:hover { color: var(--primary); }
+        a.service-card { text-decoration: none; display: block; }
+        a.service-card:hover h3 { color: var(--primary); }
+        a.service-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
         .service-card p { color:var(--text-dim); font-size:.92rem; line-height:1.6; }
 
         /* ── HERO ARKAPLAN FOTOĞRAFI (bulanık, kaydırınca sola süzülüp yok olur) ── */
@@ -317,11 +960,11 @@
         #hero .hero-left h1 .highlight { color: #67e8f9; }
         #hero .hero-left p { color: #cbd5e1; }
         #hero .stats-bar { border-top-color: rgba(255,255,255,0.20); }
-        #hero .stat-item h3 { color: #67e8f9; }
+        #hero .stat-item .stat-num { display:block; color: #67e8f9; }
         #hero .stat-item p { color: #cbd5e1; }
         #hero .showcase-card { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.18); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 12px 40px rgba(3,8,25,0.35); }
         #hero .showcase-icon { background: rgba(103,232,249,0.15); color: #67e8f9; }
-        #hero .showcase-info h4 { color: #f8fafc; }
+        #hero .showcase-info .showcase-title { color: #f8fafc; }
         #hero .showcase-info p { color: #cbd5e1; }
 
         /* ── SİLİNDİR KAYDIRMA EFEKTİ (gerçek 3B) ── */
@@ -442,18 +1085,43 @@
             -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
         }
         .photo-section .contact-info-item:hover { border-color: #ffffff; background: rgba(255,255,255,0.16); }
-        .photo-section .contact-info-item h4 { color: #ffffff; }
+        .photo-section .contact-info-item h3 { color: #ffffff; }
         .photo-section .contact-info-item p { color: #dbe4f7; }
-        .photo-section .contact-info-item .icon { background: rgba(103,232,249,0.16); color: #67e8f9; }
+        .photo-section .card-icon svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2; }
+        .contact-info-item .icon { background: rgba(103,232,249,0.16); color: #67e8f9; }
+
+        /* ── SSS ────────────────────────────────────────────────────────── */
+        .faq-list { display: grid; gap: var(--space-xs); }
+        .faq-item {
+            background: var(--card); border: 1px solid var(--card-border);
+            border-radius: 12px; box-shadow: var(--shadow); overflow: hidden;
+        }
+        .faq-item summary {
+            cursor: pointer; list-style: none;
+            padding: 18px 22px; font-weight: 600; font-size: 1rem; color: var(--text);
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            min-height: 44px;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+'; font-size: 1.4rem; line-height: 1; color: var(--primary);
+            flex-shrink: 0; transition: transform .25s ease;
+        }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item summary:hover { color: var(--primary); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+        .faq-answer { padding: 0 22px 20px; color: var(--text-dim); font-size: .96rem; line-height: 1.7; }
 
         /* ── REGION ── */
         #region { text-align:center; }
         #region .section-title, #region .section-desc { text-align:center; margin: 0 auto; }
         #region .section-desc { margin-bottom: 40px; }
         .region-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:var(--space-xs); max-width:800px; margin:0 auto; }
-        .region-chip { background:var(--bg); border:1px solid var(--card-border); padding:10px 20px; border-radius:8px; font-size:.9rem; font-weight:600; transition:all .25s; display:inline-flex; align-items:center; gap:8px; color:var(--text); text-decoration: none; position: relative; }
+        .region-chip { background:var(--bg); border:1px solid var(--card-border); padding:13px 20px; min-height:44px; border-radius:8px; font-size:.9rem; font-weight:600; transition:all .25s; display:inline-flex; align-items:center; gap:8px; color:var(--text); text-decoration: none; position: relative; }
         .region-chip:hover { border-color:var(--primary); color:var(--primary); background: #ffffff; transform:translateY(-1px); box-shadow: var(--shadow-hover); }
-        .region-chip .pin { color:var(--primary); position: relative; }
+        .chip-icon svg, .note-icon svg { width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+        .note-icon { display:inline-flex; color:var(--primary); vertical-align:-2px; }
+        .region-chip .pin { color:var(--primary); display:inline-flex; position: relative; }
         .region-chip .pin::after {
             content: ''; position: absolute; top: -2px; right: -3px; width: 7px; height: 7px; border-radius: 50%;
             background: #22c55e; box-shadow: 0 0 0 rgba(34,197,94,.6); animation: pingDot 2.2s ease-out infinite;
@@ -465,6 +1133,8 @@
         /* ── ABOUT ── */
 
         .about-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:var(--space-xl); margin-top:var(--space-heading); align-items:center; }
+        .inline-link { color: var(--primary); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .inline-link:hover { color: var(--primary-hover); }
         .about-text p { color:var(--text-dim); font-size:1.05rem; line-height:1.7; margin-bottom:20px; }
         .about-features { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px; }
         .about-feature { display:flex; align-items:center; gap:10px; font-size:.95rem; color:var(--text); font-weight: 500; }
@@ -506,12 +1176,15 @@
             padding:32px 24px; box-shadow:var(--shadow); transition: all .3s ease;
         }
         .contact-info-item:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color: var(--primary); }
+        .card-icon svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:2; }
         .contact-info-item .icon { width:48px; height:48px; border-radius:10px; background:var(--primary-light); color: var(--primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.3rem; }
-        .contact-info-item h4 { font-size:1.05rem; font-weight:700; margin-bottom:2px; color:var(--text); }
+        .contact-info-item h3 { font-size:1.05rem; font-weight:700; margin-bottom:2px; color:var(--text); }
         .contact-info-item p { color:var(--text-dim); font-size:.95rem; line-height:1.5; }
         .contact-buttons { display:flex; gap:12px; margin-top:auto; padding-top:12px; flex-wrap:wrap; justify-content:center; }
 
         footer { border-top:1px solid var(--card-border); padding:40px; text-align:center; color:var(--text-dim); font-size:.9rem; background: #ffffff; }
+        footer .foot-nap { margin-bottom: 8px; color: var(--text-dim); }
+        footer .foot-nap a { color: var(--primary); text-decoration: none; }
         footer span { color:var(--primary); font-weight: 600; }
 
         /* Fade animasyonları */
@@ -555,17 +1228,23 @@
             
             nav ul {
                 position: fixed; top: var(--nav-h); left: 0; right: 0; 
-                background: rgba(255, 255, 255, 0.95); flex-direction: column; gap: 0;
-                padding: 20px 0; border-bottom: 1px solid var(--card-border);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+                background: rgba(15, 26, 58, 0.97); flex-direction: column; gap: 0;
+                padding: 12px 0 20px; border-bottom: 1px solid rgba(255,255,255,0.12);
+                box-shadow: 0 12px 30px rgba(3,8,25,0.35);
                 -webkit-backdrop-filter: blur(15px);
                 backdrop-filter: blur(15px);
+                /* Kapalıyken tıklamayı yutmasın: görünmez + erişilemez */
+                visibility: hidden;
                 opacity: 0; transform: translateY(-10px); pointer-events: none;
-                transition: opacity 0.3s ease, transform 0.3s ease;
+                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
             }
-            nav ul.mobile-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+            nav ul.mobile-open {
+                visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto;
+                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s;
+            }
             nav ul li { width: 100%; text-align: center; }
-            nav ul a { display: block; padding: 16px 0; font-size: 1.1rem; color: var(--text); }
+            nav ul a { display: block; padding: 15px 0; font-size: 1.1rem; color: #e2e8f0; min-height: 44px; }
+            nav ul a.nav-link[aria-current="true"] { color: #67e8f9; }
             nav ul a::after { display: none; }
             .nav-cta-wrap { padding: 10px 20px; }
             .nav-cta { display: block; width: 100%; padding: 14px; text-align: center; font-size: 1rem; }
@@ -611,9 +1290,12 @@
     <a href="#hero-heading" class="skip-link">İçeriğe geç</a>
 
     <header>
-    <nav aria-label="Ana menü">
-        <a href="#hero" class="logo">
-            <img src="securis-logo.png" alt="Securis Güvenlik ve Ağ Sistemleri" width="200" height="64" loading="eager" decoding="async" fetchpriority="high">
+    <nav aria-label="Ana menü" id="siteNav">
+        <!-- Spotlight katmanı: pointer-events:none, tıklamaları asla engellemez -->
+        <div class="nav-spotlight" aria-hidden="true"></div>
+
+        <a href="/" class="logo" aria-label="Securis ana sayfa">
+            <img src="securis-logo.png" alt="Securis" width="200" height="64" loading="eager" decoding="async" fetchpriority="high">
         </a>
         
         <button class="menu-toggle" id="menuBtn" aria-label="Menüyü Aç" aria-expanded="false" aria-controls="navLinks">
@@ -623,8 +1305,8 @@
         <ul id="navLinks">
             <li><a href="#hero" class="nav-link">Ana Sayfa</a></li>
             <li><a href="#services" class="nav-link">Hizmetler</a></li>
-            <li><a href="#solutions" class="nav-link">Çözümler</a></li>
             <li><a href="#region" class="nav-link">Bölgeler</a></li>
+            <li><a href="#sss" class="nav-link">SSS</a></li>
             <li><a href="#about" class="nav-link">Hakkımızda</a></li>
             <li><a href="#contact" class="nav-link">İletişim</a></li>
             <li class="nav-cta-wrap"><a href="#contact" class="nav-cta">Teklif Al</a></li>
@@ -644,22 +1326,23 @@
         <div class="hero-left">
             <div class="hero-badge reveal">Profesyonel Kurulum &amp; Destek</div>
             <h1 id="hero-heading" class="reveal reveal-delay-1">
-                Silivri, Çorlu ve Tekirdağ'da<br />
+                Silivri, Tekirdağ ve Çatalca'da<br />
                 <span class="highlight">Kamera Sistemleri</span> ve Network Kurulumu
             </h1>
             <p class="reveal reveal-delay-2">
                 Securis olarak, yüksek çözünürlüklü IP kamera ağlarından kurumsal siber duvar sistemlerine kadar tüm teknolojik altyapınızı anahtar teslim kuruyor ve kesintisiz teknik destek sağlıyoruz.
             </p>
             <div class="hero-actions reveal reveal-delay-3">
-                <a href="tel:+905419248987" class="btn btn-call">📞 Hemen Ara</a>
-                <a href="https://wa.me/905419248987" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp</a>
-                <a href="#contact" class="btn btn-primary">Ücretsiz Keşif İsteği</a>
+                <a href="https://wa.me/905419248987?text=Merhaba%2C%20kamera%20sistemi%20ke%C5%9Ffi%20i%C3%A7in%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="WhatsApp'tan yaz: 0541 924 89 87">WhatsApp'tan Yaz</a>
+                <a href="tel:+905419248987" class="btn btn-call" aria-label="Securis'i ara: 0541 924 89 87">Hemen Ara</a>
+                <a href="#contact" class="btn btn-ghost">Ücretsiz Keşif Talep Et</a>
             </div>
+            <p class="cta-note reveal reveal-delay-3">Ücretsiz keşif · Taahhüt yok</p>
 
             <div class="stats-bar reveal reveal-delay-4">
-                <div class="stat-item"><h3>100+</h3><p>Aktif Proje</p></div>
-                <div class="stat-item"><h3>Hızlı</h3><p>Yerinde Servis</p></div>
-                <div class="stat-item"><h3>7/24</h3><p>Teknik Destek</p></div>
+                <div class="stat-item"><span class="stat-num">9 ilçe</span><p>Yerinde servis bölgesi</p></div>
+                <div class="stat-item"><span class="stat-num">3 saat</span><p>Arızada müdahale süresi</p></div>
+                <div class="stat-item"><span class="stat-num">1 yıl</span><p>Servis garantisi</p></div>
             </div>
         </div>
 
@@ -671,7 +1354,7 @@
                         <svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                     </div>
                     <div class="showcase-info">
-                        <h4>Kamera Sistemleri</h4>
+                        <div class="showcase-title">Kamera Sistemleri</div>
                         <p>Yüksek Çözünürlüklü İzleme</p>
                     </div>
                 </div>
@@ -681,7 +1364,7 @@
                         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
                     <div class="showcase-info">
-                        <h4>Firewall Güvenliği</h4>
+                        <div class="showcase-title">Firewall Güvenliği</div>
                         <p>Veri ve Ağ Koruma Kalkanı</p>
                     </div>
                 </div>
@@ -691,7 +1374,7 @@
                         <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg>
                     </div>
                     <div class="showcase-info">
-                        <h4>Yüksek Hızlı Bağlantı</h4>
+                        <div class="showcase-title">Yüksek Hızlı Bağlantı</div>
                         <p>Switch &amp; Access Point Çözümleri</p>
                     </div>
                 </div>
@@ -723,50 +1406,50 @@
         <div class="pin-wrap cyl">
         <div class="sec-head">
             <div class="section-label reveal">Hizmet Alanlarımız</div>
-            <h2 class="section-title reveal reveal-delay-1">Neler Yapıyoruz?</h2>
+            <h2 class="section-title reveal reveal-delay-1">Hizmetlerimiz: Kamera, Firewall, Network</h2>
             <p class="section-desc reveal reveal-delay-2">İhtiyacınız olan tüm zayıf akım ve network altyapısını profesyonel standartlarda kuruyoruz.</p>
         </div>
         <div class="services-grid">
             
-            <div class="service-card reveal reveal-delay-1">
+            <a href="hizmetler/ip-kamera-sistemleri/" class="service-card reveal reveal-delay-1">
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                 </div>
-                <h3><a href="hizmetler/ip-kamera-sistemleri/index.html">Kamera Sistemleri Kurulum ve Destek</a></h3>
+                <h3>Kamera Sistemleri Kurulum ve Destek</h3>
                 <p>Ev, ofis veya fabrika alanlarınız için yüksek çözünürlüklü IP kamera sistemlerinin montajı, temiz kablolaması ve arıza durumlarında hızlı teknik destek hizmeti.</p>
-            </div>
+            </a>
 
-            <div class="service-card reveal reveal-delay-2">
+            <a href="hizmetler/firewall-yapilandirma/" class="service-card reveal reveal-delay-2">
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
-                <h3><a href="hizmetler/firewall-yapilandirma/index.html">Firewall Config (Yapılandırma)</a></h3>
+                <h3>Firewall Kurulumu — Şirket Ağınızı Koruyun</h3>
                 <p>Şirket verilerinizi dış siber saldırılardan korumak için FortiGate ve benzeri kurumsal siber duvar ünitelerinin ağınıza entegrasyonu, kural tanımlamaları ve güvenli VPN ayarları.</p>
-            </div>
+            </a>
 
-            <div class="service-card reveal reveal-delay-3">
+            <a href="hizmetler/switch-konfigurasyonu/" class="service-card reveal reveal-delay-3">
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg>
                 </div>
-                <h3><a href="hizmetler/switch-konfigurasyonu/index.html">Switch Config (Ağ Yönetimi)</a></h3>
+                <h3>Switch ve Ağ Yönetimi — Kablolu Ağ Kurulumu</h3>
                 <p>Kablolu ağ trafiğinizin takılmadan, hızlı çalışması için kurumsal yönetilebilir switch cihazlarının montajı, hat bölümlendirmesi (VLAN) ve performans optimizasyonu.</p>
-            </div>
+            </a>
 
-            <div class="service-card reveal reveal-delay-1">
+            <a href="hizmetler/access-point-kurulumu/" class="service-card reveal reveal-delay-1">
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.5 16.05a6 6 0 0 1 7 0M12 20h.01"/></svg>
                 </div>
-                <h3><a href="hizmetler/access-point-kurulumu/index.html">Access Point (Kablosuz İnternet)</a></h3>
+                <h3>Access Point (Kablosuz İnternet)</h3>
                 <p>İş yerinizde internetin yavaşladığı veya çekmediği tüm "ölü noktaları" yok ediyoruz. Yüksek performanslı Access Point üniteleriyle kesintisiz tek bir Wi-Fi ağı kuruyoruz.</p>
-            </div>
+            </a>
 
-            <div class="service-card reveal reveal-delay-2">
+            <a href="hizmetler/nvr-depolama/" class="service-card reveal reveal-delay-2">
                 <div class="service-icon-box">
                     <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="20" x2="22" y2="20"/><line x1="12" y1="17" x2="12" y2="20"/></svg>
                 </div>
-                <h3><a href="hizmetler/nvr-depolama/index.html">NVR ve Depolama Çözümleri</a></h3>
+                <h3>NVR ve Depolama Çözümleri</h3>
                 <p>Kamera kayıtlarınızın geriye dönük güvenle saklanması için NVR (Ağ Kayıt Cihazı) kurulumu, yüksek kapasiteli disk entegrasyonu ve cepten izleme için mobil tanımlamalar.</p>
-            </div>
+            </a>
 
         </div>
         </div>
@@ -776,12 +1459,12 @@
         <div class="pin-wrap cyl">
         <div class="sec-head">
             <div class="section-label reveal">Çözüm Alanları</div>
-            <h2 class="section-title reveal reveal-delay-1">Üç Ana Başlıkta Uçtan Uca Koruma</h2>
-            <p class="section-desc reveal reveal-delay-2">Fiziksel güvenlik, ağ güvenliği ve kablosuz altyapı — üçünü tek elden, birbirine entegre çalışacak şekilde kuruyoruz.</p>
+            <h2 class="section-title reveal reveal-delay-1">Nereden Başlamalı? Üç Ana İhtiyaç</h2>
+            <p class="section-desc reveal reveal-delay-2">Hangi hizmete ihtiyacınız olduğundan emin değilseniz buradan başlayın: sorunu tarif eden üç ana başlık, sizi doğru hizmet sayfasına yönlendirir.</p>
         </div>
         <div class="solutions-grid">
 
-            <a href="hizmetler/ip-kamera-sistemleri/index.html" class="solution-card reveal reveal-delay-1">
+            <a href="hizmetler/ip-kamera-sistemleri/" class="solution-card reveal reveal-delay-1">
                 <div class="solution-media">
                     <img src="assets/img/cctv-security-camera.webp" width="1200" height="686" loading="lazy" decoding="async"
                          alt="Bina cephesine monte edilmiş profesyonel IP güvenlik kamerası">
@@ -793,7 +1476,7 @@
                 </div>
             </a>
 
-            <a href="hizmetler/firewall-yapilandirma/index.html" class="solution-card reveal reveal-delay-2">
+            <a href="hizmetler/firewall-yapilandirma/" class="solution-card reveal reveal-delay-2">
                 <div class="solution-media">
                     <img src="assets/img/cybersecurity-solutions.webp" width="1200" height="675" loading="lazy" decoding="async"
                          alt="Kimlik avı saldırısı ve oturum açma ekranı üzerinden siber güvenlik tehdidi görseli">
@@ -805,7 +1488,7 @@
                 </div>
             </a>
 
-            <a href="hizmetler/access-point-kurulumu/index.html" class="solution-card reveal reveal-delay-3">
+            <a href="hizmetler/access-point-kurulumu/" class="solution-card reveal reveal-delay-3">
                 <div class="solution-media">
                     <img src="assets/img/wireless-access-point.webp" width="1200" height="673" loading="lazy" decoding="async"
                          alt="Çalışır durumda ışıkları yanan kablosuz ağ erişim noktası cihazı">
@@ -825,21 +1508,21 @@
         <div class="pin-wrap cyl">
         <div class="sec-head">
             <div class="section-label reveal">Hizmet Bölgelerimiz</div>
-            <h2 class="section-title reveal reveal-delay-1">Size Çok Yakınız</h2>
+            <h2 class="section-title reveal reveal-delay-1">Yerinde Servis Verdiğimiz 9 İlçe</h2>
             <p class="section-desc reveal reveal-delay-2">Trakya ve İstanbul Batı bölgesindeki tüm işletmelere yerinde hızlı kurulum ve teknik servis desteği götürüyoruz.</p>
         </div>
         <div class="region-grid">
-            <a href="bolgeler/silivri/index.html" class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Silivri</a>
-            <a href="bolgeler/catalca/index.html" class="region-chip reveal reveal-delay-1"><span class="pin">📍</span>Çatalca</a>
-            <a href="bolgeler/buyukcekmece/index.html" class="region-chip reveal reveal-delay-2"><span class="pin">📍</span>Büyükçekmece</a>
-            <a href="bolgeler/beylikduzu/index.html" class="region-chip reveal reveal-delay-2"><span class="pin">📍</span>Beylikdüzü</a>
-            <a href="bolgeler/corlu/index.html" class="region-chip reveal reveal-delay-3"><span class="pin">📍</span>Çorlu</a>
-            <a href="bolgeler/cerkezkoy/index.html" class="region-chip reveal reveal-delay-3"><span class="pin">📍</span>Çerkezköy</a>
-            <a href="bolgeler/marmaraereglisi/index.html" class="region-chip reveal reveal-delay-4"><span class="pin">📍</span>Marmaraereğlisi</a>
-            <a href="bolgeler/kapakli/index.html" class="region-chip reveal reveal-delay-4"><span class="pin">📍</span>Kapaklı</a>
-            <a href="bolgeler/tekirdag/index.html" class="region-chip reveal reveal-delay-5"><span class="pin">📍</span>Tekirdağ / Süleymanpaşa</a>
+            <a href="bolgeler/silivri/" class="region-chip reveal reveal-delay-1"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Silivri</a>
+            <a href="bolgeler/catalca/" class="region-chip reveal reveal-delay-1"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Çatalca</a>
+            <a href="bolgeler/buyukcekmece/" class="region-chip reveal reveal-delay-2"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Büyükçekmece</a>
+            <a href="bolgeler/beylikduzu/" class="region-chip reveal reveal-delay-2"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Beylikdüzü</a>
+            <a href="bolgeler/corlu/" class="region-chip reveal reveal-delay-3"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Çorlu</a>
+            <a href="bolgeler/cerkezkoy/" class="region-chip reveal reveal-delay-3"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Çerkezköy</a>
+            <a href="bolgeler/marmaraereglisi/" class="region-chip reveal reveal-delay-4"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Marmaraereğlisi</a>
+            <a href="bolgeler/kapakli/" class="region-chip reveal reveal-delay-4"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Kapaklı</a>
+            <a href="bolgeler/tekirdag/" class="region-chip reveal reveal-delay-5"><span class="pin chip-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Tekirdağ / Süleymanpaşa</a>
         </div>
-        <div class="region-note">⚡ Sistem arızalarında maksimum <strong>3 saat</strong> içinde yerinde müdahale garantisi.</div>
+        <div class="region-note"><span class="note-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Sistem arızalarında maksimum <strong>3 saat</strong> içinde yerinde müdahale garantisi.</div>
         </div>
     </section>
 
@@ -852,11 +1535,12 @@
         <div class="about-grid">
             <div class="about-text">
                 <p class="reveal reveal-delay-2">
-                    <strong>Securis Güvenlik ve Ağ Sistemleri</strong> olarak, karmaşık teknik süreçleri sadeleştiriyor; son kullanıcının, esnafın ve şirket yöneticilerinin en kolay şekilde yönetebileceği sorunsuz altyapılar inşa ediyoruz.
+                    <strong>Securis</strong>, Silivri merkezli; İstanbul Batı ve Trakya bölgesinde IP kamera sistemleri, firewall yapılandırması ve kurumsal ağ altyapısı kuran bir güvenlik ve ağ teknolojileri firmasıdır. Karmaşık teknik süreçleri sadeleştiriyor; son kullanıcının, esnafın ve şirket yöneticilerinin en kolay şekilde yönetebileceği sorunsuz altyapılar inşa ediyoruz.
                 </p>
                 <p class="reveal reveal-delay-3">
                     Kurduğumuz tüm kamera ve internet dağıtım sistemlerini telefonunuzdan tek tıkla izleyip kontrol edebileceğiniz basitlikte teslim ediyoruz. Satış sonrası sunduğumuz hızlı teknik servis desteğiyle de sisteminizi asla yalnız bırakmıyoruz.
                 </p>
+                <p class="reveal reveal-delay-3" style="margin-bottom:20px;">Kurulum fotoğraflarımız için <a href="https://www.instagram.com/securistr/" target="_blank" rel="noopener noreferrer" class="inline-link" aria-label="Securis Instagram hesabını aç">Instagram'da bizi takip edin</a>.</p>
                 <div class="about-features reveal reveal-delay-3">
                     <div class="about-feature"><span class="check">✓</span> Deneyimli Teknik Ekip</div>
                     <div class="about-feature"><span class="check">✓</span> Profesyonel ve Temiz İşçilik</div>
@@ -880,6 +1564,46 @@
         </div>
     </section>
 
+    <section id="sss">
+        <div class="pin-wrap cyl">
+        <div class="sec-head">
+            <div class="section-label reveal">Sık Sorulan Sorular</div>
+            <h2 class="section-title reveal reveal-delay-1">Merak Edilenler</h2>
+            <p class="section-desc reveal reveal-delay-2">Keşif, fiyatlandırma, kurulum süresi ve teknik destek hakkında en çok aldığımız sorular.</p>
+        </div>
+        <div class="faq-list">
+            <details class="faq-item reveal">
+                <summary>Keşif hizmeti ücretli mi?</summary>
+                <div class="faq-answer">Hayır, yerinde keşif ücretsizdir. Keşifte kör noktalar, gereken kamera sayısı, kayıt süresi ve kablolama güzergâhı birlikte belirlenir; teklif bu keşfin sonucuna göre çıkarılır.</div>
+            </details>
+            <details class="faq-item reveal">
+                <summary>Kamera sistemi fiyatı neye göre belirlenir?</summary>
+                <div class="faq-answer">Fiyat tek bir kalemle değil, kamera sayısı ve çözünürlüğü, istenen geriye dönük kayıt süresi, kablo mesafesi ve montaj zorluğu, PoE/switch ihtiyacı ile plaka veya yüz tanıma gibi ek analiz özelliklerine göre belirlenir. Net rakam ancak keşiften sonra verilebilir.</div>
+            </details>
+            <details class="faq-item reveal">
+                <summary>Kurulum ne kadar sürer?</summary>
+                <div class="faq-answer">Standart bir ev veya ofis kurulumu genellikle bir gün içinde tamamlanır. Fabrika, depo veya çok noktalı projelerde süre keşif sonrasında netleşir.</div>
+            </details>
+            <details class="faq-item reveal">
+                <summary>Kayıtları telefonumdan izleyebilir miyim?</summary>
+                <div class="faq-answer">Evet. Kurulum sonrasında NVR cihazınız mobil uygulamaya tanımlanır; canlı izleme ve geriye dönük kayıtlara telefonunuzdan erişebilirsiniz.</div>
+            </details>
+            <details class="faq-item reveal">
+                <summary>Arıza durumunda ne kadar sürede geliyorsunuz?</summary>
+                <div class="faq-answer">Hizmet bölgelerimizde sistem arızalarına maksimum 3 saat içinde yerinde müdahale ediyoruz. Kurulumunu yaptığımız sistemler 1 yıl servis garantisi kapsamındadır.</div>
+            </details>
+            <details class="faq-item reveal">
+                <summary>Hangi markalarla çalışıyorsunuz?</summary>
+                <div class="faq-answer">Kamera tarafında Dahua, Hikvision ve Milesight; güvenlik duvarında Fortinet; ağ tarafında Ruijie ve TP-Link ürünleriyle çalışıyoruz. Marka seçimi, alanın ihtiyacına ve bütçeye göre keşifte netleşir.</div>
+            </details>
+            <details class="faq-item reveal">
+                <summary>Hangi bölgelere hizmet veriyorsunuz?</summary>
+                <div class="faq-answer">Silivri, Çatalca, Büyükçekmece, Beylikdüzü, Çorlu, Çerkezköy, Marmaraereğlisi, Kapaklı ve Tekirdağ/Süleymanpaşa bölgelerine yerinde kurulum ve teknik servis desteği veriyoruz.</div>
+            </details>
+        </div>
+        </div>
+    </section>
+
     <section id="contact" class="photo-section">
         <div class="pin-wrap cyl">
         <div class="sec-head">
@@ -889,35 +1613,52 @@
         </div>
         <div class="contact-grid">
             <div class="contact-info-item reveal reveal-delay-1">
-                <div class="icon">📞</div>
+                <div class="icon"><span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span></div>
                 <div>
-                    <h4>Telefon (Destek 1)</h4>
-                    <p>+90 541 924 8987</p>
+                    <h3>Telefon (Destek 1)</h3>
+                    <p><a href="tel:+905419248987" class="contact-value" aria-label="Securis'i ara: 0541 924 89 87"><span class="cv-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>+90 541 924 8987</a></p>
                 </div>
                 <div class="contact-buttons">
-                    <a href="tel:+905419248987" class="btn btn-call" style="padding:8px 16px;font-size:.85rem;">Hemen Ara</a>
-                    <a href="https://wa.me/905419248987" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding:8px 16px;font-size:.85rem;">WhatsApp</a>
+                    <a href="tel:+905419248987" class="btn btn-call" aria-label="Securis'i ara: 0541 924 89 87">Hemen Ara</a>
+                    <a href="https://wa.me/905419248987?text=Merhaba%2C%20kamera%20sistemi%20ke%C5%9Ffi%20i%C3%A7in%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="WhatsApp ile yaz: 0541 924 89 87">WhatsApp'tan Yaz</a>
                 </div>
             </div>
             <div class="contact-info-item reveal reveal-delay-2">
-                <div class="icon">📞</div>
+                <div class="icon"><span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span></div>
                 <div>
-                    <h4>Telefon (Destek 2)</h4>
-                    <p>+90 531 264 1812</p>
+                    <h3>Telefon (Destek 2)</h3>
+                    <p><a href="tel:+905312641812" class="contact-value" aria-label="Securis'i ara: 0531 264 18 12"><span class="cv-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>+90 531 264 1812</a></p>
                 </div>
                 <div class="contact-buttons">
-                    <a href="tel:+905312641812" class="btn btn-call" style="padding:8px 16px;font-size:.85rem;">Hemen Ara</a>
-                    <a href="https://wa.me/905312641812" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="padding:8px 16px;font-size:.85rem;">WhatsApp</a>
+                    <a href="tel:+905312641812" class="btn btn-call" aria-label="Securis'i ara: 0531 264 18 12">Hemen Ara</a>
+                    <a href="https://wa.me/905312641812?text=Merhaba%2C%20kamera%20sistemi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="WhatsApp ile yaz: 0531 264 18 12">WhatsApp'tan Yaz</a>
                 </div>
             </div>
             <div class="contact-info-item reveal reveal-delay-3">
-                <div class="icon">✉️</div>
+                <div class="icon"><span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span></div>
                 <div>
-                    <h4>E-Posta</h4>
-                    <p>securistr@gmail.com</p>
+                    <h3>E-Posta</h3>
+                    <p><a href="mailto:securistr@gmail.com" class="contact-value" aria-label="Securis'e e-posta gönder: securistr@gmail.com"><span class="cv-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>securistr@gmail.com</a></p>
                 </div>
                 <div class="contact-buttons">
-                    <a href="mailto:securistr@gmail.com" class="btn btn-call" style="padding:8px 16px;font-size:.85rem;">E-posta Gönder</a>
+                    <a href="mailto:securistr@gmail.com" class="btn btn-call" aria-label="Securis'e e-posta gönder">E-posta Gönder</a>
+                </div>
+            </div>
+            <div class="contact-info-item reveal reveal-delay-4">
+                <div class="icon"><span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span></div>
+                <div>
+                    <h3>Adres</h3>
+                    <p><a href="https://maps.google.com/?cid=5128990963105795421" target="_blank" rel="noopener noreferrer" class="contact-value" aria-label="Securis adresini Google Haritalar'da aç: Alipaşa Mahallesi, Minare Sokak No:15, 34570 Silivri, İstanbul"><span class="cv-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Alipaşa Mah. Minare Sk. No:15</a></p>
+                    <p class="contact-meta">34570 Silivri / İstanbul</p>
+                    <p class="contact-meta">Hafta içi 10:00–18:00 · Cumartesi–Pazar 10:00–20:00</p>
+                </div>
+            </div>
+            <div class="contact-info-item reveal reveal-delay-5">
+                <div class="icon"><span class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></span></div>
+                <div>
+                    <h3>Instagram</h3>
+                    <p><a href="https://www.instagram.com/securistr/" target="_blank" rel="noopener noreferrer" class="contact-value" aria-label="Securis Instagram hesabını yeni sekmede aç: securistr"><span class="cv-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></span>@securistr</a></p>
+                    <p class="contact-meta">Kurulum fotoğrafları ve saha çalışmalarımız</p>
                 </div>
             </div>
         </div>
@@ -925,7 +1666,17 @@
     </section>
     </main>
 
-    <footer>&copy; 2026 <span>Securis</span> Güvenlik ve Ağ Sistemleri. Tüm hakları saklıdır.</footer>
+    <footer>
+        <p class="foot-nap"><strong>Securis Ağ ve Kamera Güvenlik Sistemleri</strong> · Alipaşa Mah. Minare Sk. No:15, 34570 Silivri / İstanbul · <a href="tel:+905419248987" aria-label="Securis'i ara: 0541 924 89 87">+90 541 924 8987</a></p>
+        <p class="foot-links"><a href="mailto:securistr@gmail.com">securistr@gmail.com</a> · <a href="https://www.instagram.com/securistr/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://maps.google.com/?cid=5128990963105795421" target="_blank" rel="noopener noreferrer">Haritada Gör</a></p>
+        <p>&copy; 2026 <span>Securis</span>. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <div class="mobile-action-bar" role="group" aria-label="Hızlı iletişim">
+        <a href="tel:+905419248987" class="mab-btn mab-call" aria-label="Securis'i ara: 0541 924 89 87"><span class="mab-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>Ara</a>
+        <a href="https://wa.me/905419248987?text=Merhaba%2C%20kamera%20sistemi%20ke%C5%9Ffi%20i%C3%A7in%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mab-btn mab-wa" aria-label="WhatsApp'tan yaz"><span class="mab-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>WhatsApp</a>
+    </div>
+
 
     <script>
         const menuBtn = document.getElementById('menuBtn');
@@ -1112,8 +1863,52 @@ if (op <= 0.02) {
         let loopRunning = false;
         let lastScrollAt = 0;
 
+        // ── NAV: yarı saydam çubuk + imleç spotlight'ı ───────────────────
+        // pointermove olayında YALNIZCA state güncellenir; DOM'a yazma işi
+        // aşağıdaki rAF döngüsünde yapılır (olay başına reflow yok).
+        const siteNav = document.getElementById('siteNav');
+        const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+        const spotlightEnabled = finePointer.matches && !reduceMotion;
+
+        let navMouse = { x: 0, y: 0, dirty: false };
+        let navScrolled = false;
+
+        if (spotlightEnabled && siteNav) {
+            // Dokunmatik cihazlarda bu dinleyici hiç bağlanmaz
+            siteNav.addEventListener('pointermove', (e) => {
+                if (e.pointerType !== 'mouse') return;
+                const r = siteNav.getBoundingClientRect();
+                navMouse.x = e.clientX - r.left;
+                navMouse.y = e.clientY - r.top;
+                navMouse.dirty = true;
+                if (!siteNav.classList.contains('nav--lit')) siteNav.classList.add('nav--lit');
+                wakeLoop();
+            }, { passive: true });
+
+            siteNav.addEventListener('pointerleave', () => {
+                // Sert kesme yok: opacity geçişi CSS'te yumuşakça söner
+                siteNav.classList.remove('nav--lit');
+            }, { passive: true });
+        }
+
+        function renderNav() {
+            if (!siteNav) return;
+            if (navMouse.dirty) {
+                siteNav.style.setProperty('--mouse-x', navMouse.x.toFixed(1) + 'px');
+                siteNav.style.setProperty('--mouse-y', navMouse.y.toFixed(1) + 'px');
+                navMouse.dirty = false;
+            }
+            // Kaydırdıkça çubuk biraz daha opak (okunabilirlik)
+            const shouldScroll = window.scrollY > 40;
+            if (shouldScroll !== navScrolled) {
+                navScrolled = shouldScroll;
+                siteNav.classList.toggle('nav--scrolled', shouldScroll);
+            }
+        }
+
         function tick() {
             updateGroup();                       // hero + cihaz kartları
+            renderNav();                         // nav spotlight + opaklık
             const settled = updateCylinder();    // silindir (sönümlü)
             const idle = performance.now() - lastScrollAt > 600;
             if (settled && idle) { loopRunning = false; return; }
