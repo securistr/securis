@@ -1,10 +1,4 @@
 User-agent: *
 Allow: /
 
-User-agent: GPTBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
 Sitemap: https://securis.com.tr/sitemap.xml
