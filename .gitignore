@@ -1,0 +1,28 @@
+# ── Bağımlılıklar ─────────────────────────────────────────────────────
+node_modules/
+
+# ── Astro build çıktısı ───────────────────────────────────────────────
+dist/
+.astro/
+
+# ── Proje arşivleri / çalışma dosyaları ───────────────────────────────
+# securis-bold-animasyon.zip gibi arşivler repository'ye girmez.
+*.zip
+
+# ── Ortam değişkenleri ────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Editör / işletim sistemi ──────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Loglar ────────────────────────────────────────────────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

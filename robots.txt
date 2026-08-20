@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://securis.com.tr/sitemap.xml
