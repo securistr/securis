@@ -23,7 +23,7 @@ import {
 
 // Ana sayfada Escape ile kapatma ve aria-label güncellemesi production'da
 // YOKTU; parite için kapalı bırakıldı (bkz. ui-common.js açıklaması).
-initMobileMenu({ closeOnEscape: false, updateAriaLabel: false });
+initMobileMenu();
 
 const group = document.getElementById('deviceGroup');
 const hero = document.getElementById('hero');

@@ -22,18 +22,15 @@
       },
       {
         "q": "Arıza durumunda ne kadar sürede geliyorsunuz?",
-        "a": "Hizmet bölgelerimizde sistem arızalarına maksimum 3 saat içinde yerinde müdahale ediyoruz. Kurulumunu yaptığımız sistemler 1 yıl servis garantisi kapsamındadır.",
-        "aSchema": "Hizmet bölgelerimizde sistem arızalarına maksimum 3 saat içinde yerinde müdahale ediyoruz."
+        "a": "Hizmet bölgelerimizde sistem arızalarına maksimum 3 saat içinde yerinde müdahale ediyoruz. Kurulumunu yaptığımız sistemler 1 yıl servis garantisi kapsamındadır."
       },
       {
         "q": "Hangi markalarla çalışıyorsunuz?",
-        "a": "Kamera tarafında Dahua, Hikvision ve Milesight; güvenlik duvarında Fortinet; ağ tarafında Ruijie ve TP-Link ürünleriyle çalışıyoruz. Marka seçimi, alanın ihtiyacına ve bütçeye göre keşifte netleşir.",
-        "aSchema": "Kamera tarafında Dahua, Hikvision ve Milesight; güvenlik duvarında Fortinet; ağ tarafında Ruijie ve TP-Link ürünleriyle çalışıyoruz."
+        "a": "Kamera tarafında Dahua, Hikvision ve Milesight; güvenlik duvarında Fortinet; ağ tarafında Ruijie ve TP-Link ürünleriyle çalışıyoruz. Marka seçimi, alanın ihtiyacına ve bütçeye göre keşifte netleşir."
       },
       {
         "q": "Hangi bölgelere hizmet veriyorsunuz?",
-        "a": "Silivri, Çatalca, Büyükçekmece, Beylikdüzü, Çorlu, Çerkezköy, Marmaraereğlisi, Kapaklı ve Tekirdağ/Süleymanpaşa bölgelerine yerinde kurulum ve teknik servis desteği veriyoruz.",
-        "aSchema": "Silivri, Çatalca, Büyükçekmece, Beylikdüzü, Çorlu, Çerkezköy, Marmaraereğlisi, Kapaklı ve Tekirdağ/Süleymanpaşa bölgelerine yerinde hizmet veriyoruz."
+        "a": "Silivri, Çatalca, Büyükçekmece, Beylikdüzü, Çorlu, Çerkezköy, Marmaraereğlisi, Kapaklı ve Tekirdağ/Süleymanpaşa bölgelerine yerinde kurulum ve teknik servis desteği veriyoruz."
       }
     ]
   }

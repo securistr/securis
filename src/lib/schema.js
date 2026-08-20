@@ -103,9 +103,13 @@ function breadcrumb(items, id) {
 
 // ── FAQPage ───────────────────────────────────────────────────────────
 /**
- * @param {{q:string,a:string,aSchema?:string}[]} items
- * `aSchema` yalnızca ana sayfada, görünür metinle şema metninin
- * production'da FARKLI olduğu 3 soru için vardır (bkz. rapor).
+ * @param {{q:string,a:string}[]} items
+ *
+ * TEK KAYNAK: kullanıcıya görünen cevap (`a`), şemadaki cevabın da
+ * kendisidir. Faz 1'de ana sayfada 3 soruda görünen metin ile şema metni
+ * farklıydı (production'dan gelen tutarsızlık) ve ayrı bir `aSchema`
+ * alanıyla korunuyordu. Faz 2'de görünen metin doğru kabul edilip
+ * `aSchema` tamamen kaldırıldı.
  */
 function faqPage(items, id) {
   const node = {
@@ -113,7 +117,7 @@ function faqPage(items, id) {
     mainEntity: items.map((it) => ({
       '@type': 'Question',
       name: it.q,
-      acceptedAnswer: { '@type': 'Answer', text: it.aSchema ?? it.a },
+      acceptedAnswer: { '@type': 'Answer', text: it.a },
     })),
   };
   return id ? { '@type': 'FAQPage', '@id': id, mainEntity: node.mainEntity } : node;

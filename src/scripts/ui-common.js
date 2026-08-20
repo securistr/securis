@@ -5,9 +5,8 @@
    script'inde hem de assets/seo-pages.js içinde AYRI AYRI yazılıydı.
    Burada tek uygulamada birleştirildiler.
 
-   KURAL: Faz 1'de davranış DEĞİŞTİRİLMEZ. İki sürüm arasında gerçek bir
-   fark varsa, fark bir seçenekle korunur (bkz. initMobileMenu options) —
-   sessizce "iyileştirilmez".
+   Faz 2: davranış farkları giderildi. Ana sayfa ile alt sayfalar artık
+   AYNI mobil menü davranışını kullanır (Escape ile kapanma dahil).
    ───────────────────────────────────────────────────────────────────── */
 
 export const prefersReducedMotion = () =>
@@ -16,43 +15,45 @@ export const prefersReducedMotion = () =>
 /**
  * Mobil menü aç/kapa.
  *
- * @param {object}  [opts]
- * @param {boolean} [opts.closeOnEscape=false]   Escape tuşuyla kapatma
- * @param {boolean} [opts.updateAriaLabel=false] Açıkken aria-label'ı "Menüyü kapat" yapma
- *
- * Faz 1 notu: production'da ana sayfada bu iki davranış YOKTU, alt
- * sayfalarda VARDI. Parite için varsayılan "kapalı" bırakıldı ve her sayfa
- * kendi mevcut davranışını açıkça seçiyor. Faz 2'de ikisi de her yerde
- * açılmalı (erişilebilirlik açısından doğrusu bu).
+ * Faz 1'de ana sayfada Escape ile kapatma ve aria-label güncellemesi YOKTU
+ * (production'daki durum aynen korunmuştu). Faz 2'de erişilebilirlik gereği
+ * her sayfada açık:
+ *   - Escape menüyü kapatır ve odağı butona geri verir
+ *   - aria-expanded ve aria-label durumla birlikte güncellenir
+ *   - menü açıkken sayfa gövdesi kaydırılmaz (arka plan kaymasın)
  */
-export function initMobileMenu({ closeOnEscape = false, updateAriaLabel = false } = {}) {
+export function initMobileMenu() {
   const btn = document.getElementById('menuBtn');
   const nav = document.getElementById('navLinks');
   if (!btn || !nav) return;
 
-  function setOpen(open) {
+  const setOpen = (open) => {
     nav.classList.toggle('mobile-open', open);
+    btn.classList.toggle('is-open', open);
     btn.setAttribute('aria-expanded', String(open));
-    if (updateAriaLabel) {
-      btn.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
-    }
-  }
+    btn.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+    document.body.classList.toggle('nav-open', open);
+  };
 
   btn.addEventListener('click', () => setOpen(!nav.classList.contains('mobile-open')));
 
   // Menüdeki bir linke tıklanınca menü kapanır.
   nav.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') setOpen(false);
+    if (e.target.closest('a')) setOpen(false);
   });
 
-  if (closeOnEscape) {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && nav.classList.contains('mobile-open')) {
-        setOpen(false);
-        btn.focus();
-      }
-    });
-  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('mobile-open')) {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+
+  // Menü açıkken masaüstü genişliğine geçilirse durum temizlenir.
+  const wide = window.matchMedia('(min-width: 901px)');
+  wide.addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
 }
 
 /**

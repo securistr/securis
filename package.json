@@ -17,5 +17,9 @@
   },
   "dependencies": {
     "astro": "^5.14.1"
+  },
+  "overrides": {
+    "sharp": "^0.35.0",
+    "esbuild": "^0.28.1"
   }
 }
