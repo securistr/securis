@@ -1,45 +1,158 @@
-/* ─────────────────────────────────────────────────────────────────────
-   Securis — Global Design Tokens (TEK KAYNAK)
+/* ═════════════════════════════════════════════════════════════════════
+   SECURIS — TASARIM SİSTEMİ / TEK TOKEN KAYNAĞI
 
-   Buradaki değerler, migration öncesi iki ayrı stil kaynağında
-   (index.html inline <style> ve assets/seo-pages.css) BİREBİR AYNI
-   olduğu doğrulanan token'lardır. Yani bu dosyaya taşınmaları
-   production görünümünü değiştirmez.
+   Faz 2. Faz 1'de ana sayfa ile alt sayfalar iki ayrı token setine
+   sahipti ve 7 token (--shadow, --shadow-hover, --space-xs/sm/md/lg/xl)
+   birbirinden farklı değerdeydi. Artık TEK sistem var; her sayfa
+   buradan besleniyor.
 
-   Değeri iki kaynakta FARKLI olan token'lar bilinçli olarak buraya
-   ALINMADI; onlar kendi sayfa stil dosyalarında kalır ve orada
-   nedenleriyle birlikte belgelenmiştir:
-
-     --shadow, --shadow-hover, --space-xs, --space-sm,
-     --space-md, --space-lg, --space-xl
-
-   Bu token'lar runtime'da çakışmıyor: ana sayfa yalnızca home.css'i,
-   alt sayfalar yalnızca seo-pages.css'i yükler. Birleştirme kararı
-   Faz 2'ye (Visual Upgrade) bırakıldı — Faz 1'in kuralı görsel
-   pariteyi bozmamak.
-   ───────────────────────────────────────────────────────────────────── */
+   Tasarım yönü: "kontrol odası".
+   Derin lacivert zemin, mühendislik hassasiyetinde tipografi, teknik
+   mono etiketler, sinyal olarak kullanılan (dekorasyon değil) camgöbeği.
+   ═════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Zemin ve yüzeyler ── */
-  --bg: #f8fafc;
-  --bg2: #ffffff;
-  --card: #ffffff;
-  --card-border: #e2e8f0;
+  /* ── RENK: mürekkep (koyu yüzeyler) ────────────────────────────────
+     Hero ve "kontrol odası" bölümlerinin zemini. Lacivert; siyah değil —
+     siyah ucuz ve sert görünür, lacivert teknik ve kurumsal durur.       */
+  --ink-900: #050a18;
+  --ink-850: #071026;
+  --ink-800: #0a1730;
+  --ink-700: #0f2040;   /* marka laciverti — nav ve theme-color ile aynı */
+  --ink-600: #16294f;
+  --ink-500: #1e3563;
 
-  /* ── Marka rengi ── */
-  --primary: #1e3a8a;
-  --primary-hover: #1d4ed8;
-  --primary-light: #eff6ff;
+  /* ── RENK: marka mavisi ──────────────────────────────────────────── */
+  --brand-700: #1e3a8a;
+  --brand-600: #1d4ed8;
+  --brand-100: #eff6ff;
+  --brand-050: rgba(30, 58, 138, 0.05);
 
-  /* ── Metin ── */
+  /* ── RENK: sinyal (camgöbeği) ────────────────────────────────────────
+     Kural: sinyal rengi YALNIZCA aktif/canlı/etkileşimli öğelerde.
+     Dekoratif parlama için kullanılmaz.                                  */
+  --signal-300: #a5f3fc;
+  --signal-400: #67e8f9;
+  --signal-600: #0891b2;
+  --signal-050: #ecfeff;
+
+  /* ── RENK: kağıt (açık yüzeyler) ─────────────────────────────────── */
+  --paper: #f6f8fc;
+  --paper-alt: #eef2f9;
+  --surface: #ffffff;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+
+  /* ── RENK: metin ─────────────────────────────────────────────────── */
   --text: #0f172a;
   --text-dim: #475569;
+  --text-mute: #64748b;
+  --text-on-ink: #eaf1ff;
+  --text-on-ink-dim: #a9bcdd;
+  --text-on-ink-mute: #7e93b8;
 
-  /* ── Tipografi ── */
+  /* ── RENK: durum ─────────────────────────────────────────────────── */
+  --live: #ef4444;          /* kayıt/canlı noktası */
+  --wa: #25d366;            /* WhatsApp marka yeşili */
+  --wa-dark: #128c7e;
+
+  /* ── TİPOGRAFİ ─────────────────────────────────────────────────────
+     Aileler Faz 1'den değişmedi (Inter / Space Grotesk / JetBrains Mono).
+     Değişen: ölçek, ağırlık ve harf aralığı disiplini.                   */
   --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
 
-  /* ── Yerleşim ── */
-  --nav-h: 80px;
+  --fs-display: clamp(2.05rem, 3.9vw, 3.4rem);
+  --fs-h1: clamp(2.1rem, 4.2vw, 3.4rem);
+  --fs-h2: clamp(1.7rem, 2.9vw, 2.6rem);
+  --fs-h3: clamp(1.1rem, 1.5vw, 1.3rem);
+  --fs-lead: clamp(1rem, 1.2vw, 1.12rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.9375rem;
+  --fs-xs: 0.8125rem;
+  --fs-label: 0.72rem;
+
+  --lh-display: 1.04;
+  --lh-heading: 1.14;
+  --lh-body: 1.68;
+
+  --tr-display: -0.03em;    /* büyük başlıklarda sıkı harf aralığı */
+  --tr-heading: -0.02em;
+  --tr-label: 0.16em;       /* mono etiketlerde geniş aralık */
+
+  /* ── BOŞLUK: tek ritim ──────────────────────────────────────────────
+     4px tabanlı. Faz 1'deki iki farklı ölçek burada birleşti.            */
+  --space-3xs: 4px;
   --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* Akışkan boşluklar */
+  --section: clamp(76px, 8.5vw, 132px);
+  --section-tight: clamp(52px, 6vw, 88px);
+  --gutter: clamp(20px, 4vw, 48px);
+  --stack: clamp(24px, 3vw, 40px);
+  --grid-gap: clamp(16px, 2vw, 26px);
+
+  /* ── ÖLÇÜ ────────────────────────────────────────────────────────── */
+  --container: 1240px;
+  --container-narrow: 780px;
+  --measure: 68ch;          /* okunabilir satır uzunluğu üst sınırı */
+  --nav-h: 76px;
+  --nav-h-scrolled: 64px;
+
+  /* ── KÖŞE YARIÇAPI ─────────────────────────────────────────────────
+     Kontrollü: her şey yuvarlak olursa "oyuncak" görünür.                */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+
+  /* ── GÖLGE: katmanlı, tek sistem ────────────────────────────────────
+     Faz 1'de iki farklı --shadow/--shadow-hover değeri vardı; burada
+     dört kademeli tek bir ölçek var. Gölgeler mavimsi — nötr siyah
+     gölge açık lacivert zeminde kirli görünüyor.                         */
+  --shadow-xs: 0 1px 2px rgba(15, 32, 64, 0.05);
+  --shadow-sm: 0 2px 6px rgba(15, 32, 64, 0.06), 0 1px 2px rgba(15, 32, 64, 0.04);
+  --shadow-md: 0 10px 24px rgba(15, 32, 64, 0.08), 0 2px 6px rgba(15, 32, 64, 0.04);
+  --shadow-lg: 0 24px 56px rgba(15, 32, 64, 0.12), 0 6px 16px rgba(15, 32, 64, 0.06);
+  --shadow-ink: 0 24px 60px rgba(3, 8, 25, 0.45);
+  --shadow-signal: 0 10px 30px rgba(8, 145, 178, 0.22);
+
+  /* ── HAREKET ────────────────────────────────────────────────────────
+     Component'ler kendi rastgele sürelerini tanımlamaz; buradan alır.    */
+  --motion-fast: 160ms;
+  --motion-normal: 280ms;
+  --motion-slow: 520ms;
+  --motion-reveal: 720ms;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ── KATMAN ────────────────────────────────────────────────────────── */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-nav: 1000;
+  --z-mobilebar: 900;
+  --z-skip: 2000;
+}
+
+/* Hareket azaltma tercihi: süreleri sıfırla. Tek yerden yönetilir,
+   böylece her component ayrı ayrı kontrol etmek zorunda kalmaz. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 1ms;
+    --motion-normal: 1ms;
+    --motion-slow: 1ms;
+    --motion-reveal: 1ms;
+  }
 }

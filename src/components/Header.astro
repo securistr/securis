@@ -2,16 +2,13 @@
 /**
  * Securis — Site başlığı / navigasyon
  *
- * Production'da bu blok 17 dosyada birebir tekrar ediyordu. İki varyant var
- * ve ikisi de aynen korunmuştur:
+ * Faz 2: çubuk hero'nun üzerinde saydam başlar, kaydırıldığında alçalıp
+ * cam bir çubuğa dönüşür. Logo koyu zemin üzerinde beyaz render edilir
+ * (dosya değişmedi, yalnızca CSS filtresi) — Faz 1'deki beyaz plaka
+ * "çıkartma" hissi veriyordu.
  *
- *   variant="home"  Ana sayfa: id="siteNav", imleç spotlight katmanı,
- *                   #anchor linkleri, .nav-link sınıfı (scroll-spy için),
- *                   logo görselinde eager/fetchpriority (LCP), aria-label
- *                   "Menüyü Aç" (büyük A — production'daki hâli).
- *
- *   variant="sub"   Alt sayfalar: spotlight yok, linkler ana sayfaya
- *                   (/, /#services ...), aria-label "Menüyü aç".
+ * variant="home"  #anchor linkleri + .nav-link (scroll-spy hedefi)
+ * variant="sub"   ana sayfanın bölümlerine giden mutlak linkler
  */
 import site from '../data/site.json';
 
@@ -21,10 +18,7 @@ interface Props {
 const { variant = 'sub' } = Astro.props;
 const isHome = variant === 'home';
 
-/**
- * Alt sayfalarda "Ana Sayfa" linki hash'siz köke gider (production'da
- * `../../` idi), diğerleri ana sayfanın bölümlerine (`/#services` ...).
- */
+/** Alt sayfalarda "Ana Sayfa" hash'siz köke gider. */
 const href = (hash: string) => {
   if (isHome) return hash;
   return hash === '#hero' ? '/' : `/${hash}`;
@@ -32,54 +26,27 @@ const href = (hash: string) => {
 ---
 
 <header>
-  <nav aria-label="Ana menü" id={isHome ? 'siteNav' : undefined}>
-    {
-      isHome && (
-        /* Spotlight katmanı: pointer-events:none, tıklamaları asla engellemez */
-        <div class="nav-spotlight" aria-hidden="true" />
-      )
-    }
-
+  <nav aria-label="Ana menü" id="siteNav">
     <a href="/" class="logo" aria-label="Securis ana sayfa">
-      {
-        isHome ? (
-          <img
-            src="/securis-logo.png"
-            alt="Securis"
-            width="200"
-            height="64"
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
-          />
-        ) : (
-          <img src="/securis-logo.png" alt="Securis" width="200" height="64" />
-        )
-      }
+      <img
+        src="/securis-logo.png"
+        alt="Securis"
+        width="808"
+        height="248"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
     </a>
 
     <button
       class="menu-toggle"
       id="menuBtn"
-      aria-label={isHome ? 'Menüyü Aç' : 'Menüyü aç'}
+      aria-label="Menüyü aç"
       aria-expanded="false"
       aria-controls="navLinks"
     >
-      <svg
-        viewBox="0 0 24 24"
-        width={isHome ? '28' : '26'}
-        height={isHome ? '28' : '26'}
-        stroke="currentColor"
-        stroke-width="2.5"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden={isHome ? undefined : 'true'}
-      >
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
+      <span></span><span></span><span></span>
     </button>
 
     <ul id="navLinks">

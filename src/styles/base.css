@@ -1,0 +1,525 @@
+/* ═════════════════════════════════════════════════════════════════════
+   SECURIS — TEMEL KATMAN
+   Reset, tipografi, yerleşim kapları ve tüm sayfalarda paylaşılan
+   birincil öğeler (buton, kart, SSS, bölge çipi, CTA bandı).
+   Tüm değerler tokens.css'ten gelir.
+   ═════════════════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Sabit nav'ın altında kalan #anchor hedefleri için */
+  scroll-padding-top: calc(var(--nav-h) + var(--space-md));
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+  overflow-x: clip;
+}
+
+/* Mobil aksiyon barının altında içerik kalmasın */
+@media (max-width: 900px) {
+  body { padding-bottom: calc(66px + env(safe-area-inset-bottom)); }
+}
+/* Menü açıkken arka plan kaymasın */
+body.nav-open { overflow: hidden; }
+
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+
+/* ── TİPOGRAFİ ────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-heading);
+  text-wrap: balance;
+}
+p { text-wrap: pretty; }
+
+a { color: inherit; }
+
+/* ── ODAK ──────────────────────────────────────────────────────────
+   Görünür ve tutarlı. Fare tıklamasında değil, klavyede görünür.      */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--signal-600);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}
+.on-ink :where(a, button, summary):focus-visible {
+  outline-color: var(--signal-400);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: var(--z-skip);
+  background: var(--ink-700);
+  color: #fff;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 0 0 var(--r-sm) 0;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+/* ── KAPLAR ───────────────────────────────────────────────────────── */
+.shell {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.shell--narrow { max-width: var(--container-narrow); }
+
+.section {
+  position: relative;
+  padding-block: var(--section);
+}
+.section--tight { padding-block: var(--section-tight); }
+
+/* Koyu bölüm: metin renkleri otomatik döner */
+.section--ink,
+.on-ink {
+  color: var(--text-on-ink);
+}
+.section--ink { background: var(--ink-800); }
+
+/* ── BÖLÜM BAŞLIĞI ────────────────────────────────────────────────── */
+.sec-head {
+  max-width: var(--measure);
+  margin-bottom: var(--stack);
+}
+.sec-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Mono teknik etiket — "kontrol odası" dilinin taşıyıcısı */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--signal-600);
+  margin-bottom: var(--space-sm);
+}
+.eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.65;
+}
+.on-ink .eyebrow,
+.section--ink .eyebrow { color: var(--signal-400); }
+
+.sec-title {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-sm);
+}
+.sec-lead {
+  font-size: var(--fs-lead);
+  color: var(--text-dim);
+  max-width: var(--measure);
+}
+.on-ink .sec-lead,
+.section--ink .sec-lead { color: var(--text-on-ink-dim); }
+
+/* ── BUTONLAR ──────────────────────────────────────────────────────
+   Üç rol: birincil (ara), WhatsApp, ikincil (hayalet).
+   Hover'da oyuncak ölçekleme yok — 1px kalkış + gölge derinliği.      */
+.btn {
+  --btn-bg: var(--ink-700);
+  --btn-fg: #fff;
+  --btn-bd: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  min-height: 46px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--btn-bd);
+  border-radius: var(--r-sm);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-normal) var(--ease-standard);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn svg { width: 17px; height: 17px; flex: none; }
+
+.btn--primary {
+  --btn-bg: var(--brand-700);
+  box-shadow: var(--shadow-sm);
+}
+.btn--primary:hover {
+  --btn-bg: var(--brand-600);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--wa {
+  --btn-bg: var(--wa);
+  --btn-fg: #04331d;
+}
+.btn--wa:hover {
+  --btn-bg: #3ddb7a;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.28);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--text);
+  --btn-bd: var(--line-strong);
+}
+.btn--ghost:hover {
+  --btn-bd: var(--brand-700);
+  --btn-bg: var(--brand-100);
+}
+.on-ink .btn--ghost,
+.section--ink .btn--ghost {
+  --btn-fg: var(--text-on-ink);
+  --btn-bd: rgba(255, 255, 255, 0.24);
+}
+.on-ink .btn--ghost:hover,
+.section--ink .btn--ghost:hover {
+  --btn-bd: var(--signal-400);
+  --btn-bg: rgba(103, 232, 249, 0.08);
+}
+
+.btn--signal {
+  --btn-bg: var(--signal-400);
+  --btn-fg: #04202c;
+}
+.btn--signal:hover {
+  --btn-bg: var(--signal-300);
+  box-shadow: var(--shadow-signal);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  align-items: center;
+}
+.btn-row--center { justify-content: center; }
+
+.cta-note {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+  margin-top: var(--space-sm);
+}
+.on-ink .cta-note,
+.section--ink .cta-note { color: var(--text-on-ink-mute); }
+
+/* ── İLETİŞİM LİNKLERİ (iOS mavi link düzeltmesi) ───────────────────
+   iOS Safari tel:/mailto: linklerine kendi mavi rengini ve alt çizgisini
+   dayatır. -webkit- ön ekli text-decoration olmadan bu stil yok
+   sayılabiliyor, bu yüzden ikisi birlikte yazılır. */
+a[href^="tel:"]:not(.btn),
+a[href^="mailto:"]:not(.btn),
+a[href^="https://wa.me"]:not(.btn),
+a[href^="https://maps.google"]:not(.btn) {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.inline-link {
+  color: var(--brand-600);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--motion-fast) var(--ease-standard);
+}
+.inline-link:hover { color: var(--brand-700); }
+
+/* ── KART ──────────────────────────────────────────────────────────
+   Ortak yüzey. Hover'da üstte ince bir sinyal çizgisi belirir —
+   glow yerine "cihaz aydınlandı" hissi.                              */
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-xs);
+  transition:
+    border-color var(--motion-normal) var(--ease-standard),
+    box-shadow var(--motion-normal) var(--ease-standard),
+    transform var(--motion-normal) var(--ease-standard);
+}
+.card::after {
+  content: '';
+  position: absolute;
+  inset: -1px -1px auto -1px;
+  height: 2px;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  background: linear-gradient(90deg, transparent, var(--signal-600), transparent);
+  opacity: 0;
+  transition: opacity var(--motion-normal) var(--ease-standard);
+}
+.card:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.card:hover::after { opacity: 1; }
+
+a.card { text-decoration: none; color: inherit; display: block; }
+
+.card h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-2xs);
+}
+.card p {
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+  gap: var(--grid-gap);
+}
+
+/* ── SSS ───────────────────────────────────────────────────────────
+   native <details>. Sınıf adları (.faq-item / .faq-answer) JS ile
+   sözleşmedir — değiştirilmemeli.                                    */
+.faq-list {
+  display: grid;
+  gap: var(--space-xs);
+  max-width: 920px;
+}
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: border-color var(--motion-normal) var(--ease-standard),
+    box-shadow var(--motion-normal) var(--ease-standard);
+}
+.faq-item[open] {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: var(--tr-heading);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--motion-fast) var(--ease-standard);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--brand-700); }
+
+/* Artı/eksi göstergesi — iki çizgi, biri döner */
+.faq-item summary::after {
+  content: '';
+  flex: none;
+  width: 13px;
+  height: 13px;
+  background:
+    linear-gradient(var(--signal-600), var(--signal-600)) center / 100% 1.5px no-repeat,
+    linear-gradient(var(--signal-600), var(--signal-600)) center / 1.5px 100% no-repeat;
+  transition: transform var(--motion-normal) var(--ease-out);
+}
+.faq-item[open] summary::after {
+  transform: rotate(90deg);
+  background:
+    linear-gradient(var(--signal-600), var(--signal-600)) center / 100% 1.5px no-repeat;
+}
+
+.faq-answer {
+  padding: 0 var(--space-lg) var(--space-md);
+  color: var(--text-dim);
+  font-size: var(--fs-sm);
+  max-width: var(--measure);
+  overflow: hidden;
+}
+
+/* ── BÖLGE ÇİPLERİ ────────────────────────────────────────────────── */
+.region-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+.region-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  min-height: 44px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    background var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+.region-chip:hover {
+  border-color: var(--brand-700);
+  background: var(--brand-100);
+  color: var(--brand-700);
+  transform: translateY(-1px);
+}
+.chip-icon {
+  display: inline-flex;
+  color: var(--signal-600);
+  position: relative;
+  transition: color var(--motion-fast) var(--ease-standard);
+}
+.chip-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.region-chip:hover .chip-icon { color: var(--brand-600); }
+
+.on-ink .region-chip,
+.section--ink .region-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: var(--text-on-ink);
+}
+.on-ink .region-chip:hover,
+.section--ink .region-chip:hover {
+  background: rgba(103, 232, 249, 0.1);
+  border-color: var(--signal-400);
+  color: var(--signal-300);
+}
+.on-ink .chip-icon,
+.section--ink .chip-icon { color: var(--signal-400); }
+
+/* ── CTA BANDI ─────────────────────────────────────────────────────
+   Sayfa sonu dönüşüm bloğu. Koyu zemin + ince ızgara dokusu.          */
+.cta-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  padding: clamp(36px, 5vw, 64px) var(--gutter);
+  text-align: center;
+  color: var(--text-on-ink);
+  background:
+    radial-gradient(ellipse 70% 120% at 50% 0%, rgba(30, 58, 138, 0.55), transparent 70%),
+    linear-gradient(160deg, var(--ink-800), var(--ink-900));
+  box-shadow: var(--shadow-ink);
+}
+.cta-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(103, 232, 249, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 232, 249, 0.055) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 90% at 50% 45%, #000 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 90% at 50% 45%, #000 25%, transparent 78%);
+}
+.cta-band h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-xs);
+}
+.cta-band > p {
+  color: var(--text-on-ink-dim);
+  max-width: 56ch;
+  margin: 0 auto var(--space-lg);
+}
+.cta-band .btn-row { justify-content: center; }
+.cta-band .cta-note { color: var(--text-on-ink-mute); }
+
+/* ── SCROLL REVEAL ─────────────────────────────────────────────────
+   Kısa, tek eksende, abartısız. IntersectionObserver `.visible` ekler. */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--motion-reveal) var(--ease-out),
+    transform var(--motion-reveal) var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-1 { transition-delay: 60ms; }
+.reveal-2 { transition-delay: 120ms; }
+.reveal-3 { transition-delay: 180ms; }
+.reveal-4 { transition-delay: 240ms; }
+.reveal-5 { transition-delay: 300ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── YARDIMCILAR ──────────────────────────────────────────────────── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

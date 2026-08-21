@@ -3,21 +3,66 @@
  * Securis — Gizlilik Politikası ve KVKK Aydınlatma Metni
  *
  * URL: /gizlilik-politikasi/
- * Tek kullanımlık, hukuki metin içeren bir sayfa. İçeriği production'daki
- * hâliyle BİREBİR taşınmıştır; veri modeline çıkarılmadı (§9: her bloğu
- * gereksiz yere component'e bölme).
+ * §21: hukuki metin. Ağır animasyon ve dekorasyon yok; ana tasarım
+ * sistemiyle uyumlu, sakin ve okunabilir. İçerik Faz 1'den birebir.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import site from '../../data/site.json';
 import { gizlilikSchema } from '../../lib/schema.js';
-import '../../styles/seo-pages.css';
+import '../../styles/pages.css';
 
 const title = 'Gizlilik Politikası ve KVKK Aydınlatma Metni | Securis';
 const description =
   "Securis'in kişisel veri işleme esasları, kullanılan üçüncü taraf servisler ve KVKK kapsamındaki haklarınız hakkında bilgi.";
 const whatsappText = 'Merhaba, gizlilik politikası hakkında bir soru sormak istiyorum.';
 const p = site.phones[0];
+
+const servisler = [
+  {
+    h3: 'Google Fonts',
+    p: "Sitede kullanılan Inter, Space Grotesk ve JetBrains Mono yazı tipleri Google sunucularından yükleniyor. Sayfayı ziyaret ettiğinizde tarayıcınız bu yazı tiplerini indirmek için Google'ın sunucularına bağlanır; bu sırada IP adresiniz Google'a iletilir.",
+  },
+  {
+    h3: 'WhatsApp',
+    p: "\"WhatsApp'tan Yaz\" butonlarına tıkladığınızda wa.me üzerinden WhatsApp uygulamasına yönlendirilirsiniz. Bu noktadan itibaren WhatsApp'ın (Meta) kendi gizlilik politikası geçerli olur; biz bu platformun veri işleme süreçlerini kontrol etmeyiz.",
+  },
+  {
+    h3: 'Google Haritalar',
+    p: "Footer'daki \"Haritada Gör\" bağlantısı sizi Google Haritalar'a yönlendirir. Bu harici sitede Google'ın kendi gizlilik politikası geçerlidir.",
+  },
+  {
+    h3: 'Instagram',
+    p: "Footer'daki Instagram bağlantısı, hesabımızın bulunduğu instagram.com adresine yönlendirir. Instagram (Meta) kendi gizlilik politikasına tabidir.",
+  },
+];
+
+const haklar = [
+  {
+    h3: 'Bilgi Talep Etme',
+    p: 'Kişisel verilerinizin işlenip işlenmediğini öğrenme ve işlenmişse buna ilişkin bilgi talep etme.',
+  },
+  {
+    h3: 'Amacı Öğrenme',
+    p: 'İşlenme amacını ve verilerin amacına uygun kullanılıp kullanılmadığını öğrenme.',
+  },
+  {
+    h3: 'Aktarımı Bilme',
+    p: 'Yurt içinde veya yurt dışında verilerin aktarıldığı üçüncü kişileri bilme.',
+  },
+  {
+    h3: 'Düzeltme Talep Etme',
+    p: 'Eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme.',
+  },
+  {
+    h3: 'Silme Talep Etme',
+    p: 'KVKK ve ilgili mevzuat hükümlerine uygun olarak işlenmiş olmasına rağmen, işlenmesini gerektiren sebeplerin ortadan kalkması hâlinde verilerin silinmesini veya yok edilmesini isteme.',
+  },
+  {
+    h3: 'İtiraz Etme',
+    p: 'İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme ve kanuna aykırı işleme sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme.',
+  },
+];
 ---
 
 <BaseLayout whatsappText={whatsappText}>
@@ -29,165 +74,140 @@ const p = site.phones[0];
     jsonLd={gizlilikSchema({ title, description })}
   />
 
-  <main id="main">
-    <div class="breadcrumb"><a href="/">Ana Sayfa</a> / Gizlilik Politikası</div>
+  <main id="main" class="legal">
+    <div class="page-hero on-ink">
+      <div class="shell">
+        <nav class="breadcrumb" aria-label="Site haritası">
+          <a href="/">Ana Sayfa</a><span class="sep">/</span>
+          <span aria-current="page">Gizlilik Politikası</span>
+        </nav>
 
-    <div class="page-hero">
-      <div class="hero-badge">
-        <span class="chip-icon"
-          ><svg viewBox="0 0 24 24" aria-hidden="true"
-            ><path d="M12 2 4 6v6c0 5.25 3.44 9.74 8 11 4.56-1.26 8-5.75 8-11V6z"></path></svg
-          ></span
-        >KVKK
+        <p class="page-badge">
+          <span class="chip-icon"
+            ><svg viewBox="0 0 24 24" aria-hidden="true"
+              ><path d="M12 2 4 6v6c0 5.25 3.44 9.74 8 11 4.56-1.26 8-5.75 8-11V6z"></path></svg
+            ></span
+          >KVKK
+        </p>
+        <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni</h1>
+        <p class="lead">
+          Bu sayfa, securis.com.tr'yi ziyaret ettiğinizde hangi verilerin nasıl işlendiğini, hangi
+          üçüncü taraf servislerin kullanıldığını ve 6698 sayılı Kişisel Verilerin Korunması Kanunu
+          ("KVKK") kapsamındaki haklarınızı açıklar.
+        </p>
+        <p class="cta-note">Son güncelleme: 20 Ağustos 2026</p>
       </div>
-      <h1>Gizlilik Politikası ve KVKK Aydınlatma Metni</h1>
-      <p class="lead">
-        Bu sayfa, securis.com.tr'yi ziyaret ettiğinizde hangi verilerin nasıl işlendiğini, hangi
-        üçüncü taraf servislerin kullanıldığını ve 6698 sayılı Kişisel Verilerin Korunması Kanunu
-        ("KVKK") kapsamındaki haklarınızı açıklar.
-      </p>
-      <p class="cta-note">Son güncelleme: 20 Ağustos 2026</p>
     </div>
 
-    <section>
-      <div class="section-label">Veri Sorumlusu</div>
-      <h2 class="section-title">Kimsiniz, Bizimle Nasıl İletişime Geçebilirsiniz?</h2>
-      <p class="section-desc">
-        Bu internet sitesi, Securis Ağ ve Kamera Güvenlik Sistemleri ("Securis", "biz") tarafından
-        işletilmektedir. KVKK uyarınca veri sorumlusu sıfatıyla hareket ediyoruz. Bize <a
-          href={`mailto:${site.email}`}
-          style="text-decoration:underline;">{site.email}</a
-        > adresinden veya <a href={`tel:${p.e164}`} style="text-decoration:underline;"
-          >{p.display}</a
-        > numarasından ulaşabilirsiniz. Adresimiz: {site.address.footerLine}.
-      </p>
-    </section>
+    <div class="page-body">
+      <section class="section">
+        <div class="shell shell--narrow">
+          <div class="sec-head">
+            <p class="eyebrow">Veri Sorumlusu</p>
+            <h2 class="sec-title">Kimsiniz, Bizimle Nasıl İletişime Geçebilirsiniz?</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Bu internet sitesi, Securis Ağ ve Kamera Güvenlik Sistemleri ("Securis", "biz")
+              tarafından işletilmektedir. KVKK uyarınca veri sorumlusu sıfatıyla hareket ediyoruz.
+              Bize <a href={`mailto:${site.email}`}>{site.email}</a> adresinden veya <a
+                href={`tel:${p.e164}`}>{p.display}</a
+              > numarasından ulaşabilirsiniz. Adresimiz: {site.address.footerLine}.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <section>
-      <div class="section-label">Üçüncü Taraf Servisler</div>
-      <h2 class="section-title">Sitede Hangi Harici Servisler Kullanılıyor?</h2>
-      <p class="section-desc">
-        Sitemizi daha hızlı, işlevsel ve ölçülebilir hale getirmek için aşağıdaki üçüncü taraf
-        servislerden faydalanıyoruz. Bu servislerin her biri kendi gizlilik politikasına tabidir:
-      </p>
-      <div class="card-grid">
-        <div class="info-card">
-          <h3>Google Fonts</h3>
-          <p>
-            Sitede kullanılan Inter, Space Grotesk ve JetBrains Mono yazı tipleri Google
-            sunucularından yükleniyor. Sayfayı ziyaret ettiğinizde tarayıcınız bu yazı tiplerini
-            indirmek için Google'ın sunucularına bağlanır; bu sırada IP adresiniz Google'a iletilir.
-          </p>
+      <section class="section">
+        <div class="shell shell--narrow">
+          <div class="sec-head">
+            <p class="eyebrow">Üçüncü Taraf Servisler</p>
+            <h2 class="sec-title">Sitede Hangi Harici Servisler Kullanılıyor?</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Sitemizi daha hızlı, işlevsel ve ölçülebilir hale getirmek için aşağıdaki üçüncü taraf
+              servislerden faydalanıyoruz. Bu servislerin her biri kendi gizlilik politikasına
+              tabidir:
+            </p>
+          </div>
+          <div class="card-grid">
+            {servisler.map((s) => <div class="card"><h3>{s.h3}</h3><p>{s.p}</p></div>)}
+          </div>
         </div>
-        <div class="info-card">
-          <h3>WhatsApp</h3>
-          <p>
-            "WhatsApp'tan Yaz" butonlarına tıkladığınızda wa.me üzerinden WhatsApp uygulamasına
-            yönlendirilirsiniz. Bu noktadan itibaren WhatsApp'ın (Meta) kendi gizlilik politikası
-            geçerli olur; biz bu platformun veri işleme süreçlerini kontrol etmeyiz.
-          </p>
+      </section>
+
+      <section class="section">
+        <div class="shell shell--narrow">
+          <div class="sec-head">
+            <p class="eyebrow">Çerezler</p>
+            <h2 class="sec-title">Çerez Kullanımı</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Şu an sitemizde herhangi bir analytics/istatistik servisi veya birinci taraf çerez
+              kullanılmamaktadır. Bu sayfa, ileride bu durum değişirse (örn. bir ölçüm aracı
+              eklenirse) güncellenecektir.
+            </p>
+          </div>
         </div>
-        <div class="info-card">
-          <h3>Google Haritalar</h3>
-          <p>
-            Footer'daki "Haritada Gör" bağlantısı sizi Google Haritalar'a yönlendirir. Bu harici
-            sitede Google'ın kendi gizlilik politikası geçerlidir.
-          </p>
+      </section>
+
+      <section class="section">
+        <div class="shell shell--narrow">
+          <div class="sec-head">
+            <p class="eyebrow">İletişim Yoluyla Toplanan Veriler</p>
+            <h2 class="sec-title">Bizimle İletişime Geçtiğinizde Ne Olur?</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Sitemizde şu an için otomatik bir iletişim formu bulunmamaktadır; bize yalnızca telefon
+              (arama/WhatsApp) veya e-posta yoluyla ulaşabilirsiniz. Bu kanallar üzerinden bizimle
+              paylaştığınız ad, telefon numarası, e-posta adresi ve mesaj içeriği gibi bilgiler,
+              yalnızca talebinizi (keşif, teklif, teknik destek) yanıtlamak amacıyla işlenir ve
+              hizmet ilişkimiz sona erdikten sonra makul bir süre içinde, yasal saklama
+              yükümlülüklerimiz saklı kalmak kaydıyla, silinir veya anonim hale getirilir. Bu veriler
+              pazarlama amacıyla üçüncü kişilerle paylaşılmaz veya satılmaz.
+            </p>
+          </div>
         </div>
-        <div class="info-card">
-          <h3>Instagram</h3>
-          <p>
-            Footer'daki Instagram bağlantısı, hesabımızın bulunduğu instagram.com adresine
-            yönlendirir. Instagram (Meta) kendi gizlilik politikasına tabidir.
-          </p>
+      </section>
+
+      <section class="section">
+        <div class="shell shell--narrow">
+          <div class="sec-head">
+            <p class="eyebrow">Haklarınız</p>
+            <h2 class="sec-title">KVKK Madde 11 Kapsamındaki Haklarınız</h2>
+          </div>
+          <div class="prose">
+            <p>
+              KVKK'nın 11. maddesi uyarınca bizimle <a href={`mailto:${site.email}`}>{site.email}</a
+              > adresinden iletişime geçerek aşağıdaki haklarınızı kullanabilirsiniz:
+            </p>
+          </div>
+          <div class="card-grid">
+            {haklar.map((h) => <div class="card"><h3>{h.h3}</h3><p>{h.p}</p></div>)}
+          </div>
+        </div>
+      </section>
+
+      <div class="page-cta">
+        <div class="shell shell--narrow">
+          <div class="cta-band">
+            <h2>Sorularınız mı Var?</h2>
+            <p>
+              Gizlilik politikamız veya kişisel verilerinizle ilgili her türlü soru için bize ulaşın.
+            </p>
+            <div class="btn-row btn-row--center">
+              <a href={`mailto:${site.email}`} class="btn btn--signal">E-posta Gönder</a>
+              <a href={`tel:${p.e164}`} class="btn btn--ghost" aria-label={`Securis'i ara: ${p.aria}`}
+                >{site.labels.callButton}</a
+              >
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-
-    <section>
-      <div class="section-label">Çerezler</div>
-      <h2 class="section-title">Çerez Kullanımı</h2>
-      <p class="section-desc">
-        Şu an sitemizde herhangi bir analytics/istatistik servisi veya birinci taraf çerez
-        kullanılmamaktadır. Bu sayfa, ileride bu durum değişirse (örn. bir ölçüm aracı eklenirse)
-        güncellenecektir.
-      </p>
-    </section>
-
-    <section>
-      <div class="section-label">İletişim Yoluyla Toplanan Veriler</div>
-      <h2 class="section-title">Bizimle İletişime Geçtiğinizde Ne Olur?</h2>
-      <p class="section-desc">
-        Sitemizde şu an için otomatik bir iletişim formu bulunmamaktadır; bize yalnızca telefon
-        (arama/WhatsApp) veya e-posta yoluyla ulaşabilirsiniz. Bu kanallar üzerinden bizimle
-        paylaştığınız ad, telefon numarası, e-posta adresi ve mesaj içeriği gibi bilgiler, yalnızca
-        talebinizi (keşif, teklif, teknik destek) yanıtlamak amacıyla işlenir ve hizmet ilişkimiz
-        sona erdikten sonra makul bir süre içinde, yasal saklama yükümlülüklerimiz saklı kalmak
-        kaydıyla, silinir veya anonim hale getirilir. Bu veriler pazarlama amacıyla üçüncü kişilerle
-        paylaşılmaz veya satılmaz.
-      </p>
-    </section>
-
-    <section>
-      <div class="section-label">Haklarınız</div>
-      <h2 class="section-title">KVKK Madde 11 Kapsamındaki Haklarınız</h2>
-      <p class="section-desc">
-        KVKK'nın 11. maddesi uyarınca bizimle <a
-          href={`mailto:${site.email}`}
-          style="text-decoration:underline;">{site.email}</a
-        > adresinden iletişime geçerek aşağıdaki haklarınızı kullanabilirsiniz:
-      </p>
-      <div class="card-grid">
-        <div class="info-card">
-          <h3>Bilgi Talep Etme</h3>
-          <p>
-            Kişisel verilerinizin işlenip işlenmediğini öğrenme ve işlenmişse buna ilişkin bilgi
-            talep etme.
-          </p>
-        </div>
-        <div class="info-card">
-          <h3>Amacı Öğrenme</h3>
-          <p>İşlenme amacını ve verilerin amacına uygun kullanılıp kullanılmadığını öğrenme.</p>
-        </div>
-        <div class="info-card">
-          <h3>Aktarımı Bilme</h3>
-          <p>Yurt içinde veya yurt dışında verilerin aktarıldığı üçüncü kişileri bilme.</p>
-        </div>
-        <div class="info-card">
-          <h3>Düzeltme Talep Etme</h3>
-          <p>Eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme.</p>
-        </div>
-        <div class="info-card">
-          <h3>Silme Talep Etme</h3>
-          <p>
-            KVKK ve ilgili mevzuat hükümlerine uygun olarak işlenmiş olmasına rağmen, işlenmesini
-            gerektiren sebeplerin ortadan kalkması hâlinde verilerin silinmesini veya yok edilmesini
-            isteme.
-          </p>
-        </div>
-        <div class="info-card">
-          <h3>İtiraz Etme</h3>
-          <p>
-            İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle
-            aleyhinize bir sonucun ortaya çıkmasına itiraz etme ve kanuna aykırı işleme sebebiyle
-            zarara uğramanız hâlinde zararın giderilmesini talep etme.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="cta-band">
-        <h2>Sorularınız mı Var?</h2>
-        <p>Gizlilik politikamız veya kişisel verilerinizle ilgili her türlü soru için bize ulaşın.</p>
-        <div class="hero-actions" style="justify-content:center;">
-          <a href={`mailto:${site.email}`} class="btn btn-whatsapp">E-posta Gönder</a>
-          <a href={`tel:${p.e164}`} class="btn btn-call" aria-label={`Securis'i ara: ${p.aria}`}
-            >{site.labels.callButton}</a
-          >
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
 
   <script>

@@ -1,17 +1,16 @@
 ---
 /**
- * Securis — Ana sayfa
+ * Securis — Ana sayfa (Faz 2 redesign)
  *
- * §13 gereği ana sayfa ayrı tutulur: bölge/hizmet şablonuna sokulmaz.
- * Markup, production'daki index.html'den BİREBİR taşınmıştır. Yapılan tek
- * değişiklikler:
- *   - göreli yollar kök-göreliye çevrildi (assets/img/… → /assets/img/…)
- *   - nav / footer / mobil CTA / SSS listesi ortak component'lere alındı
- *   - telefon, WhatsApp metni ve SSS içeriği site.json / anasayfa.json'dan gelir
+ * Bölüm ritmi bilinçli olarak koyu/açık dönüşümlü:
+ *   hero (koyu) → markalar (koyu) → hizmetler (açık) → çözümler (koyu)
+ *   → bölgeler (açık) → hakkımızda (açık) → SSS (açık) → iletişim (koyu)
+ *   → footer (koyu)
+ * Böylece sayfa "kutular toplamı" değil, tek bir akış gibi okunuyor.
  *
- * Hero, brands marquee, services grid, solutions grid, about ve contact
- * blokları bilinçli olarak component'e BÖLÜNMEDİ (§9): bunlar tek
- * kullanımlık, ana sayfaya özgü bloklar.
+ * İÇERİK DEĞİŞMEDİ: H1, lead, bölüm başlıkları, hizmet/çözüm metinleri,
+ * hakkımızda paragrafları, SSS ve iletişim bilgileri Faz 1'deki metinlerin
+ * aynısıdır (§27). Değişen yalnızca yerleşim, hiyerarşi ve görsel dil.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
@@ -38,6 +37,91 @@ const wa1 = waHref(p1.wa, site.defaultWhatsappText);
 const wa2 = waHref(p2.wa, site.secondaryWhatsappText);
 
 const jsonLd = homeSchema({ bolgeler, hizmetler, sss: anasayfa.sss.items });
+
+/* Hero sağ panelindeki yetenek satırları — Faz 1'deki showcase kartlarının
+   aynı metinleri, teknik okuma paneli biçiminde. */
+const yetenekler = [
+  { n: '01', t: 'Kamera Sistemleri', d: 'Yüksek Çözünürlüklü İzleme', live: true },
+  { n: '02', t: 'Firewall Güvenliği', d: 'Veri ve Ağ Koruma Kalkanı' },
+  { n: '03', t: 'Yüksek Hızlı Bağlantı', d: 'Switch & Access Point Çözümleri' },
+];
+
+const istatistikler = [
+  { v: '9 ilçe', l: 'Yerinde servis bölgesi' },
+  { v: '3 saat', l: 'Arızada müdahale süresi' },
+  { v: '1 yıl', l: 'Servis garantisi' },
+];
+
+const markalar = ['DAHUA', 'HIKVISION', 'FORTINET', 'RUJIE / TP-LINK', 'MILESIGHT'];
+
+/* Hizmet kartları — metinler Faz 1'den birebir. `span` yalnızca ızgara
+   yerleşimini belirler (asimetrik katalog düzeni). */
+const hizmetKartlari = [
+  {
+    slug: 'ip-kamera-sistemleri',
+    h3: 'Kamera Sistemleri Kurulum ve Destek',
+    p: 'Ev, ofis veya fabrika alanlarınız için yüksek çözünürlüklü IP kamera sistemlerinin montajı, temiz kablolaması ve arıza durumlarında hızlı teknik destek hizmeti.',
+    span: 'wide',
+    icon: 'camera',
+  },
+  {
+    slug: 'firewall-yapilandirma',
+    h3: 'Firewall Kurulumu — Şirket Ağınızı Koruyun',
+    p: 'Şirket verilerinizi dış siber saldırılardan korumak için FortiGate ve benzeri kurumsal siber duvar ünitelerinin ağınıza entegrasyonu, kural tanımlamaları ve güvenli VPN ayarları.',
+    icon: 'shield',
+  },
+  {
+    slug: 'switch-konfigurasyonu',
+    h3: 'Switch ve Ağ Yönetimi — Kablolu Ağ Kurulumu',
+    p: 'Kablolu ağ trafiğinizin takılmadan, hızlı çalışması için kurumsal yönetilebilir switch cihazlarının montajı, hat bölümlendirmesi (VLAN) ve performans optimizasyonu.',
+    icon: 'switch',
+  },
+  {
+    slug: 'access-point-kurulumu',
+    h3: 'Access Point (Kablosuz İnternet)',
+    p: 'İş yerinizde internetin yavaşladığı veya çekmediği tüm "ölü noktaları" yok ediyoruz. Yüksek performanslı Access Point üniteleriyle kesintisiz tek bir Wi-Fi ağı kuruyoruz.',
+    icon: 'wifi',
+  },
+  {
+    slug: 'nvr-depolama',
+    h3: 'NVR ve Depolama Çözümleri',
+    p: 'Kamera kayıtlarınızın geriye dönük güvenle saklanması için NVR (Ağ Kayıt Cihazı) kurulumu, yüksek kapasiteli disk entegrasyonu ve cepten izleme için mobil tanımlamalar.',
+    icon: 'nvr',
+  },
+];
+
+const cozumler = [
+  {
+    slug: 'ip-kamera-sistemleri',
+    tag: 'FİZİKSEL GÜVENLİK',
+    img: '/assets/img/cctv-security-camera.webp',
+    w: 1200,
+    h: 686,
+    alt: 'Bina cephesine monte edilmiş profesyonel IP güvenlik kamerası',
+    h3: 'Gözetim ve Kamera Sistemleri',
+    p: 'Bina çevresi, giriş noktaları ve iç mekanlar için yüksek çözünürlüklü IP kamera ağları. Doğru açı planlaması, temiz kablolama ve NVR entegrasyonuyla anahtar teslim kurulum.',
+  },
+  {
+    slug: 'firewall-yapilandirma',
+    tag: 'AĞ GÜVENLİĞİ',
+    img: '/assets/img/cybersecurity-solutions.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Kimlik avı saldırısı ve oturum açma ekranı üzerinden siber güvenlik tehdidi görseli',
+    h3: 'Siber Güvenlik ve Firewall',
+    p: 'Kimlik avı, yetkisiz erişim ve fidye yazılımı tehditlerine karşı FortiGate güvenlik duvarı yapılandırması, erişim kuralları ve şubeler arası şifreli VPN bağlantıları.',
+  },
+  {
+    slug: 'access-point-kurulumu',
+    tag: 'KABLOSUZ ALTYAPI',
+    img: '/assets/img/wireless-access-point.webp',
+    w: 1200,
+    h: 673,
+    alt: 'Çalışır durumda ışıkları yanan kablosuz ağ erişim noktası cihazı',
+    h3: 'Kablosuz Ağ ve Access Point',
+    p: 'Ölü noktaları ortadan kaldıran, tek SSID altında kesintisiz dolaşım (roaming) sağlayan access point kurulumu. Misafir ağı ayrımı ve yoğun kullanıcı kapasitesi planlaması.',
+  },
+];
 ---
 
 <BaseLayout variant="home" skipTarget="#hero-heading">
@@ -55,579 +139,372 @@ const jsonLd = homeSchema({ bolgeler, hizmetler, sss: anasayfa.sss.items });
   />
 
   <Fragment slot="head-extra">
-    {/* G1: JS calismazsa icerik gizli kalmasin */}
-    <noscript
-      ><style>
-        .reveal {
-          opacity: 1 !important;
-          transform: none !important;
-        }
-        .cyl {
-          transform: none !important;
-          opacity: 1 !important;
-        }
-      </style></noscript
-    >
     <link rel="preload" as="image" href="/assets/img/hero-primary-bg.webp" fetchpriority="high" />
   </Fragment>
 
   <main>
-    <section id="hero">
-      <div class="hero-backdrop" aria-hidden="true">
-        <div class="hero-layer" data-depth="1"></div>
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
-        <div class="radar-sweep"></div>
+    {/* ══ HERO ══════════════════════════════════════════════════════ */}
+    <section id="hero" class="hero on-ink">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-photo" data-parallax="0.16"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-scan"></div>
       </div>
-      <div class="hero-inner">
-        <div class="hero-left">
-          <div class="hero-badge reveal">Profesyonel Kurulum &amp; Destek</div>
-          <h1 id="hero-heading" class="reveal reveal-delay-1">
+
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow">Profesyonel Kurulum &amp; Destek</p>
+
+          <h1 id="hero-heading">
             Silivri, Tekirdağ ve Çatalca'da<br />
-            <span class="highlight">Kamera Sistemleri</span> ve Network Kurulumu
+            <span class="hl">Kamera Sistemleri</span> ve Network Kurulumu
           </h1>
-          <p class="reveal reveal-delay-2">
+
+          <p class="hero-lead">
             Securis olarak, yüksek çözünürlüklü IP kamera ağlarından kurumsal siber duvar
             sistemlerine kadar tüm teknolojik altyapınızı anahtar teslim kuruyor ve kesintisiz
             teknik destek sağlıyoruz.
           </p>
-          <div class="hero-actions reveal reveal-delay-3">
-            <a
-              href={wa1}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-whatsapp"
-              aria-label={`WhatsApp'tan yaz: ${p1.aria}`}>{site.labels.waButton}</a
-            >
-            <a
-              href={`tel:${p1.e164}`}
-              class="btn btn-call"
-              aria-label={`Securis'i ara: ${p1.aria}`}>{site.labels.callButton}</a
-            >
-            <a href="#contact" class="btn btn-ghost">{site.labels.kesifButton}</a>
-          </div>
-          <p class="cta-note reveal reveal-delay-3">{site.ctaNote}</p>
 
-          <div class="stats-bar reveal reveal-delay-4">
-            <div class="stat-item">
-              <span class="stat-num">9 ilçe</span><p>Yerinde servis bölgesi</p>
-            </div>
-            <div class="stat-item">
-              <span class="stat-num">3 saat</span><p>Arızada müdahale süresi</p>
-            </div>
-            <div class="stat-item"><span class="stat-num">1 yıl</span><p>Servis garantisi</p></div>
+          <div class="btn-row hero-actions">
+            <a href={`tel:${p1.e164}`} class="btn btn--signal" aria-label={`Securis'i ara: ${p1.aria}`}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              {site.labels.callButton}
+            </a>
+            <a href={wa1} target="_blank" rel="noopener noreferrer" class="btn btn--wa" aria-label={`WhatsApp'tan yaz: ${p1.aria}`}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              {site.labels.waButton}
+            </a>
           </div>
+
+          <p class="hero-meta">
+            <a href="#contact" class="quiet-link"
+              >{site.labels.kesifButton}
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <span class="cta-note">{site.ctaNote}</span>
+          </p>
         </div>
 
-        <div class="hero-right">
-          <div class="hero-devices" id="deviceGroup">
-            <div class="showcase-card reveal reveal-delay-1">
-              <div class="showcase-icon">
-                <svg viewBox="0 0 24 24"
-                  ><path d="M23 7l-7 5 7 5V7z"></path><rect
-                    x="1"
-                    y="5"
-                    width="15"
-                    height="14"
-                    rx="2"
-                    ry="2"></rect></svg
-                >
-              </div>
-              <div class="showcase-info">
-                <div class="showcase-title">
-                  <span class="rec-dot" aria-hidden="true"></span>Kamera Sistemleri
-                </div>
-                <p>Yüksek Çözünürlüklü İzleme</p>
-              </div>
-            </div>
-
-            <div class="showcase-card reveal reveal-delay-2">
-              <div class="showcase-icon">
-                <svg viewBox="0 0 24 24"
-                  ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg
-                >
-              </div>
-              <div class="showcase-info">
-                <div class="showcase-title">Firewall Güvenliği</div>
-                <p>Veri ve Ağ Koruma Kalkanı</p>
-              </div>
-            </div>
-
-            <div class="showcase-card reveal reveal-delay-3">
-              <div class="showcase-icon">
-                <svg viewBox="0 0 24 24"
-                  ><rect x="2" y="5" width="20" height="14" rx="2"></rect><path
-                    d="M6 12h.01M12 12h.01M18 12h.01"></path></svg
-                >
-              </div>
-              <div class="showcase-info">
-                <div class="showcase-title">Yüksek Hızlı Bağlantı</div>
-                <p>Switch &amp; Access Point Çözümleri</p>
-              </div>
-            </div>
+        <aside class="hero-panel" aria-label="Hizmet kapsamı">
+          <div class="panel-head">
+            <span class="panel-title">Sistem Kapsamı</span>
+            <span class="panel-dot" aria-hidden="true"></span>
           </div>
+          <ul class="panel-list">
+            {
+              yetenekler.map((y) => (
+                <li class="panel-row">
+                  <span class="panel-n">{y.n}</span>
+                  <span class="panel-body">
+                    <span class="panel-t">
+                      {y.t}
+                      {y.live && <i class="rec-dot" aria-hidden="true" />}
+                    </span>
+                    <span class="panel-d">{y.d}</span>
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="panel-foot">
+            <span>Silivri · Tekirdağ · Çatalca ve çevresi</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="shell">
+        <dl class="hero-stats">
+          {
+            istatistikler.map((s) => (
+              <div class="stat">
+                <dt>{s.v}</dt>
+                <dd>{s.l}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </section>
+
+    {/* ══ MARKALAR ══════════════════════════════════════════════════ */}
+    <section id="brands" class="brands on-ink" aria-label="Tercih edilen çözümler">
+      <div class="shell">
+        <p class="brands-label">Projelerimizde Tercih Ettiğimiz Çözümler</p>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          {[...markalar, ...markalar].map((m) => <span class="brand">{m}</span>)}
         </div>
       </div>
     </section>
 
-    <section id="brands">
-      <div class="brands-label reveal">Projelerimizde Tercih Ettiğimiz Çözümler</div>
-      <div class="marquee-outer">
-        <div class="brands-track">
-          <div class="brand-item"><div class="brand-logo">DAHUA</div></div>
-          <div class="brand-item"><div class="brand-logo">HIKVISION</div></div>
-          <div class="brand-item"><div class="brand-logo">FORTINET</div></div>
-          <div class="brand-item"><div class="brand-logo">RUJIE / TP-LINK</div></div>
-          <div class="brand-item"><div class="brand-logo">MILESIGHT</div></div>
-          <div class="brand-item"><div class="brand-logo">DAHUA</div></div>
-          <div class="brand-item"><div class="brand-logo">HIKVISION</div></div>
-          <div class="brand-item"><div class="brand-logo">FORTINET</div></div>
-          <div class="brand-item"><div class="brand-logo">RUJIE / TP-LINK</div></div>
-          <div class="brand-item"><div class="brand-logo">MILESIGHT</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="has-bg-layer">
-      <div class="pin-wrap cyl">
-        <div class="sec-head">
-          <div class="section-label reveal">Hizmet Alanlarımız</div>
-          <h2 class="section-title reveal reveal-delay-1">
-            Hizmetlerimiz: Kamera, Firewall, Network
-          </h2>
-          <p class="section-desc reveal reveal-delay-2">
+    {/* ══ HİZMETLER ═════════════════════════════════════════════════ */}
+    <section id="services" class="section services">
+      <div class="shell">
+        <div class="sec-head reveal">
+          <p class="eyebrow">Hizmet Alanlarımız</p>
+          <h2 class="sec-title">Hizmetlerimiz: Kamera, Firewall, Network</h2>
+          <p class="sec-lead">
             İhtiyacınız olan tüm zayıf akım ve network altyapısını profesyonel standartlarda
             kuruyoruz.
           </p>
         </div>
-        <div class="services-grid">
-          <a href="/hizmetler/ip-kamera-sistemleri/" class="service-card reveal reveal-delay-1">
-            <div class="service-icon-box">
-              <svg viewBox="0 0 24 24"
-                ><path d="M23 7l-7 5 7 5V7z"></path><rect
-                  x="1"
-                  y="5"
-                  width="15"
-                  height="14"
-                  rx="2"
-                  ry="2"></rect></svg
-              >
-            </div>
-            <h3>Kamera Sistemleri Kurulum ve Destek</h3>
-            <p>
-              Ev, ofis veya fabrika alanlarınız için yüksek çözünürlüklü IP kamera sistemlerinin
-              montajı, temiz kablolaması ve arıza durumlarında hızlı teknik destek hizmeti.
-            </p>
-          </a>
 
-          <a href="/hizmetler/firewall-yapilandirma/" class="service-card reveal reveal-delay-2">
-            <div class="service-icon-box">
-              <svg viewBox="0 0 24 24"
-                ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg
+        <div class="svc-grid">
+          {
+            hizmetKartlari.map((k, i) => (
+              <a
+                href={`/hizmetler/${k.slug}/`}
+                class:list={['svc', k.span === 'wide' && 'svc--wide', 'reveal', `reveal-${(i % 3) + 1}`]}
               >
-            </div>
-            <h3>Firewall Kurulumu — Şirket Ağınızı Koruyun</h3>
-            <p>
-              Şirket verilerinizi dış siber saldırılardan korumak için FortiGate ve benzeri kurumsal
-              siber duvar ünitelerinin ağınıza entegrasyonu, kural tanımlamaları ve güvenli VPN
-              ayarları.
-            </p>
-          </a>
-
-          <a href="/hizmetler/switch-konfigurasyonu/" class="service-card reveal reveal-delay-3">
-            <div class="service-icon-box">
-              <svg viewBox="0 0 24 24"
-                ><rect x="2" y="5" width="20" height="14" rx="2"></rect><path
-                  d="M6 12h.01M12 12h.01M18 12h.01"></path></svg
-              >
-            </div>
-            <h3>Switch ve Ağ Yönetimi — Kablolu Ağ Kurulumu</h3>
-            <p>
-              Kablolu ağ trafiğinizin takılmadan, hızlı çalışması için kurumsal yönetilebilir switch
-              cihazlarının montajı, hat bölümlendirmesi (VLAN) ve performans optimizasyonu.
-            </p>
-          </a>
-
-          <a href="/hizmetler/access-point-kurulumu/" class="service-card reveal reveal-delay-1">
-            <div class="service-icon-box">
-              <svg viewBox="0 0 24 24"
-                ><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.5 16.05a6 6 0 0 1 7 0M12 20h.01"
-                ></path></svg
-              >
-            </div>
-            <h3>Access Point (Kablosuz İnternet)</h3>
-            <p>
-              İş yerinizde internetin yavaşladığı veya çekmediği tüm "ölü noktaları" yok ediyoruz.
-              Yüksek performanslı Access Point üniteleriyle kesintisiz tek bir Wi-Fi ağı kuruyoruz.
-            </p>
-          </a>
-
-          <a href="/hizmetler/nvr-depolama/" class="service-card reveal reveal-delay-2">
-            <div class="service-icon-box">
-              <svg viewBox="0 0 24 24"
-                ><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line
-                  x1="2"
-                  y1="20"
-                  x2="22"
-                  y2="20"></line><line x1="12" y1="17" x2="12" y2="20"></line></svg
-              >
-            </div>
-            <h3>NVR ve Depolama Çözümleri</h3>
-            <p>
-              Kamera kayıtlarınızın geriye dönük güvenle saklanması için NVR (Ağ Kayıt Cihazı)
-              kurulumu, yüksek kapasiteli disk entegrasyonu ve cepten izleme için mobil tanımlamalar.
-            </p>
-          </a>
+                <span class="svc-n">{String(i + 1).padStart(2, '0')}</span>
+                <span class="svc-icon" aria-hidden="true">
+                  {k.icon === 'camera' && (
+                    <svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z" /><rect x="1" y="5" width="15" height="14" rx="2" ry="2" /></svg>
+                  )}
+                  {k.icon === 'shield' && (
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                  )}
+                  {k.icon === 'switch' && (
+                    <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M6 12h.01M12 12h.01M18 12h.01" /></svg>
+                  )}
+                  {k.icon === 'wifi' && (
+                    <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.5 16.05a6 6 0 0 1 7 0M12 20h.01" /></svg>
+                  )}
+                  {k.icon === 'nvr' && (
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="2" y1="20" x2="22" y2="20" /><line x1="12" y1="17" x2="12" y2="20" /></svg>
+                  )}
+                </span>
+                <span class="svc-body">
+                  <h3>{k.h3}</h3>
+                  <p>{k.p}</p>
+                  <span class="svc-go" aria-hidden="true">
+                    Detay
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </span>
+                </span>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <section id="solutions" class="has-bg-layer">
-      <div class="pin-wrap cyl">
-        <div class="sec-head">
-          <div class="section-label reveal">Çözüm Alanları</div>
-          <h2 class="section-title reveal reveal-delay-1">Nereden Başlamalı? Üç Ana İhtiyaç</h2>
-          <p class="section-desc reveal reveal-delay-2">
+    {/* ══ ÇÖZÜMLER ══════════════════════════════════════════════════ */}
+    <section id="solutions" class="section section--ink solutions">
+      <div class="shell">
+        <div class="sec-head reveal">
+          <p class="eyebrow">Çözüm Alanları</p>
+          <h2 class="sec-title">Nereden Başlamalı? Üç Ana İhtiyaç</h2>
+          <p class="sec-lead">
             Hangi hizmete ihtiyacınız olduğundan emin değilseniz buradan başlayın: sorunu tarif eden
             üç ana başlık, sizi doğru hizmet sayfasına yönlendirir.
           </p>
         </div>
-        <div class="solutions-grid">
-          <a href="/hizmetler/ip-kamera-sistemleri/" class="solution-card reveal reveal-delay-1">
-            <div class="solution-media">
-              <img
-                src="/assets/img/cctv-security-camera.webp"
-                width="1200"
-                height="686"
-                loading="lazy"
-                decoding="async"
-                alt="Bina cephesine monte edilmiş profesyonel IP güvenlik kamerası"
-              />
-              <span class="solution-tag">FİZİKSEL GÜVENLİK</span>
-            </div>
-            <div class="solution-body">
-              <h3>Gözetim ve Kamera Sistemleri</h3>
-              <p>
-                Bina çevresi, giriş noktaları ve iç mekanlar için yüksek çözünürlüklü IP kamera
-                ağları. Doğru açı planlaması, temiz kablolama ve NVR entegrasyonuyla anahtar teslim
-                kurulum.
-              </p>
-            </div>
-          </a>
 
-          <a href="/hizmetler/firewall-yapilandirma/" class="solution-card reveal reveal-delay-2">
-            <div class="solution-media">
-              <img
-                src="/assets/img/cybersecurity-solutions.webp"
-                width="1200"
-                height="675"
-                loading="lazy"
-                decoding="async"
-                alt="Kimlik avı saldırısı ve oturum açma ekranı üzerinden siber güvenlik tehdidi görseli"
-              />
-              <span class="solution-tag">AĞ GÜVENLİĞİ</span>
-            </div>
-            <div class="solution-body">
-              <h3>Siber Güvenlik ve Firewall</h3>
-              <p>
-                Kimlik avı, yetkisiz erişim ve fidye yazılımı tehditlerine karşı FortiGate güvenlik
-                duvarı yapılandırması, erişim kuralları ve şubeler arası şifreli VPN bağlantıları.
-              </p>
-            </div>
-          </a>
-
-          <a href="/hizmetler/access-point-kurulumu/" class="solution-card reveal reveal-delay-3">
-            <div class="solution-media">
-              <img
-                src="/assets/img/wireless-access-point.webp"
-                width="1200"
-                height="673"
-                loading="lazy"
-                decoding="async"
-                alt="Çalışır durumda ışıkları yanan kablosuz ağ erişim noktası cihazı"
-              />
-              <span class="solution-tag">KABLOSUZ ALTYAPI</span>
-            </div>
-            <div class="solution-body">
-              <h3>Kablosuz Ağ ve Access Point</h3>
-              <p>
-                Ölü noktaları ortadan kaldıran, tek SSID altında kesintisiz dolaşım (roaming)
-                sağlayan access point kurulumu. Misafir ağı ayrımı ve yoğun kullanıcı kapasitesi
-                planlaması.
-              </p>
-            </div>
-          </a>
+        <div class="sol-grid">
+          {
+            cozumler.map((c, i) => (
+              <a href={`/hizmetler/${c.slug}/`} class:list={['sol', 'reveal', `reveal-${i + 1}`]}>
+                <span class="sol-media">
+                  <img src={c.img} width={c.w} height={c.h} loading="lazy" decoding="async" alt={c.alt} />
+                </span>
+                <span class="sol-body">
+                  <span class="sol-tag">{c.tag}</span>
+                  <h3>{c.h3}</h3>
+                  <p>{c.p}</p>
+                </span>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <section id="region" class="photo-section">
-      <div class="pin-wrap cyl">
-        <div class="sec-head">
-          <div class="section-label reveal">Hizmet Bölgelerimiz</div>
-          <h2 class="section-title reveal reveal-delay-1">Yerinde Servis Verdiğimiz 9 İlçe</h2>
-          <p class="section-desc reveal reveal-delay-2">
-            Trakya ve İstanbul Batı bölgesindeki tüm işletmelere yerinde hızlı kurulum ve teknik
-            servis desteği götürüyoruz.
+    {/* ══ BÖLGELER ══════════════════════════════════════════════════ */}
+    <section id="region" class="section region">
+      <div class="region-bg" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="region-layout">
+          <div class="sec-head reveal">
+            <p class="eyebrow">Hizmet Bölgelerimiz</p>
+            <h2 class="sec-title">Yerinde Servis Verdiğimiz 9 İlçe</h2>
+            <p class="sec-lead">
+              Trakya ve İstanbul Batı bölgesindeki tüm işletmelere yerinde hızlı kurulum ve teknik
+              servis desteği götürüyoruz.
+            </p>
+          </div>
+
+          <aside class="region-note reveal reveal-2">
+            <span class="region-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+            </span>
+            <p>
+              Sistem arızalarında maksimum <strong>3 saat</strong> içinde yerinde müdahale garantisi.
+            </p>
+          </aside>
+        </div>
+
+        <RegionGrid reveal />
+      </div>
+    </section>
+
+    {/* ══ HAKKIMIZDA ════════════════════════════════════════════════ */}
+    <section id="about" class="section section--alt about">
+      <div class="shell about-grid">
+        <div class="about-copy">
+          <div class="sec-head reveal">
+            <p class="eyebrow">Hakkımızda</p>
+            <h2 class="sec-title">Neden Securis?</h2>
+          </div>
+          <p class="reveal reveal-1">
+            <strong>Securis</strong>, Silivri merkezli; İstanbul Batı ve Trakya bölgesinde IP kamera
+            sistemleri, firewall yapılandırması ve kurumsal ağ altyapısı kuran bir güvenlik ve ağ
+            teknolojileri firmasıdır. Karmaşık teknik süreçleri sadeleştiriyor; son kullanıcının,
+            esnafın ve şirket yöneticilerinin en kolay şekilde yönetebileceği sorunsuz altyapılar
+            inşa ediyoruz.
           </p>
-        </div>
-        <RegionGrid
-          revealDelays={[1, 1, 2, 2, 3, 3, 4, 4, 5]}
-          pinClass="pin chip-icon"
-        />
-        <div class="region-note">
-          <span class="note-icon"
-            ><svg viewBox="0 0 24 24" aria-hidden="true"
-              ><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path></svg
-            ></span
-          > Sistem arızalarında maksimum <strong>3 saat</strong> içinde yerinde müdahale garantisi.
-        </div>
-      </div>
-    </section>
+          <p class="reveal reveal-2">
+            Kurduğumuz tüm kamera ve internet dağıtım sistemlerini telefonunuzdan tek tıkla izleyip
+            kontrol edebileceğiniz basitlikte teslim ediyoruz. Satış sonrası sunduğumuz hızlı teknik
+            servis desteğiyle de sisteminizi asla yalnız bırakmıyoruz.
+          </p>
+          <p class="reveal reveal-2">
+            Kurulum fotoğraflarımız için <a
+              href={site.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-link"
+              aria-label="Securis Instagram hesabını aç">Instagram'da bizi takip edin</a
+            >.
+          </p>
 
-    <section id="about" class="has-bg-layer">
-      <div class="pin-wrap cyl">
-        <div class="sec-head">
-          <div class="section-label reveal">Hakkımızda</div>
-          <h2 class="section-title reveal reveal-delay-1">Neden Securis?</h2>
+          <ul class="feats reveal reveal-3">
+            <li>Deneyimli Teknik Ekip</li>
+            <li>Profesyonel ve Temiz İşçilik</li>
+            <li>Kolay Kullanımlı Mobil Paneller</li>
+            <li>Şeffaf ve Net Fiyatlandırma</li>
+          </ul>
         </div>
-        <div class="about-grid">
-          <div class="about-text">
-            <p class="reveal reveal-delay-2">
-              <strong>Securis</strong>, Silivri merkezli; İstanbul Batı ve Trakya bölgesinde IP
-              kamera sistemleri, firewall yapılandırması ve kurumsal ağ altyapısı kuran bir güvenlik
-              ve ağ teknolojileri firmasıdır. Karmaşık teknik süreçleri sadeleştiriyor; son
-              kullanıcının, esnafın ve şirket yöneticilerinin en kolay şekilde yönetebileceği
-              sorunsuz altyapılar inşa ediyoruz.
-            </p>
-            <p class="reveal reveal-delay-3">
-              Kurduğumuz tüm kamera ve internet dağıtım sistemlerini telefonunuzdan tek tıkla
-              izleyip kontrol edebileceğiniz basitlikte teslim ediyoruz. Satış sonrası sunduğumuz
-              hızlı teknik servis desteğiyle de sisteminizi asla yalnız bırakmıyoruz.
-            </p>
-            <p class="reveal reveal-delay-3" style="margin-bottom:20px;">
-              Kurulum fotoğraflarımız için <a
-                href={site.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-link"
-                aria-label="Securis Instagram hesabını aç">Instagram'da bizi takip edin</a
-              >.
-            </p>
-            <div class="about-features reveal reveal-delay-3">
-              <div class="about-feature"><span class="check">✓</span> Deneyimli Teknik Ekip</div>
-              <div class="about-feature">
-                <span class="check">✓</span> Profesyonel ve Temiz İşçilik
-              </div>
-              <div class="about-feature">
-                <span class="check">✓</span> Kolay Kullanımlı Mobil Paneller
-              </div>
-              <div class="about-feature">
-                <span class="check">✓</span> Şeffaf ve Net Fiyatlandırma
-              </div>
-            </div>
+
+        <div class="about-visual reveal reveal-2">
+          <div
+            class="about-photo"
+            role="img"
+            aria-label="Kurumsal sunucu kabini ve switch portları yakın çekim"
+          >
           </div>
-          <div class="about-visual reveal reveal-delay-2">
-            <div class="about-visual-stack">
-              <div
-                class="about-photo"
-                role="img"
-                aria-label="Kurumsal sunucu kabini ve switch portları yakın çekim"
-              >
-              </div>
-              <div class="about-stats-card">
-                <div class="big-number">100%</div>
-                <div class="big-label">Müşteri Memnuniyeti Hedefi</div>
-                <div class="stat-row"><span>Ücretsiz Keşif</span><span>Aynı Hafta</span></div>
-                <div class="stat-row"><span>Sistem Garantisi</span><span>1 Yıl Servis</span></div>
-                <div class="stat-row"><span>Teknik Servis Hızı</span><span>Hızlı Müdahale</span></div>
-              </div>
-            </div>
+          <div class="about-card">
+            <p class="about-card-n">100%</p>
+            <p class="about-card-l">Müşteri Memnuniyeti Hedefi</p>
+            <dl class="about-rows">
+              <div><dt>Ücretsiz Keşif</dt><dd>Aynı Hafta</dd></div>
+              <div><dt>Sistem Garantisi</dt><dd>1 Yıl Servis</dd></div>
+              <div><dt>Teknik Servis Hızı</dt><dd>Hızlı Müdahale</dd></div>
+            </dl>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="sss">
-      <div class="pin-wrap cyl">
-        <div class="sec-head">
-          <div class="section-label reveal">{anasayfa.sss.label}</div>
-          <h2 class="section-title reveal reveal-delay-1">{anasayfa.sss.title}</h2>
-          <p class="section-desc reveal reveal-delay-2">{anasayfa.sss.desc}</p>
+    {/* ══ SSS ═══════════════════════════════════════════════════════ */}
+    <section id="sss" class="section faq-section">
+      <div class="shell">
+        <div class="sec-head sec-head--center reveal">
+          <p class="eyebrow">{anasayfa.sss.label}</p>
+          <h2 class="sec-title">{anasayfa.sss.title}</h2>
+          <p class="sec-lead">{anasayfa.sss.desc}</p>
         </div>
-        <FAQ items={anasayfa.sss.items} reveal />
+        <div class="faq-wrap reveal reveal-1">
+          <FAQ items={anasayfa.sss.items} />
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="photo-section">
-      <div class="pin-wrap cyl">
-        <div class="sec-head">
-          <div class="section-label reveal">İletişim</div>
-          <h2 class="section-title reveal reveal-delay-1">Bizimle İletişime Geçin</h2>
-          <p class="section-desc reveal reveal-delay-2">
+    {/* ══ İLETİŞİM ══════════════════════════════════════════════════ */}
+    <section id="contact" class="section section--ink contact">
+      <div class="contact-bg" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="sec-head reveal">
+          <p class="eyebrow">İletişim</p>
+          <h2 class="sec-title">Bizimle İletişime Geçin</h2>
+          <p class="sec-lead">
             Aşağıdaki kanallardan doğrudan bize ulaşın, ihtiyacınız olan sistemi birlikte
             planlayalım.
           </p>
         </div>
+
         <div class="contact-grid">
-          <div class="contact-info-item reveal reveal-delay-1">
-            <div class="icon">
-              <span class="card-icon"
-                ><svg viewBox="0 0 24 24" aria-hidden="true"
-                  ><path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
-                  ></path></svg
-                ></span
-              >
-            </div>
-            <div>
-              <h3>{p1.label}</h3>
-              <p>
-                <a
-                  href={`tel:${p1.e164}`}
-                  class="contact-value"
-                  aria-label={`Securis'i ara: ${p1.aria}`}
-                  ><span class="cv-icon" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24"
-                      ><path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
-                      ></path></svg
-                    ></span
-                  >{p1.display}</a
-                >
-              </p>
-            </div>
-            <div class="contact-buttons">
-              <a
-                href={`tel:${p1.e164}`}
-                class="btn btn-call"
-                aria-label={`Securis'i ara: ${p1.aria}`}>{site.labels.callButton}</a
-              >
-              <a
-                href={wa1}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-whatsapp"
-                aria-label={`WhatsApp ile yaz: ${p1.aria}`}>{site.labels.waButton}</a
-              >
-            </div>
-          </div>
+          {
+            [p1, p2].map((p, i) => (
+              <div class:list={['ccard', 'reveal', `reveal-${i + 1}`]}>
+                <span class="ccard-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                </span>
+                <h3>{p.label}</h3>
+                <a href={`tel:${p.e164}`} class="ccard-value" aria-label={`Securis'i ara: ${p.aria}`}>
+                  {p.display}
+                </a>
+                <div class="btn-row">
+                  <a href={`tel:${p.e164}`} class="btn btn--signal" aria-label={`Securis'i ara: ${p.aria}`}>
+                    {site.labels.callButton}
+                  </a>
+                  <a
+                    href={i === 0 ? wa1 : wa2}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn--wa"
+                    aria-label={`WhatsApp ile yaz: ${p.aria}`}
+                  >
+                    {site.labels.waButton}
+                  </a>
+                </div>
+              </div>
+            ))
+          }
 
-          <div class="contact-info-item reveal reveal-delay-2">
-            <div class="icon">
-              <span class="card-icon"
-                ><svg viewBox="0 0 24 24" aria-hidden="true"
-                  ><path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
-                  ></path></svg
-                ></span
-              >
-            </div>
-            <div>
-              <h3>{p2.label}</h3>
-              <p>
-                <a
-                  href={`tel:${p2.e164}`}
-                  class="contact-value"
-                  aria-label={`Securis'i ara: ${p2.aria}`}
-                  ><span class="cv-icon" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24"
-                      ><path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
-                      ></path></svg
-                    ></span
-                  >{p2.display}</a
-                >
-              </p>
-            </div>
-            <div class="contact-buttons">
-              <a
-                href={`tel:${p2.e164}`}
-                class="btn btn-call"
-                aria-label={`Securis'i ara: ${p2.aria}`}>{site.labels.callButton}</a
-              >
-              <a
-                href={wa2}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-whatsapp"
-                aria-label={`WhatsApp ile yaz: ${p2.aria}`}>{site.labels.waButton}</a
-              >
-            </div>
-          </div>
-
-          <div class="contact-info-item reveal reveal-delay-3">
-            <div class="icon">
-              <span class="card-icon"
-                ><svg viewBox="0 0 24 24" aria-hidden="true"
-                  ><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"
-                  ></path></svg
-                ></span
-              >
-            </div>
-            <div>
-              <h3>E-Posta</h3>
-              <p>
-                <a
-                  href={`mailto:${site.email}`}
-                  class="contact-value"
-                  aria-label={`Securis'e e-posta gönder: ${site.email}`}
-                  ><span class="cv-icon" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24"
-                      ><rect x="2" y="4" width="20" height="16" rx="2"></rect><path
-                        d="m22 7-10 6L2 7"></path></svg
-                    ></span
-                  >{site.email}</a
-                >
-              </p>
-            </div>
-            <div class="contact-buttons">
-              <a href={`mailto:${site.email}`} class="btn btn-call" aria-label="Securis'e e-posta gönder"
+          <div class="ccard reveal reveal-3">
+            <span class="ccard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" /></svg>
+            </span>
+            <h3>E-Posta</h3>
+            <a
+              href={`mailto:${site.email}`}
+              class="ccard-value"
+              aria-label={`Securis'e e-posta gönder: ${site.email}`}>{site.email}</a
+            >
+            <div class="btn-row">
+              <a href={`mailto:${site.email}`} class="btn btn--ghost" aria-label="Securis'e e-posta gönder"
                 >E-posta Gönder</a
               >
             </div>
           </div>
 
-          <div class="contact-info-item reveal reveal-delay-4">
-            <div class="icon">
-              <span class="card-icon"
-                ><svg viewBox="0 0 24 24" aria-hidden="true"
-                  ><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle
-                    cx="12"
-                    cy="12"
-                    r="4"></circle><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"
-                  ></circle></svg
-                ></span
-              >
-            </div>
-            <div>
-              <h3>Instagram</h3>
-              <p>
-                <a
-                  href={site.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="contact-value"
-                  aria-label="Securis Instagram hesabını yeni sekmede aç: securistr"
-                  ><span class="cv-icon" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24" aria-hidden="true"
-                      ><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle
-                        cx="12"
-                        cy="12"
-                        r="4"></circle><circle
-                        cx="17.6"
-                        cy="6.4"
-                        r="1.2"
-                        fill="currentColor"
-                        stroke="none"></circle></svg
-                    ></span
-                  >{site.instagramHandle}</a
-                >
-              </p>
-              <p class="contact-meta">Kurulum fotoğrafları ve saha çalışmalarımız</p>
-            </div>
+          <div class="ccard reveal reveal-4">
+            <span class="ccard-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none" /></svg>
+            </span>
+            <h3>Instagram</h3>
+            <a
+              href={site.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ccard-value"
+              aria-label="Securis Instagram hesabını yeni sekmede aç: securistr"
+              >{site.instagramHandle}</a
+            >
+            <p class="ccard-meta">Kurulum fotoğrafları ve saha çalışmalarımız</p>
           </div>
+        </div>
+
+        <div class="contact-address reveal">
+          <span class="eyebrow">Adres</span>
+          <p>{site.address.footerLine}</p>
+          <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" class="inline-link"
+            >Haritada Gör</a
+          >
         </div>
       </div>
     </section>

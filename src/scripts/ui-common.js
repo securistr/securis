@@ -57,15 +57,14 @@ export function initMobileMenu() {
 }
 
 /**
- * Kaydırdıkça navigasyon çubuğunu biraz daha opak yapar (okunabilirlik).
+ * Kaydırıldığında navigasyon çubuğunu alçaltıp cam duruma geçirir.
  *
- * Yalnızca ALT SAYFALAR için. Ana sayfada aynı iş, spotlight ile birlikte
- * tek bir requestAnimationFrame döngüsü içinde yapılıyor (home.js →
- * renderNav), bu yüzden orada bu fonksiyon çağrılmaz — iki ayrı scroll
- * dinleyicisi olmasın diye.
+ * Faz 2: ana sayfa da bunu kullanıyor. Faz 1'de ana sayfanın kendi
+ * rAF döngüsü vardı (silindirik motorun içinde); o motor kaldırıldığı
+ * için artık tek ve ortak bir uygulama var.
  */
 export function initNavScroll() {
-  const header = document.querySelector('nav');
+  const header = document.getElementById('siteNav');
   if (!header) return;
   let ticking = false;
   window.addEventListener(
@@ -160,4 +159,36 @@ export function initFaqAccordion() {
       }
     });
   });
+}
+
+/**
+ * Kaydırma ile beliren içerik.
+ *
+ * `.reveal` öğeleri görünür alana girdiğinde `.visible` alır; geçişin
+ * kendisi CSS'te (base.css) tanımlıdır. Gözlemci öğeyi bir kez
+ * yakaladıktan sonra bırakır — sayfa boyunca çalışan bir döngü yok.
+ *
+ * Hareket azaltma tercihinde hiç gözlemci kurulmaz; öğeler doğrudan
+ * görünür işaretlenir (CSS zaten opaklığı 1'e sabitler).
+ */
+export function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+
+  if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
+    els.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries, obs) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    },
+    { rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
+  );
+  els.forEach((el) => io.observe(el));
 }

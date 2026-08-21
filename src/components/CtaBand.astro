@@ -1,32 +1,40 @@
 ---
 /**
- * Securis — "Ücretsiz Keşif için Bize Ulaşın" bandı
+ * Securis — Sayfa sonu dönüşüm bandı
  *
- * Production'da 14 alt sayfada birebir aynıydı (yalnızca WhatsApp hazır
- * metni değişiyordu). Gizlilik sayfasında ise farklı başlık/metin ve
- * WhatsApp yerine e-posta butonu vardı — o sayfa kendi bandını yazar.
+ * 14 alt sayfada aynı metinle kullanılır; yalnızca WhatsApp hazır mesajı
+ * sayfaya göre değişir. Gizlilik sayfası kendi bandını yazar.
  */
 import site from '../data/site.json';
 import { waHref } from '../lib/links.js';
 
 interface Props {
   whatsappText?: string;
+  title?: string;
+  text?: string;
 }
-const { whatsappText = site.defaultWhatsappText } = Astro.props;
+const {
+  whatsappText = site.defaultWhatsappText,
+  title = site.ctaBand.h2,
+  text = site.ctaBand.p,
+} = Astro.props;
+
 const p = site.phones[0];
 const wa = waHref(p.wa, whatsappText);
 ---
 
-<div class="cta-band">
-  <h2>{site.ctaBand.h2}</h2>
-  <p>{site.ctaBand.p}</p>
-  <div class="hero-actions" style="justify-content:center;">
-    <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"
-      >{site.labels.waButton}</a
-    >
-    <a href={`tel:${p.e164}`} class="btn btn-call" aria-label={`Securis'i ara: ${p.aria}`}
-      >{site.labels.callButton}</a
-    >
+<div class="cta-band reveal">
+  <h2>{title}</h2>
+  <p>{text}</p>
+  <div class="btn-row btn-row--center">
+    <a href={`tel:${p.e164}`} class="btn btn--signal" aria-label={`Securis'i ara: ${p.aria}`}>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      {site.labels.callButton}
+    </a>
+    <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn--wa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      {site.labels.waButton}
+    </a>
   </div>
   <p class="cta-note">{site.ctaNote}</p>
 </div>

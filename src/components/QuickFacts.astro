@@ -1,0 +1,28 @@
+---
+/**
+ * Securis — Alt sayfa hero'sunda hızlı bilgi paneli
+ *
+ * Google'dan doğrudan bir hizmet/bölge sayfasına düşen ziyaretçi, ilk
+ * ekranda "kim, ne, ne kadar hızlı, nasıl ulaşırım" sorularının hepsine
+ * yanıt bulmalı (§20). Bu panel bunun "ne kadar hızlı" kısmını taşır.
+ *
+ * UYDURMA VERİ YOK: buradaki üç bilgi sitede zaten yayında olan
+ * gerçeklerdir (ana sayfa istatistik şeridiyle aynı kaynak).
+ */
+const facts = [
+  { v: '9 ilçe', l: 'Yerinde servis bölgesi' },
+  { v: '3 saat', l: 'Arızada müdahale süresi' },
+  { v: '1 yıl', l: 'Servis garantisi' },
+];
+---
+
+<dl class="quickfacts">
+  {
+    facts.map((f) => (
+      <div>
+        <dt>{f.v}</dt>
+        <dd>{f.l}</dd>
+      </div>
+    ))
+  }
+</dl>

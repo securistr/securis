@@ -1,35 +1,83 @@
 ---
 /**
- * Securis — Footer (NAP + linkler + copyright)
+ * Securis — Footer
  *
- * Production'da 17 dosyada birebir tekrar ediyordu. Tek fark: alt
- * sayfalarda link listesinin başında bir "Ana Sayfa" bağlantısı vardı,
- * ana sayfada yoktu. Bu fark `variant` ile korunur.
+ * Faz 2: üç satırlık düz bloktan yapılandırılmış bir footer'a geçildi.
+ * Hizmet ve bölge listeleri veriden geldiği için iç link ağı da güçlendi.
+ *
+ * NOT: NAP satırı (isim + adres + telefon, düz metin) yerel SEO için
+ * bilinçli olarak korunuyor — kaldırılmamalı.
  */
 import site from '../data/site.json';
+import bolgeler from '../data/bolgeler.json';
+import hizmetler from '../data/hizmetler.json';
 
-interface Props {
-  variant?: 'home' | 'sub';
-}
-const { variant = 'sub' } = Astro.props;
-const primary = site.phones[0];
+const [p1, p2] = site.phones;
 ---
 
 <footer>
-  <p class="foot-nap">
-    <strong>{site.name}</strong> · {site.address.footerLine} · <a
-      href={`tel:${primary.e164}`}
-      aria-label={`Securis'i ara: ${primary.aria}`}>{primary.display}</a
-    >
-  </p>
-  <p class="foot-links">
-    {variant === 'sub' && (<><a href="/">Ana Sayfa</a> · </>)}<a
-      href={`mailto:${site.email}`}>{site.email}</a
-    > · <a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a> · <a
-      href={site.mapUrl}
-      target="_blank"
-      rel="noopener noreferrer">Haritada Gör</a
-    > · <a href="/gizlilik-politikasi/">Gizlilik Politikası</a>
-  </p>
-  <p>&copy; {site.copyrightYear} <span>{site.shortName}</span>. Tüm hakları saklıdır.</p>
+  <div class="shell">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="/securis-logo.png" alt="Securis" width="808" height="248" loading="lazy" decoding="async" />
+        <p>{site.description}</p>
+        <a
+          href={site.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--ghost"
+          aria-label="Securis Instagram hesabını yeni sekmede aç"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"></circle>
+          </svg>
+          {site.instagramHandle}
+        </a>
+      </div>
+
+      <div class="foot-col">
+        <h3>Hizmetler</h3>
+        <ul>
+          {hizmetler.map((h) => <li><a href={`/hizmetler/${h.slug}/`}>{h.kisaAd}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Bölgeler</h3>
+        <ul>
+          {bolgeler.map((b) => <li><a href={`/bolgeler/${b.slug}/`}>{b.chipLabel}</a></li>)}
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>İletişim</h3>
+        <div class="foot-contact">
+          <a href={`tel:${p1.e164}`} aria-label={`Securis'i ara: ${p1.aria}`}>
+            <strong>{p1.display}</strong>
+          </a>
+          <a href={`tel:${p2.e164}`} aria-label={`Securis'i ara: ${p2.aria}`}>
+            <strong>{p2.display}</strong>
+          </a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={site.mapUrl} target="_blank" rel="noopener noreferrer">Haritada Gör</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot-nap">
+      <strong>{site.name}</strong> · {site.address.footerLine} · <a
+        href={`tel:${p1.e164}`}
+        aria-label={`Securis'i ara: ${p1.aria}`}>{p1.display}</a
+      >
+    </p>
+
+    <div class="foot-bottom">
+      <span>&copy; {site.copyrightYear} {site.shortName}. Tüm hakları saklıdır.</span>
+      <span class="foot-bottom-links">
+        <a href="/">Ana Sayfa</a> · <a href="/gizlilik-politikasi/">Gizlilik Politikası</a>
+      </span>
+    </div>
+  </div>
 </footer>
