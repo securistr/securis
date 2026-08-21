@@ -271,11 +271,17 @@ a { color: inherit; }
 /* ── İLETİŞİM LİNKLERİ (iOS mavi link düzeltmesi) ───────────────────
    iOS Safari tel:/mailto: linklerine kendi mavi rengini ve alt çizgisini
    dayatır. -webkit- ön ekli text-decoration olmadan bu stil yok
-   sayılabiliyor, bu yüzden ikisi birlikte yazılır. */
-a[href^="tel:"]:not(.btn),
-a[href^="mailto:"]:not(.btn),
-a[href^="https://wa.me"]:not(.btn),
-a[href^="https://maps.google"]:not(.btn) {
+   sayılabiliyor, bu yüzden ikisi birlikte yazılır.
+
+   DİKKAT: buton rolündeki bağlantılar bu kuraldan MUAF tutulmalı.
+   `.mab-btn` muafiyeti eklenene kadar mobil aksiyon barındaki "Hemen Ara"
+   bağlantısı `color: inherit` alıyor ve koyu zeminde 1.11:1 kontrastla
+   neredeyse görünmez kalıyordu (öznitelik seçicisi .mab-call'dan daha
+   spesifik olduğu için beyazı eziyordu). */
+a[href^="tel:"]:not(.btn):not(.mab-btn),
+a[href^="mailto:"]:not(.btn):not(.mab-btn),
+a[href^="https://wa.me"]:not(.btn):not(.mab-btn),
+a[href^="https://maps.google"]:not(.btn):not(.mab-btn) {
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
