@@ -143,50 +143,100 @@ export function initFaqAccordion() {
   if (typeof Element === 'undefined' || !Element.prototype.animate) return;
 
   const FAQ_DURATION = 240;
-  // Yavaş başlayan bir easing (ör. .4,0,.2,1) ilk karelerde neredeyse görünmez
-  // bir hareketle başlıyor ve bu da "donma" hissi veriyordu. Sitede zaten
-  // kullanılan, güçlü başlangıç hızına sahip ease-out eğrisi kullanılır.
+  // Güçlü başlangıç hızına sahip ease-out: ilk kareden itibaren hareket
+  // görünür olur, "gecikmeli başlıyor" hissi oluşmaz.
   const FAQ_EASING = 'cubic-bezier(.16,1,.3,1)';
 
   document.querySelectorAll('.faq-item').forEach((details) => {
     const content = details.querySelector('.faq-answer');
     if (!content) return;
+
     let anim = null;
+
+    /** Animasyon bittiğinde/iptal edildiğinde bırakılan satır içi stilleri temizler. */
+    const temizle = () => {
+      content.style.height = '';
+      content.style.paddingTop = '';
+      content.style.paddingBottom = '';
+      content.style.opacity = '';
+    };
+
+    /**
+     * TEK animasyon yaşam döngüsü.
+     *
+     * KAPANIŞTAKİ DONMANIN GERÇEK NEDENİ (ölçülerek bulundu):
+     * Eskiden yalnızca `height` animasyonlanıyordu. `.faq-answer` alt
+     * dolgu (--space-md = 24px) taşıyor ve `box-sizing: border-box`
+     * olduğu için kutu 24px'in altına İNEMİYOR. Yani animasyonun son
+     * ~%20'si hiçbir görsel değişiklik üretmiyordu — birinci donma.
+     * Ardından `onfinish` içinde `open` kaldırılınca kalan 24px bir
+     * karede yok oluyordu — ikinci donma + sıçrama.
+     *
+     * Çözüm: yükseklikle BİRLİKTE dolguları da animasyonlamak. Kutu
+     * gerçekten sıfıra iniyor, hareket tek parça ve sürekli oluyor.
+     */
+    const calistir = (ac) => {
+      const cs = getComputedStyle(content);
+
+      if (ac) {
+        // Açılış: önce aç ki doğal yükseklik ölçülebilsin.
+        // Mevcut yükseklik (kapanış yarıda kesildiyse) başlangıç olur.
+        const baslangic = anim ? content.getBoundingClientRect().height : 0;
+        if (anim) anim.cancel();
+        anim = null;
+        temizle();
+        details.open = true;
+
+        const hedefH = content.getBoundingClientRect().height;
+        const pt = cs.paddingTop;
+        const pb = cs.paddingBottom;
+
+        anim = content.animate(
+          [
+            { height: baslangic + 'px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 },
+            { height: hedefH + 'px', paddingTop: pt, paddingBottom: pb, opacity: 1 },
+          ],
+          { duration: FAQ_DURATION, easing: FAQ_EASING, fill: 'both' }
+        );
+      } else {
+        // Kapanış: o anki GÖRSEL yükseklikten başla (yarıda kesilen
+        // açılıştan geliyorsak da doğru noktadan devam eder).
+        const baslangic = content.getBoundingClientRect().height;
+        const pt = cs.paddingTop;
+        const pb = cs.paddingBottom;
+        if (anim) anim.cancel();
+        anim = null;
+
+        anim = content.animate(
+          [
+            { height: baslangic + 'px', paddingTop: pt, paddingBottom: pb, opacity: 1 },
+            { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 },
+          ],
+          { duration: FAQ_DURATION, easing: FAQ_EASING, fill: 'both' }
+        );
+      }
+
+      const bu = anim;
+      bu.finished
+        .then(() => {
+          // Yalnızca hâlâ güncel animasyon isek sonlandır (yarış koşulu koruması)
+          if (anim !== bu) return;
+          if (!ac) details.open = false;
+          anim.cancel(); // fill:both'un tuttuğu son kareyi bırak
+          anim = null;
+          temizle();
+        })
+        .catch(() => {
+          /* iptal edildi: yeni animasyon devraldı, yapılacak bir şey yok */
+        });
+    };
 
     details.addEventListener('click', (e) => {
       if (!e.target.closest('summary')) return;
+      // Native <details> toggle'ı devral: açma/kapama bizim kontrolümüzde
+      // olmazsa tarayıcının anlık toggle'ı animasyonla çakışır.
       e.preventDefault();
-      if (anim) anim.cancel();
-
-      if (details.hasAttribute('open')) {
-        // Kapat: o anki yükseklikten 0'a
-        const fromH = content.getBoundingClientRect().height;
-        anim = content.animate([{ height: fromH + 'px' }, { height: '0px' }], {
-          duration: FAQ_DURATION,
-          easing: FAQ_EASING,
-          fill: 'forwards',
-        });
-        anim.onfinish = () => {
-          details.removeAttribute('open');
-          content.style.height = '';
-          anim = null;
-        };
-      } else {
-        details.setAttribute('open', '');
-        // ÖNEMLİ: open eklenir eklenmez içerik doğal (tam) yüksekliğinde render
-        // edilir; burada rect ölçmek "tam yükseklik → tam yükseklik" animasyonu
-        // (yani donup açılma hissi) verirdi. Başlangıç sabit 0, hedef scrollHeight.
-        const toH = content.scrollHeight;
-        anim = content.animate([{ height: '0px' }, { height: toH + 'px' }], {
-          duration: FAQ_DURATION,
-          easing: FAQ_EASING,
-          fill: 'forwards',
-        });
-        anim.onfinish = () => {
-          content.style.height = '';
-          anim = null;
-        };
-      }
+      calistir(!details.open);
     });
   });
 }
