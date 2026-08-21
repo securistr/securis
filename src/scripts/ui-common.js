@@ -1,9 +1,8 @@
 /* ─────────────────────────────────────────────────────────────────────
    Securis — Tüm sayfalarda ortak UI davranışları
 
-   Migration öncesinde bu davranışların bir kısmı hem index.html'in inline
-   script'inde hem de assets/seo-pages.js içinde AYRI AYRI yazılıydı.
-   Burada tek uygulamada birleştirildiler.
+   Ana sayfa ve alt sayfalar aynı davranış kümesini paylaşır; her sayfa
+   yalnızca hangilerini açacağını seçer.
 
    Faz 2: davranış farkları giderildi. Ana sayfa ile alt sayfalar artık
    AYNI mobil menü davranışını kullanır (Escape ile kapanma dahil).
