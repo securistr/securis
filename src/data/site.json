@@ -63,7 +63,7 @@
   "ogImageAltHome": "Securis Ağ ve Kamera Güvenlik Sistemleri - kamera, firewall ve network kurulumu",
   "copyrightYear": 2026,
   "csp": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self';",
-  "fontsHref": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400&display=swap",
+  "fontsHref": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400&display=swap",
   "robotsHome": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   "robotsDefault": "index, follow, max-image-preview:large, max-snippet:-1",
   "defaultWhatsappText": "Merhaba, kamera sistemi keşfi için bilgi almak istiyorum.",

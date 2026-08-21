@@ -139,8 +139,13 @@ header { position: relative; z-index: var(--z-nav); }
 
 /* ── HAMBURGER ─────────────────────────────────────────────────────── */
 .menu-toggle {
+  /* flex + sabit gap: cizgi araligi ongorulebilir olsun. grid ile her
+     cizgi kendi satirina dustugu icin kapatma (X) donusumu tutmuyordu. */
   display: none;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   width: 44px;
   height: 44px;
   margin-right: -6px;
@@ -159,14 +164,14 @@ header { position: relative; z-index: var(--z-nav); }
   transition: transform var(--motion-normal) var(--ease-out),
     opacity var(--motion-fast) var(--ease-standard);
 }
-.menu-toggle span + span { margin-top: 5px; }
+
 .menu-toggle.is-open span:nth-child(1) { transform: translateY(6.8px) rotate(45deg); }
 .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
 .menu-toggle.is-open span:nth-child(3) { transform: translateY(-6.8px) rotate(-45deg); }
 
 /* ── MOBİL MENÜ PANELİ ─────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .menu-toggle { display: grid; }
+  .menu-toggle { display: flex; }
 
   #siteNav ul {
     position: fixed;

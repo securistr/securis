@@ -5,6 +5,20 @@
    Tüm değerler tokens.css'ten gelir.
    ═════════════════════════════════════════════════════════════════════ */
 
+/* ── YAZI TİPİ GEÇİŞ KAYMASI ───────────────────────────────────────
+   Google Fonts async yüklendiği için metin önce yedek yazı tipiyle
+   çizilir, sonra Inter gelince yeniden akar (CLS). Yedek yazı tipinin
+   metriklerini Inter'e yaklaştırarak bu kayma küçültülür.
+   Yazı tipi DEĞİŞMİYOR — yalnızca yedeğin ölçüleri hizalanıyor.        */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90%;
+  descent-override: 22.43%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+
 *,
 *::before,
 *::after {
