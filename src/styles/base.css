@@ -125,7 +125,7 @@ a { color: inherit; }
   font-weight: 400;
   letter-spacing: var(--tr-label);
   text-transform: uppercase;
-  color: var(--signal-600);
+  color: var(--signal-700);
   margin-bottom: var(--space-sm);
 }
 .eyebrow::before {
@@ -486,15 +486,21 @@ a.card { text-decoration: none; color: inherit; display: block; }
 .cta-band .cta-note { color: var(--text-on-ink-mute); }
 
 /* ── SCROLL REVEAL ─────────────────────────────────────────────────
-   Kısa, tek eksende, abartısız. IntersectionObserver `.visible` ekler. */
-.reveal {
+   Kısa, tek eksende, abartısız. IntersectionObserver `.visible` ekler.
+
+   ÖNEMLİ — gizleme `.js` kapsamındadır:
+   <html> etiketine `js` sınıfını, BaseLayout'taki inline bir satır
+   render'dan önce ekler. JS çalışmazsa (kapalıysa, bir hata verirse ya da
+   bundle yüklenemezse) içerik HİÇ gizlenmez. Faz 1'deki <noscript>
+   yamasının yerini alan, daha sağlam ilerlemeli geliştirme yaklaşımı. */
+.js .reveal {
   opacity: 0;
   transform: translateY(14px);
   transition:
     opacity var(--motion-reveal) var(--ease-out),
     transform var(--motion-reveal) var(--ease-out);
 }
-.reveal.visible {
+.js .reveal.visible {
   opacity: 1;
   transform: none;
 }
@@ -505,7 +511,7 @@ a.card { text-decoration: none; color: inherit; display: block; }
 .reveal-5 { transition-delay: 300ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .js .reveal {
     opacity: 1;
     transform: none;
     transition: none;

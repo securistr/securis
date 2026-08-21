@@ -60,6 +60,7 @@
 .breadcrumb a {
   color: var(--text-on-ink-dim);
   text-decoration: none;
+  padding-block: 5px;
   transition: color var(--motion-fast) var(--ease-standard);
 }
 .breadcrumb a:hover { color: var(--signal-400); }
@@ -129,7 +130,7 @@
   font-size: var(--fs-label);
   letter-spacing: var(--tr-label);
   text-transform: uppercase;
-  color: var(--signal-600);
+  color: var(--signal-700);
   margin-bottom: var(--space-3xs);
 }
 .locales dd {
@@ -170,7 +171,7 @@
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   letter-spacing: 0.1em;
-  color: var(--signal-600);
+  color: var(--signal-700);
 }
 .step h3 {
   font-size: var(--fs-h3);
@@ -184,7 +185,7 @@
 /* ── HİZMET / BÖLGE ÇAPRAZ LİNK KARTLARI ───────────────────────────── */
 .xlink-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
   gap: var(--grid-gap);
 }
 .xlink {
@@ -195,6 +196,7 @@
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
+  box-shadow: var(--shadow-xs);
   text-decoration: none;
   color: inherit;
   transition: border-color var(--motion-fast) var(--ease-standard),
@@ -204,6 +206,7 @@
 .xlink:hover {
   border-color: var(--brand-700);
   background: var(--brand-100);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 .xlink h3 {

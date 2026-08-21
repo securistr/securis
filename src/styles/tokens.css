@@ -33,14 +33,15 @@
      Dekoratif parlama için kullanılmaz.                                  */
   --signal-300: #a5f3fc;
   --signal-400: #67e8f9;
-  --signal-600: #0891b2;
+  --signal-600: #0891b2;   /* ikon/cizgi: 3:1 yeterli */
+  --signal-700: #0e7490;   /* KUCUK METIN: acik zeminde 4.5:1 gerekiyor */
   --signal-050: #ecfeff;
 
   /* ── RENK: kağıt (açık yüzeyler) ─────────────────────────────────── */
   --paper: #f6f8fc;
   --paper-alt: #eef2f9;
   --surface: #ffffff;
-  --line: #e2e8f0;
+  --line: #dde5ef;
   --line-strong: #cbd5e1;
 
   /* ── RENK: metin ─────────────────────────────────────────────────── */

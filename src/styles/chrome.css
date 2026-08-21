@@ -65,6 +65,7 @@ header { position: relative; z-index: var(--z-nav); }
 #siteNav .logo {
   display: flex;
   align-items: center;
+  min-height: 44px;
   flex: none;
   text-decoration: none;
   transition: opacity var(--motion-fast) var(--ease-standard);
@@ -292,6 +293,8 @@ footer::before {
 }
 .foot-col ul { list-style: none; display: grid; gap: var(--space-2xs); }
 .foot-col a {
+  display: inline-block;
+  padding-block: 4px;
   color: var(--text-on-ink-dim);
   text-decoration: none;
   transition: color var(--motion-fast) var(--ease-standard);
@@ -299,6 +302,7 @@ footer::before {
 .foot-col a:hover { color: var(--signal-300); }
 
 .foot-contact { display: grid; gap: var(--space-2xs); }
+.foot-contact a { padding-block: 3px; }
 .foot-contact strong {
   display: block;
   color: var(--text-on-ink);
@@ -325,6 +329,8 @@ footer::before {
   font-size: var(--fs-xs);
 }
 .foot-bottom a {
+  display: inline-block;
+  padding-block: 4px;
   color: var(--text-on-ink-dim);
   text-decoration: none;
 }
