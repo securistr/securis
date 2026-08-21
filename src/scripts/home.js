@@ -35,41 +35,93 @@ initFaqAccordion();
 initReveal();
 
 /* ── SCROLL-SPY ───────────────────────────────────────────────────────
-   Menüde bulunulan bölüm vurgulanır (aria-current="true"). Kaydırma
-   dinleyicisi yok; IntersectionObserver yeterli.                        */
+   Menüde bulunulan bölüm vurgulanır (aria-current="true").
+
+   ESKİ YAKLAŞIMIN NEDEN BOZUK OLDUĞU (ölçülerek bulundu, layout sorunu
+   DEĞİLDİ — bölümler bitişik, örtüşme/negatif margin yok):
+
+   IntersectionObserver `rootMargin: -86px 0px -55%` ile yalnızca 319px
+   yüksekliğinde bir bant tanımlıyordu. Sayfadaki her bölüm bu banttan
+   UZUN olduğu için ulaşılabilir en yüksek intersectionRatio değerleri
+   0.21–0.58 arasındaydı; yani `threshold: 0.6` hiçbir zaman
+   tetiklenemiyordu. Dahası callback, oranı yalnızca O ANKİ PARTİ
+   içindeki entry'ler arasında karşılaştırıyordu.
+
+   Asıl kusur ise ölçütün kendisiydi: intersectionRatio, kesişen alanın
+   ÖĞENİN KENDİ YÜKSEKLİĞİNE oranıdır. Kısa bir bölüm (#region, 546px)
+   aynı görünür alan için uzun bir bölümden (#about, 816px) daima daha
+   yüksek oran üretir. Bu yüzden yukarıdan About'a inerken "Bölgeler"
+   aktif kalıyor, aşağıdan çıkarken (#region bantta olmadığı için)
+   doğru çalışıyordu — kullanıcının tarif ettiği asimetri tam olarak bu.
+
+   YENİ YAKLAŞIM — tek, belirlenimci referans çizgisi:
+   Viewport'ta nav'ın altından itibaren %30'luk bir noktada hayali bir
+   çizgi düşünülür. AKTİF BÖLÜM = üstü bu çizginin üzerinde kalan SON
+   bölüm. Bu kural:
+     · bölüm yüksekliğinden bağımsızdır
+     · her değerlendirmede TÜM bölümleri tarar (parti bağımlı değil)
+     · #brands / #solutions gibi menüde karşılığı olmayan aradaki
+       bölümlerde bir öncekini korur (Çözümler'deyken "Hizmetler")
+     · sayfa sonunda son bölümü (#contact) etkinleştirir             */
 (function initScrollSpy() {
   const links = Array.from(document.querySelectorAll('.nav-link'));
   const targets = links
     .map((link) => ({ link, sec: document.querySelector(link.getAttribute('href')) }))
     .filter((t) => t.sec);
-  if (!targets.length || !('IntersectionObserver' in window)) return;
+  if (!targets.length) return;
 
-  const navH = parseInt(
-    getComputedStyle(document.documentElement).getPropertyValue('--nav-h'),
-    10
-  ) || 76;
-
+  let aktif = null;
   const setActive = (link) => {
+    if (link === aktif) return; // gereksiz DOM yazımı yok
+    aktif = link;
     for (const t of targets) {
       if (t.link === link) t.link.setAttribute('aria-current', 'true');
       else t.link.removeAttribute('aria-current');
     }
   };
 
-  const spy = new IntersectionObserver(
-    (entries) => {
-      let best = null;
-      for (const e of entries) {
-        if (!e.isIntersecting) continue;
-        if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
-      }
-      if (!best) return;
-      const t = targets.find((x) => x.sec === best.target);
-      if (t) setActive(t.link);
-    },
-    { rootMargin: `-${navH + 10}px 0px -55% 0px`, threshold: [0.1, 0.3, 0.6] }
-  );
-  targets.forEach((t) => spy.observe(t.sec));
+  const olc = () => {
+    const navH =
+      parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 76;
+    const cizgi = navH + (window.innerHeight - navH) * 0.3;
+
+    // Sayfa sonuna gelindiyse son bölüm aktiftir: son bölümün üstü
+    // çizgiyi geçemeyebilir çünkü daha fazla kaydırma alanı yoktur.
+    const dip = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+    if (dip) return targets[targets.length - 1].link;
+
+    // TÜM bölümler tek turda okunur (ölçüm ve yazım ayrı) —
+    // layout thrashing oluşmaz.
+    let secilen = targets[0].link;
+    for (const t of targets) {
+      if (t.sec.getBoundingClientRect().top <= cizgi) secilen = t.link;
+      else break; // bölümler belge sırasında; ilk geçmeyende durabiliriz
+    }
+    return secilen;
+  };
+
+  // rAF ile kısılmış tek scroll dinleyicisi; sürekli dönen bir döngü yok.
+  let bekliyor = false;
+  const guncelle = () => {
+    bekliyor = false;
+    setActive(olc());
+  };
+  const planla = () => {
+    if (bekliyor) return;
+    bekliyor = true;
+    requestAnimationFrame(guncelle);
+  };
+
+  window.addEventListener('scroll', planla, { passive: true });
+  window.addEventListener('resize', planla, { passive: true });
+
+  // Nav tıklaması: hedefi hemen işaretle (yumuşak kaydırma boyunca
+  // titremesin), kaydırma bitince ölçüm zaten doğrulayacak.
+  for (const t of targets) {
+    t.link.addEventListener('click', () => setActive(t.link));
+  }
+
+  guncelle();
 })();
 
 /* ── HERO PARALLAX ────────────────────────────────────────────────────
