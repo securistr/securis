@@ -54,8 +54,16 @@
 
   /* ── RENK: durum ─────────────────────────────────────────────────── */
   --live: #ef4444;          /* kayıt/canlı noktası */
-  --wa: #25d366;            /* WhatsApp marka yeşili */
-  --wa-dark: #128c7e;
+  /* WhatsApp — CTA HIYERARSISI:
+     birincil eylem "Hemen Ara" (camgöbeği dolu). WhatsApp ikincil olmalı,
+     bu yüzden koyu yüzeylerde DOLU değil TONAL kullanılır: yeşil kimliği
+     korunur ama lacivert + camgöbeği sisteminde üçüncü bir baskın vurgu
+     rengi oluşturmaz. Mobil aksiyon barı istisnadır (tek dokunma hedefi). */
+  --wa: #25d366;                       /* marka referansı */
+  --wa-solid: #22c55e;                 /* mobil bar dolgusu — daha az neon */
+  --wa-text: #6ff0a6;                  /* koyu zeminde metin/ikon */
+  --wa-tint: rgba(37, 211, 102, 0.12); /* tonal dolgu */
+  --wa-line: rgba(37, 211, 102, 0.46); /* tonal kenar */
 
   /* ── TİPOGRAFİ ─────────────────────────────────────────────────────
      Aileler Faz 1'den değişmedi (Inter / Space Grotesk / JetBrains Mono).

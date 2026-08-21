@@ -81,20 +81,51 @@ export function initNavScroll() {
 }
 
 /**
- * Mobil CTA butonlarına sayfa yüklendikten birkaç saniye sonra TEK SEFERLİK
- * bir nabız — dikkat çeker, sürekli/rahatsız edici değildir.
+ * Kalıcı mobil CTA barı — hero geçildikten SONRA görünür.
+ *
+ * Faz 2'de bar sayfa açılır açılmaz duruyordu ve hero'daki "Hemen Ara /
+ * WhatsApp" butonlarıyla aynı aksiyonları tekrar ediyordu; ilk ekranda bu
+ * tekrar premium görünümü zayıflatıyordu.
+ *
+ * Yeni davranış: hero büyük ölçüde ekrandan çıkınca bar belirir, kullanıcı
+ * hero'ya geri dönerse yeniden gizlenir. Bar `position: fixed` olduğu ve
+ * `body` alt boşluğu sabit kaldığı için layout shift oluşmaz.
+ *
+ * Dikkat çekici tek seferlik nabız artık zamana değil, barın İLK KEZ
+ * görünür olmasına bağlı — görünmezken boşa harcanmıyor.
  */
-export function initMobileCtaPulse() {
-  if (prefersReducedMotion()) return;
-  const mabBtns = document.querySelectorAll('.mab-btn');
-  if (!mabBtns.length) return;
+export function initMobileCtaReveal() {
+  const bar = document.querySelector('.mobile-action-bar');
+  if (!bar) return;
 
-  setTimeout(() => {
-    mabBtns.forEach((btn) => {
+  const hero = document.getElementById('hero') || document.querySelector('.page-hero');
+
+  // Hero yoksa (beklenmedik durum) barı gizli bırakma — erişilebilir kalsın.
+  if (!hero || !('IntersectionObserver' in window)) {
+    bar.classList.add('is-visible');
+    return;
+  }
+
+  let pulsed = false;
+  const pulse = () => {
+    if (pulsed || prefersReducedMotion()) return;
+    pulsed = true;
+    bar.querySelectorAll('.mab-btn').forEach((btn) => {
       btn.classList.add('pulse-once');
       btn.addEventListener('animationend', () => btn.classList.remove('pulse-once'), { once: true });
     });
-  }, 2500);
+  };
+
+  const io = new IntersectionObserver(
+    ([e]) => {
+      // Hero'nun %15'inden azı görünüyorsa "hero geçildi" sayılır.
+      const gecildi = !e.isIntersecting;
+      bar.classList.toggle('is-visible', gecildi);
+      if (gecildi) pulse();
+    },
+    { threshold: 0.15 }
+  );
+  io.observe(hero);
 }
 
 /**
@@ -187,7 +218,11 @@ export function initReveal() {
         obs.unobserve(e.target);
       }
     },
-    { rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
+    // Eşik bilinçli olarak gevşek: Faz 2'de `-12% / 0.08` ayarı, katlamanın
+    // hemen ALTINDA kalan bir başlığın hiç tetiklenmemesine yol açıyordu —
+    // alt sayfalarda hero'dan sonra "içerik yüklenmemiş" hissi veriyordu.
+    // Artık öğe görünür alana girer girmez beliriyor.
+    { rootMargin: '0px 0px -5% 0px', threshold: 0 }
   );
   els.forEach((el) => io.observe(el));
 }

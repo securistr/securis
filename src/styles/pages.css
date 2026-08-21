@@ -16,7 +16,7 @@
   background: var(--ink-900);
   color: var(--text-on-ink);
   padding-top: calc(var(--nav-h) + clamp(28px, 4vw, 52px));
-  padding-bottom: clamp(40px, 4.5vw, 64px);
+  padding-bottom: clamp(32px, 3.4vw, 48px);
 }
 
 .page-hero::before {
@@ -107,6 +107,11 @@
 .page-body > .section:nth-of-type(even) { background: var(--paper-alt); }
 
 .page-body .section { padding-block: var(--section-tight); }
+
+/* İLK bölüm daha yakın başlar: 1440x900'de hero bittikten sonra ekranın
+   kalanı boş kalıyor ve "içerik yüklenmemiş" hissi veriyordu. Premium
+   boşluk korunuyor, ama katlamanın altında ölü alan bırakılmıyor. */
+.page-body > .section:first-of-type { padding-top: clamp(34px, 3.4vw, 52px); }
 
 .prose p {
   color: var(--text-dim);

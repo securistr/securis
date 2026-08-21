@@ -208,13 +208,17 @@ a { color: inherit; }
   box-shadow: var(--shadow-md);
 }
 
+/* Tonal: ikincil ağırlık. Koyu yüzeylerde kullanılır (hero, CTA bandı,
+   iletişim kartları) — sitede açık zeminde .btn--wa yoktur. */
 .btn--wa {
-  --btn-bg: var(--wa);
-  --btn-fg: #04331d;
+  --btn-bg: var(--wa-tint);
+  --btn-fg: var(--wa-text);
+  --btn-bd: var(--wa-line);
 }
 .btn--wa:hover {
-  --btn-bg: #3ddb7a;
-  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.28);
+  --btn-bg: rgba(37, 211, 102, 0.2);
+  --btn-bd: rgba(37, 211, 102, 0.72);
+  --btn-fg: #8df7bd;
 }
 
 .btn--ghost {

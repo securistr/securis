@@ -204,14 +204,86 @@
 .panel-list { list-style: none; }
 .panel-row {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: var(--space-md);
-  align-items: start;
+  align-items: center;
   padding: var(--space-md);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   transition: background var(--motion-fast) var(--ease-standard);
 }
 .panel-row:hover { background: rgba(255, 255, 255, 0.03); }
+
+/* ── Panel görsel sinyali ──────────────────────────────────────────
+   Bunlar "fotoğraf kartı" değil, teknik arayüzün içindeki görsel veri.
+   Bu yüzden: küçük, düşük doygunlukta, lacivert bir katmanın altında ve
+   ince bir çerçeveyle panele gömülü. Metinle yarışmazlar.
+
+   Sabit 72×72 kutu + object-fit:cover; görsellerin kendi en-boy oranı
+   değişse bile satır yüksekliği sabit kalır (CLS oluşmaz).            */
+.panel-thumb {
+  position: relative;
+  display: block;
+  flex: none;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  background: var(--ink-800);
+  transition: border-color var(--motion-normal) var(--ease-standard);
+}
+.panel-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Neredeyse tek renk + lacivert katman: görsel panelin rengine uyar.
+     Kontrast biraz yükseltilir ki konu 72px'te seçilebilsin. */
+  filter: saturate(0.34) brightness(0.86) contrast(1.16);
+  transition: transform var(--motion-slow) var(--ease-out),
+    filter var(--motion-slow) var(--ease-standard);
+}
+/* Lacivert katman + çok hafif camgöbeği tonu */
+.panel-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(160deg, rgba(103, 232, 249, 0.12), transparent 55%),
+    linear-gradient(0deg, rgba(10, 23, 48, 0.6), rgba(10, 23, 48, 0.26));
+  pointer-events: none;
+}
+
+/* ── "Canlı görüntü karesi" katmanı ────────────────────────────────
+   Kritik ayrım: bunlar fotoğraf DEĞİL, bir izleme arayüzündeki kare.
+   Çok ince tarama çizgileri + sol üstte camgöbeği köşe ayracı bu okumayı
+   kuruyor. İkisi de düşük alfada; parlama (glow) yok.                  */
+.panel-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(103, 232, 249, 0.6) 0 11px, transparent 11px) top left / 100% 1.5px no-repeat,
+    linear-gradient(180deg, rgba(103, 232, 249, 0.6) 0 11px, transparent 11px) top left / 1.5px 100% no-repeat,
+    linear-gradient(270deg, rgba(103, 232, 249, 0.6) 0 11px, transparent 11px) bottom right / 100% 1.5px no-repeat,
+    linear-gradient(0deg, rgba(103, 232, 249, 0.6) 0 11px, transparent 11px) bottom right / 1.5px 100% no-repeat,
+    repeating-linear-gradient(180deg, rgba(160, 220, 255, 0.06) 0 1px, transparent 1px 3px);
+}
+
+/* Sakin etkileşim: 1.03 ölçek + kenar vurgusu. Glow yok, sıçrama yok. */
+@media (hover: hover) and (pointer: fine) {
+  .panel-row:hover .panel-thumb { border-color: rgba(103, 232, 249, 0.42); }
+  .panel-row:hover .panel-thumb img {
+    transform: scale(1.03);
+    filter: saturate(0.66) brightness(0.9) contrast(1.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel-thumb img { transition: none; }
+  .panel-row:hover .panel-thumb img { transform: none; }
+}
 .panel-n {
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
@@ -815,8 +887,23 @@
   }
 }
 
+/* ── MOBİL HERO KOMPOZİSYONU ────────────────────────────────────────
+   390px'de panel ekranın en altında yarım kalıyordu. Öncelik sırası
+   korunuyor (eyebrow → H1 → lead → CTA → keşif → panel); H1 küçültülmüyor.
+   Panel daha sıkı: daha düşük dolgu, daha kompakt satır, küçük thumbnail. */
 @media (max-width: 600px) {
-  .hero { padding-top: calc(var(--nav-h) + 40px); }
+  .hero { padding-top: calc(var(--nav-h) + 32px); }
+
+  .hero-panel { border-radius: var(--r-md); }
+  .panel-head { padding: var(--space-xs) var(--space-sm); }
+  .panel-row {
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+  .panel-t { font-size: 0.97rem; }
+  .panel-d { font-size: var(--fs-xs); }
+  .panel-thumb { width: 52px; height: 52px; }
+  .panel-foot { padding: var(--space-xs) var(--space-sm); }
   .hero-stats {
     grid-template-columns: 1fr;
     gap: var(--space-sm);

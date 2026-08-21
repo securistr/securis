@@ -40,10 +40,32 @@ const jsonLd = homeSchema({ bolgeler, hizmetler, sss: anasayfa.sss.items });
 
 /* Hero sağ panelindeki yetenek satırları — Faz 1'deki showcase kartlarının
    aynı metinleri, teknik okuma paneli biçiminde. */
+/* Görseller mevcut proje asset'lerinden; yeni stok görsel eklenmedi.
+   Seçim dosya adına göre değil, 72px kırpma ölçeğinde gerçek görüntüye
+   bakılarak yapıldı (bkz. Faz 2.6 raporu A bölümü). */
 const yetenekler = [
-  { n: '01', t: 'Kamera Sistemleri', d: 'Yüksek Çözünürlüklü İzleme', live: true },
-  { n: '02', t: 'Firewall Güvenliği', d: 'Veri ve Ağ Koruma Kalkanı' },
-  { n: '03', t: 'Yüksek Hızlı Bağlantı', d: 'Switch & Access Point Çözümleri' },
+  {
+    n: '01',
+    t: 'Kamera Sistemleri',
+    d: 'Yüksek Çözünürlüklü İzleme',
+    live: true,
+    img: '/assets/img/cctv-security-camera.webp',
+    alt: 'Bina cephesine monte edilmiş IP güvenlik kamerası',
+  },
+  {
+    n: '02',
+    t: 'Firewall Güvenliği',
+    d: 'Veri ve Ağ Koruma Kalkanı',
+    img: '/assets/img/server-rack-close-up.webp',
+    alt: 'Kurumsal sunucu kabini ve ağ portları yakın çekim',
+  },
+  {
+    n: '03',
+    t: 'Yüksek Hızlı Bağlantı',
+    d: 'Switch & Access Point Çözümleri',
+    img: '/assets/img/wireless-access-point.webp',
+    alt: 'Çalışır durumda kablosuz ağ erişim noktası cihazı',
+  },
 ];
 
 const istatistikler = [
@@ -203,6 +225,9 @@ const cozumler = [
                       {y.live && <i class="rec-dot" aria-hidden="true" />}
                     </span>
                     <span class="panel-d">{y.d}</span>
+                  </span>
+                  <span class="panel-thumb" aria-hidden="true">
+                    <img src={y.img} alt="" width="1200" height="800" loading="eager" decoding="async" />
                   </span>
                 </li>
               ))

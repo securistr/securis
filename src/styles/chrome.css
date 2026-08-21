@@ -54,7 +54,7 @@ header { position: relative; z-index: var(--z-nav); }
 #siteNav.nav--scrolled::before { opacity: 0; }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  nav.nav--scrolled { background: rgba(7, 16, 38, 0.97); }
+  #siteNav.nav--scrolled { background: rgba(7, 16, 38, 0.97); }
 }
 
 /* ── LOGO ───────────────────────────────────────────────────────────
@@ -116,25 +116,29 @@ header { position: relative; z-index: var(--z-nav); }
 }
 #siteNav ul a.nav-link[aria-current='true']::after { width: 100%; }
 
-/* Menüdeki birincil eylem */
+/* Menüdeki eylem — CTA HIYERARSISI:
+   hero'daki "Hemen Ara" birincil eylemdir. Navbar CTA'sı Faz 2'de onunla
+   aynı dolu camgöbeği tonundaydı ve ilk ekranda iki eşit ağırlıklı birincil
+   buton oluşuyordu. Artık çerçeveli (outline): tanınır ve erişilebilir
+   kalır, ama hero'nun birincil eylemiyle yarışmaz. */
 .nav-cta {
-  --btn-bg: var(--signal-400);
   min-height: 40px;
   padding: 0 var(--space-md);
+  border: 1px solid rgba(103, 232, 249, 0.55);
   border-radius: var(--r-sm);
-  background: var(--btn-bg);
-  color: #04202c !important;
-  font-weight: 700 !important;
+  background: rgba(103, 232, 249, 0.08);
+  color: var(--signal-300) !important;
+  font-weight: 600 !important;
   transition:
     background var(--motion-fast) var(--ease-standard),
-    transform var(--motion-fast) var(--ease-standard),
-    box-shadow var(--motion-normal) var(--ease-standard);
+    border-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
 }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover {
-  background: var(--signal-300);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-signal);
+  background: var(--signal-400);
+  border-color: var(--signal-400);
+  color: #04202c !important;
 }
 
 /* ── HAMBURGER ─────────────────────────────────────────────────────── */
@@ -213,12 +217,17 @@ header { position: relative; z-index: var(--z-nav); }
   #siteNav ul a::after { display: none; }
 
   #siteNav ul .nav-cta-wrap { border-bottom: 0; margin-top: var(--space-lg); }
+  /* Mobil panelde hero butonlariyla ayni ekranda degil; dolu kalabilir */
   .nav-cta {
     display: flex !important;
     align-items: center;
     justify-content: center;
     min-height: 52px;
     font-size: 1rem;
+    background: var(--signal-400);
+    border-color: var(--signal-400);
+    color: #04202c !important;
+    font-weight: 700 !important;
   }
 
   /* Panel açılırken öğeler sırayla belirir */
@@ -346,6 +355,10 @@ footer::before {
 .mobile-action-bar { display: none; }
 
 @media (max-width: 900px) {
+  /* Bar hero geçildikten sonra belirir (bkz. ui-common.js →
+     initMobileCtaReveal). `position: fixed` olduğu ve body'nin alt
+     boşluğu SABİT kaldığı için görünüp kaybolması layout shift yaratmaz.
+     Gizliyken pointer olaylarını da almaz. */
   .mobile-action-bar {
     position: fixed;
     inset: auto 0 0 0;
@@ -357,6 +370,20 @@ footer::before {
     background: rgba(255, 255, 255, 0.1);
     border-top: 1px solid var(--line);
     box-shadow: 0 -8px 28px rgba(15, 32, 64, 0.14);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition:
+      transform var(--motion-normal) var(--ease-out),
+      opacity var(--motion-fast) var(--ease-standard),
+      visibility 0s linear var(--motion-normal);
+  }
+  .mobile-action-bar.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
   }
   .mab-btn {
     display: flex;
@@ -371,7 +398,7 @@ footer::before {
   }
   .mab-btn:active { filter: brightness(0.94); }
   .mab-call { background: var(--ink-700); color: #fff; }
-  .mab-wa { background: var(--wa); color: #04331d; }
+  .mab-wa { background: var(--wa-solid); color: #04240f; }
   .mab-icon { display: inline-flex; }
   .mab-icon svg {
     width: 18px;

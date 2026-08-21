@@ -10,13 +10,13 @@
 import {
   initMobileMenu,
   initNavScroll,
-  initMobileCtaPulse,
+  initMobileCtaReveal,
   initFaqAccordion,
   initReveal,
 } from './ui-common.js';
 
 initMobileMenu();
 initNavScroll();
-initMobileCtaPulse();
+initMobileCtaReveal();
 initFaqAccordion();
 initReveal();

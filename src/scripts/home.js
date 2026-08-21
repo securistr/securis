@@ -22,7 +22,7 @@
 import {
   initMobileMenu,
   initNavScroll,
-  initMobileCtaPulse,
+  initMobileCtaReveal,
   initFaqAccordion,
   initReveal,
   prefersReducedMotion,
@@ -30,7 +30,7 @@ import {
 
 initMobileMenu();
 initNavScroll();
-initMobileCtaPulse();
+initMobileCtaReveal();
 initFaqAccordion();
 initReveal();
 
