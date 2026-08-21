@@ -76,6 +76,19 @@ const istatistikler = [
 
 const markalar = ['DAHUA', 'HIKVISION', 'FORTINET', 'RUJIE / TP-LINK', 'MILESIGHT'];
 
+/* Şerit kaç kez tekrarlanacak?
+   Animasyon -50% kayar, yani şeridin YARISI kadar. Kaymadan sonra geriye
+   kalan içerik (KOPYA/2 grup) viewport'u DOLDURMAK zorundadır; aksi halde
+   son marka geçtikten sonra sağda boşluk açılır ve animasyon başa dönerken
+   sıçrama görünür. Kullanıcının bildirdiği hata tam olarak buydu: iki
+   kopyada 1920px'te kaymadan sonra ~838px boş kalıyordu.
+
+   Bir grubun adımı ~1073px (1920px'te). 8 kopya ile kaymadan sonra
+   4 grup = ~4292px içerik kalır; 4K genişliğe kadar her viewport'u
+   fazlasıyla doldurur. Öğeler kısa metin span'leri olduğu için maliyeti
+   ihmal edilebilir. */
+const MARQUEE_KOPYA = 8;
+
 /* Hizmet kartları — metinler Faz 1'den birebir. `span` yalnızca ızgara
    yerleşimini belirler (asimetrik katalog düzeni). */
 const hizmetKartlari = [
@@ -260,7 +273,7 @@ const cozumler = [
       </div>
       <div class="marquee">
         <div class="marquee-track">
-          {[...markalar, ...markalar].map((m) => <span class="brand">{m}</span>)}
+          {Array.from({ length: MARQUEE_KOPYA }, () => markalar).flat().map((m) => <span class="brand">{m}</span>)}
         </div>
       </div>
     </section>
