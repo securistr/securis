@@ -446,7 +446,7 @@
 
 /* Öne çıkan kart yatay: dikey akışta ikonla başlık arasında ölü boşluk
    kalıyordu. Izgara ile ikon solda, metin sağda hizalanıyor. */
-@media (min-width: 701px) {
+@media (min-width: 821px) {
   .svc--wide {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
@@ -552,12 +552,17 @@
 .svc--wide h3 { font-size: clamp(1.3rem, 2vw, 1.7rem); }
 .svc--wide p { font-size: var(--fs-body); }
 
+/* Tablet: ortadaki ÜÇ teknik hizmet tek satırda kalmalı. Eskiden 4
+   sütunlu ızgarada 2'şerli diziliyorlardı ve bu sefer 04 kartı yalnız
+   kalıyordu — orphan sorunu 05'ten 04'e kaymış oluyordu. */
 @media (max-width: 1080px) {
-  .svc-grid { grid-template-columns: repeat(4, 1fr); }
-  .svc { grid-column: span 2; }
-  .svc--wide { grid-column: span 4; }
+  .svc-grid { grid-template-columns: repeat(3, 1fr); }
+  .svc { grid-column: span 1; }
+  .svc--wide { grid-column: span 3; }
 }
-@media (max-width: 700px) {
+/* 820px altında üçlü satır sıkışıyor: tek sütuna geç. Öne çıkan kartlar
+   da burada dikey yerleşime döner (bkz. min-width: 821px kuralı). */
+@media (max-width: 820px) {
   .svc-grid { grid-template-columns: 1fr; }
   .svc, .svc--wide { grid-column: span 1; }
 }
