@@ -14,7 +14,7 @@
     b.type = 'button'; b.className = 'card'; b.dataset.i = i;
     b.setAttribute('aria-label', it.t.replace('\n', ' '));
     b.innerHTML = `<img src="${it.card}" alt="" draggable="false"${i > 2 ? ' loading="lazy"' : ''}>`;
-    b.addEventListener('click', () => { if (!suppressClick) go(i); });
+    b.addEventListener('click', e => { if (!suppressClick || e.detail === 0) go(i); }); // detail 0 = keyboard, never a swipe
     track.appendChild(b);
     descs.insertAdjacentHTML('beforeend', `<div class="desc" aria-hidden="true"><b>${pad2(i + 1)} — ${it.word}</b><p>${it.d}</p></div>`);
     words.insertAdjacentHTML('beforeend', `<span lang="en">${it.word}</span>`);
@@ -67,7 +67,9 @@
   }
 
   const titleEl = $('title');
+  let lastUser = 0; // any hand-driven step restarts the autoplay clock
   function go(next, auto = false) {
+    if (!auto) lastUser = performance.now();
     titleEl.setAttribute('aria-live', auto ? 'off' : 'polite'); // announce only what the visitor asked for
     next = clamp(next, 0, last);
     const changed = next !== index, dir = auto || next > index ? 1 : -1; // autoplay only ever steps forward, the wrap included
@@ -127,8 +129,10 @@
     if (!dragging) return;
     dragging = false; track.classList.remove('is-drag');
     if (!suppressClick) { go(e.type === 'pointerup' && downCard ? +downCard.dataset.i : index); return; } // a cancel is the browser taking a vertical scroll, not a tap
-    go(Math.round((anchor() - (x + v * 0.12) - cardW / 2) / step));
-    setTimeout(() => { suppressClick = false; }, 0);
+    // one card per flick; a long drag moves as many cards as it covered — velocity never adds extra cards
+    const dist = startTrack - x, cards = Math.round(dist / step);
+    go(index + (cards !== 0 ? cards : (Math.abs(dist) > Math.min(40, step * 0.2) || Math.abs(v) > 400 ? Math.sign(dist || -v) : 0)));
+    // suppressClick stays set until the next pointerdown: phones send the "click" for a swipe well after pointerup
   };
   track.addEventListener('pointerup', endDrag);
   track.addEventListener('pointercancel', endDrag);
@@ -141,7 +145,7 @@
     const delta = e.deltaX;
     if ((delta > 0 && index === last) || (delta < 0 && index === 0)) { acc = 0; return; }
     e.preventDefault();
-    if (e.timeStamp < until) return;
+    if (e.timeStamp < until) { until = e.timeStamp + 250; return; } // trackpad momentum keeps firing: one gesture = one step, unlock after 250ms of quiet
     acc += delta;
     if (Math.abs(acc) < 60) return;
     go(index + Math.sign(acc)); acc = 0; until = e.timeStamp + 420;
@@ -162,7 +166,7 @@
   stage.addEventListener('pointerleave', () => { hover = false; });
   stage.addEventListener('focusin', () => { focused = true; });
   stage.addEventListener('focusout', () => { focused = false; });
-  if (!reduce) setInterval(() => { if (!held && !hover && !focused && !dragging && !document.hidden && scrollY < innerHeight * 0.5) go(index === last ? 0 : index + 1, true); }, 4000); // 1.5s dissolve + 2.5s hold
+  if (!reduce) setInterval(() => { if (!held && !hover && !focused && !dragging && !document.hidden && scrollY < innerHeight * 0.5 && performance.now() - lastUser > 3900) go(index === last ? 0 : index + 1, true); }, 4000); // 1.5s dissolve + 2.5s hold
 
   /* backdrop: WebGL "noise morph". An fbm field, biased by the incoming frame's luminance, decides when each
      pixel flips; the two frames drift vertically against each other; quintic ease. One persistent .c/.m grade
@@ -349,7 +353,7 @@ void main() {
       kick();
     }
     function resize() {
-      const r = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.5 : 2);
+      const r = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.25 : 2);
       const w = Math.round(bg.clientWidth * r), h = Math.round(bg.clientHeight * r);
       if (w === cv.width && h === cv.height) return;
       cv.width = fcv.width = w; cv.height = fcv.height = h; gl.viewport(0, 0, w, h); cutClear = false;

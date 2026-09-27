@@ -144,7 +144,7 @@ void main() {
   }
   function resize() {
     if (dead) return;
-    const r = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.5 : 2);
+    const r = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.25 : 2);
     const w = Math.round(cv.clientWidth * r), h = Math.round(cv.clientHeight * r);
     if (!w || !h || (w === cv.width && h === cv.height)) return;
     cv.width = w; cv.height = h; gl.viewport(0, 0, w, h);

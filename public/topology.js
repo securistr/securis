@@ -8,7 +8,9 @@
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const N = 120, LINK = 0.45, CAM = 650, FOG_NEAR = 300, FOG_FAR = 950;
+  // phones: fewer nodes, 1x canvas, 30fps and fainter ink, so it stays a texture behind the copy, not noise on it
+  const small = innerWidth < 700 || matchMedia('(pointer: coarse)').matches;
+  const N = small ? 70 : 120, LINK = small ? 0.6 : 0.45, CAM = 650, FOG_NEAR = 300, FOG_FAR = 950;
   const nodes = [];
   for (let i = 0; i < N; i++) {
     const phi = Math.acos(-1 + (2 * i) / N), theta = Math.sqrt(N * Math.PI) * phi;
@@ -28,12 +30,12 @@
     const h = ctx.fillStyle; // normalised to #rrggbb
     rgb = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)).join(',');
     dark = root.dataset.theme !== 'light';
-    k = dark ? 0.5 : 0.42;
+    k = (dark ? 0.5 : 0.42) * (small ? 0.5 : 1);
   };
 
   let W = 0, H = 0, R = 0, cx = 0, cy = 0, f = 0;
   const resize = () => {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
+    const dpr = small ? 1 : Math.min(devicePixelRatio || 1, 2);
     W = innerWidth; H = innerHeight;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -93,8 +95,10 @@
   }
   new MutationObserver(readTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   const t0 = performance.now();
+  let odd = false;
   const loop = now => {
-    if (!covered()) draw((now - t0) / (1000 / 60)); // time in 60fps frames, as the original counted
+    odd = !odd;
+    if (!(small && odd) && !covered()) draw((now - t0) / (1000 / 60)); // time in 60fps frames, as the original counted
     requestAnimationFrame(loop);
   };
   requestAnimationFrame(loop);

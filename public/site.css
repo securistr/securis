@@ -87,8 +87,7 @@ address { font-style: normal; }
 .menu__top .kbtn:focus-visible { outline-color: var(--fg); } /* currentColor is the pill's own ink (= the ground colour): the ring would vanish */
 .menu.is-open .menu__top .kbtn { animation: kring 1.4s .75s 2 ease-out; }
 @keyframes kring { to { box-shadow: 0 0 0 14px rgba(194, 65, 12, 0); } }
-.foot__ig { display: inline-flex; align-items: center; gap: .35em; }
-.foot__ig .ic { width: 1.15em; height: 1.15em; }
+.foot__ig .ic { width: 1.1em; height: 1.1em; margin-right: .3em; vertical-align: -.2em; } /* inline, so it sits on the same baseline as the phone and e-mail links */
 .menu.is-open .menu__dim { opacity: 1; }
 .menu__panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(680px, 100%); transform: translateX(120%); transition: transform .7s var(--kin); }
 .menu.is-open .menu__panel { transform: none; transition: none; } /* opens in place; the sheets do the sweeping */
@@ -264,7 +263,8 @@ address { font-style: normal; }
 .steps h3 { font-weight: 600; font-size: clamp(22px, 1.8vw, 28px); letter-spacing: -.02em; line-height: 1.15; margin: 12px 0 10px; }
 .steps p { color: var(--fg-2); }
 .regs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.regs a { display: flex; align-items: center; gap: 16px; padding: 24px 26px; background: var(--bg); font-size: clamp(20px, 1.8vw, 28px); font-weight: 600; letter-spacing: -.015em; transition: background-color .25s; }
+.regs li { display: flex; } /* every cell fills its row, so a two-line name never leaves a grey gap beside it */
+.regs a { flex: 1; display: flex; align-items: center; gap: 16px; padding: 24px 26px; background: var(--bg); font-size: clamp(20px, 1.8vw, 28px); font-weight: 600; letter-spacing: -.015em; transition: background-color .25s; }
 .regs a span { flex: 1; line-height: 1.2; }
 .regs small { font-size: 13px; color: var(--dim); }
 .regs .ic { color: var(--dim); transition: transform .35s var(--ease), color .25s; }
@@ -402,7 +402,7 @@ address { font-style: normal; }
 .foot { border-top: 1px solid var(--line); padding: 44px var(--gut) 56px; color: var(--dim); font-size: 16px; }
 .foot__in { display: grid; grid-template-columns: auto 1fr auto; gap: 14px 40px; align-items: center; }
 .foot img { height: 32px; width: auto; filter: var(--logo); }
-.foot address { display: grid; gap: 4px; }
+.foot address { display: grid; gap: 4px; justify-items: start; } /* links only as wide as their text, not the whole row */
 .foot a:hover { color: var(--fg); }
 .foot nav { grid-column: 1 / -1; font-size: 14px; }
 
@@ -442,6 +442,7 @@ address { font-style: normal; }
   .sheet { overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 calc(var(--gut) * -1); padding: 14px var(--gut) 4px; scroll-padding-inline: var(--gut); scrollbar-width: none; }
   .grade--wide img { transform: scale(1.1); object-position: 50% 30%; }
   .sheet__frame { flex: 0 0 34%; scroll-snap-align: start; }
+  .sheet__frame.is-on::after { inset: -8px -9px 10px -8px; } /* tighter ring on small frames so it stays off the caption */
   .sheet__frame.is-on { flex: 0 0 58%; }
   .meta { display: none; }
   .regs { grid-template-columns: 1fr; }
