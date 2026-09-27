@@ -177,7 +177,7 @@ address { font-style: normal; }
 .subj__cut .c { mix-blend-mode: color; }
 .subj__cut .m { mix-blend-mode: multiply; opacity: .55; }
 .subj__cut .w { background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.32) 38%, rgba(0,0,0,.36) 62%, rgba(0,0,0,.75)); }
-.words { position: absolute; z-index: 1; left: 0; right: 0; top: calc(var(--top) + var(--fullH) * .5 - var(--title) * .35); pointer-events: none; }
+.words { position: absolute; z-index: 3; /* over the cut-out subject (2), under the strip and descriptions (3, later in the markup) so the lit word is always whole */ left: 0; right: 0; top: calc(var(--top) + var(--fullH) * .5 - var(--title) * .35); pointer-events: none; }
 .words__track { display: flex; white-space: nowrap; will-change: transform; }
 .words__track span { font: 700 calc(var(--title) * 2.3)/1 var(--f); letter-spacing: -.04em; padding-right: .35em; }
 /* outline words as SVG: a faint contour, plus light that runs along every letter's outline on the active word */
