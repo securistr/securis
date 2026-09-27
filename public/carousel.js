@@ -17,11 +17,22 @@
     b.addEventListener('click', e => { if (!suppressClick || e.detail === 0) go(i); }); // detail 0 = keyboard, never a swipe
     track.appendChild(b);
     descs.insertAdjacentHTML('beforeend', `<div class="desc" aria-hidden="true"><b>${pad2(i + 1)} — ${it.word}</b><p><span>${it.d}</span></p></div>`);
-    words.insertAdjacentHTML('beforeend', `<span lang="en">${it.word}</span>`);
+    words.insertAdjacentHTML('beforeend', `<span lang="en"><svg class="wsvg" aria-hidden="true"><text class="wb">${it.word}</text><text class="wh">${it.word}</text><text class="wg">${it.word}</text></svg></span>`);
   });
   const cards = [...track.children], descEls = [...descs.children], wordEls = [...words.children];
   $('tot').textContent = pad2(ITEMS.length);
   $('thumb').style.width = `${100 / ITEMS.length}%`;
+
+  /* each word's svg is sized to its own text box, so the strip's offsetLeft maths works as it did with plain text */
+  function fitWords() {
+    wordEls.forEach(sp => {
+      const svg = sp.firstElementChild, bb = svg.firstElementChild.getBBox();
+      if (!bb.width) return;
+      svg.setAttribute('viewBox', `${bb.x} ${bb.y} ${bb.width} ${bb.height}`);
+      svg.style.width = bb.width + 'px'; svg.style.height = bb.height + 'px';
+    });
+  }
+  document.fonts?.ready.then(() => { fitWords(); paint(); });
 
   /* geometry measured off the stage; every size is a ratio of it */
   let W = 0, H = 0, fullH = 0, cardW = 0, step = 0, pad = 0, descW = 0;
@@ -36,6 +47,7 @@
     s.setProperty('--fullH', fullH + 'px'); s.setProperty('--cardW', cardW + 'px'); s.setProperty('--gap', gap + 'px');
     s.setProperty('--pad', pad + 'px'); s.setProperty('--label', label + 'px'); s.setProperty('--descW', descW + 'px');
     s.setProperty('--title', Math.max(40, Math.round(Math.min(H * 0.095, W * 0.13))) + 'px');
+    fitWords();
     x = xFor(index); vel = 0; paint();
     if (morph) morph.resize();
   }

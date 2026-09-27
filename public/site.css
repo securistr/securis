@@ -179,8 +179,19 @@ address { font-style: normal; }
 .subj__cut .w { background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.32) 38%, rgba(0,0,0,.36) 62%, rgba(0,0,0,.75)); }
 .words { position: absolute; z-index: 1; left: 0; right: 0; top: calc(var(--top) + var(--fullH) * .5 - var(--title) * .35); pointer-events: none; }
 .words__track { display: flex; white-space: nowrap; will-change: transform; }
-.words__track span { font: 700 calc(var(--title) * 2.3)/1 var(--f); letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.14); padding-right: .35em; transition: -webkit-text-stroke-color .6s; }
-.words__track span.is-on { -webkit-text-stroke-color: rgba(255,255,255,.34); }
+.words__track span { font: 700 calc(var(--title) * 2.3)/1 var(--f); letter-spacing: -.04em; padding-right: .35em; }
+/* outline words as SVG: a faint contour, plus light that runs along every letter's outline on the active word */
+.wsvg { display: block; overflow: visible; }
+.wsvg text { font: inherit; letter-spacing: inherit; fill: none; }
+.wb { stroke: rgba(255, 255, 255, .2); stroke-width: 1px; transition: stroke .6s; }
+.is-on .wb { stroke: rgba(255, 255, 255, .42); }
+.wh, .wg { stroke-linecap: round; stroke-dasharray: .5em 2.4em; opacity: 0; transition: opacity .6s; }
+.wh { stroke: rgba(255, 255, 255, .22); stroke-width: 6px; } /* soft halo, no filter: cheap to repaint */
+.wg { stroke: #fff; stroke-width: 1.6px; }
+.is-on :is(.wh, .wg) { opacity: 1; animation: trace 5s linear infinite; }
+@keyframes trace { to { stroke-dashoffset: -2.9em; } }
+@media (prefers-reduced-motion: reduce) { .is-on :is(.wh, .wg) { animation: none; opacity: 0; } }
+html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 .head { position: absolute; z-index: 4; left: 0; right: 0; top: 0; height: var(--top); padding: 0 var(--pad) calc(var(--title) * .36); display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 5vw; pointer-events: none; }
 .head a { pointer-events: auto; }
 .title { font-weight: 600; font-size: var(--title); line-height: .95; letter-spacing: -.035em; }
