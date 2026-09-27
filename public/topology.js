@@ -10,6 +10,8 @@
 
   // phones: fewer nodes, 1x canvas, 30fps and fainter ink, so it stays a texture behind the copy, not noise on it
   const small = innerWidth < 700 || matchMedia('(pointer: coarse)').matches;
+  const B = 6, LINE_MAX = 0.52, DOT_MAX = 1.4; // ink buckets: each frame is 2×B draw calls
+  let LINE_INK = [], DOT_INK = [];
   const N = small ? 70 : 120, LINK = small ? 0.6 : 0.45, CAM = 650, FOG_NEAR = 300, FOG_FAR = 950;
   const nodes = [];
   for (let i = 0; i < N; i++) {
@@ -31,12 +33,16 @@
     rgb = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)).join(',');
     dark = root.dataset.theme !== 'light';
     k = (dark ? 0.5 : 0.42) * (small ? 0.5 : 1);
+    LINE_INK = Array.from({ length: B }, (_, b) => `rgba(${rgb},${(((b + 0.5) / B) * LINE_MAX * k).toFixed(3)})`);
+    DOT_INK = Array.from({ length: B }, (_, b) => `rgba(${rgb},${(((b + 0.5) / B) * DOT_MAX * k).toFixed(3)})`);
   };
 
   let W = 0, H = 0, R = 0, cx = 0, cy = 0, f = 0;
   const resize = () => {
-    const dpr = small ? 1 : Math.min(devicePixelRatio || 1, 2);
-    W = innerWidth; H = innerHeight;
+    const dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2);
+    // the canvas is sized to the large viewport (100lvh), so a phone's address bar sliding in and out never reallocates it mid-scroll
+    if (W === cv.clientWidth && H === cv.clientHeight) return;
+    W = cv.clientWidth; H = cv.clientHeight;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     R = W > 768 ? 380 : 200;
@@ -47,7 +53,10 @@
 
   /* photo zones are opaque; skip frames while one fills the viewport */
   const zones = [...document.querySelectorAll('.stage, .hero:not(.hero--plain), .close, .pj__stage')];
-  const covered = () => zones.some(z => { const r = z.getBoundingClientRect(); return r.top <= 0 && r.bottom >= H; });
+  const seen = new Map();
+  const io = new IntersectionObserver(es => es.forEach(e => seen.set(e.target, e.intersectionRect.height)), { threshold: Array.from({ length: 51 }, (_, i) => i / 50) });
+  zones.forEach(z => io.observe(z));
+  const covered = () => { for (const h of seen.values()) if (h >= innerHeight - 2) return true; return false; };
 
   const P = new Float32Array(N * 4); // screen x, y, depth, fog-alpha
   function draw(t) {
@@ -71,17 +80,22 @@
       P[i * 4 + 3] = 1 - Math.min(1, Math.max(0, (d - FOG_NEAR) / (FOG_FAR - FOG_NEAR)));
     }
     ctx.lineWidth = 1;
-    for (const [i, j, a] of links) {
-      const alpha = a * k * (P[i * 4 + 3] + P[j * 4 + 3]) / 2;
-      if (alpha < 0.01) continue;
-      ctx.strokeStyle = `rgba(${rgb},${alpha.toFixed(3)})`;
-      ctx.beginPath(); ctx.moveTo(P[i * 4], P[i * 4 + 1]); ctx.lineTo(P[j * 4], P[j * 4 + 1]); ctx.stroke();
+    for (let b = 0; b < B; b++) { ctx.strokeStyle = LINE_INK[b]; ctx.beginPath(); let any = false;
+      for (const [i, j, a] of links) {
+        const q = a / 0.52 * (P[i * 4 + 3] + P[j * 4 + 3]) / 2; // 0..1 of the brightest possible line
+        if (q < 0.02 || Math.min(B - 1, q * B | 0) !== b) continue;
+        ctx.moveTo(P[i * 4], P[i * 4 + 1]); ctx.lineTo(P[j * 4], P[j * 4 + 1]); any = true;
+      }
+      if (any) ctx.stroke();
     }
-    for (let i = 0; i < N; i++) {
-      const n = nodes[i], pulse = (Math.sin(t * n.speed + n.off) + 1) / 2;
-      const r = (n.size + pulse * 1.8) * P[i * 4 + 2];
-      ctx.fillStyle = `rgba(${rgb},${((0.4 + pulse * 0.6) * k * 1.4 * P[i * 4 + 3]).toFixed(3)})`;
-      ctx.beginPath(); ctx.arc(P[i * 4], P[i * 4 + 1], Math.max(r, 0.6), 0, Math.PI * 2); ctx.fill();
+    for (let b = 0; b < B; b++) { ctx.fillStyle = DOT_INK[b]; ctx.beginPath(); let any = false;
+      for (let i = 0; i < N; i++) {
+        const n = nodes[i], pulse = (Math.sin(t * n.speed + n.off) + 1) / 2, q = (0.4 + pulse * 0.6) * P[i * 4 + 3];
+        if (Math.min(B - 1, q * B | 0) !== b) continue;
+        const r = Math.max((n.size + pulse * 1.8) * P[i * 4 + 2], 0.6), x = P[i * 4], y = P[i * 4 + 1];
+        ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, Math.PI * 2); any = true;
+      }
+      if (any) ctx.fill();
     }
   }
 
@@ -95,10 +109,8 @@
   }
   new MutationObserver(readTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   const t0 = performance.now();
-  let odd = false;
   const loop = now => {
-    odd = !odd;
-    if (!(small && odd) && !covered()) draw((now - t0) / (1000 / 60)); // time in 60fps frames, as the original counted
+    if (!covered()) draw((now - t0) / (1000 / 60)); // time in 60fps frames, as the original counted
     requestAnimationFrame(loop);
   };
   requestAnimationFrame(loop);

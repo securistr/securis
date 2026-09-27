@@ -22,7 +22,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { background: var(--bg); scrollbar-color: var(--line-2) var(--bg); -webkit-text-size-adjust: 100%; }
 html.menu-open { overflow: hidden; }
-.topo { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
+.topo { position: fixed; left: 0; top: 0; z-index: -1; width: 100%; height: 100vh; height: 100lvh; pointer-events: none; } /* large viewport: the address bar never resizes it */
 body { margin: 0; background: transparent; /* html carries the ground so the fixed .topo canvas can sit between it and the page */ color: var(--fg); font: 400 clamp(18px, 1.2vw, 20px)/1.65 var(--f); -webkit-font-smoothing: antialiased; }
 h1, h2, h3, p, ul, ol { margin: 0; padding: 0; } ul, ol { list-style: none; }
 a { color: inherit; text-decoration: none; }
