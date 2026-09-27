@@ -59,6 +59,8 @@ address { font-style: normal; }
 .bar__logo img { height: clamp(32px, 3.2vw, 46px); width: auto; filter: brightness(0) invert(1); }
 .is-legal .bar__logo img { filter: var(--logo); }
 .bar__end { display: flex; align-items: center; gap: clamp(6px, 1.4vw, 18px); }
+/* the actions follow the screen: a small theme-aware pill, no blur (cheap to composite while scrolling) */
+.bar__end { position: fixed; z-index: 40; top: clamp(14px, 2.4vh, 26px); right: var(--gut); padding: 3px 6px 3px 12px; border-radius: 999px; background: var(--menu-bg); color: var(--fg); border: 1px solid var(--line); box-shadow: 0 6px 24px -12px rgba(0, 0, 0, .5); }
 .theme { width: 44px; justify-content: center; padding: 0; }
 .theme__ic { width: 24px; height: 24px; overflow: visible; }
 .theme__half, .theme__ring { transform-origin: 120px 120px; transition: rotate .5s cubic-bezier(.65, 0, .35, 1); }
@@ -208,7 +210,14 @@ address { font-style: normal; }
 .desc { flex: none; width: var(--descW); padding-right: 4vw; opacity: .22; transition: opacity .5s; }
 .desc.is-on { opacity: 1; }
 .desc b { display: block; font: 500 var(--label)/1.4 var(--mono); letter-spacing: .08em; margin-bottom: .6em; opacity: .95; }
-.desc p { font-size: clamp(17px, calc(var(--label) * 1.6), 22px); text-shadow: 0 1px 12px rgba(0,0,0,.45); line-height: 1.5; max-width: 48ch; text-wrap: pretty; }
+.desc p { font-size: clamp(17px, calc(var(--label) * 1.6), 22px); line-height: 1.75; max-width: 48ch; text-wrap: pretty; }
+/* legibility over bright frames: every line of the description sits on its own dark highlight band, like a film subtitle */
+.desc p span { background: rgba(0, 0, 0, .56); padding: .14em .45em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.desc b { display: inline-block; background: rgba(0, 0, 0, .56); padding: .3em .55em; }
+.credit span, .meta span { display: inline-block; background: rgba(0, 0, 0, .56); padding: .35em .6em; text-shadow: none; }
+.more { background: rgba(0, 0, 0, .5); padding: 10px 14px; border: 1px solid rgba(255, 255, 255, .4); text-shadow: none; }
+/* a soft local shade behind the title only, instead of darkening the whole photo */
+.head::before { content: ""; position: absolute; z-index: -1; left: 0; bottom: 0; width: min(900px, 80%); height: 120%; background: radial-gradient(ellipse at 18% 78%, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0) 62%); pointer-events: none; }
 .rail { position: absolute; z-index: 4; left: var(--pad); bottom: max(16px, 2.4%); width: calc(max(150px, 20%) + 58px); display: flex; align-items: center; gap: 14px; font-size: var(--label); font-variant-numeric: tabular-nums; }
 .rail__in { flex: 1; min-width: 0; }
 .rail__nums { display: flex; justify-content: space-between; }
@@ -422,6 +431,7 @@ address { font-style: normal; }
   .kbtn .kbtn__lbl, .kbtn .kbtn__lbl span { position: static; width: auto; height: auto; overflow: visible; clip: auto; } /* a bare plus doesn't read as "menu": the word stays on phones */
   .kbtn .kbtn__lbl { height: 1.25em; overflow: hidden; }
   .credit { flex-basis: 100%; }
+  .more { padding: 8px 10px; } /* keeps clear of the slide counter on the same row */
   .bar__end { gap: 2px; }
   .members__list a { grid-template-columns: auto minmax(0, 1fr) auto; gap: 4px 14px; }
   .members__n { display: none; }
@@ -564,3 +574,10 @@ address { font-style: normal; }
   .js .stage::after, .js .hero:not(.hero--plain)::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .menu.is-open .menu__top .kbtn { animation: none; } }
+
+/* ---------- hafif mod (html.low): weak or software-rendered GPUs get the same page with cheaper motion ---------- */
+html.low .grain, html.low .subj { display: none; }
+html.low .bg__layer img { transition: none !important; transform: scale(1.28) !important; }
+html.low .menu__dim, html.low .menu__ground { -webkit-backdrop-filter: none; backdrop-filter: none; }
+html.low .menu__dim { background: rgba(0, 0, 0, .62); }
+@media (max-width: 380px) { .rail { width: 150px; } } /* smallest phones: the counter gives way so "Hizmeti incele" keeps its own space */

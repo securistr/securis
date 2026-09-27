@@ -43,8 +43,9 @@
     // the canvas is sized to the large viewport (100lvh), so a phone's address bar sliding in and out never reallocates it mid-scroll
     if (W === cv.clientWidth && H === cv.clientHeight) return;
     W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const s = Math.min(dpr, Math.sqrt(2.5e6 / Math.max(1, W * H))); // pixel budget on big screens
+    cv.width = Math.round(W * s); cv.height = Math.round(H * s);
+    ctx.setTransform(s, 0, 0, s, 0, 0);
     R = W > 768 ? 380 : 200;
     cx = W > 768 ? W * 0.2 : 0; cy = W > 768 ? -H * 0.05 : -H * 0.2; // same placement as the original scene
     f = (H / 2) / Math.tan(Math.PI / 6); // 60° vertical fov
@@ -102,7 +103,7 @@
   addEventListener('resize', resize);
   resize();
 
-  if (reduce) { // one still frame, redrawn when the size or the theme's ink changes
+  if (reduce || root.classList.contains('low')) { // one still frame (also in hafif mod), redrawn when the size or the theme's ink changes
     const still = () => draw(120);
     new MutationObserver(() => { readTheme(); still(); }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
     still(); addEventListener('resize', still); return;
@@ -110,6 +111,7 @@
   new MutationObserver(readTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   const t0 = performance.now();
   const loop = now => {
+    if (root.classList.contains('low')) return draw(120); // hafif mod switched on mid-visit: hold a still frame
     if (!covered()) draw((now - t0) / (1000 / 60)); // time in 60fps frames, as the original counted
     requestAnimationFrame(loop);
   };

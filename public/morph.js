@@ -81,6 +81,7 @@ void main() {
   }
 
   try {
+    if (document.documentElement.classList.contains('low')) throw 0; // hafif mod
     gl = cv.getContext('webgl', { alpha: false, antialias: false, depth: false, stencil: false });
     const prog = gl.createProgram();
     const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); gl.attachShader(prog, s); return gl.getShaderParameter(s, gl.COMPILE_STATUS); };
@@ -144,13 +145,14 @@ void main() {
   }
   function resize() {
     if (dead) return;
-    const r = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.25 : 2);
+    const r = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.25 : 2, Math.sqrt(2.4e6 / Math.max(1, cv.clientWidth * cv.clientHeight)));
     const w = Math.round(cv.clientWidth * r), h = Math.round(cv.clientHeight * r);
     if (!w || !h || (w === cv.width && h === cv.height)) return;
     cv.width = w; cv.height = h; gl.viewport(0, 0, w, h);
     if (cur >= 0) draw(performance.now()); // same task as the resize, so no blank frame
   }
   cv.addEventListener('webglcontextlost', fail);
+  addEventListener('sec:low', fail);
   new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; kick(); }).observe(cv);
   new ResizeObserver(resize).observe(cv);
   document.addEventListener('visibilitychange', kick);

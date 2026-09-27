@@ -16,7 +16,7 @@
     b.innerHTML = `<img src="${it.card}" alt="" draggable="false"${i > 2 ? ' loading="lazy"' : ''}>`;
     b.addEventListener('click', e => { if (!suppressClick || e.detail === 0) go(i); }); // detail 0 = keyboard, never a swipe
     track.appendChild(b);
-    descs.insertAdjacentHTML('beforeend', `<div class="desc" aria-hidden="true"><b>${pad2(i + 1)} — ${it.word}</b><p>${it.d}</p></div>`);
+    descs.insertAdjacentHTML('beforeend', `<div class="desc" aria-hidden="true"><b>${pad2(i + 1)} — ${it.word}</b><p><span>${it.d}</span></p></div>`);
     words.insertAdjacentHTML('beforeend', `<span lang="en">${it.word}</span>`);
   });
   const cards = [...track.children], descEls = [...descs.children], wordEls = [...words.children];
@@ -82,7 +82,7 @@
     descEls.forEach((d, i) => d.classList.toggle('is-on', i === index));
     wordEls.forEach((w, i) => w.classList.toggle('is-on', i === index));
     $('title').innerHTML = it.t.split('\n').map(l => `<span><span>${l}</span></span>`).join(' '); // the space keeps screen readers from saying "IPKamera"
-    const credit = $('credit'); credit.textContent = it.credit; credit.style.animation = 'none'; credit.offsetWidth; credit.style.animation = '';
+    const credit = $('credit'); credit.innerHTML = `<span>${it.credit}</span>`; credit.style.animation = 'none'; credit.offsetWidth; credit.style.animation = '';
     $('meta').innerHTML = it.meta.map(m => `<span>${m}</span>`).join('');
     $('more').href = `/hizmetler/${it.slug}/`;
     $('cur').textContent = pad2(index + 1);
@@ -98,7 +98,7 @@
     layer.innerHTML = `<img src="${sepOf(it) ? it.plate : it.bg}" alt=""><i class="c" style="background:${it.accent}"></i><i class="m" style="background:${it.accent}"></i>`;
     const cut = document.createElement('div');
     cut.className = 'subj__layer' + (sepOf(it) ? '' : ' is-flat');
-    if (it.fg) cut.innerHTML = `<div class="subj__cut" style="-webkit-mask-image:url(${it.fg});mask-image:url(${it.fg})"><img src="${it.fg}" alt=""><i class="c" style="background:${it.accent}"></i><i class="m" style="background:${it.accent}"></i><i class="w"></i></div>`;
+    if (it.fg && !document.documentElement.classList.contains('low')) cut.innerHTML = `<div class="subj__cut" style="-webkit-mask-image:url(${it.fg});mask-image:url(${it.fg})"><img src="${it.fg}" alt=""><i class="c" style="background:${it.accent}"></i><i class="m" style="background:${it.accent}"></i><i class="w"></i></div>`;
     for (const [box, el] of [[bg, layer], [subj, cut]]) {
       box.appendChild(el); el.offsetWidth; el.classList.add('is-on');
       [...box.children].slice(0, -1).forEach(old => setTimeout(() => old.remove(), reduce ? 0 : 800));
@@ -166,7 +166,7 @@
   stage.addEventListener('pointerleave', () => { hover = false; });
   stage.addEventListener('focusin', () => { focused = true; });
   stage.addEventListener('focusout', () => { focused = false; });
-  if (!reduce) setInterval(() => { if (!held && !hover && !focused && !dragging && !document.hidden && scrollY < innerHeight * 0.5 && performance.now() - lastUser > 3900) go(index === last ? 0 : index + 1, true); }, 4000); // 1.5s dissolve + 2.5s hold
+  if (!reduce) setInterval(() => { if (!held && !hover && !focused && !dragging && !document.hidden && scrollY < innerHeight * 0.5 && performance.now() - lastUser > 4900) go(index === last ? 0 : index + 1, true); }, 5000); // 1.5s dissolve + 2.5s hold
 
   /* backdrop: WebGL "noise morph". An fbm field, biased by the incoming frame's luminance, decides when each
      pixel flips; the two frames drift vertically against each other; quintic ease. One persistent .c/.m grade
@@ -253,6 +253,7 @@ void main() {
   else gl_FragColor = mix(texture2D(u_from, cover(v_uv + da, u_fromA, u_fromZ)), texture2D(u_to, cover(v_uv + db, u_toA, u_toZ)), k);
 }`;
   function createMorph() {
+    if (document.documentElement.classList.contains('low')) return null; // hafif mod: DOM cross-fade only
     const cv = document.createElement('canvas'), fcv = document.createElement('canvas');
     const gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false });
     const fx = fcv.getContext('2d');
@@ -353,7 +354,8 @@ void main() {
       kick();
     }
     function resize() {
-      const r = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.25 : 2);
+      // pixel budget: a retina desktop no longer shades 5M px per pass, ~2.4M at most
+      const r = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.25 : 2, Math.sqrt(2.4e6 / Math.max(1, bg.clientWidth * bg.clientHeight)));
       const w = Math.round(bg.clientWidth * r), h = Math.round(bg.clientHeight * r);
       if (w === cv.width && h === cv.height) return;
       cv.width = fcv.width = w; cv.height = fcv.height = h; gl.viewport(0, 0, w, h); cutClear = false;
@@ -367,9 +369,11 @@ void main() {
     return {
       show(i, d) { want = i; wantDir = d; if (tex[i]) start(); else load(i); },
       resize() { if (cur >= 0) resize(); },
+      kill: fail,
     };
   }
   let morph = createMorph();
+  addEventListener('sec:low', () => morph?.kill());
 
   new ResizeObserver(measure).observe(stage);
   measure(); render();

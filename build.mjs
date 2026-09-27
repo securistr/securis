@@ -129,6 +129,7 @@ ${social ? `<meta property="og:type" content="website">
 ${preload || ''}
 <link rel="stylesheet" href="/site.css">
 <script>(function(d){d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}d.dataset.theme=t||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');if(d.dataset.theme==='light')document.querySelector('meta[name=theme-color]').content='#f2f3f4'})(document.documentElement)</script>
+<script>/* hafif mod: yazılım WebGL (donanım hızlandırması kapalı) ya da süren <40fps → efektler sadeleşir */(function(d){var low=0;function go(w){if(low)return;low=1;d.classList.add('low');d.dataset.low=w;dispatchEvent(new Event('sec:low'))}try{var g=document.createElement('canvas').getContext('webgl');if(!g)go('nogl');else{var x=g.getExtension('WEBGL_debug_renderer_info'),r=x?g.getParameter(x.UNMASKED_RENDERER_WEBGL):'';if(/swiftshader|llvmpipe|software|basic render/i.test(r))go('soft');var l=g.getExtension('WEBGL_lose_context');if(l)l.loseContext()}}catch(e){}var ts=[],last=0,bad=0;function f(n){if(low)return;if(last&&!document.hidden){var dt=n-last;if(dt<250){ts.push(dt);if(ts.length>=60){ts.sort(function(a,b){return a-b});bad=ts[30]>24?bad+1:0;ts=[];if(bad>=2)go('slow')}}}last=n;requestAnimationFrame(f)}setTimeout(function(){requestAnimationFrame(f)},2500)})(document.documentElement);</script>
 ${jsonLd ? `<script type="application/ld+json">\n${serialize(jsonLd)}\n</script>` : ''}
 </head>`;
 }
