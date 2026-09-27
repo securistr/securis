@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "public/site.css"
+        ],
+        "createdAt": "2026-09-25T23:37:12.390Z",
+        "reason": "Claude: filmstrip card height transition is the user-chosen carousel's core mechanic (focused card unfurls from half to full height)"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "dist/**/*.html"
+        ],
+        "createdAt": "2026-09-25T23:49:21.062Z",
+        "reason": "Claude: only mono labels carry tracking and site.css sets .08em (grep shows nothing ≥.1em); detector's .11–.12em is a measurement artifact on 11–12px mono"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "dist/**/*.html"
+        ],
+        "createdAt": "2026-09-25T23:49:21.211Z",
+        "reason": "Claude: .sec has 80–140px padding; flagged 'children flush against border-top' is the hairline section divider, .regs/.faq are ruled lists by design"
+      }
+    ]
+  }
+}

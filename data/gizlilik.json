@@ -1,0 +1,44 @@
+{
+  "title": "Gizlilik Politikası ve KVKK Aydınlatma Metni | Securis",
+  "description": "Securis'in kişisel veri işleme esasları, kullanılan üçüncü taraf servisler ve KVKK kapsamındaki haklarınız hakkında bilgi.",
+  "whatsappText": "Merhaba, gizlilik politikası hakkında bir soru sormak istiyorum.",
+  "h1": "Gizlilik Politikası ve KVKK Aydınlatma Metni",
+  "lead": "Bu sayfa, securis.com.tr'yi ziyaret ettiğinizde hangi verilerin nasıl işlendiğini, hangi üçüncü taraf servislerin kullanıldığını ve 6698 sayılı Kişisel Verilerin Korunması Kanunu (\"KVKK\") kapsamındaki haklarınızı açıklar.",
+  "updated": "Son güncelleme: 26 Eylül 2026",
+  "sections": [
+    {
+      "h2": "Kimsiniz, bizimle nasıl iletişime geçebilirsiniz?",
+      "p": ["Bu internet sitesi, Securis Ağ ve Kamera Güvenlik Sistemleri (\"Securis\", \"biz\") tarafından işletilmektedir. KVKK uyarınca veri sorumlusu sıfatıyla hareket ediyoruz. Bize {email} adresinden veya {phone} numarasından ulaşabilirsiniz. Adresimiz: {address}."]
+    },
+    {
+      "h2": "Sitede hangi harici servisler kullanılıyor?",
+      "p": ["Sitemizi daha hızlı ve işlevsel hale getirmek için aşağıdaki üçüncü taraf servislerden faydalanıyoruz. Bu servislerin her biri kendi gizlilik politikasına tabidir:"],
+      "cards": [
+        { "h3": "Google Fonts", "p": "Sitede kullanılan Archivo ve JetBrains Mono yazı tipleri Google sunucularından yükleniyor. Sayfayı ziyaret ettiğinizde tarayıcınız bu yazı tiplerini indirmek için Google'ın sunucularına bağlanır; bu sırada IP adresiniz Google'a iletilir." },
+        { "h3": "WhatsApp", "p": "\"WhatsApp'tan Yaz\" butonlarına tıkladığınızda wa.me üzerinden WhatsApp uygulamasına yönlendirilirsiniz. Bu noktadan itibaren WhatsApp'ın (Meta) kendi gizlilik politikası geçerli olur; biz bu platformun veri işleme süreçlerini kontrol etmeyiz." },
+        { "h3": "Google Haritalar", "p": "Alt bilgideki adres bağlantısı sizi Google Haritalar'a yönlendirir. Bu harici sitede Google'ın kendi gizlilik politikası geçerlidir." },
+        { "h3": "Instagram", "p": "Alt bilgideki Instagram bağlantısı, hesabımızın bulunduğu instagram.com adresine yönlendirir. Instagram (Meta) kendi gizlilik politikasına tabidir." }
+      ]
+    },
+    {
+      "h2": "Çerez kullanımı",
+      "p": ["Şu an sitemizde herhangi bir analytics/istatistik servisi veya birinci taraf çerez kullanılmamaktadır. Bu sayfa, ileride bu durum değişirse (örn. bir ölçüm aracı eklenirse) güncellenecektir."]
+    },
+    {
+      "h2": "Bizimle iletişime geçtiğinizde ne olur?",
+      "p": ["Sitemizde otomatik bir iletişim formu bulunmamaktadır; bize yalnızca telefon (arama/WhatsApp) veya e-posta yoluyla ulaşabilirsiniz. Bu kanallar üzerinden bizimle paylaştığınız ad, telefon numarası, e-posta adresi ve mesaj içeriği gibi bilgiler, yalnızca talebinizi (keşif, teklif, teknik destek) yanıtlamak amacıyla işlenir ve hizmet ilişkimiz sona erdikten sonra makul bir süre içinde, yasal saklama yükümlülüklerimiz saklı kalmak kaydıyla, silinir veya anonim hale getirilir. Bu veriler pazarlama amacıyla üçüncü kişilerle paylaşılmaz veya satılmaz."]
+    },
+    {
+      "h2": "KVKK madde 11 kapsamındaki haklarınız",
+      "p": ["KVKK'nın 11. maddesi uyarınca bizimle {email} adresinden iletişime geçerek aşağıdaki haklarınızı kullanabilirsiniz:"],
+      "cards": [
+        { "h3": "Bilgi talep etme", "p": "Kişisel verilerinizin işlenip işlenmediğini öğrenme ve işlenmişse buna ilişkin bilgi talep etme." },
+        { "h3": "Amacı öğrenme", "p": "İşlenme amacını ve verilerin amacına uygun kullanılıp kullanılmadığını öğrenme." },
+        { "h3": "Aktarımı bilme", "p": "Yurt içinde veya yurt dışında verilerin aktarıldığı üçüncü kişileri bilme." },
+        { "h3": "Düzeltme talep etme", "p": "Eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme." },
+        { "h3": "Silme talep etme", "p": "KVKK ve ilgili mevzuat hükümlerine uygun olarak işlenmiş olmasına rağmen, işlenmesini gerektiren sebeplerin ortadan kalkması hâlinde verilerin silinmesini veya yok edilmesini isteme." },
+        { "h3": "İtiraz etme", "p": "İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme ve kanuna aykırı işleme sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme." }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 name: Deploy to GitHub Pages
 
-# main'e her push'ta Astro build alınır ve GitHub Pages'e yayınlanır.
+# main'e her push'ta build.mjs ile statik site üretilir ve GitHub Pages'e yayınlanır.
 # Elle tetiklemek için Actions sekmesinden "Run workflow" da kullanılabilir.
 on:
   push:
@@ -31,14 +31,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
-      # package-lock.json repoda tutulur; npm ci tam olarak o sürümleri kurar.
-      - name: Install dependencies
-        run: npm ci
-
+      # Bağımlılık yok: build.mjs yalnızca Node'un kendi modüllerini kullanır.
       - name: Build
-        run: npm run build
+        run: node build.mjs
+
+      # Kırık link, h1, canonical, JSON-LD, sitemap, CNAME, 404 kontrolleri.
+      # Bir HARD hata varsa yayın durur.
+      - name: Audit
+        run: node audit.mjs
 
       # Custom domain (securis.com.tr) public/CNAME üzerinden gelir.
       # Bu dosya dist/ içine kopyalanmazsa her deploy'da domain düşer.

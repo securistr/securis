@@ -1,0 +1,804 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T09:08:11.767Z",
+  "title": "Design System: Securis",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000",
+          "#404040",
+          "#808080",
+          "#bfbfbf"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#4d4d4d",
+          "#808080",
+          "#b3b3b3",
+          "#d9d9d9",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff"
+        ]
+      },
+      "paper-soft": {
+        "role": "neutral",
+        "displayName": "Paper Soft",
+        "canonical": "#e2e2e2",
+        "tonalRamp": [
+          "#444444",
+          "#717171",
+          "#9e9e9e",
+          "#c0c0c0",
+          "#e2e2e2",
+          "#ebebeb",
+          "#f2f2f2",
+          "#f9f9f9"
+        ]
+      },
+      "dim": {
+        "role": "neutral",
+        "displayName": "Dim Steel",
+        "canonical": "#b8bcc3",
+        "tonalRamp": [
+          "#37383b",
+          "#5c5e62",
+          "#818489",
+          "#9ca0a6",
+          "#b8bcc3",
+          "#cdd0d5",
+          "#dfe1e4",
+          "#f1f2f3"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#2a2a2a",
+        "tonalRamp": [
+          "#0d0d0d",
+          "#151515",
+          "#1d1d1d",
+          "#242424",
+          "#2a2a2a",
+          "#6a6a6a",
+          "#9f9f9f",
+          "#d4d4d4"
+        ]
+      },
+      "step-rule": {
+        "role": "neutral",
+        "displayName": "Step Rule",
+        "canonical": "#3d3d3d",
+        "tonalRamp": [
+          "#121212",
+          "#1f1f1f",
+          "#2b2b2b",
+          "#343434",
+          "#3d3d3d",
+          "#777777",
+          "#a8a8a8",
+          "#d8d8d8"
+        ]
+      },
+      "row-hover": {
+        "role": "neutral",
+        "displayName": "Row Hover",
+        "canonical": "#0f0f0f",
+        "tonalRamp": [
+          "#050505",
+          "#080808",
+          "#0b0b0b",
+          "#0d0d0d",
+          "#0f0f0f",
+          "#575757",
+          "#939393",
+          "#cfcfcf"
+        ]
+      },
+      "menu-glass": {
+        "role": "neutral",
+        "displayName": "Menu Glass",
+        "canonical": "rgba(0, 0, 0, .72)",
+        "tonalRamp": [
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000",
+          "#000000",
+          "#4d4d4d",
+          "#8c8c8c",
+          "#cccccc"
+        ]
+      },
+      "print-paper": {
+        "role": "neutral",
+        "displayName": "Print Paper",
+        "canonical": "#f2f3f4",
+        "tonalRamp": [
+          "#494949",
+          "#797a7a",
+          "#a9aaab",
+          "#cecfcf",
+          "#f2f3f4",
+          "#f6f7f7",
+          "#f9fafa",
+          "#fcfdfd"
+        ]
+      },
+      "print-ink": {
+        "role": "neutral",
+        "displayName": "Print Ink",
+        "canonical": "#0d0d0d",
+        "tonalRamp": [
+          "#040404",
+          "#070707",
+          "#090909",
+          "#0b0b0b",
+          "#0d0d0d",
+          "#565656",
+          "#929292",
+          "#cfcfcf"
+        ]
+      },
+      "print-ink-soft": {
+        "role": "neutral",
+        "displayName": "Print Ink Soft",
+        "canonical": "#2a2a2a",
+        "tonalRamp": [
+          "#0d0d0d",
+          "#151515",
+          "#1d1d1d",
+          "#242424",
+          "#2a2a2a",
+          "#6a6a6a",
+          "#9f9f9f",
+          "#d4d4d4"
+        ]
+      },
+      "print-dim": {
+        "role": "neutral",
+        "displayName": "Print Dim",
+        "canonical": "#4f545b",
+        "tonalRamp": [
+          "#18191b",
+          "#282a2e",
+          "#373b40",
+          "#43474d",
+          "#4f545b",
+          "#84878c",
+          "#b0b2b5",
+          "#dcddde"
+        ]
+      },
+      "print-hairline": {
+        "role": "neutral",
+        "displayName": "Print Hairline",
+        "canonical": "#d3d6da",
+        "tonalRamp": [
+          "#3f4041",
+          "#6a6b6d",
+          "#949699",
+          "#b3b6b9",
+          "#d3d6da",
+          "#e0e2e5",
+          "#ebedee",
+          "#f6f7f8"
+        ]
+      },
+      "print-step-rule": {
+        "role": "neutral",
+        "displayName": "Print Step Rule",
+        "canonical": "#b6bac0",
+        "tonalRamp": [
+          "#37383a",
+          "#5b5d60",
+          "#7f8286",
+          "#9b9ea3",
+          "#b6bac0",
+          "#cccfd3",
+          "#dee0e3",
+          "#f0f1f2"
+        ]
+      },
+      "print-hover": {
+        "role": "neutral",
+        "displayName": "Print Hover",
+        "canonical": "#e7e9eb",
+        "tonalRamp": [
+          "#454647",
+          "#747576",
+          "#a2a3a5",
+          "#c4c6c8",
+          "#e7e9eb",
+          "#eef0f1",
+          "#f4f5f6",
+          "#fafbfb"
+        ]
+      },
+      "print-menu-glass": {
+        "role": "neutral",
+        "displayName": "Print Menu Glass",
+        "canonical": "rgba(242, 243, 244, .86)",
+        "tonalRamp": [
+          "#494949",
+          "#797a7a",
+          "#a9aaab",
+          "#cecfcf",
+          "#f2f3f4",
+          "#f6f7f7",
+          "#f9fafa",
+          "#fcfdfd"
+        ]
+      },
+      "photo-soft": {
+        "role": "neutral",
+        "displayName": "Photo Soft",
+        "canonical": "#f2f2f2",
+        "tonalRamp": [
+          "#494949",
+          "#797979",
+          "#a9a9a9",
+          "#cecece",
+          "#f2f2f2",
+          "#f6f6f6",
+          "#f9f9f9",
+          "#fcfcfc"
+        ]
+      },
+      "photo-dim": {
+        "role": "neutral",
+        "displayName": "Photo Dim",
+        "canonical": "#d0d3d8",
+        "tonalRamp": [
+          "#3e3f41",
+          "#686a6c",
+          "#929497",
+          "#b1b3b8",
+          "#d0d3d8",
+          "#dee0e4",
+          "#eaebed",
+          "#f6f6f7"
+        ]
+      },
+      "photo-rule": {
+        "role": "neutral",
+        "displayName": "Photo Rule",
+        "canonical": "rgba(255, 255, 255, .22)",
+        "tonalRamp": [
+          "#4d4d4d",
+          "#808080",
+          "#b3b3b3",
+          "#d9d9d9",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff"
+        ]
+      },
+      "button-hover": {
+        "role": "neutral",
+        "displayName": "Button Hover",
+        "canonical": "#e9e9e9",
+        "tonalRamp": [
+          "#464646",
+          "#757575",
+          "#a3a3a3",
+          "#c6c6c6",
+          "#e9e9e9",
+          "#efefef",
+          "#f4f4f4",
+          "#fafafa"
+        ]
+      },
+      "red-pencil": {
+        "role": "tertiary",
+        "displayName": "Red Pencil",
+        "canonical": "#ff3b30",
+        "tonalRamp": [
+          "#4d120e",
+          "#801e18",
+          "#b32922",
+          "#d93229",
+          "#ff3b30",
+          "#ff6c64",
+          "#ff9d98",
+          "#ffcecb"
+        ]
+      },
+      "grade-camera": {
+        "role": "primary",
+        "displayName": "Camera Ember",
+        "canonical": "#c2410c",
+        "tonalRamp": [
+          "#3a1404",
+          "#612106",
+          "#882e08",
+          "#a5370a",
+          "#c2410c",
+          "#d17149",
+          "#e1a086",
+          "#f0d0c2"
+        ]
+      },
+      "grade-nvr": {
+        "role": "primary",
+        "displayName": "Storage Violet",
+        "canonical": "#7c3aed",
+        "tonalRamp": [
+          "#251147",
+          "#3e1d77",
+          "#5729a6",
+          "#6931c9",
+          "#7c3aed",
+          "#9d6bf2",
+          "#be9df6",
+          "#decefb"
+        ]
+      },
+      "grade-switch": {
+        "role": "primary",
+        "displayName": "Switch Blue",
+        "canonical": "#0284c7",
+        "tonalRamp": [
+          "#01283c",
+          "#014264",
+          "#015c8b",
+          "#0270a9",
+          "#0284c7",
+          "#41a3d5",
+          "#81c2e3",
+          "#c0e0f1"
+        ]
+      },
+      "grade-firewall": {
+        "role": "primary",
+        "displayName": "Firewall Red",
+        "canonical": "#dc2626",
+        "tonalRamp": [
+          "#420b0b",
+          "#6e1313",
+          "#9a1b1b",
+          "#bb2020",
+          "#dc2626",
+          "#e55c5c",
+          "#ee9393",
+          "#f6c9c9"
+        ]
+      },
+      "grade-wifi": {
+        "role": "primary",
+        "displayName": "Wi-Fi Emerald",
+        "canonical": "#059669",
+        "tonalRamp": [
+          "#022d20",
+          "#034b35",
+          "#04694a",
+          "#048059",
+          "#059669",
+          "#44b08f",
+          "#82cbb4",
+          "#c1e5da"
+        ]
+      },
+      "grade-field": {
+        "role": "primary",
+        "displayName": "Field Grey",
+        "canonical": "#6b7280",
+        "tonalRamp": [
+          "#202226",
+          "#363940",
+          "#4b505a",
+          "#5b616d",
+          "#6b7280",
+          "#9095a0",
+          "#b5b9c0",
+          "#dadcdf"
+        ]
+      },
+      "grade-regions": {
+        "role": "primary",
+        "displayName": "Regions Cobalt",
+        "canonical": "#1d4ed8",
+        "tonalRamp": [
+          "#091741",
+          "#0f276c",
+          "#143797",
+          "#1942b8",
+          "#1d4ed8",
+          "#567ae2",
+          "#8ea7ec",
+          "#c7d3f5"
+        ]
+      },
+      "grade-close": {
+        "role": "primary",
+        "displayName": "Close Slate",
+        "canonical": "#1f2937",
+        "tonalRamp": [
+          "#090c11",
+          "#10151c",
+          "#161d27",
+          "#1a232f",
+          "#1f2937",
+          "#575f69",
+          "#8f949b",
+          "#c7cacd"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Closing band headline; the home slide title uses the same weight at line-height .95."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Subpage H1; project detail H2 one step below."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Section H2, max 20ch."
+      },
+      "list-name": {
+        "displayName": "List Name",
+        "purpose": "Members service names; menu links and project titles one step down."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Process steps, region rows, service tiles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero lead max 52ch; closing paragraph max 46ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; readability floor 18px / 1.65."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase mono readouts at 13px minimum: travel times, notes, menu column labels, member and project numbers, categories."
+      },
+      "crumb": {
+        "displayName": "Crumb",
+        "purpose": "Sentence-case mono breadcrumb above the H1."
+      }
+    },
+    "shadows": [
+      {
+        "name": "line-inset",
+        "value": "inset 0 0 0 1px rgba(255,255,255,.55)",
+        "purpose": "Outline button stroke."
+      },
+      {
+        "name": "stage-focus",
+        "value": "inset 0 0 0 2px rgba(255,255,255,.5)",
+        "purpose": "Keyboard focus on the home filmstrip stage."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.22, 1, .36, 1)",
+        "purpose": "Default UI easing: card height, filters, reveals, menu fade, list padding."
+      },
+      {
+        "name": "strip-spring",
+        "value": "stiffness 260, damping 34, mass .9 (x only)",
+        "purpose": "Single x driving filmstrip, descriptions and outline words; drag, wheel, keys, 5.5s autoplay."
+      },
+      {
+        "name": "grade-crossfade",
+        "value": "opacity .7s ease-out; image scale 1.42 to 1.28 over 6s linear",
+        "purpose": "Home backdrop change between service grades."
+      },
+      {
+        "name": "title-wipe",
+        "value": ".62s ease, second line +.07s",
+        "purpose": "Slide title lines rise through a clip."
+      },
+      {
+        "name": "sheet-settle",
+        "value": ".8s ease, 70ms stagger; pencil mark .6s after .55s",
+        "purpose": "Contact sheet entrance."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity + 22px rise, .8s ease, 50ms stagger",
+        "purpose": "Section content on scroll; visible without JS."
+      },
+      {
+        "name": "theme-reveal",
+        "value": "clip-path circle(0 to 150vmax) at toggle centre, .7s cubic-bezier(.16, 1, .3, 1), root view transition",
+        "purpose": "New theme opens as a circle from the toggle; instant without support or with reduced motion."
+      },
+      {
+        "name": "theme-icon",
+        "value": "rotate 180deg, .5s cubic-bezier(.65, 0, .35, 1)",
+        "purpose": "Half-disc and ring counter-rotate on theme flip."
+      },
+      {
+        "name": "letter-roll",
+        "value": "translateY 105%, .5s cubic-bezier(.65, 0, .35, 1), 32ms x distance from centre",
+        "purpose": "Single-line menu links and project titles on hover devices."
+      },
+      {
+        "name": "menu-fade",
+        "value": "opacity .35s ease",
+        "purpose": "Glass menu open and close."
+      },
+      {
+        "name": "follower",
+        "value": "lerp .16 per frame; scale .6 to 1 over .45s ease; opacity .3s",
+        "purpose": "Members cursor photo on fine pointers."
+      },
+      {
+        "name": "photo-morph",
+        "value": "view-transition-name pj-photo, .6s cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Project preview to detail photo."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-tablet",
+        "value": "1000px"
+      },
+      {
+        "name": "projects-stack",
+        "value": "800px"
+      },
+      {
+        "name": "phone",
+        "value": "700px"
+      },
+      {
+        "name": "phone-small",
+        "value": "460px"
+      },
+      {
+        "name": "touch",
+        "value": "(hover: none), (pointer: coarse)"
+      }
+    ],
+    "grade": {
+      "colorLayer": "mix-blend-mode: color",
+      "multiplyLayer": "mix-blend-mode: multiply; opacity: .55",
+      "wash": "linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.05) 38%, rgba(0,0,0,.25) 62%, rgba(0,0,0,.75))",
+      "grain": "feTurbulence fractalNoise baseFrequency .82, 4 octaves, 180px tile, overlay blend, opacity .28",
+      "scrimDesktop": "linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.66) 44%, rgba(0,0,0,0) 62%)",
+      "scrimPhone": "linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.9) 22%, rgba(0,0,0,.9) 68%, rgba(0,0,0,.35) 82%)"
+    },
+    "themes": {
+      "selection": "localStorage \"theme\", else prefers-color-scheme; set on <html data-theme> by an inline head script before paint.",
+      "roles": [
+        "--bg",
+        "--fg",
+        "--fg-2",
+        "--dim",
+        "--line",
+        "--line-2",
+        "--hover",
+        "--menu-bg",
+        "--logo"
+      ],
+      "dark": {
+        "--bg": "#000",
+        "--fg": "#fff",
+        "--fg-2": "#e2e2e2",
+        "--dim": "#b8bcc3",
+        "--line": "#2a2a2a",
+        "--line-2": "#3d3d3d",
+        "--hover": "#0f0f0f",
+        "--menu-bg": "rgba(0,0,0,.72)",
+        "--logo": "brightness(0) invert(1)"
+      },
+      "light": {
+        "--bg": "#f2f3f4",
+        "--fg": "#0d0d0d",
+        "--fg-2": "#2a2a2a",
+        "--dim": "#4f545b",
+        "--line": "#d3d6da",
+        "--line-2": "#b6bac0",
+        "--hover": "#e7e9eb",
+        "--menu-bg": "rgba(242,243,244,.86)",
+        "--logo": "brightness(0)"
+      },
+      "photoZones": {
+        "selectors": ".stage, .hero:not(.hero--plain), .close, .pj__stage, .pj__detail",
+        "override": {
+          "--fg": "#fff",
+          "--fg-2": "#f2f2f2",
+          "--dim": "#d0d3d8",
+          "--line": "rgba(255,255,255,.22)"
+        }
+      },
+      "contrast": {
+        "dark": {
+          "fg": 21,
+          "fg-2": 16.2,
+          "dim": 11
+        },
+        "light": {
+          "fg": 17.5,
+          "fg-2": 12.9,
+          "dim": 6.8
+        }
+      }
+    },
+    "pencil": {
+      "token": "--pencil",
+      "value": "SVG data URI: two red (#ff3b30) non-scaling strokes, 3.6px then 1.6px at .55, preserveAspectRatio none",
+      "usedBy": [
+        "contact sheet current frame (inset -16px -18px 14px -14px, rotate -2deg)",
+        "projects active title (inset -14% -5% -18% -4%, rotate -1.5deg)"
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "White solid square button; the WhatsApp action.",
+      "html": "<a class=\"ds-btn\" href=\"#\">WhatsApp ile yazın</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 26px;background:#fff;color:#000;font-family:Archivo,system-ui,sans-serif;font-weight:600;font-size:17px;text-decoration:none;border-radius:0;transition:transform .2s cubic-bezier(.22,1,.36,1),background-color .2s}.ds-btn:hover{background:#e9e9e9}.ds-btn:active{transform:translateY(1px)}.ds-btn:focus-visible{outline:2px solid currentColor;outline-offset:3px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Transparent square button with an inset white hairline; the phone number (or Ana sayfa on 404).",
+      "html": "<a class=\"ds-btn-line\" href=\"#\">0 (212) 000 00 00</a>",
+      "css": ".ds-btn-line{display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 26px;background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);font-family:Archivo,system-ui,sans-serif;font-weight:600;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.22,1,.36,1),background-color .2s}.ds-btn-line:hover{background:rgba(255,255,255,.1)}.ds-btn-line:active{transform:translateY(1px)}.ds-btn-line:focus-visible{outline:2px solid currentColor;outline-offset:3px}"
+    },
+    {
+      "name": "Graded Frame",
+      "kind": "custom",
+      "description": "Photo re-graded to a service accent with wash and grain; home stage, heroes, closing band.",
+      "html": "<div class=\"ds-grade\"><div class=\"ds-ph\"></div><i class=\"ds-c\"></i><i class=\"ds-m\"></i><div class=\"ds-wash\"></div><div class=\"ds-grain\"></div><p class=\"ds-cap\">01 IP KAMERA</p></div>",
+      "css": ".ds-grade{position:relative;height:240px;overflow:hidden;background:#000}.ds-grade>*{position:absolute;inset:0}.ds-ph{background:linear-gradient(135deg,#9a9a9a,#3c3c3c 60%,#d8d8d8)}.ds-c{background:#c2410c;mix-blend-mode:color}.ds-m{background:#c2410c;mix-blend-mode:multiply;opacity:.55}.ds-wash{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.05) 38%,rgba(0,0,0,.25) 62%,rgba(0,0,0,.75))}.ds-grain{opacity:.28;mix-blend-mode:overlay;background-size:180px 180px;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")}.ds-cap{inset:auto auto 16px 20px;margin:0;color:#fff;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;font-size:13px;letter-spacing:.08em}"
+    },
+    {
+      "name": "Contact Sheet",
+      "kind": "custom",
+      "description": "Row of service frames; the current one enlarged, in colour and ringed in red pencil.",
+      "html": "<div class=\"ds-sheet\"><a class=\"ds-fr\" href=\"#\"><b></b><span>01 IP KAMERA</span></a><a class=\"ds-fr ds-on\" href=\"#\"><b></b><span>02 NVR — BU SAYFA</span></a><a class=\"ds-fr\" href=\"#\"><b></b><span>03 SWITCH</span></a></div>",
+      "css": ".ds-sheet{display:flex;gap:14px;align-items:flex-end;padding:28px;background:#000}.ds-fr{position:relative;flex:1;display:block;color:#fff;text-decoration:none}.ds-fr b{display:block;height:80px;background:linear-gradient(135deg,#777,#333);filter:grayscale(1) brightness(.8);transition:filter .4s}.ds-fr:hover b{filter:none}.ds-fr:focus-visible{outline:2px solid #fff;outline-offset:3px}.ds-fr span{display:block;margin-top:9px;font-size:13px;opacity:.9;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;letter-spacing:.08em}.ds-on{flex:1.7}.ds-on b{height:150px;background:linear-gradient(135deg,#8b5cf6,#2e1065);filter:none}.ds-on span{opacity:1}.ds-on::after{content:\"\";position:absolute;inset:-16px -18px 14px -14px;background:url(\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20140%22%20preserveAspectRatio%3D%22none%22%20fill%3D%22none%22%20stroke%3D%22%23ff3b30%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20stroke-width%3D%223.6%22%20d%3D%22M40%2014C98-2%20184%206%20195%2058c9%2044-58%2076-122%2070C22%20123-2%2092%206%2058%2013%2028%2048%2011%20104%207%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20stroke-width%3D%221.6%22%20opacity%3D%22.55%22%20d%3D%22M52%2010c66-9%20138%206%20144%2054%204%2040-66%2068-126%2062C24%20120%202%2088%2010%2056%22%2F%3E%3C%2Fsvg%3E\") center/100% 100% no-repeat;transform:rotate(-2deg);pointer-events:none}"
+    },
+    {
+      "name": "Region Row",
+      "kind": "card",
+      "refersTo": "region-row",
+      "description": "Ruled table row: region name, mono travel time, sliding arrow.",
+      "html": "<ul class=\"ds-regs\"><li><a href=\"#\"><span>Silivri</span><small>10 DK</small><svg class=\"ds-ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li><li><a href=\"#\"><span>Çatalca</span><small>35 DK</small><svg class=\"ds-ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li></ul>",
+      "css": ".ds-ic{width:1.2em;height:1.2em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.ds-regs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#2a2a2a;border:1px solid #2a2a2a;list-style:none;margin:0;padding:0}.ds-regs a{display:flex;align-items:center;gap:16px;padding:24px 26px;background:#000;color:#fff;text-decoration:none;font-family:Archivo,system-ui,sans-serif;font-size:24px;font-weight:600;letter-spacing:-.015em;transition:background-color .25s}.ds-regs span{flex:1}.ds-regs small{font-size:13px;color:#b8bcc3;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:500;letter-spacing:.08em}.ds-regs .ds-ic{color:#b8bcc3;transition:transform .35s cubic-bezier(.22,1,.36,1),color .25s}.ds-regs a:hover{background:#0f0f0f}.ds-regs a:hover .ds-ic{transform:translateX(4px);color:#fff}.ds-regs a:focus-visible{outline:2px solid #fff;outline-offset:3px}"
+    },
+    {
+      "name": "FAQ Item",
+      "kind": "custom",
+      "description": "Native details row between hairlines; the plus rotates to a cross.",
+      "html": "<div class=\"ds-faq\"><details open><summary><span>Keşif ücretli mi?</span><svg class=\"ds-ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg></summary><p>Yanıt metni burada, en fazla 70 karakter genişliğinde.</p></details><details><summary><span>Kurulum ne kadar sürer?</span><svg class=\"ds-ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg></summary><p>Yanıt.</p></details></div>",
+      "css": ".ds-ic{width:1.2em;height:1.2em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.ds-faq{border-bottom:1px solid #2a2a2a;background:#000;color:#fff;font-family:Archivo,system-ui,sans-serif;}.ds-faq details{border-top:1px solid #2a2a2a}.ds-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-size:21px;font-weight:500}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq summary .ds-ic{transition:rotate .4s cubic-bezier(.22,1,.36,1)}.ds-faq details[open] summary .ds-ic{rotate:45deg}.ds-faq summary:focus-visible{outline:2px solid #fff;outline-offset:3px}.ds-faq p{color:#e2e2e2;max-width:70ch;margin:0;padding:0 0 26px;font-size:19px;line-height:1.65}"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "description": "Centred bar over the hero: menu, logo forced white, theme toggle (half-disc in a ring), WhatsApp.",
+      "html": "<header class=\"ds-bar\"><button class=\"ds-bb\" type=\"button\">Menü</button><b class=\"ds-logo\">securis</b><span class=\"ds-end\"><button class=\"ds-bb ds-theme\" type=\"button\" aria-label=\"Açık / koyu tema\" aria-pressed=\"false\"><svg viewBox=\"0 0 240 240\" width=\"24\" height=\"24\" aria-hidden=\"true\"><g class=\"ds-half\"><path d=\"M120 67.5c29.25 0 52.5 23.25 52.5 52.5s-23.25 52.5-52.5 52.5\" fill=\"currentColor\"/></g><path class=\"ds-ring\" d=\"M120 3.75C55.5 3.75 3.75 55.5 3.75 120S55.5 236.25 120 236.25 236.25 184.5 236.25 120 184.5 3.75 120 3.75Zm0 210.75v-42c-29.25 0-52.5-23.25-52.5-52.5s23.25-52.5 52.5-52.5v-42c52.5 0 94.5 42 94.5 94.5s-42 94.5-94.5 94.5Z\" fill=\"currentColor\"/></svg></button><a class=\"ds-bb\" href=\"#\">WhatsApp</a></span></header>",
+      "css": ".ds-bar{display:flex;align-items:center;justify-content:center;gap:80px;padding:20px;background:#000;color:#fff;font-family:Archivo,system-ui,sans-serif;}.ds-bb{display:inline-flex;align-items:center;min-height:44px;padding:0 .4em;background:none;border:0;color:inherit;font:inherit;font-size:16px;font-weight:500;opacity:.92;text-decoration:none;cursor:pointer;transition:opacity .2s}.ds-bb:hover{opacity:1}.ds-bb:focus-visible{outline:2px solid currentColor;outline-offset:3px}.ds-logo{font-size:30px;font-weight:700;letter-spacing:-.03em}.ds-end{display:flex;align-items:center;gap:12px}.ds-theme{width:44px;justify-content:center;padding:0}.ds-half,.ds-ring{transform-origin:120px 120px;transition:rotate .5s cubic-bezier(.65,0,.35,1)}.ds-theme:hover .ds-half{rotate:-180deg}.ds-theme:hover .ds-ring{rotate:180deg}"
+    },
+    {
+      "name": "Glass Menu",
+      "kind": "nav",
+      "refersTo": "menu",
+      "description": "Translucent blurred full-screen menu; single-line links roll letter by letter from the centre on hover devices.",
+      "html": "<nav class=\"ds-menu\"><p class=\"ds-lbl\">HİZMETLER</p><a href=\"#\"><b></b><span class=\"ds-roll\"><span class=\"ds-a\"><i style=\"--d:4\">I</i><i style=\"--d:3\">P</i><i style=\"--d:2\"> </i><i style=\"--d:1\">K</i><i style=\"--d:0\">a</i><i style=\"--d:1\">m</i><i style=\"--d:2\">e</i><i style=\"--d:3\">r</i><i style=\"--d:4\">a</i></span><span class=\"ds-b\" aria-hidden=\"true\"><i style=\"--d:4\">I</i><i style=\"--d:3\">P</i><i style=\"--d:2\"> </i><i style=\"--d:1\">K</i><i style=\"--d:0\">a</i><i style=\"--d:1\">m</i><i style=\"--d:2\">e</i><i style=\"--d:3\">r</i><i style=\"--d:4\">a</i></span></span></a><a href=\"#\"><b></b><span class=\"ds-roll\"><span class=\"ds-a\"><i style=\"--d:3.5\">F</i><i style=\"--d:2.5\">i</i><i style=\"--d:1.5\">r</i><i style=\"--d:0.5\">e</i><i style=\"--d:0.5\">w</i><i style=\"--d:1.5\">a</i><i style=\"--d:2.5\">l</i><i style=\"--d:3.5\">l</i></span><span class=\"ds-b\" aria-hidden=\"true\"><i style=\"--d:3.5\">F</i><i style=\"--d:2.5\">i</i><i style=\"--d:1.5\">r</i><i style=\"--d:0.5\">e</i><i style=\"--d:0.5\">w</i><i style=\"--d:1.5\">a</i><i style=\"--d:2.5\">l</i><i style=\"--d:3.5\">l</i></span></span></a><a href=\"#\"><b></b><span class=\"ds-roll\"><span class=\"ds-a\"><i style=\"--d:2\">W</i><i style=\"--d:1\">i</i><i style=\"--d:0\">-</i><i style=\"--d:1\">F</i><i style=\"--d:2\">i</i></span><span class=\"ds-b\" aria-hidden=\"true\"><i style=\"--d:2\">W</i><i style=\"--d:1\">i</i><i style=\"--d:0\">-</i><i style=\"--d:1\">F</i><i style=\"--d:2\">i</i></span></span></a></nav>",
+      "css": ".ds-menu{display:grid;padding:28px;background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(22px) saturate(1.2);backdrop-filter:blur(22px) saturate(1.2);color:#fff;font-family:Archivo,system-ui,sans-serif}.ds-lbl{margin:0 0 18px;font:500 13px/1.4 \"JetBrains Mono\",ui-monospace,monospace;letter-spacing:.08em;color:#b8bcc3}.ds-menu a{display:flex;align-items:center;gap:16px;padding:10px 0;color:inherit;text-decoration:none;font-size:36px;font-weight:600;letter-spacing:-.02em;line-height:1.1}.ds-menu b{width:54px;height:54px;background:linear-gradient(135deg,#c2410c,#3a1404);filter:grayscale(1)}.ds-menu a:hover b{filter:none}.ds-menu a:focus-visible{outline:2px solid currentColor;outline-offset:3px}.ds-roll{position:relative;display:inline-block;overflow:hidden;line-height:1.12}.ds-a,.ds-b{display:block}.ds-b{position:absolute;inset:0}.ds-roll i{display:inline-block;font-style:normal;transition:transform .5s cubic-bezier(.65,0,.35,1);transition-delay:calc(var(--d,0)*32ms)}.ds-b i{transform:translateY(105%)}a:is(:hover,:focus-visible) .ds-a i{transform:translateY(-105%)}a:is(:hover,:focus-visible) .ds-b i{transform:none}"
+    },
+    {
+      "name": "Members List",
+      "kind": "custom",
+      "description": "Big service names in ruled rows; hovering dims the others. Live, a graded 3:4 photo follows the cursor on fine pointers and 64px thumbnails lead rows on touch.",
+      "html": "<div class=\"ds-mem\"><ul><li><a href=\"#\"><span class=\"ds-n\">01</span><span class=\"ds-nm\">IP Kamera</span><span class=\"ds-ln\">Kör nokta analizi ve temiz kablolama.</span><svg class=\"ds-ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li><li><a href=\"#\"><span class=\"ds-n\">02</span><span class=\"ds-nm\">NVR · NAS</span><span class=\"ds-ln\">Kapasite planı ve sürekli kayıt.</span><svg class=\"ds-ic\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li></ul></div>",
+      "css": ".ds-mem{background:#000;color:#fff;font-family:Archivo,system-ui,sans-serif;padding:0 20px}.ds-mem ul{list-style:none;margin:0;padding:0;border-top:1px solid #2a2a2a}.ds-mem li{border-bottom:1px solid #2a2a2a}.ds-mem a{display:grid;grid-template-columns:3.2em minmax(0,1.15fr) minmax(0,1fr) auto;align-items:center;gap:24px;padding:24px 4px;color:#fff;text-decoration:none;transition:color .3s,padding .5s cubic-bezier(.22,1,.36,1)}.ds-n{font:500 13px/1.4 \"JetBrains Mono\",ui-monospace,monospace;letter-spacing:.08em;color:#b8bcc3}.ds-nm{font-size:44px;font-weight:600;letter-spacing:-.035em;line-height:1}.ds-ln{color:#b8bcc3;font-size:18px;max-width:38ch}.ds-ic{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s cubic-bezier(.22,1,.36,1)}.ds-mem ul:hover a{color:#b8bcc3}.ds-mem ul a:hover,.ds-mem ul a:focus-visible{color:#fff}.ds-mem a:hover .ds-ic{transform:translateX(6px) rotate(-45deg)}.ds-mem a:focus-visible{outline:2px solid currentColor;outline-offset:3px}"
+    },
+    {
+      "name": "Projects Index",
+      "kind": "custom",
+      "description": "Ruled index over a graded stage; the active row turns white and its title is ringed in red pencil.",
+      "html": "<ol class=\"ds-pj\"><li><button type=\"button\"><span class=\"ds-m\">01</span><span class=\"ds-t\">Tavan tipi dome kamera</span><span class=\"ds-m\">IP KAMERA</span></button></li><li><button type=\"button\" class=\"ds-on\"><span class=\"ds-m\">02</span><span class=\"ds-t\">Dış cephe bullet kamera</span><span class=\"ds-m\">IP KAMERA</span></button></li><li><button type=\"button\"><span class=\"ds-m\">03</span><span class=\"ds-t\">Kablo tavası ve düzen</span><span class=\"ds-m\">KABLOLAMA</span></button></li></ol>",
+      "css": ".ds-pj{list-style:none;margin:0;padding:12px 24px;background:linear-gradient(90deg,#000,#1a0c05);border-top:1px solid rgba(255,255,255,.22);font-family:Archivo,system-ui,sans-serif}.ds-pj li{border-bottom:1px solid rgba(255,255,255,.22)}.ds-pj button{width:100%;display:grid;grid-template-columns:3.2em 1fr auto;align-items:center;gap:20px;padding:16px 2px;background:none;border:0;text-align:left;color:#d0d3d8;font:inherit;cursor:pointer;transition:color .3s}.ds-pj button:hover,.ds-pj button:focus-visible,.ds-pj .ds-on{color:#fff}.ds-pj button:focus-visible{outline:2px solid currentColor;outline-offset:3px}.ds-m{font:500 13px/1.4 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.08em}.ds-t{position:relative;justify-self:start;font-size:32px;font-weight:600;letter-spacing:-.025em}.ds-on .ds-t::after{content:\"\";position:absolute;inset:-14% -5% -18% -4%;background:url(\"data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20140%22%20preserveAspectRatio%3D%22none%22%20fill%3D%22none%22%20stroke%3D%22%23ff3b30%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20stroke-width%3D%223.6%22%20d%3D%22M40%2014C98-2%20184%206%20195%2058c9%2044-58%2076-122%2070C22%20123-2%2092%206%2058%2013%2028%2048%2011%20104%207%22%2F%3E%3Cpath%20vector-effect%3D%22non-scaling-stroke%22%20stroke-width%3D%221.6%22%20opacity%3D%22.55%22%20d%3D%22M52%2010c66-9%20138%206%20144%2054%204%2040-66%2068-126%2062C24%20120%202%2088%2010%2056%22%2F%3E%3C%2Fsvg%3E\") center/100% 100% no-repeat;transform:rotate(-1.5deg);pointer-events:none}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Contact Sheet",
+    "overview": "**Creative North Star: \"The Contact Sheet\"**\n\nEvery service is a photograph. On the home page the services run as a filmstrip across a black ground: the focused frame stands full height in colour, its neighbours sit at half height in greyscale, and the whole backdrop behind them is re-graded to the focused service's accent. Subpages are the photographer's contact sheet: all service frames in a row along the bottom edge, this page's frame enlarged and ringed in red pencil. The world is photographic and quiet; colour arrives through the photo grade, never through painted UI.\n\nThe reading surfaces come in two printings. Dark is the default negative: black ground, white type. Light is the print: a neutral paper (print-paper) with near-black ink. Only the page surfaces change; every photographic zone (home stage, subpage hero, closing band, projects stage and detail) stays dark and graded in both themes, because a photograph is always shown on its own dark ground. The theme follows a stored choice, else the OS preference, and is set before first paint.\n\nDensity is low at the top (one frame, one title, one lead, two buttons) and becomes a ruled, editorial reading surface below: hairline-separated sections, a big-type service list, a ruled region table with travel times, a plain FAQ, then a closing band carrying the finished-install photo. The system refuses the category default of a blue hero with three icon cards.",
+    "keyCharacteristics": [
+      "Black or print-paper ground; photos re-graded per service with a colour-blend plus multiply layer, a dark wash and film grain; photo zones dark in both themes.",
+      "Archivo 600 with tight negative tracking for every heading; JetBrains Mono 500 for small uppercase readouts.",
+      "Square corners everywhere; hairline rules instead of cards or shadows.",
+      "One spring-driven horizontal position moves strip, descriptions and giant outline words together.",
+      "A hand-drawn red-pencil ring is the only mark that says \"this one\"."
+    ],
+    "rules": [
+      {
+        "name": "The Grade-Not-Paint Rule",
+        "body": "Accent colour reaches the screen only through a graded photograph. No accent-coloured buttons, text, icons, borders or backgrounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Grade Rule",
+        "body": "A page carries exactly one service grade in its hero; the closing band always carries Close Slate.",
+        "section": "colors"
+      },
+      {
+        "name": "The Darkroom Rule",
+        "body": "Photographs are always shown on a dark ground. Switching to the light theme changes page surfaces only; stage, heroes, closing band and projects stage and detail keep white type, dark wash and grade in both themes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Role-Not-Hex Rule",
+        "body": "Page surfaces take colour through the theme roles (bg, fg, fg-2, dim, line, line-2, hover, menu-bg), never through a literal neutral, so both printings stay in step.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readability Floor Rule",
+        "body": "Body never below 18px at 1.65, leads 19-23px, mono labels never below 13px. Soft and dim text must hold at least 6.8:1 in either printing.",
+        "section": "typography"
+      },
+      {
+        "name": "The Dotless Product Rule",
+        "body": "Mono labels are uppercased with Turkish rules (i to İ), except English product words (FIREWALL, SWITCH, WI-FI and similar), which keep a plain I. Always route uppercase text through the Turkish-aware helper; never use CSS `text-transform` for Turkish copy.",
+        "section": "typography"
+      },
+      {
+        "name": "The Edge-Print Rule",
+        "body": "Mono is for short factual readouts only (counts, times, brand credits, frame numbers, categories). It never carries sentences or headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Scrim-Before-Type Rule",
+        "body": "Any text set over a graded photo gets a scrim; legibility never depends on the photo being dark enough.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Shadowless Rule",
+        "body": "The only `box-shadow` values are inset 1px hairlines (the outline button, the stage focus ring). Nothing floats.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** grade every photograph with its accent as a colour-blend layer plus a multiply layer at .55, then the wash and .28 grain.",
+      "**Do** keep every photographic zone dark with white type in both themes; switch only page surfaces between the two printings.",
+      "**Do** colour page surfaces through the theme roles so dark and light stay in step.",
+      "**Do** put a scrim under any text that sits on a photo: left gradient on desktop, .9 band on phones.",
+      "**Do** keep all headings Archivo 600 with negative tracking (-.02em to -.035em) and all readouts JetBrains Mono 500 at .08em, 13px or larger.",
+      "**Do** separate sections and list rows with hairline rules, not boxes or shadows.",
+      "**Do** uppercase Turkish label text with the Turkish-aware helper that leaves English product words dotless.",
+      "**Do** keep only real install photographs in frames; greyscale or dim means \"not focused\", colour or full ink means \"this one\".",
+      "**Do** give every pointer-only flourish (follower, letter roll, drag) a touch and reduced-motion fallback."
+    ],
+    "donts": [
+      "**Don't** fill buttons, text, icons or borders with a service accent; accents live only in photo grades.",
+      "**Don't** put a photograph on a light ground.",
+      "**Don't** round corners or add drop shadows.",
+      "**Don't** fall back to a blue hero with three icon cards.",
+      "**Don't** use the red-pencil ring for anything other than marking \"this one\": the current page's frame or the active project.",
+      "**Don't** set mono labels above headings as section intros; the mono layer is for factual readouts only."
+    ]
+  }
+}

@@ -1,0 +1,704 @@
+[
+  {
+    "slug": "silivri",
+    "ad": "Silivri",
+    "chipLabel": "Silivri",
+    "cityName": "Silivri",
+    "il": "İstanbul",
+    "title": "Silivri Güvenlik Kamerası, Firewall ve Network | Securis",
+    "description": "Silivri güvenlik kamerası, firewall, switch, Wi-Fi ve NVR kurulumu. Merkezimiz Silivri'de: ev, site ve iş yerine ücretsiz keşif, arızada 3 saatte yerindeyiz.",
+    "h1": "Silivri Güvenlik Kamerası, Firewall ve Bilgi İşlem Altyapısı",
+    "lead": "Merkezimiz Silivri Alipaşa'da; ilçe içindeki adreslere ortalama 10–20 dakikada ulaşıyoruz. Selimpaşa'daki yazlıktan merkezdeki dükkâna, köydeki çiftlikten sitenin yönetim ofisine kadar kamerayı, arkasındaki ağı ve kayıt cihazını aynı ekip kuruyor.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Silivri güvenlik kamerası kurulumu",
+        "p": "Silivri'de kamera talebinin büyük kısmı sahil şeridindeki site ve villalardan, merkezdeki dükkân ve ofislerden geliyor. Yazlıkta amaç, boş geçen aylarda bahçe sınırını, giriş kapısını ve araç yolunu görmek; dükkânda kasa, giriş ve depo. Keşifte kör noktaları birlikte çıkarıyor, dış mekânda deniz nemine uygun kasalı Dahua, Hikvision veya Milesight kameralar öneriyoruz. Standart bir ev ya da dükkân kurulumu genellikle bir günde biter."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Silivri firewall kurulumu",
+        "p": "Evde çoğu zaman firewall gerekmez; modemin doğru ayarı yeter. İhtiyaç, Silivri merkezdeki muhasebe bürosu, klinik ya da birden fazla bilgisayarla çalışan ofislerde başlar: dışarıdan kimin girebileceğini, hangi portun açık kalacağını ve uzaktan çalışanın nasıl bağlanacağını FortiGate üzerinde kurallarla belirliyoruz. Kamera kayıt cihazını internete port açarak değil, VPN üzerinden izletiyoruz."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Silivri bilgi işlem ve ağ altyapısı",
+        "p": "Birden fazla bloğu olan sitelerde ve ana binası ile deposu ayrı işletmelerde asıl iş, kablonun nereden geçeceği. Blok aralarında ya da çiftlik binaları arasında mesafe uzunsa fiber hat veya noktadan noktaya kablosuz köprü kuruyoruz. Kabinde yönetilebilir Ruijie veya TP-Link switch, kameralar için ayrı VLAN ve etiketli portlarla ağı, işletmenin kendi çalışanının da okuyabileceği şekilde teslim ediyoruz."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Silivri Wi-Fi ve access point kurulumu",
+        "p": "İki katlı villada modem bir katta kalınca üst kat ve bahçe çekmez; sahildeki kafe ve otellerde ise yaz akşamı dış oturma alanı dolar. Access point'leri sinyal ölçümüne göre konumlandırıyor, hepsini tek ağ adı altında dolaşımlı (roaming) çalıştırıyoruz. Misafir ağı işletme ağından ayrılır; kasaya ve kamera kayıtlarına misafir telefonundan erişilemez."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Silivri NVR ve kayıt cihazı kurulumu",
+        "p": "Kışın boş kalan yazlıkta internet kesilse bile kaydın sürmesi gerekir; bu yüzden görüntü önce evdeki NVR'a yazılır, telefondan izleme bunun üstüne kurulur. Disk kapasitesini kamera sayısına ve kaç gün geriye dönük kayıt istediğinize göre hesaplıyoruz. Kurulum bitince kayıt cihazını telefonunuza tanımlıyor, geçmiş kayda nasıl bakılacağını yerinde gösteriyoruz."
+      }
+    ],
+    "whatsappText": "Merhaba, Silivri'deki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Silivri'nin Yapısı Nasıl Bir Güvenlik İhtiyacı Doğuruyor?",
+      "paragraf": "Silivri; yazlık site ve müstakil villa yoğunluğunun yüksek olduğu, aynı zamanda tarım işletmeleri ve sahil boyunca uzanan ticari alanlar barındıran bir ilçe. Bu karışık doku, tek tip bir kamera kurulumunun işe yaramadığı anlamına geliyor. Site ve villalarda öncelik, yılın büyük bölümünde boş kalan yapıların çevre güvenliği: bahçe sınırı, giriş kapısı ve araç yolu kameralarla kapatılıyor, hareket algılandığında telefona bildirim gidiyor. Tarım işletmelerinde ise sorun genellikle mesafe; depo, ahır veya sera ile ana bina arasındaki uzaklık standart kablolamayı yetersiz bırakıyor. Bu noktalarda fiber hat veya noktadan noktaya kablosuz köprü ile ağı taşıyoruz. Sahildeki işletmelerde ise nem ve tuzlu hava, dış mekân kameralarının koruma sınıfını doğrudan belirliyor.",
+      "mahalleList": "Alipaşa, Piri Mehmet Paşa, Fatih, Selimpaşa, Kavaklı, Değirmenköy, Gümüşyaka, Ortaköy ve Silivri geneli."
+    },
+    "hizmetlerTitle": "Silivri'de Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Silivri İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Silivri'de kamera kurulumu ne kadar sürer?",
+          "a": "Standart bir ev, dükkân veya ofis kurulumu genellikle bir günde tamamlanır. Keşif ücretsizdir ve aynı hafta içinde yapılır; çok bloklu site ve çiftlik projelerinde kurulum süresi keşifte birlikte netleşir."
+        },
+        {
+          "q": "Arıza olursa Silivri'de ne kadar sürede geliyorsunuz?",
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır ve hizmet bölgelerimizde arızaya en geç 3 saat içinde yerinde müdahale ederiz. Merkezimiz Silivri'de olduğu için ilçe içindeki adreslere ortalama 10–20 dakikada ulaşıyoruz."
+        },
+        {
+          "q": "Yazlık evim kışın boş kalıyor, uzaktan izleyebilir miyim?",
+          "a": "Evet. Kameralar telefonunuza tanımlanır; hareket algılandığında bildirim alır, canlı görüntüye istediğiniz an bakabilirsiniz. İnternetin kesilme ihtimaline karşı NVR'a yerel kayıt da yazılır."
+        },
+        {
+          "q": "Bahçe ve arazi gibi geniş alanları nasıl kapatıyorsunuz?",
+          "a": "Geniş alanlarda kamera sayısını artırmak yerine doğru lens seçimi ve konumlandırma yapıyoruz. Ana binadan uzak noktalara ağ taşımak gerekirse fiber hat veya kablosuz köprü kuruyoruz."
+        },
+        {
+          "q": "Deniz kenarındaki iş yerim için özel bir şey gerekir mi?",
+          "a": "Evet. Tuzlu ve nemli hava standart kasaların ömrünü kısaltır. Sahile yakın noktalarda daha yüksek koruma sınıfına sahip dış mekân kameraları ve uygun kablo geçiş malzemeleri kullanıyoruz."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "catalca",
+        "buyukcekmece",
+        "marmaraereglisi"
+      ]
+    }
+  },
+  {
+    "slug": "catalca",
+    "ad": "Çatalca",
+    "chipLabel": "Çatalca",
+    "cityName": "Çatalca",
+    "il": "İstanbul",
+    "title": "Çatalca Kamera Sistemi, Firewall ve Bilgi İşlem | Securis",
+    "description": "Çatalca'da kamera sistemi, firewall ve bilgi işlem altyapısı: çiftlik, depo ve iş yerine fiber, Wi-Fi ve NVR kurulumu. Ücretsiz keşif, arızada 3 saatte yerinde.",
+    "h1": "Çatalca Kamera Sistemi, Firewall ve Bilgi İşlem Hizmeti",
+    "lead": "Çatalca geniş bir ilçe; korunacak noktalar çoğu zaman birbirinden yüzlerce metre uzakta. Çiftlik, depo, köy evi ve işletmelerde kamerayı, binalar arası ağı ve kayıt cihazını birlikte planlıyoruz. Silivri'deki merkezimizden Çatalca'ya ortalama 30–40 dakikada ulaşıyoruz.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Çatalca güvenlik kamerası kurulumu",
+        "p": "Çatalca'da kamera işi çoğu zaman bir çevre hattı kurmak demek: çiftlikte giriş yolu, yem deposu ve ağıl kapısı; depoda yükleme rampası ve araç giriş kapısı. Gece aydınlatması olmayan açık alanlarda kızılötesi menzili yeterli kameralar seçiyoruz. Kapıda plaka okunması isteniyorsa o nokta için lens ve açıyı ayrıca planlıyoruz; genel görüş kamerası plaka okumaz."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Çatalca firewall kurulumu",
+        "p": "Merkez ofisi şehir içinde, deposu Çatalca'da olan firmalarda depodaki bilgisayarların ve kayıt cihazının merkeze güvenle bağlanması gerekir. FortiGate ile iki nokta arasında şifreli VPN kuruyor, depo ağından dışarıya yalnızca gereken trafiğin çıkmasına izin veriyoruz. Depodaki ekran ile merkezdeki muhasebe aynı ağdaymış gibi çalışır, ama ağ dışarıya kapalı kalır."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Çatalca bilgi işlem ve ağ altyapısı",
+        "p": "Birbirinden uzak binaları tek ağda toplamak, Çatalca'daki bilgi işlem işinin özü. Kısa mesafede bakır kablo, uzun mesafede fiber, kablo çekilemeyen yerde noktadan noktaya kablosuz köprü kullanıyoruz. Her binada küçük bir kabin, yönetilebilir switch ve etiketli portlar olur; bir hat koptuğunda hangi binanın etkilendiği uzaktan görülebilir."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Çatalca Wi-Fi ve access point kurulumu",
+        "p": "Metal raflı depolarda tek bir modemin sinyali koridorun ortasında kaybolur; el terminali ya da tablet kullanan ekip için bu, işin durması demek. Raf aralıklarını hesaba katarak tavan tipi access point'ler yerleştiriyor, geniş çiftlik avlusunda dış mekân tipi cihazla kapsamayı binanın dışına taşıyoruz."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Çatalca NVR ve kayıt cihazı kurulumu",
+        "p": "Sabit internetin zayıf olduğu konumlarda sistemi yerel kayıt önceliğiyle kuruyoruz: tüm kameralar ana binadaki NVR'a yazar, internet yalnızca uzaktan izleme için kullanılır. Bağlantı kopsa da kayıt durmaz. Çok binalı tesislerde kameraların hepsi tek NVR'da ve tek uygulamada toplanır; kapasite, istenen geriye dönük kayıt süresine göre seçilir."
+      }
+    ],
+    "whatsappText": "Merhaba, Çatalca'daki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Çatalca'da Çiftlik, Depo ve Dağınık Yerleşim Güvenliği",
+      "paragraf": "Çatalca, İstanbul'un en geniş yüzölçümlü ilçelerinden biri ve yerleşim büyük ölçüde köylere, çiftliklere ve lojistik depolarına yayılmış durumda. Buradaki temel zorluk kamera değil, mesafe ve altyapı: korunması gereken noktalar birbirinden yüzlerce metre uzakta olabiliyor ve bazı konumlarda kablolu internet zayıf. Çiftlik ve besi tesislerinde giriş yolu, yem deposu ve ağıl girişini kapsayan bir çevre hattı kuruyor, ana binadaki NVR'a ağı fiber veya kablosuz köprüyle taşıyoruz. Depo ve lojistik tesislerinde ise öncelik yükleme rampaları ve araç plakaları; bu noktalarda plaka okumaya uygun lens ve aydınlatma planlaması gerekiyor. Sabit internetin yetersiz kaldığı konumlarda sistemi yerel kayıt önceliğiyle kuruyoruz, böylece bağlantı koptuğunda kayıt kesilmiyor.",
+      "mahalleList": "Ferhatpaşa, Kaleiçi, Muratbey, Kabakça, Ovayenice, Hallaçlı ve Çatalca geneli."
+    },
+    "hizmetlerTitle": "Çatalca'da Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Çatalca İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Çatalca'da kamera kurulumu ne kadar sürer?",
+          "a": "Tek binalı bir ev veya iş yeri kurulumu genellikle bir günde biter. Binalar arasında fiber ya da kablosuz köprü gereken çiftlik ve depo projelerinde süre, keşifte hat güzergâhı çıkarıldıktan sonra netleşir. Keşif ücretsizdir."
+        },
+        {
+          "q": "Çatalca'da bilgi işlem hizmeti kapsamında neler yapıyorsunuz?",
+          "a": "İşletmelerin ağ altyapısını kuruyor ve destekliyoruz: kablolama, switch ve VLAN yapılandırması, FortiGate firewall ve VPN, access point ile Wi-Fi, kamera kayıt cihazı. Bilgisayar tamiri veya yazılım hizmeti vermiyoruz; işimiz cihazların birbirine ve internete güvenle bağlandığı altyapı."
+        },
+        {
+          "q": "Çiftliğimde internet çok zayıf, sistem çalışır mı?",
+          "a": "Çalışır. Kamera sistemi kaydı NVR'a yerel olarak yazar; internet yalnızca uzaktan izleme için gerekir. Bağlantı koptuğunda kayıt devam eder, bağlantı gelince uzaktan erişim kendiliğinden döner."
+        },
+        {
+          "q": "Depomun giriş kapısında plaka okunabilir mi?",
+          "a": "Evet, ancak bunun için kameranın açısı, mesafesi ve lensi plaka okumaya göre seçilmelidir. Standart bir genel görüş kamerası plaka okumaz; keşifte bu noktayı ayrıca planlıyoruz."
+        },
+        {
+          "q": "Birbirinden uzak binaları tek sisteme bağlayabilir misiniz?",
+          "a": "Evet. Binalar arası mesafeye göre fiber hat veya noktadan noktaya kablosuz köprü kuruyoruz; tüm kameralar tek NVR ve tek uygulama üzerinden yönetiliyor."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "silivri",
+        "buyukcekmece",
+        "cerkezkoy"
+      ]
+    }
+  },
+  {
+    "slug": "buyukcekmece",
+    "ad": "Büyükçekmece",
+    "chipLabel": "Büyükçekmece",
+    "cityName": "Büyükçekmece",
+    "il": "İstanbul",
+    "title": "Büyükçekmece Güvenlik Kamerası ve Network Kurulumu | Securis",
+    "description": "Büyükçekmece'de site, dükkân ve ofise güvenlik kamerası, firewall, switch, Wi-Fi ve NVR kurulumu. Kayıt yetkisi yönetimde kalır; keşif ücretsiz, taahhüt yok.",
+    "h1": "Büyükçekmece Güvenlik Kamerası, Firewall ve Ağ Kurulumu",
+    "lead": "Büyükçekmece'de işin çoğu konut sitelerinde ve cadde üstü işletmelerde; Kumburgaz ve Mimarsinan'daki yazlık siteler de buna ekleniyor. Kamerayı, yönetimin kayıt erişimini ve iş yeri ağını tek projede ele alıyoruz. Silivri'den Büyükçekmece'ye ortalama 25–35 dakikada ulaşıyoruz.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Büyükçekmece güvenlik kamerası kurulumu",
+        "p": "Sitelerde kamera işi yönetim kararıyla başlar ve öncelikler bellidir: otopark, blok girişleri, çocuk parkı ve site kapısı. Cadde üstü dükkânda ise giriş, kasa ve depo iyi bir başlangıçtır. Otopark gibi loş alanlarda düşük ışıkta net görüntü veren modelleri, kapı önünde yüz ayrıntısı için dar açılı lensleri tercih ediyoruz."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Büyükçekmece firewall kurulumu",
+        "p": "Site yönetim ofisi, emlak ofisi ya da birkaç bilgisayarlı bir büro; hepsinde kişisel bilgi tutuluyor. FortiGate ile ağa kimin girebileceğini, hangi hizmetlerin dışarıya açılacağını kurallarla sınırlıyoruz. Yönetimin kameralara dışarıdan bakması gerekiyorsa bunu kayıt cihazını internete açarak değil, VPN üzerinden kuruyoruz."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Büyükçekmece network ve bilgi işlem altyapısı",
+        "p": "Kamerayı ofis ağından ayırmak, Büyükçekmece'deki iş yerlerinde en çok fark yaratan adım. Yönetilebilir switch üzerinde kameralar ayrı VLAN'a alınır; kamera trafiği interneti yavaşlatmaz, olası bir açık iş bilgisayarlarına sıçramaz. Sitelerde her bloğun kablosu yönetim odasındaki kabinde toplanır, portlar tek tek etiketlenir."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Büyükçekmece Wi-Fi ve access point kurulumu",
+        "p": "Site sosyal tesisinde, havuz başında ya da güvenlik kulübesinde internet genellikle ana binadan taşınmak zorunda. Access point'leri kablolu omurgaya bağlayıp tek ağ adıyla çalıştırıyor, sakinler ya da müşteriler için ayrı bir misafir ağı açıyoruz. Dükkânlarda ödeme cihazı ile misafir Wi-Fi'ı aynı ağda bırakmıyoruz."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Büyükçekmece NVR ve kayıt cihazı kurulumu",
+        "p": "Sitelerde kayıt cihazı yönetim odasında durur ve kimin neyi göreceği baştan tanımlanır: güvenlik görevlisi canlı izler, geçmiş kayda yönetim erişir. Disk kapasitesini, kaç günlük kayıt tutulacağına ve kamera sayısına göre hesaplıyoruz. Kurulum bitince yetkili kişilerin telefonuna uzaktan izleme tanımlanır."
+      }
+    ],
+    "whatsappText": "Merhaba, Büyükçekmece'deki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Büyükçekmece'de Site, Ofis ve Ticari İşletme Güvenliği",
+      "paragraf": "Büyükçekmece, yoğun konut siteleri ile cadde üstü ticari işletmelerin iç içe geçtiği bir ilçe. Sitelerde kamera işi çoğunlukla yönetim üzerinden ilerliyor ve iki ayrı beklenti oluyor: otopark ile blok girişlerinin kayıt altına alınması, bir de kayıtlara kimin erişebileceğinin netleştirilmesi. Bu yüzden site projelerinde yalnızca kamera kurmuyor, yetkilendirmeyi de yapılandırıyoruz; görevli personel canlı izleyebiliyor, geçmiş kayıt erişimi ise yönetimle sınırlı kalıyor. Cadde üstü işletmelerde ve ofislerde ise öncelik kasa, giriş kapısı ve depo bölümü. Bu tip işletmelerde kamera sistemiyle birlikte ağ tarafını da ele almak gerekiyor: kameraları ofis ağından ayrı bir VLAN'a almak, hem kamera trafiğinin interneti yavaşlatmasını hem de olası bir güvenlik açığının iş bilgisayarlarına sıçramasını önlüyor.",
+      "mahalleList": "Mimarsinan, Kumburgaz, Atatürk, Fatih, Cumhuriyet, Güzelce, Türkoba ve Büyükçekmece geneli."
+    },
+    "hizmetlerTitle": "Büyükçekmece'de Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Büyükçekmece İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Büyükçekmece'de kamera kurulumu ne kadar sürer?",
+          "a": "Bir daire, dükkân veya ofiste standart kurulum genellikle bir günde tamamlanır. Çok bloklu sitelerde süre, kablo güzergâhı ve kamera sayısı netleştikten sonra keşifte birlikte belirlenir. Keşif ücretsizdir ve taahhüt gerektirmez."
+        },
+        {
+          "q": "Kurulumdan sonra arıza olursa ne oluyor?",
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır. Büyükçekmece hizmet bölgelerimiz arasında olduğu için arızaya en geç 3 saat içinde yerinde müdahale ediyoruz."
+        },
+        {
+          "q": "Site yönetimi olarak kayıtlara kimin erişeceğini kontrol edebilir miyiz?",
+          "a": "Evet. Sistemi kurarken kullanıcı yetkilerini ayrı ayrı tanımlıyoruz; görevli personel yalnızca canlı izleme yapabilirken geçmiş kayıtlara erişimi yönetimle sınırlandırabiliyoruz."
+        },
+        {
+          "q": "Kamera sistemi iş yerimin internetini yavaşlatır mı?",
+          "a": "Doğru kurulduğunda hayır. Kameraları ayrı bir VLAN'a alıyoruz; kamera trafiği ofis trafiğinden izole olduğu için günlük internet kullanımınız etkilenmiyor."
+        },
+        {
+          "q": "Dükkânım için kaç kamera yeterli olur?",
+          "a": "Küçük bir dükkânda genellikle giriş, kasa ve depo bölümünü kapsayan bir düzen yeterli oluyor. Net sayı; alanın büyüklüğüne, raf yerleşimine ve kör noktalara göre keşifte belirleniyor."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "beylikduzu",
+        "silivri",
+        "catalca"
+      ]
+    }
+  },
+  {
+    "slug": "beylikduzu",
+    "ad": "Beylikdüzü",
+    "chipLabel": "Beylikdüzü",
+    "cityName": "Beylikdüzü",
+    "il": "İstanbul",
+    "title": "Beylikdüzü Ofis Ağı, Firewall ve Güvenlik Kamerası | Securis",
+    "description": "Beylikdüzü'nde ofis ağı, kablolama, firewall, Wi-Fi ve güvenlik kamerası kurulumu tek projede. Plaza, rezidans ve iş yerine ücretsiz keşif, 3 saatte servis.",
+    "h1": "Beylikdüzü Ofis Ağı, Firewall ve Güvenlik Kamerası Kurulumu",
+    "lead": "Beylikdüzü'nde kamera işi çoğu zaman tek başına gelmiyor; ofis taşınması ya da yeni bir kat kurulumuyla birlikte kablolama, switch, Wi-Fi ve firewall da gündeme geliyor. Hepsini tek projede yürütüyoruz. Silivri'den Beylikdüzü'ne ortalama 35–45 dakikada ulaşıyoruz.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Beylikdüzü güvenlik kamerası kurulumu",
+        "p": "Rezidans ve sitelerde öncelikli noktalar otopark, asansör holü ve giriş turnikeleri; plaza ofislerinde ise giriş kapısı, arşiv ve sunucu odası. Kapalı otoparklarda düşük ışık performansı belirleyici olduğu için kamerayı ortam ışığına göre seçiyoruz. Ofislerde kablo asma tavanın içinden gider; tavanda yalnızca kamera görünür."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Beylikdüzü firewall kurulumu",
+        "p": "Plaza ofislerinde firewall, bina internetinden bağımsız olarak kendi güvenlik sınırınızı kurmak demek. FortiGate üzerinde departman bazlı erişim kuralları, uzaktan çalışanlar için VPN ve gerekiyorsa şube bağlantısı tanımlıyoruz. Firmware güncellemesi ve kural kontrolü, kurulumdan sonra da takip edilmesi gereken işler."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Beylikdüzü network ve bilgi işlem altyapısı",
+        "p": "Yeni ofise taşınırken en çok zaman kaybettiren şey, sonradan fark edilen eksik prizler ve karışık kabinler. Kat planı üzerinden priz noktalarını çıkarıyor, rack kabini düzenliyor, yönetilebilir switch'lerde muhasebe, misafir ve kamera için ayrı VLAN'lar kuruyoruz. Her port etiketli teslim edilir; sonraki bilgi işlem desteği de bu kayıt üzerinden yürür."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Beylikdüzü Wi-Fi ve access point kurulumu",
+        "p": "Çok odalı ofislerde tek modemle bütün katı kapatmaya çalışmak ölü noktalar bırakır; toplantı odası ve arka ofis genellikle ilk çekmeyen yerlerdir. Kat planına göre tavan tipi access point'ler yerleştiriyor, hepsini tek ağ adı altında dolaşımlı çalıştırıyoruz. Toplantıya gelen misafir ayrı ağa bağlanır, şirket kaynaklarını göremez."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Beylikdüzü NVR ve kayıt cihazı kurulumu",
+        "p": "Ofislerde kayıt cihazı genellikle ağ kabinine, sitelerde yönetim odasına monte edilir. Kaç gün geriye dönük kayıt istediğinize göre disk kapasitesini belirliyor, elektrik kesintisinde kaydın sürmesi için kesintisiz güç kaynağı (UPS) öneriyoruz. Yetkili kişilerin telefonuna uzaktan izleme tanımlanır."
+      }
+    ],
+    "whatsappText": "Merhaba, Beylikdüzü'ndeki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Beylikdüzü'nde Plaza, Ofis ve Rezidans Altyapısı",
+      "paragraf": "Beylikdüzü plan bazlı gelişmiş bir ilçe: yüksek katlı rezidanslar, plaza ofisleri ve organize ticari alanlar ağırlıkta. Burada kamera işi genellikle tek başına gelmiyor; ofis taşınması, yeni kat kurulumu veya şube açılışıyla birlikte ağ altyapısının tamamı gündeme geliyor. Kat kablolaması, rack kabin düzeni, switch yapılandırması ve kablosuz ağ kapsaması aynı projenin parçaları oluyor. Çok katlı ofislerde en sık karşılaştığımız sorun, tek bir modemle tüm katı kapatmaya çalışmaktan doğan Wi-Fi ölü noktaları; bunu kat planına göre konumlandırılmış access point'lerle ve tek ağ adı altında roaming yapılandırmasıyla çözüyoruz. Rezidans ve sitelerde ise otopark, asansör holü ve giriş turnikeleri öncelikli izleme noktaları oluyor.",
+      "mahalleList": "Adnan Kahveci, Barış, Cumhuriyet, Gürpınar, Kavaklı, Marmara, Sahil, Yakuplu ve Beylikdüzü geneli."
+    },
+    "hizmetlerTitle": "Beylikdüzü'nde Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Beylikdüzü İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Beylikdüzü'nde kamera ve ağ kurulumu ne kadar sürer?",
+          "a": "Standart bir ev veya ofis kamera kurulumu genellikle bir günde biter. Kat kablolamasını, kabini ve Wi-Fi'ı da kapsayan ofis projelerinde süre, keşifte kat planı üzerinden birlikte çıkarılır."
+        },
+        {
+          "q": "Ofisimiz için bilgi işlem desteği veriyor musunuz?",
+          "a": "Ağ altyapısı tarafında evet: kablolama, switch ve VLAN, FortiGate firewall ve VPN, access point ve kamera sistemi kurulumunu ve sonrasındaki desteğini yapıyoruz. Bilgisayar tamiri ve yazılım hizmeti vermiyoruz."
+        },
+        {
+          "q": "Ofisimin bazı odalarında Wi-Fi çekmiyor, çözümü nedir?",
+          "a": "Modem sayısını artırmak yerine kat planına göre konumlandırılmış access point'ler kuruyoruz. Hepsi tek ağ adı altında çalışır; odalar arasında gezerken bağlantınız kopmaz."
+        },
+        {
+          "q": "Yeni ofis taşınmasında kablolamayı da yapıyor musunuz?",
+          "a": "Evet. Kat kablolaması, rack kabin kurulumu, switch yapılandırması ve kamera sistemini tek proje olarak yürütüyoruz; farklı ekiplerle uğraşmanıza gerek kalmıyor."
+        },
+        {
+          "q": "Rezidans otoparkı için hangi kamera uygun?",
+          "a": "Otoparklarda düşük ışık performansı belirleyicidir. Araç plakalarının okunması isteniyorsa giriş-çıkış noktasına ayrı bir plaka kamerası, genel izleme için ise geniş açılı kameralar planlıyoruz."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "buyukcekmece",
+        "silivri",
+        "catalca"
+      ]
+    }
+  },
+  {
+    "slug": "corlu",
+    "ad": "Çorlu",
+    "chipLabel": "Çorlu",
+    "cityName": "Çorlu",
+    "il": "Tekirdağ",
+    "title": "Çorlu Güvenlik Kamerası, Firewall ve Fabrika Ağı | Securis",
+    "description": "Çorlu'da fabrika, depo ve iş yerine güvenlik kamerası, FortiGate firewall, fiber omurga, Wi-Fi ve NVR kurulumu. Ücretsiz keşif, arızada 3 saatte yerinde.",
+    "h1": "Çorlu Güvenlik Kamerası, Firewall ve Fabrika Ağ Altyapısı",
+    "lead": "Çorlu'da işin ağırlığı fabrikalarda: Çorlu OSB ve çevresindeki üretim tesislerinin yanında şehir merkezindeki mağaza, ofis ve konutlarda da çalışıyoruz. Toza, titreşime ve uzun mesafeye göre planlanmış kamera ve ağ altyapısı kuruyoruz. Silivri'den Çorlu'ya ortalama 35–45 dakikada ulaşıyoruz.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Çorlu güvenlik kamerası kurulumu",
+        "p": "Fabrikada kamera yalnızca hırsızlık için kurulmaz; yükleme rampasındaki sevkiyatı, forklift trafiğini ve iş güvenliği açısından kritik noktaları izlemek için de kurulur. Üretim alanında toza ve neme dayanıklı kasalar, vardiyalı çalışan tesislerde güçlü gece görüşü seçiyoruz. Kamera kablo tavasına, direğe ya da tavana; alan neyi gerektiriyorsa oraya monte ediliyor."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Çorlu firewall kurulumu",
+        "p": "Üretim tesislerinde internete açık tek bir cihaz bütün ağı riske atabilir. FortiGate ile ofis, üretim ve kamera ağları arasındaki geçişleri kurallarla sınırlıyor, dışarıya yalnızca gereken servisleri açıyoruz. Aynı cihazda web filtreleme ve bant genişliği önceliği de tanımlanabilir; böylece kamera izlemesi ofisin internetini tıkamaz."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Çorlu network ve bilgi işlem altyapısı",
+        "p": "Üretim holü ile idari bina arasındaki mesafe çoğu zaman bakır kablonun sınırını aşar; bu yüzden binalar arası omurgayı fiberle kuruyor, uçlarda fiber portlu switch kullanıyoruz. Kameralar, üretim cihazları ve ofis bilgisayarları ayrı VLAN'larda çalışır. Kabinler etiketli teslim edilir; tesisin kendi bilgi işlem sorumlusu ağı kolayca takip eder."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Çorlu Wi-Fi ve access point kurulumu",
+        "p": "Geniş üretim ve depo alanlarında Wi-Fi, el terminalleri ve saha tabletleri için bir iş aracıdır. Makine ve raf yerleşimine göre sinyal ölçümü yapıyor, access point'leri tavana ya da kolonlara yerleştiriyoruz. Personel, üretim cihazları ve ziyaretçi için ayrı ağlar tanımlanır; ziyaretçi üretim ağını göremez."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Çorlu NVR ve kayıt cihazı kurulumu",
+        "p": "Kamera sayısı yüksek tesislerde kayıt cihazının kanal ve disk kapasitesi baştan doğru seçilmeli; sonradan kamera eklendiğinde yer kalmalı. Kayıt cihazını ağ kabininde, kesintisiz güç kaynağıyla birlikte konumlandırıyoruz. Yöneticiler kayıtlara telefondan ya da merkez ofisten VPN üzerinden erişir."
+      }
+    ],
+    "whatsappText": "Merhaba, Çorlu'daki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Çorlu Sanayisinde Fabrika ve Üretim Tesisi Güvenliği",
+      "paragraf": "Çorlu, Trakya'nın en yoğun sanayi merkezlerinden biri; tekstil, deri, plastik ve gıda üretimi yapan tesisler ilçenin ekonomik omurgasını oluşturuyor. Fabrika ortamı, ev veya ofis kurulumundan tamamen farklı koşullar dayatıyor. Üretim alanlarında toz, nem, titreşim ve bazı hatlarda kimyasal buhar var; bu da kamera kasa sınıfının ve kablo güzergâhının baştan doğru seçilmesini zorunlu kılıyor. Geniş üretim holleri ile idari bina arasındaki mesafe genellikle bakır kablonun sınırını aştığı için omurgayı fiberle kuruyoruz. Fabrikalarda kameranın işlevi de değişiyor: yalnızca hırsızlık değil, yükleme rampasındaki sevkiyat hareketleri, forklift trafiği ve iş güvenliği açısından kritik noktalar izleniyor. Vardiyalı çalışan tesislerde gece görüş performansı ve kesintisiz kayıt, sistemin en çok sorgulanan iki özelliği oluyor.",
+      "mahalleList": "Muhittin, Kazımiye, Reşadiye, Şeyhsinan, Cemaliye, Zafer, Nusratiye ve Çorlu geneli."
+    },
+    "hizmetlerTitle": "Çorlu'da Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Çorlu İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Çorlu'da fabrika kamera kurulumu ne kadar sürer?",
+          "a": "Standart bir ev, mağaza veya ofis kurulumu genellikle bir günde tamamlanır. Fabrika ve çok noktalı projelerde süre; kamera sayısına, fiber ihtiyacına ve üretimin durup durmayacağına göre keşifte birlikte planlanır."
+        },
+        {
+          "q": "Çorlu'daki tesisimize arızada ne kadar sürede gelirsiniz?",
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır; Çorlu hizmet bölgelerimizden biri olduğu için arızaya en geç 3 saat içinde yerinde müdahale ediyoruz. Silivri'den Çorlu'ya ortalama yol süresi 35–45 dakikadır."
+        },
+        {
+          "q": "Fabrika ortamındaki toz ve nem kameraları etkiler mi?",
+          "a": "Yanlış seçilirse evet. Üretim alanlarına toz ve neme dayanıklı, uygun koruma sınıfına sahip kasalar kullanıyor, kablo geçişlerini kanal içinden yaparak hattı ortam koşullarından koruyoruz."
+        },
+        {
+          "q": "Üretim holü ile idari bina arasındaki mesafe çok uzun, çözüm nedir?",
+          "a": "Uzun mesafelerde bakır kablo sinyal kaybına uğrar. Binalar arası omurgayı fiber optik ile kuruyor, uçlarda medya dönüştürücü veya fiber portlu switch kullanıyoruz."
+        },
+        {
+          "q": "Vardiyalı çalışıyoruz, gece kayıtları net olur mu?",
+          "a": "Olur, ancak bu doğru kamera seçimine bağlı. Aydınlatmanın zayıf olduğu alanlarda kızılötesi veya renkli gece görüşü destekleyen modeller öneriyor, keşifte mevcut aydınlatmayı da değerlendiriyoruz."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "cerkezkoy",
+        "kapakli",
+        "tekirdag"
+      ]
+    }
+  },
+  {
+    "slug": "cerkezkoy",
+    "ad": "Çerkezköy",
+    "chipLabel": "Çerkezköy",
+    "cityName": "Çerkezköy",
+    "il": "Tekirdağ",
+    "title": "Çerkezköy OSB Kamera Sistemi, Firewall ve Network | Securis",
+    "description": "Çerkezköy OSB'deki tesislere ve ilçe merkezine kamera sistemi, firewall ve VPN, VLAN'lı network, Wi-Fi ve NVR kurulumu. Ücretsiz keşif, 1 yıl servis garantisi.",
+    "h1": "Çerkezköy Kamera Sistemi, Firewall ve Network Kurulumu",
+    "lead": "Çerkezköy'de talebin çoğu Çerkezköy Organize Sanayi Bölgesi'ndeki üretim tesislerinden geliyor; ilçe merkezindeki iş yerleri ve konutlar da hizmet alanımızda. Kamerayı, ağ ayrımını ve güvenli uzaktan erişimi tek projede kuruyoruz. Silivri'den Çerkezköy'e ortalama 45–55 dakikada ulaşıyoruz.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Çerkezköy güvenlik kamerası kurulumu",
+        "p": "OSB'deki tesislerde kamera planı çevre duvarı, bekçi kulübesi, araç giriş kapısı ve yükleme alanlarıyla başlar; içeride üretim hattı ve depo gelir. Uzun çevre duvarında her köşeye kamera koymak yerine doğru lens ve konumla daha az kamerayla daha çok alanı görüyoruz. İlçe merkezindeki dükkân ve konutlarda standart kurulum genellikle bir günde biter."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Çerkezköy firewall kurulumu",
+        "p": "Sanayi tesislerinin ağına dışarıdan çoğu zaman birden fazla taraf bağlanır: merkez ofis, makine tedarikçisinin servisi, uzaktan çalışan yönetici. FortiGate üzerinde her biri için ayrı VPN hesabı ve yalnızca gereken sistemlere izin veren kurallar tanımlıyoruz. İş bitince bağlantı kapatılabilir; kimin ne zaman bağlandığı cihaz kayıtlarında kalır."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Çerkezköy network ve bilgi işlem altyapısı",
+        "p": "Büyük tesislerde ağ; idari bina, üretim holleri ve depo arasında dağılır. Binalar arasını fiberle, bina içini yönetilebilir switch'lerle kuruyor, kamera, üretim ve ofis trafiğini ayrı VLAN'lara bölüyoruz. Bu ayrım, kamera trafiğinin üretim sistemlerini yavaşlatmasını ve bir bilgisayardaki sorunun bütün tesise yayılmasını önler."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Çerkezköy Wi-Fi ve access point kurulumu",
+        "p": "Depo ve saha alanlarında kablosuz ağ, forklift üstü terminal ya da el tarayıcısı kullanan ekipler için şart. Yüksek tavanlı depolarda access point'i doğru yüksekliğe ve raf koridorlarına göre yerleştiriyor, açık sahada dış mekân tipi cihaz kullanıyoruz. Personel ve misafir ağları birbirinden ayrılır."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Çerkezköy NVR ve kayıt cihazı kurulumu",
+        "p": "Çok kameralı tesislerde kayıtlar bir ya da birden fazla NVR'da toplanır, hepsi tek uygulamadan izlenir. Disk kapasitesini kaç gün geriye dönük kayıt istendiğine göre hesaplıyor, kritik alanlar için ayrı yedekleme planlıyoruz. Yönetim kayıtlara VPN üzerinden, güvenlik görevlisi yerel monitörden erişir."
+      }
+    ],
+    "whatsappText": "Merhaba, Çerkezköy'deki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Çerkezköy Organize Sanayi Bölgesinde Ağ ve Kamera Altyapısı",
+      "paragraf": "Çerkezköy, Türkiye'nin köklü organize sanayi bölgelerinden birine ev sahipliği yapıyor ve ilçedeki talep büyük ölçüde OSB içindeki üretim tesislerinden geliyor. Bu ölçekteki tesislerde kamera sistemi tek başına düşünülmüyor; ağ güvenliği, uzaktan erişim ve bölümlendirme aynı masada konuşuluyor. Üretim ağı ile ofis ağının birbirinden ayrılması, kamera trafiğinin kendi VLAN'ında izole edilmesi ve dışarıdan erişimin kontrollü hale getirilmesi standart hale gelmiş durumda. Merkez ofisi başka şehirde olan tesislerde en sık istenen şey, yönetimin fabrikayı güvenli biçimde uzaktan izleyebilmesi; bunu port açarak değil, şifreli VPN bağlantısı kurarak çözüyoruz. Kamera kayıt cihazını doğrudan internete açmak, bu sistemlerin en yaygın ve en tehlikeli güvenlik hatasıdır. Geniş tesis alanlarında ayrıca depo ve saha kapsaması için kablosuz ağ planlaması gerekiyor.",
+      "mahalleList": "Fevzipaşa, Gazi Mustafa Kemal Paşa, Bağlık, Veliköy, Kızılpınar ve Çerkezköy geneli."
+    },
+    "hizmetlerTitle": "Çerkezköy'de Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Çerkezköy İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Çerkezköy'de kamera kurulumu ne kadar sürer?",
+          "a": "İlçe merkezinde standart bir ev, dükkân veya ofis kurulumu genellikle bir günde biter. OSB'deki tesislerde süre kamera sayısına, çevre duvarının uzunluğuna ve fiber ihtiyacına göre değişir; keşifte birlikte netleştiriyoruz."
+        },
+        {
+          "q": "Keşif için ücret alıyor musunuz?",
+          "a": "Hayır. Çerkezköy dahil bütün hizmet bölgelerimizde keşif ücretsizdir ve taahhüt gerektirmez; tesisi yerinde görüp kamera, ağ ve firewall ihtiyacını birlikte çıkarıyoruz."
+        },
+        {
+          "q": "Merkez ofisimiz başka şehirde, fabrikayı oradan izleyebilir miyiz?",
+          "a": "Evet. Kayıt cihazını internete doğrudan açmadan, şifreli VPN bağlantısı üzerinden erişim kuruyoruz. Bu hem güvenli hem de kayıt cihazını dışarıya açık bırakmayan bir yöntem."
+        },
+        {
+          "q": "Kamera ağı ile üretim ağını ayırmak gerekli mi?",
+          "a": "Kesinlikle öneriyoruz. Kameraları ayrı VLAN'a almak, kamera trafiğinin üretim sistemlerini etkilemesini ve olası bir açığın kritik sistemlere sıçramasını önler."
+        },
+        {
+          "q": "OSB'deki tesisimizde bakım desteği veriyor musunuz?",
+          "a": "Evet. Kurduğumuz sistemler 1 yıl servis garantisi kapsamında; arıza bildiriminde hizmet bölgelerimizde maksimum 3 saat içinde yerinde müdahale ediyoruz."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "kapakli",
+        "corlu",
+        "catalca"
+      ]
+    }
+  },
+  {
+    "slug": "marmaraereglisi",
+    "ad": "Marmaraereğlisi",
+    "chipLabel": "Marmaraereğlisi",
+    "cityName": "Marmaraereğlisi",
+    "il": "Tekirdağ",
+    "title": "Marmaraereğlisi Güvenlik Kamerası ve Network | Securis",
+    "description": "Marmaraereğlisi'nde yazlık, site ve sahil işletmelerine güvenlik kamerası, Wi-Fi, firewall ve NVR kurulumu. Telefondan izleme, ücretsiz keşif, 3 saatte servis.",
+    "h1": "Marmaraereğlisi Güvenlik Kamerası, Wi-Fi ve Network Kurulumu",
+    "lead": "Marmaraereğlisi'nde nüfus yazla kış arasında çok değişiyor; yazlık siteler kışın boşalıyor, sahildeki işletmeler yazın doluyor. Kamerayı, Wi-Fi'ı ve kayıt cihazını bu mevsim farkına göre kuruyoruz. Silivri'den Marmaraereğlisi'ne ortalama 25–35 dakikada ulaşıyoruz.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Marmaraereğlisi güvenlik kamerası kurulumu",
+        "p": "Kışın boş kalan yazlıkta amaç, olay anında haber almak. Hareket algılama bölgelerini yola değil bahçe sınırına ve giriş kapısına çiziyoruz; yoldan geçen her araç için telefonunuza bildirim gelmez. Denize yakın ev ve işletmelerde tuzlu havaya dayanıklı, yüksek koruma sınıflı dış mekân kameraları kullanıyoruz."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Marmaraereğlisi firewall kurulumu",
+        "p": "Sezonluk pansiyon, otel ve restoranlarda misafir Wi-Fi'ı, rezervasyon bilgisayarı ve ödeme cihazları aynı internet hattını paylaşır. FortiGate ile bu ağları birbirinden ayırıyor, misafir trafiğine bant sınırı koyuyor, işletme bilgisayarlarına dışarıdan erişimi kapatıyoruz. Sezon kapandığında kameralara uzaktan erişim VPN üzerinden sürer."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Marmaraereğlisi network ve bilgi işlem altyapısı",
+        "p": "Sahil işletmelerinde kablolama çoğu zaman sonradan yapılır; dış oturma alanı, bar ve mutfak ana binadan ayrıdır. Güzergâhı mevcut yapıyı bozmadan planlıyor, kabinde yönetilebilir switch ile kamera, kasa ve misafir ağını ayrı VLAN'larda topluyoruz. Kış bakımında hangi kablonun nereye gittiği etiketlerden okunur."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Marmaraereğlisi Wi-Fi ve access point kurulumu",
+        "p": "Yaz akşamı dolu bir kafede ya da pansiyonda Wi-Fi'ın yavaşlaması genellikle yetersiz kapasiteden gelir. Eş zamanlı kullanıcı sayısına göre access point sayısını belirliyor, dış oturma alanına dış mekân tipi cihaz koyuyoruz. Misafir ağı işletme ağından ayrılır; müşteriler internete çıkar ama kasaya ve kameralara erişemez."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Marmaraereğlisi NVR ve kayıt cihazı kurulumu",
+        "p": "Yazlıkta kayıt cihazı evin içinde, görünmeyen ve nemden korunan bir noktaya konur. İnternet kesilse de görüntü NVR'a yazılmaya devam eder; bağlantı geri geldiğinde geçmiş kayda telefondan bakabilirsiniz. Disk kapasitesini, eve ne sıklıkla uğradığınızı hesaba katarak yeterli geriye dönük kayıt kalacak şekilde seçiyoruz."
+      }
+    ],
+    "whatsappText": "Merhaba, Marmaraereğlisi'ndeki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Marmaraereğlisi'nde Yazlık Site ve Sahil İşletmesi Güvenliği",
+      "paragraf": "Marmaraereğlisi, nüfusu yaz ve kış arasında ciddi biçimde değişen bir sahil ilçesi. Bu mevsimsel dalgalanma güvenlik ihtiyacını doğrudan şekillendiriyor: yazlık siteler ve müstakil evler yılın büyük bölümünde boş kalıyor, dolayısıyla öncelik hırsızlığı sonradan tespit etmek değil, olay anında haber almak oluyor. Bu tip kurulumlarda hareket algılama bölgelerini doğru tanımlamak kritik; yoldan geçen her araç için bildirim gönderen bir sistem kısa sürede kullanılmaz hale gelir. Bu yüzden algılama alanlarını bahçe sınırı ve giriş noktalarıyla sınırlandırıyoruz. Sahil boyundaki restoran, kafe ve pansiyonlarda ise yaz sezonunda yoğun müşteri trafiği var; buralarda kasa bölgesi, giriş ve dış oturma alanı izleniyor, ayrıca müşteri Wi-Fi'ı işletme ağından ayrılıyor. Denize yakın tüm kurulumlarda tuzlu hava nedeniyle dış mekân donanımının koruma sınıfı yüksek seçiliyor.",
+      "mahalleList": "Dereağzı, Yeniçiftlik, Sultanköy, Çeşmeli, Türkmenli ve Marmaraereğlisi geneli."
+    },
+    "hizmetlerTitle": "Marmaraereğlisi'nde Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Marmaraereğlisi İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Marmaraereğlisi'nde kamera kurulumu ne kadar sürer?",
+          "a": "Standart bir yazlık, ev veya küçük işletme kurulumu genellikle bir günde tamamlanır. Keşif ücretsizdir; sezon açılmadan kurulum yaptırmak isteyen işletmeler için tarihi keşifte birlikte planlıyoruz."
+        },
+        {
+          "q": "Kışın evde değilken arıza olursa ne olur?",
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır. Marmaraereğlisi hizmet bölgelerimiz arasında; arızaya en geç 3 saat içinde yerinde müdahale ediyoruz. Kameraları telefondan izlediğiniz için bir kamera çevrimdışı kaldığında bunu uzaktan da görürsünüz."
+        },
+        {
+          "q": "Yazlık sitemiz kışın tamamen boş, sistem nasıl çalışır?",
+          "a": "Sistemi olay anında haber verecek şekilde kuruyoruz. Hareket algılama bölgelerini bahçe sınırı ve giriş kapısıyla sınırlandırıyoruz; böylece gereksiz bildirim yağmuru olmadan gerçek bir hareket olduğunda telefonunuza uyarı geliyor."
+        },
+        {
+          "q": "Sezonluk işletmem için Wi-Fi ve kamera birlikte kurulabilir mi?",
+          "a": "Evet, ikisini tek projede yapıyoruz. Müşterilere açtığınız Wi-Fi'ı işletme ağınızdan ayırıyoruz; kasa ve ödeme sistemleriniz misafir ağından izole kalıyor."
+        },
+        {
+          "q": "Deniz havası cihazlara zarar verir mi?",
+          "a": "Tuzlu ve nemli hava standart dış mekân ekipmanının ömrünü kısaltır. Sahile yakın kurulumlarda daha yüksek koruma sınıfına sahip kamera ve bağlantı elemanları kullanıyoruz."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "silivri",
+        "tekirdag",
+        "corlu"
+      ]
+    }
+  },
+  {
+    "slug": "kapakli",
+    "ad": "Kapaklı",
+    "chipLabel": "Kapaklı",
+    "cityName": "Kapaklı",
+    "il": "Tekirdağ",
+    "title": "Kapaklı Güvenlik Kamerası ve Bilgi İşlem Altyapısı | Securis",
+    "description": "Kapaklı'da atölye, depo, site ve dükkâna güvenlik kamerası, firewall, switch, Wi-Fi ve NVR kurulumu. Altyapısız binaya temiz kablolama, ücretsiz keşif.",
+    "h1": "Kapaklı Güvenlik Kamerası, Firewall ve Bilgi İşlem Altyapısı",
+    "lead": "Kapaklı, Çerkezköy sanayisinin hemen yanında hızla büyüyen bir ilçe: bir yanda atölye, depo ve nakliye firmaları, öbür yanda yeni konut siteleri ve esnaf. İkisine de kamerayı, ağı ve kayıt cihazını tek ekip olarak kuruyoruz. Silivri'den Kapaklı'ya ortalama 45–55 dakikada ulaşıyoruz.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Kapaklı güvenlik kamerası kurulumu",
+        "p": "Atölye ve depolarda öncelik mesai dışı saatler: giriş kapısı, araç sahası ve malzeme alanı. Yeni sitelerde ise giriş kapısı, otopark ve blok girişleri. Binada kamera altyapısı bırakılmamışsa kabloyu mevcut kanallardan, asma tavandan ve dış cephe güzergâhından, görüntü kirliliği yaratmadan taşıyoruz."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Kapaklı firewall kurulumu",
+        "p": "Sanayiye tedarik veren küçük ve orta ölçekli firmalarda muhasebe, sipariş ve e-posta çoğu zaman tek bir internet hattı üzerinden, korumasız çalışır. İşletmenin ölçeğine uygun bir FortiGate ile dışarıdan erişimi kapatıyor, yöneticinin ya da muhasebecinin evden bağlanması için VPN tanımlıyoruz. Model, keşifte ihtiyaca göre seçilir; küçük bir büroya büyük cihaz gerekmez."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Kapaklı network ve bilgi işlem altyapısı",
+        "p": "Hızlı büyüyen işletmelerde ağ genellikle parça parça eklenmiş, kabin karışmış olur. Mevcut kablolamayı çıkarıyor, yönetilebilir switch ile kamera, ofis ve misafir cihazlarını ayrı VLAN'lara alıyor, portları etiketliyoruz. Yeni bir bina ya da depo eklendiğinde ağı aynı düzenle büyütmek kolaylaşır."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Kapaklı Wi-Fi ve access point kurulumu",
+        "p": "Betonarme binalarda ve metal raflı depolarda modem sinyali birkaç duvarı geçemez. Sinyal ölçümüyle zayıf bölgeleri çıkarıyor, access point'leri kabloyla besleyip tek ağ adı altında dolaşımlı çalıştırıyoruz. İki katlı evlerde de yöntem aynı: tekrarlayıcı (repeater) yerine kablolu access point öneriyoruz."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Kapaklı NVR ve kayıt cihazı kurulumu",
+        "p": "Gündüz sürekli kayıt, gece hareket algılandığında bildirim: depolarda en çok istenen düzen bu. NVR'ı bu senaryoya göre ayarlıyor, disk kapasitesini istediğiniz geriye dönük kayıt süresine göre seçiyoruz. Sonradan kamera eklenecekse kanal kapasitesini baştan buna göre bırakıyoruz."
+      }
+    ],
+    "whatsappText": "Merhaba, Kapaklı'daki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Kapaklı'da Sanayi Çevresi ve Hızlı Büyüyen Konut Dokusu",
+      "paragraf": "Kapaklı, Çerkezköy sanayi bölgesinin hemen yanında konumlanan ve buna bağlı olarak hızla büyüyen bir ilçe. Nüfusun önemli bölümü çevredeki fabrikalarda çalışıyor; bu da ilçede iki farklı talep hattı oluşturuyor. Bir tarafta sanayiye tedarik veren küçük ve orta ölçekli atölyeler, depolar ve nakliye firmaları var; buralarda öncelik depo giriş-çıkışı, araç trafiği ve mesai dışı saatlerin kayıt altına alınması. Diğer tarafta hızla artan konut siteleri ve cadde üstü esnaf işletmeleri bulunuyor; burada beklenti daha çok giriş kapısı, otopark ve dükkân içi izleme. Yeni yapılaşmanın yoğun olduğu bölgelerde sıklıkla karşılaştığımız durum, inşaat aşamasında kamera altyapısı bırakılmamış olması; bu binalarda kablolamayı sonradan, mevcut mimariyi bozmayacak güzergâhlarla yapıyoruz.",
+      "mahalleList": "Atatürk, Cumhuriyet, İnönü, Karaağaç, Bahçeağıl ve Kapaklı geneli."
+    },
+    "hizmetlerTitle": "Kapaklı'da Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Kapaklı İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Kapaklı'da kamera kurulumu ne kadar sürer?",
+          "a": "Standart bir ev, dükkân veya atölye kurulumu genellikle bir günde biter. Altyapısı olmayan binalarda kablo güzergâhı keşifte çıkarılır ve süre ona göre netleşir. Keşif ücretsizdir."
+        },
+        {
+          "q": "Kapaklı'da işletmeler için bilgi işlem hizmeti veriyor musunuz?",
+          "a": "Ağ altyapısı için evet: kablolama, switch ve VLAN, FortiGate firewall ve VPN, access point ve kamera kayıt sistemi. Bilgisayar tamiri ve yazılım işi yapmıyoruz; odağımız ağın ve ağ güvenliğinin doğru kurulması."
+        },
+        {
+          "q": "Binamda kamera için altyapı bırakılmamış, sonradan çekilebilir mi?",
+          "a": "Evet. Mevcut kablo kanallarını, asma tavanı ve dış cephe güzergâhlarını kullanarak kablolamayı sonradan yapıyoruz. Amaç, görüntü kirliliği yaratmadan ve mimariyi bozmadan hattı taşımak."
+        },
+        {
+          "q": "Depomun mesai dışı saatlerini izlemek istiyorum, nasıl olur?",
+          "a": "Kameraları sürekli kayıt yapacak şekilde kuruyor, mesai dışı saatler için hareket algılama bildirimi tanımlıyoruz. Böylece gündüz kayıt birikiyor, gece bir hareket olduğunda anında haberdar oluyorsunuz."
+        },
+        {
+          "q": "Küçük bir atölye için sistem maliyeti nasıl belirleniyor?",
+          "a": "Kamera sayısı ve çözünürlüğü, istenen geriye dönük kayıt süresi, kablo mesafesi ve montaj zorluğu fiyatı belirleyen ana kalemler. Net rakam ancak ücretsiz keşif sonrasında verilebilir."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "cerkezkoy",
+        "corlu",
+        "tekirdag"
+      ]
+    }
+  },
+  {
+    "slug": "tekirdag",
+    "ad": "Süleymanpaşa",
+    "chipLabel": "Tekirdağ / Süleymanpaşa",
+    "cityName": "Tekirdağ",
+    "il": "Tekirdağ",
+    "title": "Tekirdağ Süleymanpaşa Kamera, Firewall ve Network | Securis",
+    "description": "Süleymanpaşa'da mağaza, ofis ve restorana güvenlik kamerası, firewall, şube VPN'i, Wi-Fi ve NVR kurulumu. Tekirdağ merkeze ücretsiz keşif, 3 saatte servis.",
+    "h1": "Tekirdağ Süleymanpaşa Güvenlik Kamerası, Firewall ve Ağ Kurulumu",
+    "lead": "Tekirdağ'ın merkez ilçesi Süleymanpaşa'da mağaza, market, restoran, muayenehane ve kurumsal ofislere; Kumbağ gibi sahil bölgelerindeki konutlara kamera, ağ ve firewall kuruyoruz. Silivri'den Tekirdağ merkeze ortalama 50–60 dakikada ulaşıyoruz.",
+    "hizmetDetay": [
+      {
+        "slug": "ip-kamera-sistemleri",
+        "h3": "Süleymanpaşa güvenlik kamerası kurulumu",
+        "p": "Mağaza ve marketlerde kamera iki işe yarar: kasa ve stok kontrolü, bir de personel ile müşteri arasındaki bir anlaşmazlıkta kayda bakabilmek. Kasanın üstünde para ve fiş ayrıntısını gösteren açı, girişte yüz ayrıntısı, depoda genel görüş planlıyoruz. Görüş alanını amaçla sınırlı tutuyor, gereksiz alanları kapsamıyoruz."
+      },
+      {
+        "slug": "firewall-yapilandirma",
+        "h3": "Süleymanpaşa firewall kurulumu",
+        "p": "Muayenehane, hukuk bürosu ve muhasebe ofislerinde korunan şey hasta, müvekkil ve müşteri bilgisi. FortiGate ile dışarıdan erişimi kapatıyor, yalnızca gerekli hizmetlere izin veren kurallar yazıyor, evden ya da başka bir şubeden bağlanmak için şifreli VPN tanımlıyoruz. Firmware güncellemeleri de kurulumdan sonra takip edilmesi gereken işlerden."
+      },
+      {
+        "slug": "switch-konfigurasyonu",
+        "h3": "Süleymanpaşa network ve bilgi işlem altyapısı",
+        "p": "Çok şubeli işletmelerde her şubenin ağı aynı düzende kurulursa sorunlar uzaktan da çözülebilir. Şubelerde aynı VLAN planını, aynı port etiketlerini ve aynı switch yapılandırmasını uyguluyor, şubeleri birbirine VPN ile bağlıyoruz. Tek şubeli işletmede de kasa, ofis ve kamera trafiği ayrı tutulur."
+      },
+      {
+        "slug": "access-point-kurulumu",
+        "h3": "Süleymanpaşa Wi-Fi ve access point kurulumu",
+        "p": "Sahil bandındaki restoran, kafe ve otellerde yaz sezonunda misafir Wi-Fi kapasitesi, kamera kadar önemli bir altyapı işi. Oturma düzenine ve eş zamanlı kullanıcı sayısına göre access point planlıyor, misafir ağını sipariş sisteminden ve kasadan ayırıyoruz. Ofis ve muayenehanelerde ise odalar arasında kopmayan tek bir ağ kuruyoruz."
+      },
+      {
+        "slug": "nvr-depolama",
+        "h3": "Süleymanpaşa NVR ve kayıt cihazı kurulumu",
+        "p": "Birden fazla şubesi olan işletmelerde her şubenin kaydı kendi NVR'ında tutulur, hepsi tek uygulamadan izlenir. Disk kapasitesini şube başına kamera sayısına ve istenen kayıt süresine göre belirliyoruz. Bir anlaşmazlık olduğunda ilgili kaydı bulup dışa aktarmayı da teslimde gösteriyoruz."
+      }
+    ],
+    "whatsappText": "Merhaba, Süleymanpaşa'daki iş yerim için kamera sistemi keşfi istiyorum.",
+    "profil": {
+      "title": "Tekirdağ Merkezde Ticari İşletme ve Kurumsal Ofis Güvenliği",
+      "paragraf": "Süleymanpaşa, Tekirdağ'ın merkez ilçesi; ticaret, kamu kurumları, eğitim ve sahil turizmi bir arada. Buradaki talebin ağırlığı sanayiden çok ticari işletmelerde: mağazalar, marketler, restoranlar, muayenehaneler ve kurumsal ofisler. Bu işletmelerde kamera sistemi genellikle iki nedenle kuruluyor; kasa ve stok kontrolü, bir de personel ile müşteri arasında yaşanan anlaşmazlıklarda kayda başvurabilmek. Çok şubeli işletmelerde ise talep büyüyor: her şubenin ayrı ayrı izlenmesi yerine tüm şubelerin tek uygulamadan görülebilmesi isteniyor. Bunu şubeler arası şifreli VPN bağlantısıyla kuruyoruz. Sahil bandındaki restoran ve konaklama işletmelerinde ise sezonluk yoğunluk, hem kamera kapsamasını hem de misafir Wi-Fi kapasitesini planlarken dikkate alınması gereken bir etken.",
+      "mahalleList": "Ertuğrul, Hürriyet, Aydoğdu, Yavuz, Zafer, 100. Yıl, Barbaros, Kumbağ ve Süleymanpaşa geneli."
+    },
+    "hizmetlerTitle": "Süleymanpaşa'da Sunduğumuz Hizmetler",
+    "sss": {
+      "title": "Süleymanpaşa İçin Sık Sorulan Sorular",
+      "items": [
+        {
+          "q": "Tekirdağ merkezde kamera kurulumu ne kadar sürer?",
+          "a": "Süleymanpaşa'da standart bir mağaza, ofis veya ev kurulumu genellikle bir günde tamamlanır. Çok şubeli projelerde şubeler sırayla planlanır ve toplam süre keşifte netleşir. Keşif ücretsizdir ve taahhüt gerektirmez."
+        },
+        {
+          "q": "Süleymanpaşa'ya arızada ne kadar sürede gelirsiniz?",
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır ve Süleymanpaşa hizmet bölgelerimiz arasındadır; arızaya en geç 3 saat içinde yerinde müdahale ediyoruz. Silivri'den Tekirdağ merkeze ortalama yol süresi 50–60 dakikadır."
+        },
+        {
+          "q": "Birden fazla şubem var, hepsini tek yerden izleyebilir miyim?",
+          "a": "Evet. Şubeler arasında şifreli VPN bağlantısı kurarak tüm kayıt cihazlarını tek uygulama üzerinden erişilebilir hale getiriyoruz; her şube için ayrı hesapla uğraşmıyorsunuz."
+        },
+        {
+          "q": "Mağazamda kamera bulundurmanın kuralları neler?",
+          "a": "İş yerinizde güvenlik amaçlı kamera bulundurabilirsiniz; ancak KVKK kapsamında çalışanları ve müşterileri bilgilendirme yükümlülüğünüz var ve kamera görüş alanı amaçla sınırlı olmalıdır. Uygulamanın hukuki detayı için bir hukuk danışmanına başvurmanızı öneririz."
+        },
+        {
+          "q": "Restoranımda misafirlere Wi-Fi vermek istiyorum, güvenli mi?",
+          "a": "Misafir ağını işletme ağınızdan ayırdığımız sürece güvenlidir. Bu ayrımı yaptığımızda misafirler internete çıkar ancak kasa, sipariş sistemi ve kamera kayıtlarınıza erişemez."
+        }
+      ]
+    },
+    "yakinBolgeler": {
+      "title": "Çevre İlçelerde de Hizmet Veriyoruz",
+      "slugs": [
+        "marmaraereglisi",
+        "corlu",
+        "kapakli"
+      ]
+    }
+  }
+]
