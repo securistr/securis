@@ -12,8 +12,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Silivri güvenlik kamerası kurulumu",
-        "p": "Silivri'de kamera talebinin büyük kısmı sahil şeridindeki site ve villalardan, merkezdeki dükkân ve ofislerden geliyor. Yazlıkta amaç, boş geçen aylarda bahçe sınırını, giriş kapısını ve araç yolunu görmek; dükkânda kasa, giriş ve depo. Keşifte kör noktaları birlikte çıkarıyor, dış mekânda deniz nemine uygun kasalı Dahua, Hikvision veya Milesight kameralar öneriyoruz. Standart bir ev ya da dükkân kurulumu genellikle bir günde biter."
+        "h3": "Silivri güvenlik kamerası ve NVR kurulumu",
+        "p": "Silivri'de kamera talebinin büyük kısmı sahil şeridindeki site ve villalardan, merkezdeki dükkân ve ofislerden geliyor. Yazlıkta amaç, boş geçen aylarda bahçe sınırını, giriş kapısını ve araç yolunu görmek; dükkânda kasa, giriş ve depo. Keşifte kör noktaları birlikte çıkarıyor, dış mekânda deniz nemine uygun kasalı Dahua, Hikvision veya Milesight kameralar öneriyoruz. Standart bir ev ya da dükkân kurulumu genellikle bir günde biter. Kışın boş kalan yazlıkta internet kesilse bile kaydın sürmesi gerekir; bu yüzden görüntü önce evdeki NVR'a yazılır, telefondan izleme bunun üstüne kurulur. Disk kapasitesini kamera sayısına ve kaç gün geriye dönük kayıt istediğinize göre hesaplıyoruz. Kurulum bitince kayıt cihazını telefonunuza tanımlıyor, geçmiş kayda nasıl bakılacağını yerinde gösteriyoruz."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -31,9 +31,9 @@
         "p": "İki katlı villada modem bir katta kalınca üst kat ve bahçe çekmez; sahildeki kafe ve otellerde ise yaz akşamı dış oturma alanı dolar. Access point'leri sinyal ölçümüne göre konumlandırıyor, hepsini tek ağ adı altında dolaşımlı (roaming) çalıştırıyoruz. Misafir ağı işletme ağından ayrılır; kasaya ve kamera kayıtlarına misafir telefonundan erişilemez."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Silivri NVR ve kayıt cihazı kurulumu",
-        "p": "Kışın boş kalan yazlıkta internet kesilse bile kaydın sürmesi gerekir; bu yüzden görüntü önce evdeki NVR'a yazılır, telefondan izleme bunun üstüne kurulur. Disk kapasitesini kamera sayısına ve kaç gün geriye dönük kayıt istediğinize göre hesaplıyoruz. Kurulum bitince kayıt cihazını telefonunuza tanımlıyor, geçmiş kayda nasıl bakılacağını yerinde gösteriyoruz."
+        "slug": "depolama-yedekleme",
+        "h3": "Silivri NAS kurulumu ve veri yedekleme",
+        "p": "Silivri merkezdeki muhasebe bürosu, klinik ve ofislerde dosyalar çoğu zaman tek bir bilgisayarda ya da masadaki harici diskte durur; o disk bozulduğunda yılların arşivi de gider. Ofise QNAP NAS kuruyor, diskleri RAID ile yapılandırıyor, bilgisayarların yedeğini her gün otomatik olarak NAS'a aldırıyoruz. Yedeğin bir kopyası buluta ya da başka bir adrese gider; ofiste bir arıza ya da hırsızlık olsa da veri geri alınabilir."
       }
     ],
     "whatsappText": "Merhaba, Silivri'deki iş yerim için kamera sistemi keşfi istiyorum.",
@@ -90,8 +90,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Çatalca güvenlik kamerası kurulumu",
-        "p": "Çatalca'da kamera işi çoğu zaman bir çevre hattı kurmak demek: çiftlikte giriş yolu, yem deposu ve ağıl kapısı; depoda yükleme rampası ve araç giriş kapısı. Gece aydınlatması olmayan açık alanlarda kızılötesi menzili yeterli kameralar seçiyoruz. Kapıda plaka okunması isteniyorsa o nokta için lens ve açıyı ayrıca planlıyoruz; genel görüş kamerası plaka okumaz."
+        "h3": "Çatalca güvenlik kamerası ve NVR kurulumu",
+        "p": "Çatalca'da kamera işi çoğu zaman bir çevre hattı kurmak demek: çiftlikte giriş yolu, yem deposu ve ağıl kapısı; depoda yükleme rampası ve araç giriş kapısı. Gece aydınlatması olmayan açık alanlarda kızılötesi menzili yeterli kameralar seçiyoruz. Kapıda plaka okunması isteniyorsa o nokta için lens ve açıyı ayrıca planlıyoruz; genel görüş kamerası plaka okumaz. Sabit internetin zayıf olduğu konumlarda sistemi yerel kayıt önceliğiyle kuruyoruz: tüm kameralar ana binadaki NVR'a yazar, internet yalnızca uzaktan izleme için kullanılır. Bağlantı kopsa da kayıt durmaz. Çok binalı tesislerde kameraların hepsi tek NVR'da ve tek uygulamada toplanır; kapasite, istenen geriye dönük kayıt süresine göre seçilir."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -109,9 +109,9 @@
         "p": "Metal raflı depolarda tek bir modemin sinyali koridorun ortasında kaybolur; el terminali ya da tablet kullanan ekip için bu, işin durması demek. Raf aralıklarını hesaba katarak tavan tipi access point'ler yerleştiriyor, geniş çiftlik avlusunda dış mekân tipi cihazla kapsamayı binanın dışına taşıyoruz."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Çatalca NVR ve kayıt cihazı kurulumu",
-        "p": "Sabit internetin zayıf olduğu konumlarda sistemi yerel kayıt önceliğiyle kuruyoruz: tüm kameralar ana binadaki NVR'a yazar, internet yalnızca uzaktan izleme için kullanılır. Bağlantı kopsa da kayıt durmaz. Çok binalı tesislerde kameraların hepsi tek NVR'da ve tek uygulamada toplanır; kapasite, istenen geriye dönük kayıt süresine göre seçilir."
+        "slug": "depolama-yedekleme",
+        "h3": "Çatalca NAS kurulumu ve veri yedekleme",
+        "p": "Çiftlik ve depolarda işletme dosyaları da kamera kayıtları da genellikle ana binadaki tek bir cihazda durur, sabit internet ise çoğu yerde zayıftır. Yedeği bu yüzden önce yerelde, ana binadaki QNAP NAS'ta kuruyoruz: bilgisayar dosyaları zamanlanmış olarak NAS'a yazılır, kamera kayıtları uzun süreli arşiv için oraya taşınır. İkinci kopyayı bağlantının izin verdiği ölçüde buluta ya da başka bir binaya alıyoruz."
       }
     ],
     "whatsappText": "Merhaba, Çatalca'daki iş yerim için kamera sistemi keşfi istiyorum.",
@@ -168,8 +168,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Büyükçekmece güvenlik kamerası kurulumu",
-        "p": "Sitelerde kamera işi yönetim kararıyla başlar ve öncelikler bellidir: otopark, blok girişleri, çocuk parkı ve site kapısı. Cadde üstü dükkânda ise giriş, kasa ve depo iyi bir başlangıçtır. Otopark gibi loş alanlarda düşük ışıkta net görüntü veren modelleri, kapı önünde yüz ayrıntısı için dar açılı lensleri tercih ediyoruz."
+        "h3": "Büyükçekmece güvenlik kamerası ve NVR kurulumu",
+        "p": "Sitelerde kamera işi yönetim kararıyla başlar ve öncelikler bellidir: otopark, blok girişleri, çocuk parkı ve site kapısı. Cadde üstü dükkânda ise giriş, kasa ve depo iyi bir başlangıçtır. Otopark gibi loş alanlarda düşük ışıkta net görüntü veren modelleri, kapı önünde yüz ayrıntısı için dar açılı lensleri tercih ediyoruz. Sitelerde kayıt cihazı yönetim odasında durur ve kimin neyi göreceği baştan tanımlanır: güvenlik görevlisi canlı izler, geçmiş kayda yönetim erişir. Disk kapasitesini, kaç günlük kayıt tutulacağına ve kamera sayısına göre hesaplıyoruz. Kurulum bitince yetkili kişilerin telefonuna uzaktan izleme tanımlanır."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -187,9 +187,9 @@
         "p": "Site sosyal tesisinde, havuz başında ya da güvenlik kulübesinde internet genellikle ana binadan taşınmak zorunda. Access point'leri kablolu omurgaya bağlayıp tek ağ adıyla çalıştırıyor, sakinler ya da müşteriler için ayrı bir misafir ağı açıyoruz. Dükkânlarda ödeme cihazı ile misafir Wi-Fi'ı aynı ağda bırakmıyoruz."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Büyükçekmece NVR ve kayıt cihazı kurulumu",
-        "p": "Sitelerde kayıt cihazı yönetim odasında durur ve kimin neyi göreceği baştan tanımlanır: güvenlik görevlisi canlı izler, geçmiş kayda yönetim erişir. Disk kapasitesini, kaç günlük kayıt tutulacağına ve kamera sayısına göre hesaplıyoruz. Kurulum bitince yetkili kişilerin telefonuna uzaktan izleme tanımlanır."
+        "slug": "depolama-yedekleme",
+        "h3": "Büyükçekmece NAS kurulumu ve veri yedekleme",
+        "p": "Site yönetimlerinde belgeler, yönetim değiştikçe bir bilgisayardan ötekine taşınırken kaybolabiliyor. Yönetim ofisine kurduğumuz QNAP NAS'ta her kullanıcının yetkisi ayrı tanımlanır; belgeler tek yerde durur, bilgisayarların yedeği otomatik alınır. Ana caddedeki dükkân ve ofislerde de aynı düzeni kuruyoruz; kamera kayıtlarının uzun süreli arşivi NAS'ta tutulabilir, ikinci kopya buluta ya da başka bir adrese gider."
       }
     ],
     "whatsappText": "Merhaba, Büyükçekmece'deki iş yerim için kamera sistemi keşfi istiyorum.",
@@ -246,8 +246,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Beylikdüzü güvenlik kamerası kurulumu",
-        "p": "Rezidans ve sitelerde öncelikli noktalar otopark, asansör holü ve giriş turnikeleri; plaza ofislerinde ise giriş kapısı, arşiv ve sunucu odası. Kapalı otoparklarda düşük ışık performansı belirleyici olduğu için kamerayı ortam ışığına göre seçiyoruz. Ofislerde kablo asma tavanın içinden gider; tavanda yalnızca kamera görünür."
+        "h3": "Beylikdüzü güvenlik kamerası ve NVR kurulumu",
+        "p": "Rezidans ve sitelerde öncelikli noktalar otopark, asansör holü ve giriş turnikeleri; plaza ofislerinde ise giriş kapısı, arşiv ve sunucu odası. Kapalı otoparklarda düşük ışık performansı belirleyici olduğu için kamerayı ortam ışığına göre seçiyoruz. Ofislerde kablo asma tavanın içinden gider; tavanda yalnızca kamera görünür. Ofislerde kayıt cihazı genellikle ağ kabinine, sitelerde yönetim odasına monte edilir. Kaç gün geriye dönük kayıt istediğinize göre disk kapasitesini belirliyor, elektrik kesintisinde kaydın sürmesi için kesintisiz güç kaynağı (UPS) öneriyoruz. Yetkili kişilerin telefonuna uzaktan izleme tanımlanır."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -265,9 +265,9 @@
         "p": "Çok odalı ofislerde tek modemle bütün katı kapatmaya çalışmak ölü noktalar bırakır; toplantı odası ve arka ofis genellikle ilk çekmeyen yerlerdir. Kat planına göre tavan tipi access point'ler yerleştiriyor, hepsini tek ağ adı altında dolaşımlı çalıştırıyoruz. Toplantıya gelen misafir ayrı ağa bağlanır, şirket kaynaklarını göremez."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Beylikdüzü NVR ve kayıt cihazı kurulumu",
-        "p": "Ofislerde kayıt cihazı genellikle ağ kabinine, sitelerde yönetim odasına monte edilir. Kaç gün geriye dönük kayıt istediğinize göre disk kapasitesini belirliyor, elektrik kesintisinde kaydın sürmesi için kesintisiz güç kaynağı (UPS) öneriyoruz. Yetkili kişilerin telefonuna uzaktan izleme tanımlanır."
+        "slug": "depolama-yedekleme",
+        "h3": "Beylikdüzü NAS kurulumu ve veri yedekleme",
+        "p": "Plaza ve ofislerde birden fazla çalışan aynı dosyalar üzerinde çalışır; dosya bir kişinin bilgisayarında kaldığında ekip bekler. Ofise QNAP NAS kuruyor, klasörleri departman bazında yetkilendiriyor, bilgisayar ve sunucu yedeklerini zamanlanmış olarak NAS'a aldırıyoruz. Ofis taşınırken veri NAS ile birlikte taşınır; yedeğin ikinci kopyası buluta ya da başka bir lokasyona alınır."
       }
     ],
     "whatsappText": "Merhaba, Beylikdüzü'ndeki iş yerim için kamera sistemi keşfi istiyorum.",
@@ -324,8 +324,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Çorlu güvenlik kamerası kurulumu",
-        "p": "Fabrikada kamera yalnızca hırsızlık için kurulmaz; yükleme rampasındaki sevkiyatı, forklift trafiğini ve iş güvenliği açısından kritik noktaları izlemek için de kurulur. Üretim alanında toza ve neme dayanıklı kasalar, vardiyalı çalışan tesislerde güçlü gece görüşü seçiyoruz. Kamera kablo tavasına, direğe ya da tavana; alan neyi gerektiriyorsa oraya monte ediliyor."
+        "h3": "Çorlu güvenlik kamerası ve NVR kurulumu",
+        "p": "Fabrikada kamera yalnızca hırsızlık için kurulmaz; yükleme rampasındaki sevkiyatı, forklift trafiğini ve iş güvenliği açısından kritik noktaları izlemek için de kurulur. Üretim alanında toza ve neme dayanıklı kasalar, vardiyalı çalışan tesislerde güçlü gece görüşü seçiyoruz. Kamera kablo tavasına, direğe ya da tavana; alan neyi gerektiriyorsa oraya monte ediliyor. Kamera sayısı yüksek tesislerde kayıt cihazının kanal ve disk kapasitesi baştan doğru seçilmeli; sonradan kamera eklendiğinde yer kalmalı. Kayıt cihazını ağ kabininde, kesintisiz güç kaynağıyla birlikte konumlandırıyoruz. Yöneticiler kayıtlara telefondan ya da merkez ofisten VPN üzerinden erişir."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -343,9 +343,9 @@
         "p": "Geniş üretim ve depo alanlarında Wi-Fi, el terminalleri ve saha tabletleri için bir iş aracıdır. Makine ve raf yerleşimine göre sinyal ölçümü yapıyor, access point'leri tavana ya da kolonlara yerleştiriyoruz. Personel, üretim cihazları ve ziyaretçi için ayrı ağlar tanımlanır; ziyaretçi üretim ağını göremez."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Çorlu NVR ve kayıt cihazı kurulumu",
-        "p": "Kamera sayısı yüksek tesislerde kayıt cihazının kanal ve disk kapasitesi baştan doğru seçilmeli; sonradan kamera eklendiğinde yer kalmalı. Kayıt cihazını ağ kabininde, kesintisiz güç kaynağıyla birlikte konumlandırıyoruz. Yöneticiler kayıtlara telefondan ya da merkez ofisten VPN üzerinden erişir."
+        "slug": "depolama-yedekleme",
+        "h3": "Çorlu NAS kurulumu ve veri yedekleme",
+        "p": "Fabrikalarda üretim, muhasebe ve kalite dosyaları farklı bilgisayarlara dağılır; kamera kayıtları da vardiya vardiya birikir. Tesise QNAP NAS kuruyor, diskleri RAID ile yapılandırıyor, bilgisayar ve sunucu yedeklerini mesai dışında otomatik alıyoruz. Cihazı tozdan uzak bir kabine ya da odaya yerleştiriyor, kamera kayıtlarının uzun süreli arşivini NAS'ta tutuyor, ikinci kopyayı buluta ya da başka bir binaya alıyoruz."
       }
     ],
     "whatsappText": "Merhaba, Çorlu'daki iş yerim için kamera sistemi keşfi istiyorum.",
@@ -402,8 +402,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Çerkezköy güvenlik kamerası kurulumu",
-        "p": "OSB'deki tesislerde kamera planı çevre duvarı, bekçi kulübesi, araç giriş kapısı ve yükleme alanlarıyla başlar; içeride üretim hattı ve depo gelir. Uzun çevre duvarında her köşeye kamera koymak yerine doğru lens ve konumla daha az kamerayla daha çok alanı görüyoruz. İlçe merkezindeki dükkân ve konutlarda standart kurulum genellikle bir günde biter."
+        "h3": "Çerkezköy güvenlik kamerası ve NVR kurulumu",
+        "p": "OSB'deki tesislerde kamera planı çevre duvarı, bekçi kulübesi, araç giriş kapısı ve yükleme alanlarıyla başlar; içeride üretim hattı ve depo gelir. Uzun çevre duvarında her köşeye kamera koymak yerine doğru lens ve konumla daha az kamerayla daha çok alanı görüyoruz. İlçe merkezindeki dükkân ve konutlarda standart kurulum genellikle bir günde biter. Çok kameralı tesislerde kayıtlar bir ya da birden fazla NVR'da toplanır, hepsi tek uygulamadan izlenir. Disk kapasitesini kaç gün geriye dönük kayıt istendiğine göre hesaplıyor, kritik alanlar için ayrı yedekleme planlıyoruz. Yönetim kayıtlara VPN üzerinden, güvenlik görevlisi yerel monitörden erişir."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -421,9 +421,9 @@
         "p": "Depo ve saha alanlarında kablosuz ağ, forklift üstü terminal ya da el tarayıcısı kullanan ekipler için şart. Yüksek tavanlı depolarda access point'i doğru yüksekliğe ve raf koridorlarına göre yerleştiriyor, açık sahada dış mekân tipi cihaz kullanıyoruz. Personel ve misafir ağları birbirinden ayrılır."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Çerkezköy NVR ve kayıt cihazı kurulumu",
-        "p": "Çok kameralı tesislerde kayıtlar bir ya da birden fazla NVR'da toplanır, hepsi tek uygulamadan izlenir. Disk kapasitesini kaç gün geriye dönük kayıt istendiğine göre hesaplıyor, kritik alanlar için ayrı yedekleme planlıyoruz. Yönetim kayıtlara VPN üzerinden, güvenlik görevlisi yerel monitörden erişir."
+        "slug": "depolama-yedekleme",
+        "h3": "Çerkezköy NAS kurulumu ve veri yedekleme",
+        "p": "OSB'deki tesislerde merkez ofis ile fabrika arasındaki dosya alışverişi çoğu zaman e-postayla yürür. Tesise kurduğumuz QNAP NAS'a merkezden VPN üzerinden erişilir; klasör yetkileri birim bazında ayrılır, bilgisayar ve sunucu yedekleri zamanlanmış olarak NAS'a yazılır. Kamera kayıtları uzun süreli arşiv için NAS'a taşınabilir; ikinci kopya buluta ya da merkez ofise gider."
       }
     ],
     "whatsappText": "Merhaba, Çerkezköy'deki iş yerim için kamera sistemi keşfi istiyorum.",
@@ -480,8 +480,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Marmaraereğlisi güvenlik kamerası kurulumu",
-        "p": "Kışın boş kalan yazlıkta amaç, olay anında haber almak. Hareket algılama bölgelerini yola değil bahçe sınırına ve giriş kapısına çiziyoruz; yoldan geçen her araç için telefonunuza bildirim gelmez. Denize yakın ev ve işletmelerde tuzlu havaya dayanıklı, yüksek koruma sınıflı dış mekân kameraları kullanıyoruz."
+        "h3": "Marmaraereğlisi güvenlik kamerası ve NVR kurulumu",
+        "p": "Kışın boş kalan yazlıkta amaç, olay anında haber almak. Hareket algılama bölgelerini yola değil bahçe sınırına ve giriş kapısına çiziyoruz; yoldan geçen her araç için telefonunuza bildirim gelmez. Denize yakın ev ve işletmelerde tuzlu havaya dayanıklı, yüksek koruma sınıflı dış mekân kameraları kullanıyoruz. Yazlıkta kayıt cihazı evin içinde, görünmeyen ve nemden korunan bir noktaya konur. İnternet kesilse de görüntü NVR'a yazılmaya devam eder; bağlantı geri geldiğinde geçmiş kayda telefondan bakabilirsiniz. Disk kapasitesini, eve ne sıklıkla uğradığınızı hesaba katarak yeterli geriye dönük kayıt kalacak şekilde seçiyoruz."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -499,9 +499,9 @@
         "p": "Yaz akşamı dolu bir kafede ya da pansiyonda Wi-Fi'ın yavaşlaması genellikle yetersiz kapasiteden gelir. Eş zamanlı kullanıcı sayısına göre access point sayısını belirliyor, dış oturma alanına dış mekân tipi cihaz koyuyoruz. Misafir ağı işletme ağından ayrılır; müşteriler internete çıkar ama kasaya ve kameralara erişemez."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Marmaraereğlisi NVR ve kayıt cihazı kurulumu",
-        "p": "Yazlıkta kayıt cihazı evin içinde, görünmeyen ve nemden korunan bir noktaya konur. İnternet kesilse de görüntü NVR'a yazılmaya devam eder; bağlantı geri geldiğinde geçmiş kayda telefondan bakabilirsiniz. Disk kapasitesini, eve ne sıklıkla uğradığınızı hesaba katarak yeterli geriye dönük kayıt kalacak şekilde seçiyoruz."
+        "slug": "depolama-yedekleme",
+        "h3": "Marmaraereğlisi NAS kurulumu ve veri yedekleme",
+        "p": "Sezonluk işletmelerde muhasebe dosyaları da kamera kayıtları da kışın kapalı kalan binada durur. QNAP NAS'ı nemden korunan bir noktaya kuruyor, diskleri RAID ile yapılandırıyor, bilgisayar yedeklerini otomatik aldırıyoruz. Yedeğin ikinci kopyası buluta ya da işletme sahibinin kendi adresine gider; bina boşken bir arıza ya da hırsızlık olsa da veri başka yerde durur."
       }
     ],
     "whatsappText": "Merhaba, Marmaraereğlisi'ndeki iş yerim için kamera sistemi keşfi istiyorum.",
@@ -558,8 +558,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Kapaklı güvenlik kamerası kurulumu",
-        "p": "Atölye ve depolarda öncelik mesai dışı saatler: giriş kapısı, araç sahası ve malzeme alanı. Yeni sitelerde ise giriş kapısı, otopark ve blok girişleri. Binada kamera altyapısı bırakılmamışsa kabloyu mevcut kanallardan, asma tavandan ve dış cephe güzergâhından, görüntü kirliliği yaratmadan taşıyoruz."
+        "h3": "Kapaklı güvenlik kamerası ve NVR kurulumu",
+        "p": "Atölye ve depolarda öncelik mesai dışı saatler: giriş kapısı, araç sahası ve malzeme alanı. Yeni sitelerde ise giriş kapısı, otopark ve blok girişleri. Binada kamera altyapısı bırakılmamışsa kabloyu mevcut kanallardan, asma tavandan ve dış cephe güzergâhından, görüntü kirliliği yaratmadan taşıyoruz. Gündüz sürekli kayıt, gece hareket algılandığında bildirim: depolarda en çok istenen düzen bu. NVR'ı bu senaryoya göre ayarlıyor, disk kapasitesini istediğiniz geriye dönük kayıt süresine göre seçiyoruz. Sonradan kamera eklenecekse kanal kapasitesini baştan buna göre bırakıyoruz."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -577,9 +577,9 @@
         "p": "Betonarme binalarda ve metal raflı depolarda modem sinyali birkaç duvarı geçemez. Sinyal ölçümüyle zayıf bölgeleri çıkarıyor, access point'leri kabloyla besleyip tek ağ adı altında dolaşımlı çalıştırıyoruz. İki katlı evlerde de yöntem aynı: tekrarlayıcı (repeater) yerine kablolu access point öneriyoruz."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Kapaklı NVR ve kayıt cihazı kurulumu",
-        "p": "Gündüz sürekli kayıt, gece hareket algılandığında bildirim: depolarda en çok istenen düzen bu. NVR'ı bu senaryoya göre ayarlıyor, disk kapasitesini istediğiniz geriye dönük kayıt süresine göre seçiyoruz. Sonradan kamera eklenecekse kanal kapasitesini baştan buna göre bırakıyoruz."
+        "slug": "depolama-yedekleme",
+        "h3": "Kapaklı NAS kurulumu ve veri yedekleme",
+        "p": "Atölye ve depolarda irsaliye, teklif ve çizim dosyaları genellikle tek bir masaüstü bilgisayarda durur. Küçük bir QNAP NAS ile bu dosyaları tek yerde topluyor, diskleri RAID ile yapılandırıyor, bilgisayarın yedeğini her gün otomatik aldırıyoruz. Kamera kayıtlarının uzun süreli arşivi de aynı NAS'ta tutulabilir; ikinci kopya buluta ya da başka bir adrese gider."
       }
     ],
     "whatsappText": "Merhaba, Kapaklı'daki iş yerim için kamera sistemi keşfi istiyorum.",
@@ -636,8 +636,8 @@
     "hizmetDetay": [
       {
         "slug": "ip-kamera-sistemleri",
-        "h3": "Süleymanpaşa güvenlik kamerası kurulumu",
-        "p": "Mağaza ve marketlerde kamera iki işe yarar: kasa ve stok kontrolü, bir de personel ile müşteri arasındaki bir anlaşmazlıkta kayda bakabilmek. Kasanın üstünde para ve fiş ayrıntısını gösteren açı, girişte yüz ayrıntısı, depoda genel görüş planlıyoruz. Görüş alanını amaçla sınırlı tutuyor, gereksiz alanları kapsamıyoruz."
+        "h3": "Süleymanpaşa güvenlik kamerası ve NVR kurulumu",
+        "p": "Mağaza ve marketlerde kamera iki işe yarar: kasa ve stok kontrolü, bir de personel ile müşteri arasındaki bir anlaşmazlıkta kayda bakabilmek. Kasanın üstünde para ve fiş ayrıntısını gösteren açı, girişte yüz ayrıntısı, depoda genel görüş planlıyoruz. Görüş alanını amaçla sınırlı tutuyor, gereksiz alanları kapsamıyoruz. Birden fazla şubesi olan işletmelerde her şubenin kaydı kendi NVR'ında tutulur, hepsi tek uygulamadan izlenir. Disk kapasitesini şube başına kamera sayısına ve istenen kayıt süresine göre belirliyoruz. Bir anlaşmazlık olduğunda ilgili kaydı bulup dışa aktarmayı da teslimde gösteriyoruz."
       },
       {
         "slug": "firewall-yapilandirma",
@@ -655,9 +655,9 @@
         "p": "Sahil bandındaki restoran, kafe ve otellerde yaz sezonunda misafir Wi-Fi kapasitesi, kamera kadar önemli bir altyapı işi. Oturma düzenine ve eş zamanlı kullanıcı sayısına göre access point planlıyor, misafir ağını sipariş sisteminden ve kasadan ayırıyoruz. Ofis ve muayenehanelerde ise odalar arasında kopmayan tek bir ağ kuruyoruz."
       },
       {
-        "slug": "nvr-depolama",
-        "h3": "Süleymanpaşa NVR ve kayıt cihazı kurulumu",
-        "p": "Birden fazla şubesi olan işletmelerde her şubenin kaydı kendi NVR'ında tutulur, hepsi tek uygulamadan izlenir. Disk kapasitesini şube başına kamera sayısına ve istenen kayıt süresine göre belirliyoruz. Bir anlaşmazlık olduğunda ilgili kaydı bulup dışa aktarmayı da teslimde gösteriyoruz."
+        "slug": "depolama-yedekleme",
+        "h3": "Süleymanpaşa NAS kurulumu ve veri yedekleme",
+        "p": "Şubeli mağaza, klinik ve ofislerde her şubenin dosyası kendi bilgisayarında kalınca merkez neyin nerede olduğunu bilemez. Merkeze QNAP NAS kuruyor, şubelerin yedeğini VPN üzerinden zamanlanmış olarak buraya aldırıyoruz; klasör yetkileri şube ve kişi bazında ayrılır. Kamera kayıtlarının arşivi de NAS'ta tutulabilir; ikinci kopya buluta ya da başka bir lokasyona gider."
       }
     ],
     "whatsappText": "Merhaba, Süleymanpaşa'daki iş yerim için kamera sistemi keşfi istiyorum.",

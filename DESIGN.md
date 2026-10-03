@@ -24,7 +24,7 @@ colors:
   button-hover: "#e9e9e9"
   red-pencil: "#ff3b30"
   grade-camera: "#c2410c"
-  grade-nvr: "#7c3aed"
+  grade-storage: "#7c3aed"
   grade-switch: "#0284c7"
   grade-firewall: "#dc2626"
   grade-wifi: "#059669"
@@ -155,7 +155,7 @@ Density is low at the top (one frame, one title, one lead, two buttons) and beco
 A monochrome interface in two printings whose only colour comes from grading photographs to one accent per service.
 
 ### Primary
-- **Service Grades** (camera, NVR, switch, firewall, Wi-Fi, regions): never used as flat UI fills or text. Each is applied twice over its photo, once as `mix-blend-mode: color` and once as `multiply` at .55 opacity, so the image takes on that service's hue. One grade per page hero: service pages use their service, region pages use the regions blue, the home backdrop cross-fades to the focused slide's grade. The members follower and the projects stage re-grade their photo to the hovered item's accent.
+- **Service Grades** (camera, storage, switch, firewall, Wi-Fi, regions): never used as flat UI fills or text. Each is applied twice over its photo, once as `mix-blend-mode: color` and once as `multiply` at .55 opacity, so the image takes on that service's hue. The camera grade runs light (color .3, multiply .15, `SVC.grade` in build.mjs): a white camera on a pale wall turned into a flat red field under the full grade. One grade per page hero: service pages use their service, region pages use the regions blue, the home backdrop cross-fades to the focused slide's grade. The members follower and the projects stage re-grade their photo to the hovered item's accent.
 - **Field Grey** (grade-field): the grade of the home page's industrial-site frame, the one slide that is not a service.
 - **Close Slate** (grade-close): the grade of the closing band's finished-install photo on every content page.
 
@@ -209,7 +209,7 @@ Inside photographic zones, in both themes, text is paper, soft text is Photo Sof
 - **Body** (400, clamp(18px, 1.2vw, 20px), 1.65): running text; FAQ answers max 70ch, prose max 54ch.
 - **Label** (JetBrains Mono 500, 13px, .08em, uppercase): travel times, notes, menu column labels, member and project numbers, project categories, preview caption.
 - **Crumb** (JetBrains Mono 500, 14px, .04em, sentence case): breadcrumb trail above the H1.
-- **Outline words** (Archivo 700, 2.3x the slide title, -.04em): giant service words behind the strip, transparent fill with a 1px white stroke at .14 opacity (.34 when on).
+- **Outline words** (Archivo 700, -.04em, sized by carousel.js to the band they sit in, at most 2x the slide title): the service word labels the strip from the band right above it, starting at the focused card's left edge (phones: the gutter, above "Hizmeti incele"); passed words and descriptions fade out at that edge. They never pass behind a photo. Transparent fill, 1px white stroke at .2 opacity (.42 when on) with a light tracing the outline of the lit word.
 
 ### Named Rules
 **The Readability Floor Rule.** Body never below 18px at 1.65, leads 19-23px, mono labels never below 13px. Soft and dim text must hold at least 6.8:1 in either printing.
@@ -264,7 +264,7 @@ A centred top bar over the hero: text-plus-icon buttons at .92 opacity (icons on
 - **Letter roll:** on hover-capable devices, single-line menu links and project titles roll letter by letter: the letters slide up out of a clip while a copy slides in from below (.5s, cubic-bezier(.65, 0, .35, 1)), staggered 32ms per letter outward from the centre. Labels that wrap, and touch devices, keep plain text; the real text stays for screen readers.
 
 ### Filmstrip (signature)
-Cards are square-cornered photos with no captions. Unfocused cards are half height, greyscale at .85 brightness with a .14 black veil; the focused card grows to full height in full colour. A single spring (stiffness 260, damping 34, mass .9) drives the strip, the description track and the outline-word track together, from drag with momentum, wheel, arrow/Home/End keys and a 5.5s autoplay that pauses off-screen. The backdrop cross-fades to the new grade over .7s while the image slowly zooms from 1.42 to 1.28. The title rises in through a clipped line wipe. Reduced motion jumps without animation.
+Cards are square-cornered photos with no captions. Unfocused cards are half height, greyscale at .85 brightness with a .14 black veil; the focused card grows to full height in full colour. A single spring (stiffness 260, damping 34, mass .9) drives the strip, the description track and the outline-word track together, from drag with momentum, wheel, arrow/Home/End keys and a 5s autoplay that pauses off-screen. The backdrop cross-fades to the new grade over .7s while the image slowly zooms from 1.42 to 1.28. The title rises in through a clipped line wipe. Reduced motion jumps without animation.
 
 ### Contact Sheet (signature)
 A bottom-aligned row of every service frame, each greyscale at .8 brightness with a mono caption ("01 IP KAMERA"). The current frame is larger, in colour, captioned "— BU SAYFA" and ringed in red pencil. Frames settle in with a 70ms stagger; the ring draws in .55s later.

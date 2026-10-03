@@ -2,7 +2,7 @@
   {
     "slug": "ip-kamera-sistemleri",
     "kisaAd": "IP Kamera Sistemleri",
-    "kisaAciklama": "Yüksek çözünürlüklü kamera sistemi kurulumu ve teknik destek.",
+    "kisaAciklama": "Kamera kurulumu, NVR kayıt cihazı ve teknik destek.",
     "breadcrumbName": "IP Kamera Sistemleri",
     "title": "Güvenlik Kamerası Kurulumu Silivri ve Çevresi | Securis",
     "description": "Silivri, Çatalca, Büyükçekmece ve Tekirdağ'da güvenlik kamerası ve IP kamera sistemi kurulumu: keşif, kablolama, NVR ve telefondan izleme. Ücretsiz keşif.",
@@ -20,8 +20,8 @@
         "p": "Dahua ve Hikvision marka IP kameraları temiz kablo tesisatıyla, görüntü kirliliği yaratmadan monte ediyoruz."
       },
       {
-        "h3": "NVR Entegrasyonu",
-        "p": "Kayıtlarınızı NVR cihazına bağlıyor, cepten canlı izleme için mobil uygulama tanımlamasını yapıyoruz."
+        "h3": "NVR ve Kayıt Kapasitesi",
+        "p": "Kamera sayısına ve çözünürlüğe uygun NVR'ı seçiyor, kaç gün geriye dönük kayıt istediğinize göre disk kapasitesini hesaplıyor, cepten canlı izleme için mobil tanımlamayı yapıyoruz."
       },
       {
         "h3": "Bakım ve Arıza Desteği",
@@ -42,6 +42,18 @@
         {
           "q": "Kayıtları telefonumdan izleyebilir miyim?",
           "a": "Evet, kurulum sonrası NVR cihazınızı mobil uygulamaya tanımlıyor, canlı izleme ve geçmiş kayıt erişimini cebinize taşıyoruz."
+        },
+        {
+          "q": "Kayıtlar ne kadar süre saklanabilir?",
+          "a": "Bu; disk kapasitesine, kamera sayısına ve çözünürlüğe bağlıdır. İhtiyacınıza göre saklama süresini hesaplayıp uygun disk kapasitesini öneriyoruz."
+        },
+        {
+          "q": "Mevcut NVR'ıma yeni kamera ekleyebilir misiniz?",
+          "a": "Evet, mevcut cihazınızın kanal kapasitesi uygunsa yeni kamera ekleme ve disk yükseltme hizmeti veriyoruz."
+        },
+        {
+          "q": "Elektrik kesintisinde kayıtlar silinir mi?",
+          "a": "Hayır, diske yazılmış kayıtlar kesintiden etkilenmez. Kesinti sırasında kayda devam edilmesi için kesintisiz güç kaynağı (UPS) öneriyoruz."
         }
       ]
     },
@@ -208,55 +220,55 @@
     }
   },
   {
-    "slug": "nvr-depolama",
-    "kisaAd": "NVR ve Depolama",
-    "kisaAciklama": "NVR kurulumu ve kamera kayıt depolama çözümleri.",
-    "breadcrumbName": "NVR ve Depolama",
-    "title": "NVR Kayıt Cihazı Kurulumu ve Kamera Kaydı | Securis",
-    "description": "NVR kayıt cihazı kurulumu, disk kapasitesi hesabı ve telefondan izleme. Silivri, Çatalca, Büyükçekmece ve Tekirdağ'da ücretsiz keşif, 1 yıl servis garantisi.",
-    "heroBadge": "NVR & Depolama",
-    "h1": "NVR Kayıt Cihazı Kurulumu ve Kamera Kayıt Depolama",
-    "lead": "Kamera kayıtlarınızın geriye dönük güvenle saklanması için NVR (Ağ Kayıt Cihazı) kurulumu, yüksek kapasiteli disk entegrasyonu ve cepten izleme için mobil tanımlamaları yapıyoruz.",
-    "whatsappText": "Merhaba, NVR ve kayıt depolama hakkında bilgi almak istiyorum.",
+    "slug": "depolama-yedekleme",
+    "kisaAd": "Depolama ve Yedekleme",
+    "kisaAciklama": "NAS kurulumu, RAID ve otomatik yedekleme.",
+    "breadcrumbName": "Depolama ve Yedekleme",
+    "title": "NAS Kurulumu ve Veri Yedekleme | Silivri ve Trakya | Securis",
+    "description": "QNAP NAS kurulumu, RAID, bilgisayar ve sunucu yedekleme, kamera kaydı arşivi ve bulutta ikinci kopya. Silivri ve Trakya'da ücretsiz keşif.",
+    "heroBadge": "Depolama & Yedekleme",
+    "h1": "NAS Kurulumu ve Otomatik Veri Yedekleme",
+    "lead": "Dosyalarınız tek bir bilgisayarda ya da masadaki harici diskte durmasın. QNAP NAS kuruyor, diskleri RAID ile yapılandırıyor, bilgisayar ve sunucu yedeklerini otomatik alıyor, ikinci kopyayı buluta ya da başka bir lokasyona taşıyoruz.",
+    "whatsappText": "Merhaba, NAS ve veri yedekleme hakkında bilgi almak istiyorum.",
     "detayKartlari": [
       {
-        "h3": "Cihaz Seçimi ve Kurulum",
-        "p": "Kamera sayınıza ve çözünürlüğe uygun NVR kapasitesini belirleyip kuruyoruz."
+        "h3": "NAS Kurulumu ve RAID",
+        "p": "İhtiyacınıza uygun QNAP NAS'ı ve diskleri seçiyor, diskleri RAID ile yapılandırıyoruz; tek bir disk arızalandığında veri kaybolmadan disk değiştirilebilir."
       },
       {
-        "h3": "Disk Entegrasyonu",
-        "p": "Sürekli kayıt için tasarlanmış yüksek kapasiteli disklerle depolama alanınızı genişletiyoruz."
+        "h3": "Kullanıcı ve Klasör Yetkileri",
+        "p": "Paylaşılan klasörleri kişi ya da departman bazında yetkilendiriyoruz; herkes yalnızca kendi alanını görür, dosyalar tek yerde toplanır."
       },
       {
-        "h3": "Mobil Tanımlama",
-        "p": "NVR cihazınızı telefonunuza tanımlayarak her yerden canlı izleme ve kayıt erişimi sağlıyoruz."
+        "h3": "Otomatik Yedekleme",
+        "p": "Bilgisayar ve sunucu dosyalarının NAS'a zamanlanmış yedeğini kuruyor, kamera kayıtlarını uzun süreli arşiv için NAS'a taşıyoruz."
       },
       {
-        "h3": "Yedekleme Planlaması",
-        "p": "Kritik kayıtlar için yerel yedekleme seçenekleri sunuyoruz."
+        "h3": "İkinci Kopya",
+        "p": "Yedeklerin bir kopyasını buluta ya da başka bir lokasyona alıyoruz; NAS'ın bulunduğu yerde bir arıza, yangın ya da hırsızlık olsa da veri başka yerde durur."
       }
     ],
     "sss": {
-      "title": "NVR ve Depolama Hakkında Merak Edilenler",
+      "title": "Depolama ve Yedekleme Hakkında Merak Edilenler",
       "items": [
         {
-          "q": "Kayıtlar ne kadar süre saklanabilir?",
-          "a": "Bu; disk kapasitesine, kamera sayısına ve çözünürlüğe bağlıdır. İhtiyacınıza göre saklama süresini hesaplayıp uygun disk kapasitesini öneriyoruz."
+          "q": "NAS ile harici disk arasındaki fark nedir?",
+          "a": "Harici disk tek bir bilgisayara bağlı çalışır ve o disk bozulursa üzerindeki veri de gider. NAS ağa bağlıdır; birden fazla kişi aynı anda erişir ve diskler RAID ile yapılandırıldığında tek bir disk arızası veri kaybına yol açmaz."
         },
         {
-          "q": "Mevcut NVR'ıma yeni kamera ekleyebilir misiniz?",
-          "a": "Evet, mevcut cihazınızın kanal kapasitesi uygunsa yeni kamera ekleme ve disk yükseltme hizmeti veriyoruz."
+          "q": "RAID yedeğin yerine geçer mi?",
+          "a": "Hayır. RAID disk arızasına karşı korur; yanlışlıkla silinen ya da fidye yazılımıyla şifrelenen dosyaya karşı korumaz. Bu yüzden NAS üzerindeki veriyi ayrıca buluta ya da başka bir lokasyona ikinci kopya olarak yedekliyoruz."
         },
         {
-          "q": "Elektrik kesintisinde kayıtlar silinir mi?",
-          "a": "Hayır, diske yazılmış kayıtlar kesintiden etkilenmez. Kesinti sırasında kayda devam edilmesi için kesintisiz güç kaynağı (UPS) öneriyoruz."
+          "q": "Kamera kayıtlarını NAS'ta saklayabilir miyim?",
+          "a": "Evet. NVR'daki kayıtları NAS'a arşivleyerek daha uzun süre saklayabilirsiniz. Saklama süresini kamera sayısına ve disk kapasitesine göre keşifte birlikte hesaplıyoruz."
         }
       ]
     },
     "anaSayfaSchema": {
-      "name": "NVR ve Depolama Çözümleri",
-      "serviceType": "NVR ve Depolama Çözümleri",
-      "description": "NVR kurulumu, disk kapasitesi planlaması ve mobil uzaktan izleme tanımlaması."
+      "name": "NAS Depolama ve Veri Yedekleme",
+      "serviceType": "NAS Depolama ve Veri Yedekleme",
+      "description": "QNAP NAS kurulumu, RAID yapılandırma, bilgisayar ve sunucu yedekleme, kamera kaydı arşivi ve ikinci kopya."
     }
   }
 ]

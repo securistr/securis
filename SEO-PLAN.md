@@ -10,19 +10,21 @@ Intent groups (the same keyword families are used on every page):
 
 | Intent | Keyword family | Service page (generic, Silivri, Trakya) |
 |---|---|---|
-| CAM | güvenlik kamerası, kamera sistemi, IP kamera, kamera kurulumu | `/hizmetler/ip-kamera-sistemleri/` |
+| CAM | güvenlik kamerası, kamera sistemi, IP kamera, kamera kurulumu, NVR, kayıt cihazı | `/hizmetler/ip-kamera-sistemleri/` |
 | FW | firewall, FortiGate, güvenlik duvarı, VPN | `/hizmetler/firewall-yapilandirma/` |
 | NET | network, switch, VLAN, bilgi işlem altyapısı, kablolama | `/hizmetler/switch-konfigurasyonu/` |
 | WIFI | Wi-Fi, access point, kablosuz ağ | `/hizmetler/access-point-kurulumu/` |
-| NVR | NVR, kayıt cihazı, kamera kaydı | `/hizmetler/nvr-depolama/` |
+| NAS | NAS, veri yedekleme, RAID, dosya sunucusu | `/hizmetler/depolama-yedekleme/` |
+
+NVR, kayıt cihazı and kamera kaydı belong to CAM since 2026-10-03 (a camera installer does the NVR too). The old `/hizmetler/nvr-depolama/` URL is a noindex page with a 0-second refresh to `/hizmetler/ip-kamera-sistemleri/`; Search Console should show it as a redirect within a few weeks.
 
 District × intent. Every cell points to the **district page**, and each page has its own H3 section for that intent:
 
-| District (URL) | CAM | FW | NET / bilgi işlem | WIFI | NVR | Page angle (unique copy) |
+| District (URL) | CAM (+ NVR) | FW | NET / bilgi işlem | WIFI | NAS | Page angle (unique copy) |
 |---|---|---|---|---|---|---|
-| Silivri `/bolgeler/silivri/` | Silivri güvenlik kamerası kurulumu | Silivri firewall kurulumu | Silivri bilgi işlem ve ağ altyapısı | Silivri Wi-Fi ve access point kurulumu | Silivri NVR ve kayıt cihazı kurulumu | HQ district, coastal sites and villas, central shops, farms |
-| Çatalca `/bolgeler/catalca/` | Çatalca güvenlik kamerası kurulumu | Çatalca firewall kurulumu | Çatalca bilgi işlem ve ağ altyapısı | Çatalca Wi-Fi … | Çatalca NVR … | large area, farms, warehouses, weak fixed internet, links between buildings |
-| Büyükçekmece `/bolgeler/buyukcekmece/` | Büyükçekmece güvenlik kamerası … | … firewall … | … network ve bilgi işlem altyapısı | … Wi-Fi … | … NVR … | housing sites (management access rights), shops on main streets, Kumburgaz/Mimarsinan |
+| Silivri `/bolgeler/silivri/` | Silivri güvenlik kamerası ve NVR kurulumu | Silivri firewall kurulumu | Silivri bilgi işlem ve ağ altyapısı | Silivri Wi-Fi ve access point kurulumu | Silivri NAS kurulumu ve veri yedekleme | HQ district, coastal sites and villas, central shops, farms |
+| Çatalca `/bolgeler/catalca/` | Çatalca güvenlik kamerası ve NVR kurulumu | Çatalca firewall kurulumu | Çatalca bilgi işlem ve ağ altyapısı | Çatalca Wi-Fi … | Çatalca NAS … | large area, farms, warehouses, weak fixed internet, links between buildings |
+| Büyükçekmece `/bolgeler/buyukcekmece/` | Büyükçekmece güvenlik kamerası … | … firewall … | … network ve bilgi işlem altyapısı | … Wi-Fi … | … NAS … | housing sites (management access rights), shops on main streets, Kumburgaz/Mimarsinan |
 | Beylikdüzü `/bolgeler/beylikduzu/` | … | … | … | … | … | plazas, offices, residences, office moves, multi-floor Wi-Fi |
 | Çorlu `/bolgeler/corlu/` | … | … | … | … | … | factories, Çorlu OSB, dust, fiber backbone, shift work |
 | Çerkezköy `/bolgeler/cerkezkoy/` | … | … | … | … | … | Çerkezköy OSB, remote access from HQ over VPN, segmentation |
@@ -38,8 +40,8 @@ Home (`/`) stays the brand + "Silivri kamera sistemleri" page. It links to every
 
 ## 2. Internal link mesh
 
-- Service page → 9 district pages, in the "Hizmet verdiğimiz ilçeler" grid, with anchors "<İlçe> güvenlik kamerası" / "<İlçe> firewall kurulumu" / "<İlçe> bilgi işlem altyapısı" / "<İlçe> Wi-Fi kurulumu" / "<İlçe> NVR kurulumu".
-- District page → 5 service pages, one link under each service section, with anchors "Güvenlik kamerası kurulumu", "FortiGate firewall kurulumu", "Switch ve network altyapısı", "Access point ve Wi-Fi kurulumu", "NVR kayıt cihazı kurulumu". These are deliberately *not* "<ilçe> + service", so a district page does not hand its own query to the service page.
+- Service page → 9 district pages, in the "Hizmet verdiğimiz ilçeler" grid, with anchors "<İlçe> güvenlik kamerası" / "<İlçe> firewall kurulumu" / "<İlçe> bilgi işlem altyapısı" / "<İlçe> Wi-Fi kurulumu" / "<İlçe> NAS ve yedekleme".
+- District page → 5 service pages, one link under each service section, with anchors "Güvenlik kamerası kurulumu", "FortiGate firewall kurulumu", "Switch ve network altyapısı", "Access point ve Wi-Fi kurulumu", "NAS kurulumu ve veri yedekleme". These are deliberately *not* "<ilçe> + service", so a district page does not hand its own query to the service page.
 - District page → 3 neighbouring districts. Hero contact sheet → 5 services. Menu → all 14 pages.
 
 ## 3. Structured data (per page type)
@@ -72,7 +74,7 @@ Home (`/`) stays the brand + "Silivri kamera sistemleri" page. It links to every
 1. **Primary category:** "Güvenlik sistemi tedarikçisi" (Security system supplier). If GBP offers a closer "güvenlik kamerası / CCTV" installer category, use that instead.
    **Secondary:** "Bilgisayar ağı hizmeti" (Computer networking service), "Güvenlik sistemi montaj hizmeti" (Security system installer), "Kablolama / Telekomünikasyon hizmeti" if listed. Don't pick "Bilgisayar tamir servisi". The business doesn't do that.
 2. **Service areas:** add all 9: Silivri, Çatalca, Büyükçekmece, Beylikdüzü (İstanbul), Çorlu, Çerkezköy, Marmaraereğlisi, Kapaklı, Süleymanpaşa (Tekirdağ). Keep the address visible, since the office in Alipaşa, Silivri, is a real location customers can visit.
-3. **Services list:** one entry per service with the site's wording: Güvenlik kamerası (IP kamera) kurulumu, FortiGate firewall kurulumu, Switch / VLAN ve network altyapısı, Access point / Wi-Fi kurulumu, NVR kayıt cihazı kurulumu. Also add Ücretsiz keşif. Link each to its `/hizmetler/…/` page.
+3. **Services list:** one entry per service with the site's wording: Güvenlik kamerası (IP kamera) kurulumu, FortiGate firewall kurulumu, Switch / VLAN ve network altyapısı, Access point / Wi-Fi kurulumu, NAS kurulumu ve veri yedekleme. Also add Ücretsiz keşif. Link each to its `/hizmetler/…/` page.
 4. **Website link:** `https://securis.com.tr/`. Hours must match the real hours (the site no longer publishes them, so GBP is the source of truth).
 5. **Photos:** real install photos only, not stock (camera on a façade, rack and switch, AP on a wall, NVR screen at handover). Add a few every month. Don't show client names or faces.
 6. **Reviews:** after every handover, send the review link over WhatsApp (GBP → "Ask for reviews" link). Ask steadily, a few every week, not in bursts. Reply to every review. Never offer anything in return for reviews, and never add review markup to the site.

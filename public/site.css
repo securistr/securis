@@ -163,8 +163,8 @@ address { font-style: normal; }
 .bg__layer.is-on img { transform: scale(1.28); }
 /* WebGL morph backdrop (carousel.js): one canvas under one grade pair that eases with the 1.5s dissolve */
 .bg > canvas, .bg > i { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.bg > i { transition: background-color 1.5s cubic-bezier(.83, 0, .17, 1); }
-/* foreground subject, cut out of the same photo: over the outline words, under the strip. WebGL draws it into one
+.bg > i { transition: background-color 1.5s cubic-bezier(.83, 0, .17, 1), opacity 1.5s cubic-bezier(.83, 0, .17, 1); }
+/* foreground subject, cut out of the same photo: under the outline words and the strip. WebGL draws it into one
    canvas in step with the backdrop (grade and wash baked in); without WebGL it is a masked, graded <img> layer */
 .subj { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
 .stage .grain { z-index: 2; } /* after .subj in the markup, so the cutout keeps the film grain */
@@ -177,9 +177,12 @@ address { font-style: normal; }
 .subj__cut .c { mix-blend-mode: color; }
 .subj__cut .m { mix-blend-mode: multiply; opacity: .55; }
 .subj__cut .w { background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.32) 38%, rgba(0,0,0,.36) 62%, rgba(0,0,0,.75)); }
-.words { position: absolute; z-index: 3; /* over the cut-out subject (2), under the strip and descriptions (3, later in the markup) so the lit word is always whole */ left: 0; right: 0; top: calc(var(--top) + var(--fullH) * .5 - var(--title) * .35); pointer-events: none; }
+/* outline words: the band between the head's label row and the strip (carousel.js placeWords sets top and --wfs);
+   the lit word starts at the focused card's left edge, the ones already passed fade out as they cross that edge */
+.words { position: absolute; z-index: 3; left: 0; right: 0; top: calc(var(--top) - var(--title) * 1.6); pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent calc(var(--wl, 0px) - 30px), #000 var(--wl, 0px)); mask-image: linear-gradient(90deg, transparent calc(var(--wl, 0px) - 30px), #000 var(--wl, 0px)); }
 .words__track { display: flex; white-space: nowrap; will-change: transform; }
-.words__track span { font: 700 calc(var(--title) * 2.3)/1 var(--f); letter-spacing: -.04em; padding-right: .35em; }
+.words__track span { font: 700 var(--wfs, calc(var(--title) * 1.4))/1 var(--f); letter-spacing: -.04em; padding-right: .35em; }
 /* outline words as SVG: a faint contour, plus light that runs along every letter's outline on the active word */
 .wsvg { display: block; overflow: visible; }
 .wsvg text { font: inherit; letter-spacing: inherit; fill: none; }
@@ -192,8 +195,9 @@ address { font-style: normal; }
 @keyframes trace { to { stroke-dashoffset: -2.9em; } }
 @media (prefers-reduced-motion: reduce) { .is-on :is(.wh, .wg) { animation: none; opacity: 0; } }
 html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
-.head { position: absolute; z-index: 4; left: 0; right: 0; top: 0; height: var(--top); padding: 0 var(--pad) calc(var(--title) * .36); display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 5vw; pointer-events: none; }
+.head { position: absolute; z-index: 4; left: 0; right: 0; top: 0; height: var(--top); padding: 0 var(--pad) calc(var(--title) * .36); display: flex; flex-wrap: wrap; align-items: flex-end; align-content: flex-end; gap: 10px 5vw; pointer-events: none; }
 .head a { pointer-events: auto; }
+.head__br { flex-basis: 100%; height: calc(var(--title) * .8); } /* "Hizmeti incele" always gets its own row, and the band above it holds the outline words, so every slide's head has the same shape */
 .title { font-weight: 600; font-size: var(--title); line-height: .95; letter-spacing: -.035em; }
 .title span { display: block; overflow: hidden; padding-top: .1em; margin-top: -.1em; }
 .title span > span { display: block; animation: wipe .62s var(--ease) both; }
@@ -216,7 +220,8 @@ html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 .card[aria-current="true"] img { filter: none; }
 .card::after { content: ""; position: absolute; inset: 0; background: #000; opacity: .14; transition: opacity .5s; }
 .card[aria-current="true"]::after { opacity: 0; }
-.descs { position: absolute; z-index: 3; left: 0; right: 0; top: calc(var(--top) + var(--fullH) + max(16px, 2.4vh)); pointer-events: none; }
+.descs { position: absolute; z-index: 3; left: 0; right: 0; top: calc(var(--top) + var(--fullH) + max(16px, 2.4vh)); pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent calc(var(--wl, 0px) - 30px), #000 var(--wl, 0px)); mask-image: linear-gradient(90deg, transparent calc(var(--wl, 0px) - 30px), #000 var(--wl, 0px)); } /* the passed slide's text leaves with its word, clear of the counter */
 .descs__track { display: flex; will-change: transform; }
 .desc { flex: none; width: var(--descW); padding-right: 4vw; opacity: .22; transition: opacity .5s; }
 .desc.is-on { opacity: 1; }
@@ -572,9 +577,9 @@ html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 
 /* ---------- depth parallax on the photo heroes (Osmo "parallax scrolling" idea, own layers):
    JS sets --p 0→1 and --py (px scrolled into the hero). Four layers, same depths as the source timeline:
-   photo 70%, outline words 55%, title 40%, strip 10% of the scroll distance; then it fades to black ---------- */
+   photo 70%, title 40%, strip and its outline words 10% of the scroll distance; then it fades to black ---------- */
 .js .stage .bg, .js .hero > .grade { translate: 0 calc(var(--py, 0px) * .7); scale: calc(1 + var(--p, 0) * .06); }
-.js .stage .words { translate: 0 calc(var(--py, 0px) * .55); }
+.js .stage .words { translate: 0 calc(var(--py, 0px) * .1); } /* the words label the strip now: they ride with it, so scrolling never slides them behind a card */
 .js .stage .subj { translate: 0 calc(var(--py, 0px) * .1); } /* the cut-out subject rides with the strip, off its plate */
 .js .stage .subj__layer.is-flat { translate: 0 calc(var(--py, 0px) * .6); scale: calc(1 + var(--p, 0) * .06); } /* no clean plate: stays on its photo (= .bg) */
 .js .stage .head, .js .hero > .hero__txt { translate: 0 calc(var(--py, 0px) * .4); }

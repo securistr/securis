@@ -11,17 +11,17 @@ const OUT = new URL('./dist/', import.meta.url);
 
 /* ---------- visual data per service (the world's accents + real/composited photos) ---------- */
 const SVC = {
-  'ip-kamera-sistemleri': { img: 'kamera.jpg', accent: '#c2410c', label: 'IP KAMERA', meta: ['KÖR NOKTA ANALİZİ', 'TEMİZ KABLOLAMA', 'CEPTEN İZLEME'], credit: 'DAHUA · HIKVISION · MILESIGHT', brands: 'Dahua, Hikvision ve Milesight' },
-  'nvr-depolama': { img: 'nvr.jpg', accent: '#7c3aed', label: 'NVR · NAS', meta: ['KAPASİTE PLANI', 'SÜREKLİ KAYIT', 'YEDEKLEME'], credit: 'NVR · NAS · DİSK', brands: 'Hikvision ve Dahua' },
+  'ip-kamera-sistemleri': { img: 'kamera.jpg', accent: '#c2410c', label: 'IP KAMERA', meta: ['KÖR NOKTA ANALİZİ', 'NVR KAYIT', 'CEPTEN İZLEME'], credit: 'DAHUA · HIKVISION · MILESIGHT', brands: 'Dahua, Hikvision ve Milesight', grade: [.3, .15] }, // [color, multiply] opacity: a light warm cast instead of the full re-grade
   'switch-konfigurasyonu': { img: 'switch.jpg', accent: '#0284c7', label: 'SWITCH', meta: ['POE', 'VLAN', 'PORT ETİKETLEME'], credit: 'RUIJIE · TP-LINK', brands: 'Ruijie ve TP-Link' },
   'firewall-yapilandirma': { img: 'firewall.jpg', hero: 'firewall-wide.jpg', accent: '#dc2626', label: 'FIREWALL', meta: ['ERİŞİM KURALLARI', 'PORT YÖNLENDİRME', 'VPN'], credit: 'FORTINET · FORTIGATE', brands: 'Fortinet (FortiGate)' },
   'access-point-kurulumu': { img: 'ap-saha.jpg', accent: '#059669', label: 'WI-FI', meta: ['SİNYAL ANALİZİ', 'TEK AĞ · ROAMING', 'MİSAFİR AĞI'], credit: 'SAHADAN · KENDİ KURULUMUMUZ', brands: 'TP-Link Omada ve Ruijie' },
+  'depolama-yedekleme': { img: 'nas.jpg', accent: '#7c3aed', label: 'NAS · YEDEK', meta: ['RAID', 'OTOMATİK YEDEK', 'İKİNCİ KOPYA'], credit: 'QNAP · NAS · RAID', brands: 'QNAP' },
 };
-const ORDER = ['ip-kamera-sistemleri', 'nvr-depolama', 'switch-konfigurasyonu', 'firewall-yapilandirma', 'access-point-kurulumu'];
+const ORDER = ['ip-kamera-sistemleri', 'switch-konfigurasyonu', 'firewall-yapilandirma', 'access-point-kurulumu', 'depolama-yedekleme']; // NVR is part of the camera service
 const H = Object.fromEntries(hizmetler.map(h => [h.slug, h]));
-const SLIDE_TITLE = { 'ip-kamera-sistemleri': 'IP\nKamera', 'nvr-depolama': 'NVR ve\nDepolama', 'switch-konfigurasyonu': 'Switch ve\nAğ', 'firewall-yapilandirma': 'Firewall', 'access-point-kurulumu': 'Access\nPoint' };
+const SLIDE_TITLE = { 'ip-kamera-sistemleri': 'IP\nKamera', 'switch-konfigurasyonu': 'Switch ve\nAğ', 'firewall-yapilandirma': 'Firewall', 'access-point-kurulumu': 'Access\nPoint', 'depolama-yedekleme': 'Depolama ve\nYedekleme' };
 const SLIDES = [
-  ...ORDER.map(slug => ({ t: SLIDE_TITLE[slug], slug, word: SVC[slug].label, img: SVC[slug].img, accent: SVC[slug].accent, credit: SVC[slug].credit, meta: SVC[slug].meta, d: H[slug].lead })),
+  ...ORDER.map(slug => ({ t: SLIDE_TITLE[slug], slug, word: SVC[slug].label, img: SVC[slug].img, accent: SVC[slug].accent, g: SVC[slug].grade, credit: SVC[slug].credit, meta: SVC[slug].meta, d: H[slug].lead })),
 ];
 // the real industrial frame sits second, under the camera service
 SLIDES.splice(1, 0, { t: 'Endüstriyel\nAlan', slug: 'ip-kamera-sistemleri', word: 'SAHA', img: 'saha-endustriyel.jpg', accent: '#6b7280', credit: 'SAHADAN · KENDİ KURULUMUMUZ', meta: ['FABRİKA', 'DEPO', 'ŞANTİYE'],
@@ -32,10 +32,10 @@ const B = Object.fromEntries(bolgeler.map(b => [b.slug, b]));
 /* local-SEO anchors: [service page → district ("Çatalca güvenlik kamerası"), district page → service] */
 const KW = {
   'ip-kamera-sistemleri': ['güvenlik kamerası', 'Güvenlik kamerası kurulumu'],
-  'nvr-depolama': ['NVR kurulumu', 'NVR kayıt cihazı kurulumu'],
   'switch-konfigurasyonu': ['bilgi işlem altyapısı', 'Switch ve network altyapısı'],
   'firewall-yapilandirma': ['firewall kurulumu', 'FortiGate firewall kurulumu'],
   'access-point-kurulumu': ['Wi-Fi kurulumu', 'Access point ve Wi-Fi kurulumu'],
+  'depolama-yedekleme': ['NAS ve yedekleme', 'NAS kurulumu ve veri yedekleme'],
 };
 
 /* ---------- helpers ---------- */
@@ -46,7 +46,7 @@ const wa = (text, p = P1) => `https://wa.me/${p.wa}?text=${encodeStrict(text)}`;
 const abs = p => `${site.url}${p}`;
 const serialize = o => JSON.stringify(o, null, 2).replace(/</g, '\\u003c');
 // Turkish uppercase, but English product words keep their dotless I (FIREWALL, not FİREWALL)
-const EN = new Set(['firewall', 'switch', 'access', 'point', 'ip', 'nvr', 'wi-fi', 'network', 'vpn']);
+const EN = new Set(['firewall', 'switch', 'access', 'point', 'ip', 'nvr', 'nas', 'raid', 'qnap', 'wi-fi', 'network', 'vpn']);
 const upperTR = s => s.split(' ').map(w => EN.has(w.toLowerCase().replace(/[^a-z-]/g, '')) ? w.toUpperCase() : w.toLocaleUpperCase('tr')).join(' ');
 
 const I = {
@@ -64,7 +64,7 @@ const kbtn = attrs => `<button class="bar__btn kbtn" type="button" ${attrs}><spa
 const arc = (cx, cy, r, a0, a1) => { const p = a => `${(cx + r * Math.cos(a * Math.PI / 180)).toFixed(1)} ${(cy + r * Math.sin(a * Math.PI / 180)).toFixed(1)}`; return `M${p(a0)}A${r} ${r} 0 0 1 ${p(a1)}`; };
 const MOTIF = {
   'ip-kamera-sistemleri': ['<circle cx="60" cy="200" r="22"/>', '<path d="M368 56 60 200l308 144"/>', ...[140, 230, 320].map(r => `<path d="${arc(60, 200, r, -25, 25)}"/>`)], // field-of-view cone
-  'nvr-depolama': ['<path d="M200 60v280"/>', ...[110, 165, 220, 275].map(y => `<ellipse cx="200" cy="${y}" rx="150" ry="34"/>`)], // disk platters
+  'depolama-yedekleme': ['<path d="M200 60v280"/>', ...[110, 165, 220, 275].map(y => `<ellipse cx="200" cy="${y}" rx="150" ry="34"/>`)], // disk platters
   'switch-konfigurasyonu': ['<rect x="40" y="130" width="320" height="140"/>', ...[0, 1, 2, 3, 4, 5].map(i => `<path d="M${64 + i * 48} 160h34v30h-34zM${64 + i * 48} 214h34v30h-34z"/>`)], // port grid
   'firewall-yapilandirma': ['<path d="M40 330V80h320v250z"/>', ...[0, 1, 2, 3, 4].map(k => `<path d="M40 ${80 + k * 50}h320${(k % 2 ? [80, 160, 240, 320] : [120, 200, 280]).map(x => `M${x} ${80 + k * 50}v50`).join('')}"/>`)], // brick wall
   'access-point-kurulumu': ['<circle cx="200" cy="320" r="10"/>', ...[60, 120, 180, 240].map(r => `<path d="${arc(200, 320, r, -135, -45)}"/>`)], // Wi-Fi arcs
@@ -193,7 +193,8 @@ const pic = (f, sizes, attrs = '', narrow) => `<picture>${narrow ? `<source medi
 const preloadImg = (f, narrow) => { const l = (g, media = '') => `<link rel="preload" as="image" type="image/webp" imagesrcset="${srcset(g, 'webp')}" imagesizes="${heroSizes(g)}"${media} fetchpriority="high">`; return narrow ? `${l(narrow, ' media="(max-width: 700px)"')}\n${l(f, ' media="not all and (max-width: 700px)"')}` : l(f); };
 const preloadUrl = u => `<link rel="preload" as="image"${u.endsWith('.webp') ? ' type="image/webp"' : ''} href="${u}" fetchpriority="high">`;
 
-const grade = (img, accent, cls = 'grade', narrow, loading) => /* photo re-graded to the accent; optional portrait plate for phones */ `<div class="${cls}" aria-hidden="true">${pic(img, heroSizes(img), loading ? ` loading="${loading}"` : '', narrow && { f: narrow, sizes: heroSizes(narrow) })}<i class="c" style="background:${accent}"></i><i class="m" style="background:${accent}"></i></div><div class="wash" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>`;
+const gradeI = (accent, g) => `<i class="c" style="background:${accent}${g ? `;opacity:${g[0]}` : ''}"></i><i class="m" style="background:${accent}${g ? `;opacity:${g[1]}` : ''}"></i>`; // g = [color, multiply] opacity, else the CSS 1 / .55
+const grade = (img, accent, cls = 'grade', narrow, loading, g) => /* photo re-graded to the accent; optional portrait plate for phones */ `<div class="${cls}" aria-hidden="true">${pic(img, heroSizes(img), loading ? ` loading="${loading}"` : '', narrow && { f: narrow, sizes: heroSizes(narrow) })}${gradeI(accent, g)}</div><div class="wash" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>`;
 
 /** Contact sheet: every service frame in a row, the current one enlarged and ringed. */
 const sheet = (current, caption) => `<nav class="sheet" aria-label="${esc(caption)}">${ORDER.map((s, i) => `
@@ -235,7 +236,7 @@ const footer = () => `
 
 /* Google reviews stage: each review dissolves in over the real frame closest to what it talks about, graded to that service */
 const REV_BG = {
-  'Neslihan Balik': ['nvr.jpg', '#7c3aed'], 'Büyükçekmece Kooperatif': ['saha/saha-kablolama.jpg', '#a16207'], 'Boss Kurt': ['ap-saha.jpg', '#059669'],
+  'Neslihan Balik': ['nvr.jpg', '#c2410c'], 'Büyükçekmece Kooperatif': ['saha/saha-kablolama.jpg', '#a16207'], 'Boss Kurt': ['ap-saha.jpg', '#059669'],
   'Furkan Eryesil': ['saha/saha-servis.jpg', '#c2410c'], 'Göktuğ Demir': ['ap-saha.jpg', '#059669'], 'Mehmet Buğra Foto': ['switch.jpg', '#0284c7'],
   'Berk Dogar': ['kamera.jpg', '#c2410c'], 'omer': ['saha/saha-dis-cephe.jpg', '#b45309'], 'Cem E': ['saha/saha-kablolama.jpg', '#a16207'],
   'Emre ÖZEN': ['saha/saha-servis.jpg', '#c2410c'], 'Deniz Şengül': ['kurulum-sonu.jpg', '#1f2937'], 'Mehmet Kalaycı': ['saha-endustriyel.jpg', '#6b7280'],
@@ -261,7 +262,7 @@ ${bar()}
 <main id="main">
   <section class="stage" id="services" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Securis hizmetleri">
     <h1 class="sr">Silivri, Tekirdağ ve Çatalca'da kamera sistemleri ve network kurulumu</h1>
-    <div class="bg" id="bg" aria-hidden="true"><div class="bg__layer is-on"><img src="${one(SLIDES[0].img)}" alt="" fetchpriority="high"><i class="c" style="background:${SLIDES[0].accent}"></i><i class="m" style="background:${SLIDES[0].accent}"></i></div></div>
+    <div class="bg" id="bg" aria-hidden="true"><div class="bg__layer is-on"><img src="${one(SLIDES[0].img)}" alt="" fetchpriority="high">${gradeI(SLIDES[0].accent, SLIDES[0].g)}</div></div>
     <div class="wash" aria-hidden="true"></div>
     <div class="words" aria-hidden="true"><div class="words__track" id="words"></div></div>
     <div class="subj" id="subj" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
@@ -269,6 +270,7 @@ ${bar()}
       <p class="title" id="title" aria-live="off"></p>
       <p class="credit mono" id="credit"></p>
       <div class="meta mono" id="meta"></div>
+      <i class="head__br" aria-hidden="true"></i>
       <a class="more mono" id="more" href="/hizmetler/ip-kamera-sistemleri/">HİZMETİ İNCELE ${I.arrow}</a>
     </div>
     <div class="strip"><div class="track" id="track"></div></div>
@@ -333,7 +335,7 @@ function servicePage(h) {
 ${bar(h.whatsappText)}
 <main id="main">
   <section class="hero">
-    ${grade(v.hero || v.img, v.accent, v.hero ? 'grade grade--wide' : 'grade', v.hero ? v.img : null)}
+    ${grade(v.hero || v.img, v.accent, v.hero ? 'grade grade--wide' : 'grade', v.hero ? v.img : null, undefined, v.grade)}
     <div class="hero__txt">
       <nav class="crumb" aria-label="Site haritası"><a href="/">Ana sayfa</a> / <a href="/#services">Hizmetler</a> / <span aria-current="page">${esc(h.breadcrumbName)}</span></nav>
       <h1>${words(h.h1)}</h1>
@@ -394,7 +396,7 @@ ${bar(b.whatsappText)}
   </section>
 
   <section class="sec" aria-labelledby="svc-h">
-    <div class="sec__head"><h2 id="svc-h">${esc(b.hizmetlerTitle)}</h2><p>Kamera, firewall, switch, Wi-Fi ve kayıt cihazı; beşini de aynı ekip kurar, arızada da aynı ekip gelir.</p></div>
+    <div class="sec__head"><h2 id="svc-h">${esc(b.hizmetlerTitle)}</h2><p>Kamera ve kayıt cihazı, firewall, switch, Wi-Fi, depolama ve yedekleme; hepsini aynı ekip kurar, arızada da aynı ekip gelir.</p></div>
     <ul class="dsv">${b.hizmetDetay.map((d, i) => `<li style="--accent:${SVC[d.slug].accent}"><p class="dsv__n mono">${String(i + 1).padStart(2, '0')} · ${esc(upperTR(H[d.slug].kisaAd))}</p><h3>${esc(d.h3)}</h3><p>${esc(d.p)}</p><a href="/hizmetler/${d.slug}/">${esc(KW[d.slug][1])}${I.arrow}</a></li>`).join('')}</ul>
   </section>
 
@@ -455,6 +457,16 @@ ${footer()}
 </body></html>`;
 }
 
+/** a retired URL: a noindex page whose 0-second refresh Google reads as a permanent move, and which still links by hand */
+function movedPage(to, h1) {
+  return `${head({ title: 'Sayfa taşındı | Securis', description: h1, path: to, robots: 'noindex, follow', social: false, preload: `<meta http-equiv="refresh" content="0; url=${to}">` })}
+<body>
+<main id="main">
+  <section class="hero hero--plain"><div class="hero__txt"><h1>${esc(h1)}</h1><p class="lead"><a href="${to}">${abs(to)}</a></p></div></section>
+</main>
+</body></html>`;
+}
+
 function sitemap() {
   const lastmod = new Date().toLocaleDateString('sv-SE'); // local date, YYYY-MM-DD
   const urls = [{ loc: '/', f: 'weekly', p: '1.0' }, ...hizmetler.map(h => ({ loc: `/hizmetler/${h.slug}/`, f: 'monthly', p: '0.8' })), ...bolgeler.map(b => ({ loc: `/bolgeler/${b.slug}/`, f: 'monthly', p: '0.7' })), { loc: '/gizlilik-politikasi/', f: 'yearly', p: '0.3' }];
@@ -475,5 +487,6 @@ hizmetler.forEach(h => put(`hizmetler/${h.slug}/index.html`, servicePage(h)));
 bolgeler.forEach(b => put(`bolgeler/${b.slug}/index.html`, regionPage(b)));
 put('gizlilik-politikasi/index.html', privacyPage());
 put('404.html', notFound());
+put('hizmetler/nvr-depolama/index.html', movedPage('/hizmetler/ip-kamera-sistemleri/', 'NVR ve kayıt cihazı kurulumu artık IP kamera sistemleri sayfasında.')); // indexed URL of the former NVR service
 put('sitemap.xml', sitemap());
-console.log(`built ${2 + hizmetler.length + bolgeler.length + 2} files → dist/`);
+console.log(`built ${3 + hizmetler.length + bolgeler.length + 2} files → dist/`);

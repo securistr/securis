@@ -32,7 +32,31 @@
       svg.style.width = bb.width + 'px'; svg.style.height = bb.height + 'px';
     });
   }
-  document.fonts?.ready.then(() => { fitWords(); paint(); });
+  /* the outline words live in the free band right above the strip, starting at the focused card's left edge
+     (phones: the gutter, above the "Hizmeti incele" row) and sized to that band, so they never pass behind a photo */
+  const strip = document.querySelector('.strip'), ink = document.createElement('canvas').getContext('2d');
+  let titleSize = 80, wordsL = 0;
+  function placeWords() {
+    const phone = W < 700, g = Math.max(10, Math.round(H * 0.016));
+    const below = el => (el.offsetParent ? el.offsetTop + el.offsetHeight : 0); // .head sits at the stage top
+    // the head's upper rows wrap differently per slide (a one-line title pulls credit and meta up beside it):
+    // lay every slide's head out once and keep the band clear of the lowest of them
+    const live = $('title').getAttribute('aria-live'); $('title').setAttribute('aria-live', 'off'); // measuring, not announcing
+    const rows = ITEMS.map(it => { fillHead(it); return Math.max(below($('title')), below($('credit')), below($('meta'))); });
+    fillHead(ITEMS[index]); $('title').setAttribute('aria-live', live || 'off');
+    const top = Math.max(...rows) + g, bottom = (phone ? $('more').offsetTop : strip.offsetTop) - g;
+    wordsL = phone ? pad : anchor() - cardW / 2;
+    const cs = getComputedStyle(wordEls[0]);
+    ink.font = `${cs.fontWeight} 100px ${cs.fontFamily}`;
+    let asc = 0, desc = 0, wide = 0; // ink box at 100px (letter-spacing -.04em comes off the advance)
+    ITEMS.forEach(it => { const m = ink.measureText(it.word); asc = Math.max(asc, m.actualBoundingBoxAscent); desc = Math.max(desc, m.actualBoundingBoxDescent); wide = Math.max(wide, m.width - 4 * [...it.word].length); });
+    const fs = clamp(Math.min((bottom - top) / ((asc + desc) / 100), (W - pad - wordsL) / (wide / 100)), 24, titleSize * 2);
+    stage.style.setProperty('--wfs', fs.toFixed(1) + 'px'); stage.style.setProperty('--wl', wordsL + 'px');
+    fitWords();
+    const bb = wordEls[0].firstElementChild.firstElementChild.getBBox(); // svg top = em-box top; baseline sits -bb.y below it
+    words.parentElement.style.top = Math.round(bottom - (-bb.y + desc * fs / 100)) + 'px';
+  }
+  document.fonts?.ready.then(() => { placeWords(); paint(); });
 
   /* geometry measured off the stage; every size is a ratio of it */
   let W = 0, H = 0, fullH = 0, cardW = 0, step = 0, pad = 0, descW = 0;
@@ -41,13 +65,14 @@
     fullH = clamp(H * 0.27, 110, 380); cardW = fullH * 0.75;
     const gap = Math.max(5, Math.round(cardW * 0.04)); step = cardW + gap;
     pad = Math.max(18, Math.round(W * 0.024));
-    descW = Math.min(W - pad * 2, 660);
+    descW = Math.min(660, W - pad - (W < 700 ? pad : W / 2 - cardW / 2)); // tablets: the text narrows rather than sliding left under the counter
     const label = Math.max(13, Math.round(Math.min(H * 0.0135, 15)));
     const s = stage.style;
     s.setProperty('--fullH', fullH + 'px'); s.setProperty('--cardW', cardW + 'px'); s.setProperty('--gap', gap + 'px');
     s.setProperty('--pad', pad + 'px'); s.setProperty('--label', label + 'px'); s.setProperty('--descW', descW + 'px');
-    s.setProperty('--title', Math.max(40, Math.round(Math.min(H * 0.095, W * 0.13))) + 'px');
-    fitWords();
+    titleSize = Math.max(40, Math.round(Math.min(H * 0.095, W * 0.13)));
+    s.setProperty('--title', titleSize + 'px');
+    placeWords();
     x = xFor(index); vel = 0; paint();
     if (morph) morph.resize();
   }
@@ -62,7 +87,7 @@
     descs.style.transform = `translate3d(${Math.min(anchor() - cardW / 2, W - pad - descW) - p * descW}px,0,0)`;
     const lo = clamp(Math.floor(p), 0, last), hi = clamp(lo + 1, 0, last), f = clamp(p - lo, 0, 1);
     const wx = wordEls[lo].offsetLeft + (wordEls[hi].offsetLeft - wordEls[lo].offsetLeft) * f;
-    words.style.transform = `translate3d(${pad - wx * 0.9}px,0,0)`;
+    words.style.transform = `translate3d(${wordsL - wx}px,0,0)`;
   }
   function springTo(t) {
     target = t;
@@ -88,26 +113,30 @@
     index = next; springTo(xFor(index));
     if (changed || !bg.firstChild) render(dir);
   }
+  function fillHead(it) {
+    $('title').innerHTML = it.t.split('\n').map(l => `<span><span>${l}</span></span>`).join(' '); // the space keeps screen readers from saying "IPKamera"
+    $('credit').innerHTML = `<span>${it.credit}</span>`;
+    $('meta').innerHTML = it.meta.map(m => `<span>${m}</span>`).join('');
+  }
   function render(dir = 1) {
     const it = ITEMS[index];
     cards.forEach((c, i) => c.setAttribute('aria-current', i === index));
     descEls.forEach((d, i) => d.classList.toggle('is-on', i === index));
     wordEls.forEach((w, i) => w.classList.toggle('is-on', i === index));
-    $('title').innerHTML = it.t.split('\n').map(l => `<span><span>${l}</span></span>`).join(' '); // the space keeps screen readers from saying "IPKamera"
-    const credit = $('credit'); credit.innerHTML = `<span>${it.credit}</span>`; credit.style.animation = 'none'; credit.offsetWidth; credit.style.animation = '';
-    $('meta').innerHTML = it.meta.map(m => `<span>${m}</span>`).join('');
+    fillHead(it);
+    const credit = $('credit'); credit.style.animation = 'none'; credit.offsetWidth; credit.style.animation = '';
     $('more').href = `/hizmetler/${it.slug}/`;
     $('cur').textContent = pad2(index + 1);
     $('thumb').style.left = `${(index / ITEMS.length) * 100}%`;
     if (morph) morph.show(index, dir); else crossfade(it);
   }
   /* depth layers: a slide with a clean plate shows the plate behind a cut-out subject that parallaxes on its own;
-     a slide with a cutout but no plate keeps its photo and the cutout stays glued to it (is-flat), still over the words */
+     a slide with a cutout but no plate keeps its photo and the cutout stays glued to it (is-flat) */
   const sepOf = it => !!(it.fg && it.plate);
   function crossfade(it) {
     const layer = document.createElement('div');
     layer.className = 'bg__layer';
-    layer.innerHTML = `<img src="${sepOf(it) ? it.plate : it.bg}" alt=""><i class="c" style="background:${it.accent}"></i><i class="m" style="background:${it.accent}"></i>`;
+    layer.innerHTML = `<img src="${sepOf(it) ? it.plate : it.bg}" alt=""><i class="c" style="background:${it.accent}${it.g ? `;opacity:${it.g[0]}` : ''}"></i><i class="m" style="background:${it.accent}${it.g ? `;opacity:${it.g[1]}` : ''}"></i>`;
     const cut = document.createElement('div');
     cut.className = 'subj__layer' + (sepOf(it) ? '' : ' is-flat');
     if (it.fg && !document.documentElement.classList.contains('low')) cut.innerHTML = `<div class="subj__cut" style="-webkit-mask-image:url(${it.fg});mask-image:url(${it.fg})"><img src="${it.fg}" alt=""><i class="c" style="background:${it.accent}"></i><i class="m" style="background:${it.accent}"></i><i class="w"></i></div>`;
@@ -186,7 +215,7 @@
      or a lost context hands the backdrop back to crossfade().
      Depth: the same context draws a second pass first — the cut-out subjects, with the same cover/zoom, the same
      noise mask and the photo's accent grade + stage wash baked in — which is copied into the .subj canvas that sits
-     over the outline words. A subject without a clean plate is sampled where its photo is now (it tracks .bg's
+     under the outline words. A subject without a clean plate is sampled where its photo is now (it tracks .bg's
      parallax), so it never doubles; one with a plate sits in .subj and parallaxes at the strip's speed. */
   const DUR = 1500, KB = 6000; // dissolve; slow zoom 1.42 → 1.28, the same as the CSS layer
   const zoomAt = t => 1.42 - 0.14 * clamp(t / KB, 0, 1);
@@ -357,7 +386,7 @@ void main() {
       // the grade eases from wherever it is now, as the CSS transition on .bg > i does
       const t = reduce ? 1 : bez(clamp((now - accT0) / DUR, 0, 1));
       accA = first ? rgb(ITEMS[i].accent) : accA.map((v, k) => v + (accB[k] - v) * t); accB = rgb(ITEMS[i].accent); accT0 = first ? -Infinity : now;
-      grade.forEach(g => { g.style.backgroundColor = ITEMS[i].accent; });
+      grade.forEach((g, k) => { g.style.backgroundColor = ITEMS[i].accent; g.style.opacity = ITEMS[i].g ? ITEMS[i].g[k] : ''; }); // per-slide strength, else the CSS default
       if (first) { // the server-rendered img stays on top until this very frame is drawn
         bg.prepend(cv, ...grade); subj.prepend(fcv); resize(); draw(now);
         bg.querySelectorAll('.bg__layer').forEach(l => l.remove());
@@ -389,4 +418,5 @@ void main() {
 
   new ResizeObserver(measure).observe(stage);
   measure(); render();
+  placeWords(); paint(); // the band is measured off the credit and meta rows, which render() just filled
 })();

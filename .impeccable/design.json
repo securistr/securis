@@ -334,7 +334,7 @@
           "#f0d0c2"
         ]
       },
-      "grade-nvr": {
+      "grade-storage": {
         "role": "primary",
         "displayName": "Storage Violet",
         "canonical": "#7c3aed",

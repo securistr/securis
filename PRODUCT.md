@@ -16,11 +16,11 @@ A mixed audience: homeowners and small businesses (shops, offices, site manageme
 
 ## Product Purpose
 
-Securis Ağ ve Kamera Güvenlik Sistemleri is a local installer and service team: IP camera systems, firewall setup, switch/network management, access point (Wi-Fi) installation, NVR and recording storage. The site exists to turn a visitor into a WhatsApp message or phone call for a free on-site survey (keşif).
+Securis Ağ ve Kamera Güvenlik Sistemleri is a local installer and service team: IP camera systems, firewall setup, switch/network management, access point (Wi-Fi) installation, NAS storage and backup (QNAP NAS, RAID, scheduled PC/server backup, camera-recording archive, a second copy in the cloud or off-site). NVR and recording are part of the IP camera service. The site exists to turn a visitor into a WhatsApp message or phone call for a free on-site survey (keşif).
 
 ## Positioning
 
-One local team that does both the cameras and the network behind them (switch, Wi-Fi, firewall, NVR), with free on-site survey in the same week and on-site response within 3 hours for faults in its service regions.
+One local team that does both the cameras and the network behind them (switch, Wi-Fi, firewall, NVR, NAS and backup), with free on-site survey in the same week and on-site response within 3 hours for faults in its service regions.
 
 ## Operating Context
 
@@ -47,6 +47,7 @@ Brands worked with: Dahua, Hikvision, Milesight (cameras); Fortinet (firewall); 
 - Real photos: `SEC GÜNCEL/public/assets/img/*.webp` (stock-grade: CCTV camera, server rack, access point, abstract backgrounds).
 - Real footage: the user's install reel (Downloads, 56s, 720x1280). Used frames: 26.2s access point mount (cable duct retouched), 35.8s finished-install table (Hikvision/TP-Link boxes, NVR monitor). Earlier real frames in SECURIS YENI/artwork/video-review. The reel is for a client whose name appears in it; do not name clients.
 - Generated: firewall image (FLUX.1-schnell), provenance sidecar next to it.
+- User's own photos (2026-10-03, `Desktop/Yeni klasör`): `kamera.jpg` = their Milesight bullet camera, real pixels; the eave/wall/dusk scene around it is generated (FLUX.1 Kontext + Adobe generative expand) because the source was hand-held on a table. `nvr.jpg` = Milesight NVR rack, asset stickers removed (review card under the camera service). `nas.jpg` = their QNAP TS-832X, shelf dust cleaned: the Depolama ve Yedekleme service image. `switch.jpg` is still stock.
 - FORBIDDEN to invent: customer counts, project counts, certificates, testimonials, references, prices.
 
 ## Product Principles
