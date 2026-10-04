@@ -17,7 +17,8 @@
       "cards": [
         { "h3": "WhatsApp", "p": "\"WhatsApp'tan Yaz\" butonlarına tıkladığınızda wa.me üzerinden WhatsApp uygulamasına yönlendirilirsiniz. Bu noktadan itibaren WhatsApp'ın (Meta) kendi gizlilik politikası geçerli olur; biz bu platformun veri işleme süreçlerini kontrol etmeyiz." },
         { "h3": "Google Haritalar", "p": "Alt bilgideki adres bağlantısı sizi Google Haritalar'a yönlendirir. Bu harici sitede Google'ın kendi gizlilik politikası geçerlidir." },
-        { "h3": "Instagram", "p": "Alt bilgideki Instagram bağlantısı, hesabımızın bulunduğu instagram.com adresine yönlendirir. Instagram (Meta) kendi gizlilik politikasına tabidir." }
+        { "h3": "Instagram", "p": "Alt bilgideki Instagram bağlantısı, hesabımızın bulunduğu instagram.com adresine yönlendirir. Instagram (Meta) kendi gizlilik politikasına tabidir." },
+        { "h3": "Google Analytics", "track": true, "p": "Yalnızca çerez bildiriminde \"Kabul et\" dediğinizde yüklenir; kaç kişinin siteyi ziyaret ettiğini ve WhatsApp/telefon butonlarına kaç kez tıklandığını ölçer. Ayrıntılar aşağıdaki \"Çerez kullanımı\" bölümündedir; Google kendi gizlilik politikasına tabidir." }
       ]
     },
     {

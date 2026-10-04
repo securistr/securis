@@ -57,7 +57,7 @@
     const bb = wordEls[0].firstElementChild.firstElementChild.getBBox(); // svg top = em-box top; baseline sits -bb.y below it
     words.parentElement.style.top = Math.round(bottom - (-bb.y + desc * fs / 100)) + 'px';
   }
-  document.fonts?.ready.then(() => { placeWords(); paint(); });
+  document.fonts?.ready.then(() => measure()); // real glyph widths: words band and description heights
 
   /* geometry measured off the stage; every size is a ratio of it */
   let W = 0, H = 0, fullH = 0, cardW = 0, step = 0, pad = 0, descW = 0;
@@ -71,6 +71,9 @@
     const s = stage.style;
     s.setProperty('--fullH', fullH + 'px'); s.setProperty('--cardW', cardW + 'px'); s.setProperty('--gap', gap + 'px');
     s.setProperty('--pad', pad + 'px'); s.setProperty('--label', label + 'px'); s.setProperty('--descW', descW + 'px');
+    // the description shows as many lines as fit under the strip; the full text is on the service page (<1000px hides it: the dock owns that room)
+    const m = Math.max(16, H * 0.024), p0 = descEls[0].lastElementChild, labelH = descEls[0].offsetHeight - p0.offsetHeight;
+    s.setProperty('--dl', Math.max(2, Math.floor((H / 2 - fullH - 2 * m - labelH) / parseFloat(getComputedStyle(p0).lineHeight) + 0.15))); // +.15: the last line's lower leading is empty
     titleSize = Math.max(40, Math.round(Math.min(H * 0.095, W * 0.13)));
     s.setProperty('--title', titleSize + 'px');
     placeWords();

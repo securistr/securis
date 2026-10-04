@@ -70,7 +70,7 @@
   "secondaryWhatsappText": "Merhaba, kamera sistemi hakkında bilgi almak istiyorum.",
   "ctaNote": "Ücretsiz keşif · Taahhüt yok",
   "priceNote": "Fiyat, ihtiyacınızı yerinde gördükten sonra netleşir.",
-  "analytics": { "ga4": "", "ads": "", "adsWhatsapp": "", "adsCall": "" },
+  "analytics": { "ga4": "G-Q46Y0W7XMN", "ads": "", "adsWhatsapp": "", "adsCall": "" },
   "ctaBand": {
     "h2": "Ücretsiz Keşif için Bize Ulaşın",
     "p": "Aynı hafta içinde yerinde keşif; hafta sonu dahil arızada 3 saat içinde müdahale."

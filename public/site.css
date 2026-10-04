@@ -225,7 +225,7 @@ address { font-style: normal; }
 .desc { flex: none; width: var(--descW); padding-right: 4vw; opacity: .22; transition: opacity .5s; }
 .desc.is-on { opacity: 1; }
 .desc b { display: block; font: 500 var(--label)/1.4 var(--mono); letter-spacing: .08em; margin-bottom: .6em; opacity: .95; }
-.desc p { font-size: clamp(17px, calc(var(--label) * 1.6), 22px); line-height: 1.75; max-width: 48ch; text-wrap: pretty; }
+.desc p { font-size: clamp(17px, calc(var(--label) * 1.6), 22px); line-height: 1.75; max-width: 48ch; text-wrap: pretty; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: var(--dl, 5); overflow: hidden; } /* carousel.js sets --dl to the lines that fit */
 /* legibility over bright frames: every line of the description sits on its own dark highlight band, like a film subtitle */
 .desc p span { background: rgba(0, 0, 0, .56); padding: .14em .45em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .desc b { display: inline-block; background: rgba(0, 0, 0, .56); padding: .3em .55em; }
@@ -252,9 +252,10 @@ address { font-style: normal; }
 @media (max-width: 1279px) { .offer .btn .lg { display: none; } .offer .btn .sm { display: inline; } } /* narrower desktops: "Ara" keeps both buttons on one row */
 /* phones and tablets: the stage has no room, the same offer rides in a bottom bar until the closing band takes over */
 .dock { display: none; }
+@media (max-width: 1179px) { .meta { display: none; } } /* narrow desktops: the three labels would wrap to their own row and push the title under the bar */
 @media (max-width: 999px) {
   .offer h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .offer .note, .offer .btns { display: none; }
+  .offer .note, .offer .btns, .offer .note__price, .stage .descs { display: none; } /* the slide copy cannot fit above the dock; it stays in the HTML */
   .dock { display: block; position: fixed; z-index: 39; left: 0; right: 0; bottom: 0; padding: 8px var(--gut) calc(8px + env(safe-area-inset-bottom)); background: #000; color: #fff; border-top: 1px solid rgba(255, 255, 255, .18); transition: transform .35s var(--ease), visibility 0s; }
   .dock.is-off { transform: translateY(105%); visibility: hidden; transition: transform .35s var(--ease), visibility 0s .35s; }
   .dock__note { font-size: 12px; letter-spacing: .02em; margin-bottom: 7px; color: #d0d3d8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -333,12 +334,13 @@ html:not(.js) .stage .descs { display: none; } /* still in the HTML for crawlers
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary .ic { transition: rotate .4s var(--ease); }
 .faq details[open] summary .ic { rotate: 45deg; }
-.faq details p { color: var(--fg-2); max-width: 70ch; padding: 0 0 26px; }
+.faq details p { color: var(--fg-2); max-width: 60ch; padding: 0 0 26px; }
 .prose { max-width: 54ch; display: grid; gap: 20px; color: var(--fg-2); font-size: clamp(18px, 1.3vw, 20px); }
 .prose a { text-decoration: underline; text-underline-offset: .25em; }
 .locales .mono { display: block; font-size: 13px; color: var(--dim); margin-bottom: 6px; }
 .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 28px; }
 .cards li { background: var(--bg); padding: 24px; }
+.cards li:last-child:nth-child(odd) { grid-column: 1 / -1; } /* an odd count never leaves an empty cell */
 .cards h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
 .cards p { color: var(--fg-2); font-size: 17px; }
 /* region pages: one block per service (local-SEO copy), link to the service page */
@@ -347,7 +349,7 @@ html:not(.js) .stage .descs { display: none; } /* still in the HTML for crawlers
 .dsv__n { grid-column: 1 / -1; font-size: 13px; color: var(--dim); }
 .dsv__n::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 10px; background: var(--accent); vertical-align: .08em; }
 .dsv h3 { font-weight: 600; font-size: clamp(24px, 2.2vw, 34px); letter-spacing: -.02em; line-height: 1.12; text-wrap: balance; }
-.dsv h3 + p { color: var(--fg-2); max-width: 64ch; }
+.dsv h3 + p { color: var(--fg-2); max-width: 58ch; }
 .dsv a { grid-column: 2; justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; padding-bottom: 4px; border-bottom: 1px solid var(--line-2); transition: border-color .25s; }
 .dsv a:hover { border-color: var(--accent); }
 .dsv a .ic { transition: transform .35s var(--ease); }
@@ -471,9 +473,10 @@ html:not(.js) .stage .descs { display: none; } /* still in the HTML for crawlers
 .foot { border-top: 1px solid var(--line); padding: 44px var(--gut) 56px; color: var(--dim); font-size: 16px; }
 .foot__in { display: grid; grid-template-columns: auto 1fr auto; gap: 14px 40px; align-items: center; }
 .foot img { height: 32px; width: auto; filter: var(--logo); }
-.foot address { display: grid; gap: 4px; justify-items: start; } /* links only as wide as their text, not the whole row */
+.foot address { display: grid; justify-items: start; } /* links only as wide as their text, not the whole row */
 .foot a:hover { color: var(--fg); }
-.foot address a { display: inline-flex; align-items: center; min-height: 44px; } /* a thumb-sized target for every contact */
+.foot address a { display: inline-block; padding: 4px 0; } /* inline-block keeps every link (and the Instagram icon) on the text baseline */
+@media (pointer: coarse) { .foot address a { padding: 10px 0; } } /* touch: 26px line + 20px = a thumb-sized target */
 .menu nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .18em; }
 /* light theme: over a photo zone the pill keeps the dark glass, so it never sits pale on a dark photo (site.js sets .on-photo) */
 html[data-theme="light"].on-photo .bar__end { --menu-bg: rgba(0, 0, 0, .72); --fg: #fff; --line: rgba(255, 255, 255, .22); }
@@ -521,7 +524,6 @@ html[data-theme="light"].on-photo .bar__end { --menu-bg: rgba(0, 0, 0, .72); --f
   .meta { display: none; }
   .regs { grid-template-columns: 1fr; }
   .cards { grid-template-columns: 1fr; }
-  .desc p { max-width: none; }
   .btn { flex: 1 1 0; justify-content: center; padding: 0 14px; white-space: nowrap; font-size: 16px; }
 }
 @media (max-width: 460px) {

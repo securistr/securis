@@ -241,7 +241,7 @@ const footer = () => `
     <img src="/securis-logo-320.png" alt="Securis" width="320" height="98" loading="lazy">
     <address>
       <a href="${site.mapUrl}" target="_blank" rel="noopener noreferrer">${esc(site.address.footerLine)}</a>
-      <span class="foot__tel">Arayın ya da WhatsApp'tan yazın, iki hat da açık: <a href="tel:${P1.e164}">${P1.display}</a> · <a href="tel:${P2.e164}">${P2.display}</a></span>
+      <span class="foot__tel">Telefon ve WhatsApp: <a href="tel:${P1.e164}">${P1.display}</a> · <a href="tel:${P2.e164}">${P2.display}</a></span>
       <span><a href="mailto:${site.email}">${site.email}</a> · <a class="foot__ig" href="${site.instagram}" target="_blank" rel="noopener noreferrer">${I.ig}${site.instagramHandle}</a></span>
     </address>
     <nav aria-label="Alt menü"><a href="/gizlilik-politikasi/">Gizlilik Politikası</a> · ${TRACK ? '<button class="foot__consent" type="button" data-consent-open>Çerez tercihleri</button> · ' : ''}<span>© ${site.copyrightYear} Securis</span></nav>
@@ -471,7 +471,7 @@ ${bar(gizlilik.whatsappText)}
       <p class="note mono">${esc(upperTR(gizlilik.updated))}</p>
     </div>
   </section>
-  ${gizlilik.sections.map(s => (s.id === 'cerez' && TRACK ? { ...s, p: gizlilik.cerezTracked } : s)).map((s, i) => `<section class="sec sec--narrow"${s.id ? ` id="${s.id}"` : ''} aria-labelledby="g${i}"><div class="sec__head"><h2 id="g${i}">${esc(s.h2)}</h2></div><div class="prose">${s.p.map(p => `<p>${link(p)}</p>`).join('')}</div>${s.cards ? `<ul class="cards">${s.cards.map(c => `<li><h3>${esc(c.h3)}</h3><p>${esc(c.p)}</p></li>`).join('')}</ul>` : ''}</section>`).join('')}
+  ${gizlilik.sections.map(s => (s.id === 'cerez' && TRACK ? { ...s, p: gizlilik.cerezTracked } : s)).map((s, i) => `<section class="sec sec--narrow"${s.id ? ` id="${s.id}"` : ''} aria-labelledby="g${i}"><div class="sec__head"><h2 id="g${i}">${esc(s.h2)}</h2></div><div class="prose">${s.p.map(p => `<p>${link(p)}</p>`).join('')}</div>${s.cards ? `<ul class="cards">${s.cards.filter(c => !c.track || TRACK).map(c => `<li><h3>${esc(c.h3)}</h3><p>${esc(c.p)}</p></li>`).join('')}</ul>` : ''}</section>`).join('')}
 </main>
 ${footer()}
 </body></html>`;
