@@ -155,7 +155,7 @@ Density is low at the top (one frame, one title, one lead, two buttons) and beco
 A monochrome interface in two printings whose only colour comes from grading photographs to one accent per service.
 
 ### Primary
-- **Service Grades** (camera, storage, switch, firewall, Wi-Fi, regions): never used as flat UI fills or text. Each is applied twice over its photo, once as `mix-blend-mode: color` and once as `multiply` at .55 opacity, so the image takes on that service's hue. The camera grade runs light (color .3, multiply .15, `SVC.grade` in build.mjs): a white camera on a pale wall turned into a flat red field under the full grade. One grade per page hero: service pages use their service, region pages use the regions blue, the home backdrop cross-fades to the focused slide's grade. The members follower and the projects stage re-grade their photo to the hovered item's accent.
+- **Service Grades** (camera, storage, switch, firewall, Wi-Fi, regions): never used as flat UI fills or text. Each is applied twice over its photo, once as `mix-blend-mode: color` and once as `multiply` at .55 opacity, so the image takes on that service's hue. Two grades run light through `SVC.grade` in build.mjs: camera (color .3, multiply .15; a white camera on a pale wall turned into a flat red field) and storage (color .35, multiply .2; the full purple read as gaming RGB on a black NAS). One grade per page hero: service pages use their service, region pages use the regions blue, the home backdrop cross-fades to the focused slide's grade. The members follower and the projects stage re-grade their photo to the hovered item's accent.
 - **Field Grey** (grade-field): the grade of the home page's industrial-site frame, the one slide that is not a service.
 - **Close Slate** (grade-close): the grade of the closing band's finished-install photo on every content page.
 
@@ -209,7 +209,7 @@ Inside photographic zones, in both themes, text is paper, soft text is Photo Sof
 - **Body** (400, clamp(18px, 1.2vw, 20px), 1.65): running text; FAQ answers max 70ch, prose max 54ch.
 - **Label** (JetBrains Mono 500, 13px, .08em, uppercase): travel times, notes, menu column labels, member and project numbers, project categories, preview caption.
 - **Crumb** (JetBrains Mono 500, 14px, .04em, sentence case): breadcrumb trail above the H1.
-- **Outline words** (Archivo 700, -.04em, sized by carousel.js to the band they sit in, at most 2x the slide title): the service word labels the strip from the band right above it, starting at the focused card's left edge (phones: the gutter, above "Hizmeti incele"); passed words and descriptions fade out at that edge. They never pass behind a photo. Transparent fill, 1px white stroke at .2 opacity (.42 when on) with a light tracing the outline of the lit word.
+- **Outline words** (Archivo 700, -.04em, sized by carousel.js to the band they sit in, at most 2x the slide title): the service word labels the strip from the band right above it, starting at the focused card's left edge (phones: the gutter, above "Hizmeti incele"); passed words and descriptions fade out at that edge. They never pass behind a photo. Transparent fill, 1px white stroke at .2 opacity (.42 when on). The hero keeps one effect, the WebGL morph; the light that used to trace the lit word was removed (2026-10-04) as constant motion. Words keep a .3em word gap.
 
 ### Named Rules
 **The Readability Floor Rule.** Body never below 18px at 1.65, leads 19-23px, mono labels never below 13px. Soft and dim text must hold at least 6.8:1 in either printing.
@@ -249,6 +249,10 @@ Square corners throughout (rounded.none): buttons, cards, frames, tables, the me
 
 ## Components
 
+Fonts are self-hosted (public/fonts: Archivo variable 400-700 and JetBrains Mono 500, latin + latin-ext), preloaded from the head; no Google Fonts request.
+
+Region heroes each get their own full-resolution frame (build.mjs REGION_IMG) under a calmer regions grade (color .5, multiply .3).
+
 ### Buttons
 Blunt, full-weight, square. Buttons live only in photographic zones, so they are white-on-dark in both themes.
 - **Shape:** square (0px), 56px tall, 26px horizontal padding, 600 weight 17px, icon plus label with a 10px gap.
@@ -256,6 +260,8 @@ Blunt, full-weight, square. Buttons live only in photographic zones, so they are
 - **Hover / Focus:** fill steps to button-hover; press nudges 1px down; focus is the global 2px currentColor outline at 3px offset.
 - **Outline:** transparent with an inset 1px white line at .55 opacity, paper text; hover adds a 10% white fill.
 - **Phones:** the pair shares one row as equal-flex buttons with shorter labels.
+- **Home offer (desktop ≥1000px):** the one still element on the rotating stage: the visible H1 (what + where), the cta note, and the WhatsApp / call pair (50px, 16px, one row; "Ara" below 1280px), bottom-left above the counter and clear of the strip.
+- **Home dock (phones and tablets <1000px):** a solid black bar fixed to the bottom: a 12px mono line (free survey + districts) over the equal-flex WhatsApp / Ara pair. It slides away while the closing band or the footer is on screen.
 
 ### Navigation
 A centred top bar over the hero: text-plus-icon buttons at .92 opacity (icons only on phones) and a logo forced white; on plain legal pages the bar follows the theme ink.
@@ -264,7 +270,13 @@ A centred top bar over the hero: text-plus-icon buttons at .92 opacity (icons on
 - **Letter roll:** on hover-capable devices, single-line menu links and project titles roll letter by letter: the letters slide up out of a clip while a copy slides in from below (.5s, cubic-bezier(.65, 0, .35, 1)), staggered 32ms per letter outward from the centre. Labels that wrap, and touch devices, keep plain text; the real text stays for screen readers.
 
 ### Filmstrip (signature)
-Cards are square-cornered photos with no captions. Unfocused cards are half height, greyscale at .85 brightness with a .14 black veil; the focused card grows to full height in full colour. A single spring (stiffness 260, damping 34, mass .9) drives the strip, the description track and the outline-word track together, from drag with momentum, wheel, arrow/Home/End keys and a 5s autoplay that pauses off-screen. The backdrop cross-fades to the new grade over .7s while the image slowly zooms from 1.42 to 1.28. The title rises in through a clipped line wipe. Reduced motion jumps without animation.
+Cards are square-cornered photos with no captions. Unfocused cards are half height, greyscale at .85 brightness with a .14 black veil; the focused card grows to full height in full colour. A single spring (stiffness 260, damping 34, mass .9) drives the strip, the description track and the outline-word track together, from drag with momentum, wheel, arrow/Home/End keys and a 5s autoplay that pauses off-screen and rests on the first slide after one lap (play starts another). The backdrop cross-fades to the new grade over .7s while the image slowly zooms from 1.36 to 1.28 over 3.5s, ending inside the 5s autoplay so the WebGL loop idles between slides (the reviews morph likewise: 1.08 to 1.02 over 4.5s against a 7s autoplay). The title rises in through a clipped line wipe. Reduced motion jumps without animation.
+
+### Subpage proof
+Right under every service and region hero: the Google score (Archivo 600, 3-4.6rem) with gold stars and a "Google'da 13 yorum" link, beside one verbatim review chosen for that page (build.mjs PROOF), the reviewer's name as written plus a mono "GOOGLE YORUMU" label. One column under 800px. A review never implies the reviewer's district.
+
+### Cookie consent
+Only rendered when data/site.json analytics has an ID (public/track.js). A black card bottom-right (full-width bottom bar under 1000px, hiding the home dock while open), one sentence plus a Ayrıntılar link, Reddet and Kabul et as two equal outlined buttons. Nothing from Google loads before Kabul et.
 
 ### Contact Sheet (signature)
 A bottom-aligned row of every service frame, each greyscale at .8 brightness with a mono caption ("01 IP KAMERA"). The current frame is larger, in colour, captioned "— BU SAYFA" and ringed in red pencil. Frames settle in with a 70ms stagger; the ring draws in .55s later.

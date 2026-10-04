@@ -5,7 +5,7 @@
     "chipLabel": "Silivri",
     "cityName": "Silivri",
     "il": "İstanbul",
-    "title": "Silivri Güvenlik Kamerası, Firewall ve Network | Securis",
+    "title": "Silivri Kamera, Wi-Fi ve Network Kurulumu | Securis",
     "description": "Silivri güvenlik kamerası, firewall, switch, Wi-Fi ve NVR kurulumu. Merkezimiz Silivri'de: ev, site ve iş yerine ücretsiz keşif, arızada 3 saatte yerindeyiz.",
     "h1": "Silivri Güvenlik Kamerası, Firewall ve Bilgi İşlem Altyapısı",
     "lead": "Merkezimiz Silivri Alipaşa'da; ilçe içindeki adreslere ortalama 10–20 dakikada ulaşıyoruz. Selimpaşa'daki yazlıktan merkezdeki dükkâna, köydeki çiftlikten sitenin yönetim ofisine kadar kamerayı, arkasındaki ağı ve kayıt cihazını aynı ekip kuruyor.",
@@ -17,7 +17,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Silivri firewall kurulumu",
+        "h3": "Silivri işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Evde çoğu zaman firewall gerekmez; modemin doğru ayarı yeter. İhtiyaç, Silivri merkezdeki muhasebe bürosu, klinik ya da birden fazla bilgisayarla çalışan ofislerde başlar: dışarıdan kimin girebileceğini, hangi portun açık kalacağını ve uzaktan çalışanın nasıl bağlanacağını FortiGate üzerinde kurallarla belirliyoruz. Kamera kayıt cihazını internete port açarak değil, VPN üzerinden izletiyoruz."
       },
       {
@@ -27,16 +27,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Silivri Wi-Fi ve access point kurulumu",
+        "h3": "Silivri: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "İki katlı villada modem bir katta kalınca üst kat ve bahçe çekmez; sahildeki kafe ve otellerde ise yaz akşamı dış oturma alanı dolar. Access point'leri sinyal ölçümüne göre konumlandırıyor, hepsini tek ağ adı altında dolaşımlı (roaming) çalıştırıyoruz. Misafir ağı işletme ağından ayrılır; kasaya ve kamera kayıtlarına misafir telefonundan erişilemez."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Silivri NAS kurulumu ve veri yedekleme",
+        "h3": "Silivri veri yedekleme ve NAS kurulumu",
         "p": "Silivri merkezdeki muhasebe bürosu, klinik ve ofislerde dosyalar çoğu zaman tek bir bilgisayarda ya da masadaki harici diskte durur; o disk bozulduğunda yılların arşivi de gider. Ofise QNAP NAS kuruyor, diskleri RAID ile yapılandırıyor, bilgisayarların yedeğini her gün otomatik olarak NAS'a aldırıyoruz. Yedeğin bir kopyası buluta ya da başka bir adrese gider; ofiste bir arıza ya da hırsızlık olsa da veri geri alınabilir."
       }
     ],
-    "whatsappText": "Merhaba, Silivri'deki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Silivri'de ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Silivri'nin Yapısı Nasıl Bir Güvenlik İhtiyacı Doğuruyor?",
       "paragraf": "Silivri; yazlık site ve müstakil villa yoğunluğunun yüksek olduğu, aynı zamanda tarım işletmeleri ve sahil boyunca uzanan ticari alanlar barındıran bir ilçe. Bu karışık doku, tek tip bir kamera kurulumunun işe yaramadığı anlamına geliyor. Site ve villalarda öncelik, yılın büyük bölümünde boş kalan yapıların çevre güvenliği: bahçe sınırı, giriş kapısı ve araç yolu kameralarla kapatılıyor, hareket algılandığında telefona bildirim gidiyor. Tarım işletmelerinde ise sorun genellikle mesafe; depo, ahır veya sera ile ana bina arasındaki uzaklık standart kablolamayı yetersiz bırakıyor. Bu noktalarda fiber hat veya noktadan noktaya kablosuz köprü ile ağı taşıyoruz. Sahildeki işletmelerde ise nem ve tuzlu hava, dış mekân kameralarının koruma sınıfını doğrudan belirliyor.",
@@ -52,7 +52,7 @@
         },
         {
           "q": "Arıza olursa Silivri'de ne kadar sürede geliyorsunuz?",
-          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır ve hizmet bölgelerimizde arızaya en geç 3 saat içinde yerinde müdahale ederiz. Merkezimiz Silivri'de olduğu için ilçe içindeki adreslere ortalama 10–20 dakikada ulaşıyoruz."
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır ve hizmet bölgelerimizde arızaya hafta sonu dahil en geç 3 saat içinde yerinde müdahale ederiz. Merkezimiz Silivri'de olduğu için ilçe içindeki adreslere ortalama 10–20 dakikada ulaşıyoruz."
         },
         {
           "q": "Yazlık evim kışın boş kalıyor, uzaktan izleyebilir miyim?",
@@ -95,7 +95,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Çatalca firewall kurulumu",
+        "h3": "Çatalca işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Merkez ofisi şehir içinde, deposu Çatalca'da olan firmalarda depodaki bilgisayarların ve kayıt cihazının merkeze güvenle bağlanması gerekir. FortiGate ile iki nokta arasında şifreli VPN kuruyor, depo ağından dışarıya yalnızca gereken trafiğin çıkmasına izin veriyoruz. Depodaki ekran ile merkezdeki muhasebe aynı ağdaymış gibi çalışır, ama ağ dışarıya kapalı kalır."
       },
       {
@@ -105,16 +105,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Çatalca Wi-Fi ve access point kurulumu",
+        "h3": "Çatalca: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "Metal raflı depolarda tek bir modemin sinyali koridorun ortasında kaybolur; el terminali ya da tablet kullanan ekip için bu, işin durması demek. Raf aralıklarını hesaba katarak tavan tipi access point'ler yerleştiriyor, geniş çiftlik avlusunda dış mekân tipi cihazla kapsamayı binanın dışına taşıyoruz."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Çatalca NAS kurulumu ve veri yedekleme",
+        "h3": "Çatalca veri yedekleme ve NAS kurulumu",
         "p": "Çiftlik ve depolarda işletme dosyaları da kamera kayıtları da genellikle ana binadaki tek bir cihazda durur, sabit internet ise çoğu yerde zayıftır. Yedeği bu yüzden önce yerelde, ana binadaki QNAP NAS'ta kuruyoruz: bilgisayar dosyaları zamanlanmış olarak NAS'a yazılır, kamera kayıtları uzun süreli arşiv için oraya taşınır. İkinci kopyayı bağlantının izin verdiği ölçüde buluta ya da başka bir binaya alıyoruz."
       }
     ],
-    "whatsappText": "Merhaba, Çatalca'daki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Çatalca'da ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Çatalca'da Çiftlik, Depo ve Dağınık Yerleşim Güvenliği",
       "paragraf": "Çatalca, İstanbul'un en geniş yüzölçümlü ilçelerinden biri ve yerleşim büyük ölçüde köylere, çiftliklere ve lojistik depolarına yayılmış durumda. Buradaki temel zorluk kamera değil, mesafe ve altyapı: korunması gereken noktalar birbirinden yüzlerce metre uzakta olabiliyor ve bazı konumlarda kablolu internet zayıf. Çiftlik ve besi tesislerinde giriş yolu, yem deposu ve ağıl girişini kapsayan bir çevre hattı kuruyor, ana binadaki NVR'a ağı fiber veya kablosuz köprüyle taşıyoruz. Depo ve lojistik tesislerinde ise öncelik yükleme rampaları ve araç plakaları; bu noktalarda plaka okumaya uygun lens ve aydınlatma planlaması gerekiyor. Sabit internetin yetersiz kaldığı konumlarda sistemi yerel kayıt önceliğiyle kuruyoruz, böylece bağlantı koptuğunda kayıt kesilmiyor.",
@@ -173,7 +173,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Büyükçekmece firewall kurulumu",
+        "h3": "Büyükçekmece işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Site yönetim ofisi, emlak ofisi ya da birkaç bilgisayarlı bir büro; hepsinde kişisel bilgi tutuluyor. FortiGate ile ağa kimin girebileceğini, hangi hizmetlerin dışarıya açılacağını kurallarla sınırlıyoruz. Yönetimin kameralara dışarıdan bakması gerekiyorsa bunu kayıt cihazını internete açarak değil, VPN üzerinden kuruyoruz."
       },
       {
@@ -183,16 +183,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Büyükçekmece Wi-Fi ve access point kurulumu",
+        "h3": "Büyükçekmece: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "Site sosyal tesisinde, havuz başında ya da güvenlik kulübesinde internet genellikle ana binadan taşınmak zorunda. Access point'leri kablolu omurgaya bağlayıp tek ağ adıyla çalıştırıyor, sakinler ya da müşteriler için ayrı bir misafir ağı açıyoruz. Dükkânlarda ödeme cihazı ile misafir Wi-Fi'ı aynı ağda bırakmıyoruz."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Büyükçekmece NAS kurulumu ve veri yedekleme",
+        "h3": "Büyükçekmece veri yedekleme ve NAS kurulumu",
         "p": "Site yönetimlerinde belgeler, yönetim değiştikçe bir bilgisayardan ötekine taşınırken kaybolabiliyor. Yönetim ofisine kurduğumuz QNAP NAS'ta her kullanıcının yetkisi ayrı tanımlanır; belgeler tek yerde durur, bilgisayarların yedeği otomatik alınır. Ana caddedeki dükkân ve ofislerde de aynı düzeni kuruyoruz; kamera kayıtlarının uzun süreli arşivi NAS'ta tutulabilir, ikinci kopya buluta ya da başka bir adrese gider."
       }
     ],
-    "whatsappText": "Merhaba, Büyükçekmece'deki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Büyükçekmece'de ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Büyükçekmece'de Site, Ofis ve Ticari İşletme Güvenliği",
       "paragraf": "Büyükçekmece, yoğun konut siteleri ile cadde üstü ticari işletmelerin iç içe geçtiği bir ilçe. Sitelerde kamera işi çoğunlukla yönetim üzerinden ilerliyor ve iki ayrı beklenti oluyor: otopark ile blok girişlerinin kayıt altına alınması, bir de kayıtlara kimin erişebileceğinin netleştirilmesi. Bu yüzden site projelerinde yalnızca kamera kurmuyor, yetkilendirmeyi de yapılandırıyoruz; görevli personel canlı izleyebiliyor, geçmiş kayıt erişimi ise yönetimle sınırlı kalıyor. Cadde üstü işletmelerde ve ofislerde ise öncelik kasa, giriş kapısı ve depo bölümü. Bu tip işletmelerde kamera sistemiyle birlikte ağ tarafını da ele almak gerekiyor: kameraları ofis ağından ayrı bir VLAN'a almak, hem kamera trafiğinin interneti yavaşlatmasını hem de olası bir güvenlik açığının iş bilgisayarlarına sıçramasını önlüyor.",
@@ -208,7 +208,7 @@
         },
         {
           "q": "Kurulumdan sonra arıza olursa ne oluyor?",
-          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır. Büyükçekmece hizmet bölgelerimiz arasında olduğu için arızaya en geç 3 saat içinde yerinde müdahale ediyoruz."
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır. Büyükçekmece hizmet bölgelerimiz arasında olduğu için arızaya hafta sonu dahil en geç 3 saat içinde yerinde müdahale ediyoruz."
         },
         {
           "q": "Site yönetimi olarak kayıtlara kimin erişeceğini kontrol edebilir miyiz?",
@@ -251,7 +251,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Beylikdüzü firewall kurulumu",
+        "h3": "Beylikdüzü işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Plaza ofislerinde firewall, bina internetinden bağımsız olarak kendi güvenlik sınırınızı kurmak demek. FortiGate üzerinde departman bazlı erişim kuralları, uzaktan çalışanlar için VPN ve gerekiyorsa şube bağlantısı tanımlıyoruz. Firmware güncellemesi ve kural kontrolü, kurulumdan sonra da takip edilmesi gereken işler."
       },
       {
@@ -261,16 +261,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Beylikdüzü Wi-Fi ve access point kurulumu",
+        "h3": "Beylikdüzü: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "Çok odalı ofislerde tek modemle bütün katı kapatmaya çalışmak ölü noktalar bırakır; toplantı odası ve arka ofis genellikle ilk çekmeyen yerlerdir. Kat planına göre tavan tipi access point'ler yerleştiriyor, hepsini tek ağ adı altında dolaşımlı çalıştırıyoruz. Toplantıya gelen misafir ayrı ağa bağlanır, şirket kaynaklarını göremez."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Beylikdüzü NAS kurulumu ve veri yedekleme",
+        "h3": "Beylikdüzü veri yedekleme ve NAS kurulumu",
         "p": "Plaza ve ofislerde birden fazla çalışan aynı dosyalar üzerinde çalışır; dosya bir kişinin bilgisayarında kaldığında ekip bekler. Ofise QNAP NAS kuruyor, klasörleri departman bazında yetkilendiriyor, bilgisayar ve sunucu yedeklerini zamanlanmış olarak NAS'a aldırıyoruz. Ofis taşınırken veri NAS ile birlikte taşınır; yedeğin ikinci kopyası buluta ya da başka bir lokasyona alınır."
       }
     ],
-    "whatsappText": "Merhaba, Beylikdüzü'ndeki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Beylikdüzü'nde ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Beylikdüzü'nde Plaza, Ofis ve Rezidans Altyapısı",
       "paragraf": "Beylikdüzü plan bazlı gelişmiş bir ilçe: yüksek katlı rezidanslar, plaza ofisleri ve organize ticari alanlar ağırlıkta. Burada kamera işi genellikle tek başına gelmiyor; ofis taşınması, yeni kat kurulumu veya şube açılışıyla birlikte ağ altyapısının tamamı gündeme geliyor. Kat kablolaması, rack kabin düzeni, switch yapılandırması ve kablosuz ağ kapsaması aynı projenin parçaları oluyor. Çok katlı ofislerde en sık karşılaştığımız sorun, tek bir modemle tüm katı kapatmaya çalışmaktan doğan Wi-Fi ölü noktaları; bunu kat planına göre konumlandırılmış access point'lerle ve tek ağ adı altında roaming yapılandırmasıyla çözüyoruz. Rezidans ve sitelerde ise otopark, asansör holü ve giriş turnikeleri öncelikli izleme noktaları oluyor.",
@@ -329,7 +329,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Çorlu firewall kurulumu",
+        "h3": "Çorlu işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Üretim tesislerinde internete açık tek bir cihaz bütün ağı riske atabilir. FortiGate ile ofis, üretim ve kamera ağları arasındaki geçişleri kurallarla sınırlıyor, dışarıya yalnızca gereken servisleri açıyoruz. Aynı cihazda web filtreleme ve bant genişliği önceliği de tanımlanabilir; böylece kamera izlemesi ofisin internetini tıkamaz."
       },
       {
@@ -339,16 +339,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Çorlu Wi-Fi ve access point kurulumu",
+        "h3": "Çorlu: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "Geniş üretim ve depo alanlarında Wi-Fi, el terminalleri ve saha tabletleri için bir iş aracıdır. Makine ve raf yerleşimine göre sinyal ölçümü yapıyor, access point'leri tavana ya da kolonlara yerleştiriyoruz. Personel, üretim cihazları ve ziyaretçi için ayrı ağlar tanımlanır; ziyaretçi üretim ağını göremez."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Çorlu NAS kurulumu ve veri yedekleme",
+        "h3": "Çorlu veri yedekleme ve NAS kurulumu",
         "p": "Fabrikalarda üretim, muhasebe ve kalite dosyaları farklı bilgisayarlara dağılır; kamera kayıtları da vardiya vardiya birikir. Tesise QNAP NAS kuruyor, diskleri RAID ile yapılandırıyor, bilgisayar ve sunucu yedeklerini mesai dışında otomatik alıyoruz. Cihazı tozdan uzak bir kabine ya da odaya yerleştiriyor, kamera kayıtlarının uzun süreli arşivini NAS'ta tutuyor, ikinci kopyayı buluta ya da başka bir binaya alıyoruz."
       }
     ],
-    "whatsappText": "Merhaba, Çorlu'daki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Çorlu'da ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Çorlu Sanayisinde Fabrika ve Üretim Tesisi Güvenliği",
       "paragraf": "Çorlu, Trakya'nın en yoğun sanayi merkezlerinden biri; tekstil, deri, plastik ve gıda üretimi yapan tesisler ilçenin ekonomik omurgasını oluşturuyor. Fabrika ortamı, ev veya ofis kurulumundan tamamen farklı koşullar dayatıyor. Üretim alanlarında toz, nem, titreşim ve bazı hatlarda kimyasal buhar var; bu da kamera kasa sınıfının ve kablo güzergâhının baştan doğru seçilmesini zorunlu kılıyor. Geniş üretim holleri ile idari bina arasındaki mesafe genellikle bakır kablonun sınırını aştığı için omurgayı fiberle kuruyoruz. Fabrikalarda kameranın işlevi de değişiyor: yalnızca hırsızlık değil, yükleme rampasındaki sevkiyat hareketleri, forklift trafiği ve iş güvenliği açısından kritik noktalar izleniyor. Vardiyalı çalışan tesislerde gece görüş performansı ve kesintisiz kayıt, sistemin en çok sorgulanan iki özelliği oluyor.",
@@ -364,7 +364,7 @@
         },
         {
           "q": "Çorlu'daki tesisimize arızada ne kadar sürede gelirsiniz?",
-          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır; Çorlu hizmet bölgelerimizden biri olduğu için arızaya en geç 3 saat içinde yerinde müdahale ediyoruz. Silivri'den Çorlu'ya ortalama yol süresi 35–45 dakikadır."
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır; Çorlu hizmet bölgelerimizden biri olduğu için arızaya hafta sonu dahil en geç 3 saat içinde yerinde müdahale ediyoruz. Silivri'den Çorlu'ya ortalama yol süresi 35–45 dakikadır."
         },
         {
           "q": "Fabrika ortamındaki toz ve nem kameraları etkiler mi?",
@@ -407,7 +407,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Çerkezköy firewall kurulumu",
+        "h3": "Çerkezköy işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Sanayi tesislerinin ağına dışarıdan çoğu zaman birden fazla taraf bağlanır: merkez ofis, makine tedarikçisinin servisi, uzaktan çalışan yönetici. FortiGate üzerinde her biri için ayrı VPN hesabı ve yalnızca gereken sistemlere izin veren kurallar tanımlıyoruz. İş bitince bağlantı kapatılabilir; kimin ne zaman bağlandığı cihaz kayıtlarında kalır."
       },
       {
@@ -417,16 +417,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Çerkezköy Wi-Fi ve access point kurulumu",
+        "h3": "Çerkezköy: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "Depo ve saha alanlarında kablosuz ağ, forklift üstü terminal ya da el tarayıcısı kullanan ekipler için şart. Yüksek tavanlı depolarda access point'i doğru yüksekliğe ve raf koridorlarına göre yerleştiriyor, açık sahada dış mekân tipi cihaz kullanıyoruz. Personel ve misafir ağları birbirinden ayrılır."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Çerkezköy NAS kurulumu ve veri yedekleme",
+        "h3": "Çerkezköy veri yedekleme ve NAS kurulumu",
         "p": "OSB'deki tesislerde merkez ofis ile fabrika arasındaki dosya alışverişi çoğu zaman e-postayla yürür. Tesise kurduğumuz QNAP NAS'a merkezden VPN üzerinden erişilir; klasör yetkileri birim bazında ayrılır, bilgisayar ve sunucu yedekleri zamanlanmış olarak NAS'a yazılır. Kamera kayıtları uzun süreli arşiv için NAS'a taşınabilir; ikinci kopya buluta ya da merkez ofise gider."
       }
     ],
-    "whatsappText": "Merhaba, Çerkezköy'deki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Çerkezköy'de ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Çerkezköy Organize Sanayi Bölgesinde Ağ ve Kamera Altyapısı",
       "paragraf": "Çerkezköy, Türkiye'nin köklü organize sanayi bölgelerinden birine ev sahipliği yapıyor ve ilçedeki talep büyük ölçüde OSB içindeki üretim tesislerinden geliyor. Bu ölçekteki tesislerde kamera sistemi tek başına düşünülmüyor; ağ güvenliği, uzaktan erişim ve bölümlendirme aynı masada konuşuluyor. Üretim ağı ile ofis ağının birbirinden ayrılması, kamera trafiğinin kendi VLAN'ında izole edilmesi ve dışarıdan erişimin kontrollü hale getirilmesi standart hale gelmiş durumda. Merkez ofisi başka şehirde olan tesislerde en sık istenen şey, yönetimin fabrikayı güvenli biçimde uzaktan izleyebilmesi; bunu port açarak değil, şifreli VPN bağlantısı kurarak çözüyoruz. Kamera kayıt cihazını doğrudan internete açmak, bu sistemlerin en yaygın ve en tehlikeli güvenlik hatasıdır. Geniş tesis alanlarında ayrıca depo ve saha kapsaması için kablosuz ağ planlaması gerekiyor.",
@@ -454,7 +454,7 @@
         },
         {
           "q": "OSB'deki tesisimizde bakım desteği veriyor musunuz?",
-          "a": "Evet. Kurduğumuz sistemler 1 yıl servis garantisi kapsamında; arıza bildiriminde hizmet bölgelerimizde maksimum 3 saat içinde yerinde müdahale ediyoruz."
+          "a": "Evet. Kurduğumuz sistemler 1 yıl servis garantisi kapsamında; arıza bildiriminde hizmet bölgelerimizde hafta sonu dahil en geç 3 saat içinde yerinde müdahale ediyoruz."
         }
       ]
     },
@@ -485,7 +485,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Marmaraereğlisi firewall kurulumu",
+        "h3": "Marmaraereğlisi işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Sezonluk pansiyon, otel ve restoranlarda misafir Wi-Fi'ı, rezervasyon bilgisayarı ve ödeme cihazları aynı internet hattını paylaşır. FortiGate ile bu ağları birbirinden ayırıyor, misafir trafiğine bant sınırı koyuyor, işletme bilgisayarlarına dışarıdan erişimi kapatıyoruz. Sezon kapandığında kameralara uzaktan erişim VPN üzerinden sürer."
       },
       {
@@ -495,16 +495,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Marmaraereğlisi Wi-Fi ve access point kurulumu",
+        "h3": "Marmaraereğlisi: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "Yaz akşamı dolu bir kafede ya da pansiyonda Wi-Fi'ın yavaşlaması genellikle yetersiz kapasiteden gelir. Eş zamanlı kullanıcı sayısına göre access point sayısını belirliyor, dış oturma alanına dış mekân tipi cihaz koyuyoruz. Misafir ağı işletme ağından ayrılır; müşteriler internete çıkar ama kasaya ve kameralara erişemez."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Marmaraereğlisi NAS kurulumu ve veri yedekleme",
+        "h3": "Marmaraereğlisi veri yedekleme ve NAS kurulumu",
         "p": "Sezonluk işletmelerde muhasebe dosyaları da kamera kayıtları da kışın kapalı kalan binada durur. QNAP NAS'ı nemden korunan bir noktaya kuruyor, diskleri RAID ile yapılandırıyor, bilgisayar yedeklerini otomatik aldırıyoruz. Yedeğin ikinci kopyası buluta ya da işletme sahibinin kendi adresine gider; bina boşken bir arıza ya da hırsızlık olsa da veri başka yerde durur."
       }
     ],
-    "whatsappText": "Merhaba, Marmaraereğlisi'ndeki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Marmaraereğlisi'nde ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Marmaraereğlisi'nde Yazlık Site ve Sahil İşletmesi Güvenliği",
       "paragraf": "Marmaraereğlisi, nüfusu yaz ve kış arasında ciddi biçimde değişen bir sahil ilçesi. Bu mevsimsel dalgalanma güvenlik ihtiyacını doğrudan şekillendiriyor: yazlık siteler ve müstakil evler yılın büyük bölümünde boş kalıyor, dolayısıyla öncelik hırsızlığı sonradan tespit etmek değil, olay anında haber almak oluyor. Bu tip kurulumlarda hareket algılama bölgelerini doğru tanımlamak kritik; yoldan geçen her araç için bildirim gönderen bir sistem kısa sürede kullanılmaz hale gelir. Bu yüzden algılama alanlarını bahçe sınırı ve giriş noktalarıyla sınırlandırıyoruz. Sahil boyundaki restoran, kafe ve pansiyonlarda ise yaz sezonunda yoğun müşteri trafiği var; buralarda kasa bölgesi, giriş ve dış oturma alanı izleniyor, ayrıca müşteri Wi-Fi'ı işletme ağından ayrılıyor. Denize yakın tüm kurulumlarda tuzlu hava nedeniyle dış mekân donanımının koruma sınıfı yüksek seçiliyor.",
@@ -520,7 +520,7 @@
         },
         {
           "q": "Kışın evde değilken arıza olursa ne olur?",
-          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır. Marmaraereğlisi hizmet bölgelerimiz arasında; arızaya en geç 3 saat içinde yerinde müdahale ediyoruz. Kameraları telefondan izlediğiniz için bir kamera çevrimdışı kaldığında bunu uzaktan da görürsünüz."
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır. Marmaraereğlisi hizmet bölgelerimiz arasında; arızaya hafta sonu dahil en geç 3 saat içinde yerinde müdahale ediyoruz. Kameraları telefondan izlediğiniz için bir kamera çevrimdışı kaldığında bunu uzaktan da görürsünüz."
         },
         {
           "q": "Yazlık sitemiz kışın tamamen boş, sistem nasıl çalışır?",
@@ -563,7 +563,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Kapaklı firewall kurulumu",
+        "h3": "Kapaklı işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Sanayiye tedarik veren küçük ve orta ölçekli firmalarda muhasebe, sipariş ve e-posta çoğu zaman tek bir internet hattı üzerinden, korumasız çalışır. İşletmenin ölçeğine uygun bir FortiGate ile dışarıdan erişimi kapatıyor, yöneticinin ya da muhasebecinin evden bağlanması için VPN tanımlıyoruz. Model, keşifte ihtiyaca göre seçilir; küçük bir büroya büyük cihaz gerekmez."
       },
       {
@@ -573,16 +573,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Kapaklı Wi-Fi ve access point kurulumu",
+        "h3": "Kapaklı: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "Betonarme binalarda ve metal raflı depolarda modem sinyali birkaç duvarı geçemez. Sinyal ölçümüyle zayıf bölgeleri çıkarıyor, access point'leri kabloyla besleyip tek ağ adı altında dolaşımlı çalıştırıyoruz. İki katlı evlerde de yöntem aynı: tekrarlayıcı (repeater) yerine kablolu access point öneriyoruz."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Kapaklı NAS kurulumu ve veri yedekleme",
+        "h3": "Kapaklı veri yedekleme ve NAS kurulumu",
         "p": "Atölye ve depolarda irsaliye, teklif ve çizim dosyaları genellikle tek bir masaüstü bilgisayarda durur. Küçük bir QNAP NAS ile bu dosyaları tek yerde topluyor, diskleri RAID ile yapılandırıyor, bilgisayarın yedeğini her gün otomatik aldırıyoruz. Kamera kayıtlarının uzun süreli arşivi de aynı NAS'ta tutulabilir; ikinci kopya buluta ya da başka bir adrese gider."
       }
     ],
-    "whatsappText": "Merhaba, Kapaklı'daki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Kapaklı'da ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Kapaklı'da Sanayi Çevresi ve Hızlı Büyüyen Konut Dokusu",
       "paragraf": "Kapaklı, Çerkezköy sanayi bölgesinin hemen yanında konumlanan ve buna bağlı olarak hızla büyüyen bir ilçe. Nüfusun önemli bölümü çevredeki fabrikalarda çalışıyor; bu da ilçede iki farklı talep hattı oluşturuyor. Bir tarafta sanayiye tedarik veren küçük ve orta ölçekli atölyeler, depolar ve nakliye firmaları var; buralarda öncelik depo giriş-çıkışı, araç trafiği ve mesai dışı saatlerin kayıt altına alınması. Diğer tarafta hızla artan konut siteleri ve cadde üstü esnaf işletmeleri bulunuyor; burada beklenti daha çok giriş kapısı, otopark ve dükkân içi izleme. Yeni yapılaşmanın yoğun olduğu bölgelerde sıklıkla karşılaştığımız durum, inşaat aşamasında kamera altyapısı bırakılmamış olması; bu binalarda kablolamayı sonradan, mevcut mimariyi bozmayacak güzergâhlarla yapıyoruz.",
@@ -641,7 +641,7 @@
       },
       {
         "slug": "firewall-yapilandirma",
-        "h3": "Süleymanpaşa firewall kurulumu",
+        "h3": "Süleymanpaşa işyeri ağ güvenliği ve firewall kurulumu",
         "p": "Muayenehane, hukuk bürosu ve muhasebe ofislerinde korunan şey hasta, müvekkil ve müşteri bilgisi. FortiGate ile dışarıdan erişimi kapatıyor, yalnızca gerekli hizmetlere izin veren kurallar yazıyor, evden ya da başka bir şubeden bağlanmak için şifreli VPN tanımlıyoruz. Firmware güncellemeleri de kurulumdan sonra takip edilmesi gereken işlerden."
       },
       {
@@ -651,16 +651,16 @@
       },
       {
         "slug": "access-point-kurulumu",
-        "h3": "Süleymanpaşa Wi-Fi ve access point kurulumu",
+        "h3": "Süleymanpaşa: Wi-Fi çekmiyor mu? Access point kurulumu",
         "p": "Sahil bandındaki restoran, kafe ve otellerde yaz sezonunda misafir Wi-Fi kapasitesi, kamera kadar önemli bir altyapı işi. Oturma düzenine ve eş zamanlı kullanıcı sayısına göre access point planlıyor, misafir ağını sipariş sisteminden ve kasadan ayırıyoruz. Ofis ve muayenehanelerde ise odalar arasında kopmayan tek bir ağ kuruyoruz."
       },
       {
         "slug": "depolama-yedekleme",
-        "h3": "Süleymanpaşa NAS kurulumu ve veri yedekleme",
+        "h3": "Süleymanpaşa veri yedekleme ve NAS kurulumu",
         "p": "Şubeli mağaza, klinik ve ofislerde her şubenin dosyası kendi bilgisayarında kalınca merkez neyin nerede olduğunu bilemez. Merkeze QNAP NAS kuruyor, şubelerin yedeğini VPN üzerinden zamanlanmış olarak buraya aldırıyoruz; klasör yetkileri şube ve kişi bazında ayrılır. Kamera kayıtlarının arşivi de NAS'ta tutulabilir; ikinci kopya buluta ya da başka bir lokasyona gider."
       }
     ],
-    "whatsappText": "Merhaba, Süleymanpaşa'daki iş yerim için kamera sistemi keşfi istiyorum.",
+    "whatsappText": "Merhaba, Süleymanpaşa'da ücretsiz keşif için bilgi almak istiyorum.",
     "profil": {
       "title": "Tekirdağ Merkezde Ticari İşletme ve Kurumsal Ofis Güvenliği",
       "paragraf": "Süleymanpaşa, Tekirdağ'ın merkez ilçesi; ticaret, kamu kurumları, eğitim ve sahil turizmi bir arada. Buradaki talebin ağırlığı sanayiden çok ticari işletmelerde: mağazalar, marketler, restoranlar, muayenehaneler ve kurumsal ofisler. Bu işletmelerde kamera sistemi genellikle iki nedenle kuruluyor; kasa ve stok kontrolü, bir de personel ile müşteri arasında yaşanan anlaşmazlıklarda kayda başvurabilmek. Çok şubeli işletmelerde ise talep büyüyor: her şubenin ayrı ayrı izlenmesi yerine tüm şubelerin tek uygulamadan görülebilmesi isteniyor. Bunu şubeler arası şifreli VPN bağlantısıyla kuruyoruz. Sahil bandındaki restoran ve konaklama işletmelerinde ise sezonluk yoğunluk, hem kamera kapsamasını hem de misafir Wi-Fi kapasitesini planlarken dikkate alınması gereken bir etken.",
@@ -676,7 +676,7 @@
         },
         {
           "q": "Süleymanpaşa'ya arızada ne kadar sürede gelirsiniz?",
-          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır ve Süleymanpaşa hizmet bölgelerimiz arasındadır; arızaya en geç 3 saat içinde yerinde müdahale ediyoruz. Silivri'den Tekirdağ merkeze ortalama yol süresi 50–60 dakikadır."
+          "a": "Kurduğumuz sistemler 1 yıl servis garantisi kapsamındadır ve Süleymanpaşa hizmet bölgelerimiz arasındadır; arızaya hafta sonu dahil en geç 3 saat içinde yerinde müdahale ediyoruz. Silivri'den Tekirdağ merkeze ortalama yol süresi 50–60 dakikadır."
         },
         {
           "q": "Birden fazla şubem var, hepsini tek yerden izleyebilir miyim?",

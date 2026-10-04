@@ -1,3 +1,9 @@
+/* self-hosted (was Google Fonts): Archivo variable 400-700 and JetBrains Mono 500, latin + latin-ext (Turkish) */
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(/fonts/archivo-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Archivo'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(/fonts/archivo-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url(/fonts/jetbrains-mono-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url(/fonts/jetbrains-mono-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
 /* Securis — filmstrip world: black ground, photos re-graded to each service's accent,
    Archivo for voice, JetBrains Mono for small labels and readouts. */
 :root, [data-theme="dark"] {
@@ -159,7 +165,7 @@ address { font-style: normal; }
 .credit, .meta, .more, .rail__nums { text-shadow: 0 0 2px rgba(0,0,0,.95), 0 0 6px rgba(0,0,0,.9), 0 0 14px rgba(0,0,0,.75); } /* 13px labels over bright frames: the tight halo keeps 4.5:1 on the brightest slides */
 .bg__layer { opacity: 0; transition: opacity .7s ease-out; }
 .bg__layer.is-on { opacity: 1; }
-.bg__layer img { transform: scale(1.42); transition: transform 6s linear; }
+.bg__layer img { transform: scale(1.36); transition: transform 3.5s linear; } /* = carousel.js KB: the zoom ends inside the 5 s autoplay */
 .bg__layer.is-on img { transform: scale(1.28); }
 /* WebGL morph backdrop (carousel.js): one canvas under one grade pair that eases with the 1.5s dissolve */
 .bg > canvas, .bg > i { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
@@ -171,7 +177,7 @@ address { font-style: normal; }
 .subj > canvas, .subj__layer, .subj__cut, .subj__cut img, .subj__cut i { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .subj__layer { opacity: 0; transition: opacity .7s ease-out; }
 .subj__layer.is-on { opacity: 1; }
-.subj__cut { -webkit-mask-size: cover; mask-size: cover; -webkit-mask-position: center; mask-position: center; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; transform: scale(1.42); transition: transform 6s linear; }
+.subj__cut { -webkit-mask-size: cover; mask-size: cover; -webkit-mask-position: center; mask-position: center; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; transform: scale(1.36); transition: transform 3.5s linear; }
 .subj__layer.is-on .subj__cut { transform: scale(1.28); }
 .subj__cut img { object-fit: cover; }
 .subj__cut .c { mix-blend-mode: color; }
@@ -185,16 +191,9 @@ address { font-style: normal; }
 .words__track span { font: 700 var(--wfs, calc(var(--title) * 1.4))/1 var(--f); letter-spacing: -.04em; padding-right: .35em; }
 /* outline words as SVG: a faint contour, plus light that runs along every letter's outline on the active word */
 .wsvg { display: block; overflow: visible; }
-.wsvg text { font: inherit; letter-spacing: inherit; fill: none; }
+.wsvg text { font: inherit; letter-spacing: inherit; word-spacing: .3em; fill: none; }
 .wb { stroke: rgba(255, 255, 255, .2); stroke-width: 1px; transition: stroke .6s; }
 .is-on .wb { stroke: rgba(255, 255, 255, .42); }
-.wh, .wg { stroke-linecap: round; stroke-dasharray: .5em 2.4em; opacity: 0; transition: opacity .6s; }
-.wh { stroke: rgba(255, 255, 255, .22); stroke-width: 6px; } /* soft halo, no filter: cheap to repaint */
-.wg { stroke: #fff; stroke-width: 1.6px; }
-.is-on :is(.wh, .wg) { opacity: 1; animation: trace 5s linear infinite; }
-@keyframes trace { to { stroke-dashoffset: -2.9em; } }
-@media (prefers-reduced-motion: reduce) { .is-on :is(.wh, .wg) { animation: none; opacity: 0; } }
-html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 .head { position: absolute; z-index: 4; left: 0; right: 0; top: 0; height: var(--top); padding: 0 var(--pad) calc(var(--title) * .36); display: flex; flex-wrap: wrap; align-items: flex-end; align-content: flex-end; gap: 10px 5vw; pointer-events: none; }
 .head a { pointer-events: auto; }
 .head__br { flex-basis: 100%; height: calc(var(--title) * .8); } /* "Hizmeti incele" always gets its own row, and the band above it holds the outline words, so every slide's head has the same shape */
@@ -234,6 +233,37 @@ html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 .more { background: rgba(0, 0, 0, .5); padding: 10px 14px; border: 1px solid rgba(255, 255, 255, .4); text-shadow: none; }
 /* a soft local shade behind the title only, instead of darkening the whole photo */
 .head::before { content: ""; position: absolute; z-index: -1; left: 0; bottom: 0; width: min(900px, 80%); height: 120%; background: radial-gradient(ellipse at 18% 78%, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0) 62%); pointer-events: none; }
+/* cookie consent (only when an analytics ID is set): reject and accept carry the same weight */
+.consent { position: fixed; z-index: 45; right: var(--gut); bottom: var(--gut); width: min(440px, calc(100% - 2 * var(--gut))); padding: 20px; background: #000; color: #fff; border: 1px solid rgba(255, 255, 255, .22); font-size: 15px; line-height: 1.5; }
+.consent a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.consent__btns { display: flex; gap: 10px; margin-top: 14px; }
+.consent__btns button { flex: 1; min-height: 48px; font-weight: 600; font-size: 16px; color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55); }
+.consent__btns button:hover { background: rgba(255, 255, 255, .12); }
+.consent-open .dock { visibility: hidden; }
+@media (max-width: 999px) { .consent { left: 0; right: 0; bottom: 0; width: auto; border-width: 1px 0 0; padding: 16px var(--gut) calc(16px + env(safe-area-inset-bottom)); } }
+.foot__consent { font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 3px; min-height: 24px; }
+
+/* the still offer: bottom-left column above the counter, clear of the strip (the focused card starts at 50% - cardW/2) */
+.offer { position: absolute; z-index: 4; left: var(--pad); bottom: calc(max(16px, 2.4%) + 44px + clamp(20px, 3.2vh, 36px)); width: min(420px, calc(50% - var(--cardW) / 2 - var(--pad) - 32px)); }
+.offer h1 { font-weight: 600; font-size: clamp(20px, 1.55vw, 26px); line-height: 1.15; letter-spacing: -.02em; text-wrap: balance; text-shadow: 0 0 18px rgba(0, 0, 0, .6); }
+.offer .note { margin: 10px 0 16px; text-shadow: 0 0 2px rgba(0,0,0,.95), 0 0 6px rgba(0,0,0,.9); }
+.offer .btns { flex-wrap: nowrap; gap: 10px; }
+.offer .btn { min-height: 50px; padding: 0 16px; font-size: 16px; white-space: nowrap; }
+@media (max-width: 1279px) { .offer .btn .lg { display: none; } .offer .btn .sm { display: inline; } } /* narrower desktops: "Ara" keeps both buttons on one row */
+/* phones and tablets: the stage has no room, the same offer rides in a bottom bar until the closing band takes over */
+.dock { display: none; }
+@media (max-width: 999px) {
+  .offer h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .offer .note, .offer .btns { display: none; }
+  .dock { display: block; position: fixed; z-index: 39; left: 0; right: 0; bottom: 0; padding: 8px var(--gut) calc(8px + env(safe-area-inset-bottom)); background: #000; color: #fff; border-top: 1px solid rgba(255, 255, 255, .18); transition: transform .35s var(--ease), visibility 0s; }
+  .dock.is-off { transform: translateY(105%); visibility: hidden; transition: transform .35s var(--ease), visibility 0s .35s; }
+  .dock__note { font-size: 12px; letter-spacing: .02em; margin-bottom: 7px; color: #d0d3d8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dock .btns { flex-wrap: nowrap; gap: 8px; }
+  .dock .btn { flex: 1 1 0; min-height: 48px; justify-content: center; padding: 0 12px; font-size: 16px; white-space: nowrap; }
+}
+.note__price { margin-top: 8px; font-size: 15px; color: var(--dim); }
+.offer .note__price { margin-top: 10px; text-shadow: 0 0 2px rgba(0,0,0,.95), 0 0 6px rgba(0,0,0,.9); }
+html:not(.js) .stage .strip, html:not(.js) .stage .rail { display: none; } /* no JS: the first slide's text stands alone */
 .rail { position: absolute; z-index: 4; left: var(--pad); bottom: max(16px, 2.4%); width: calc(max(150px, 20%) + 58px); display: flex; align-items: center; gap: 14px; font-size: var(--label); font-variant-numeric: tabular-nums; }
 .rail__in { flex: 1; min-width: 0; }
 .rail__nums { display: flex; justify-content: space-between; }
@@ -244,7 +274,9 @@ html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 .rail__pause[aria-pressed="true"] .play { display: block; }
 .rail__line { position: relative; height: 1px; margin-top: 8px; background: rgba(255,255,255,.25); }
 .rail__line i { position: absolute; top: 0; bottom: 0; left: 0; background: #fff; transition: left .6s var(--ease); }
-.nojs { position: absolute; z-index: 5; left: var(--gut); bottom: 40px; display: grid; gap: 6px; font-size: 22px; }
+.nojs { position: absolute; z-index: 5; left: var(--pad); top: var(--top); display: grid; gap: 6px; font-size: 22px; } /* no JS: the service list takes the strip's place */
+@media (min-width: 1000px) { .nojs { left: calc(50% - var(--cardW) / 2); } }
+html:not(.js) .stage .descs { display: none; } /* still in the HTML for crawlers; on screen the list and the offer carry it */
 
 /* ---------- subpage hero: text + contact sheet ---------- */
 .hero { position: relative; min-height: max(780px, 100svh); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; padding: clamp(110px, 16vh, 160px) var(--gut) clamp(28px, 5vh, 56px); }
@@ -343,6 +375,18 @@ html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 /* ---------- Google reviews: a featured-review stage on its own graded photo ----------
    A photo zone (dark in both themes). Without JS every review sits in a scroll-snap strip; site.js adds .is-rot and
    stacks them in one grid cell, one .is-on at a time, while morph.js dissolves the backdrop to the review's frame. */
+/* subpage proof: the Google rating and one fitting review, right under the hero (build.mjs proof()) */
+.proof { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(24px, 4vw, 72px); align-items: start; }
+.proof .proof__score { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; font-size: inherit; letter-spacing: normal; }
+.proof__score b { font-size: clamp(3rem, 5.4vw, 4.6rem); font-weight: 600; letter-spacing: -.04em; line-height: 1; }
+.proof__score a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 17px; font-weight: 500; color: var(--fg); border-bottom: 1px solid var(--line); }
+.proof__score a:hover { border-color: var(--fg); }
+.proof__q { margin: 0; }
+.proof__q p { font-size: clamp(19px, 1.45vw, 22px); line-height: 1.65; color: var(--fg-2); max-width: 62ch; }
+.proof__q footer { margin-top: 18px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.proof__q footer b { font-weight: 600; }
+.proof__q footer .mono { font-size: 13px; color: var(--dim); }
+@media (max-width: 800px) { .proof { grid-template-columns: 1fr; } }
 .revs { position: relative; overflow: hidden; border-top: 0; background: #000; color: #fff;
   --fg: #fff; --fg-2: #f2f2f2; --dim: #d0d3d8; --line: rgba(255,255,255,.22); --line-2: rgba(255,255,255,.45); --hover: rgba(255,255,255,.1); --star: #f5b301; }
 .revs::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(90deg, rgba(0,0,0,.86), rgba(0,0,0,.74) 55%, rgba(0,0,0,.42)); } /* scrim: the quote runs past the usual 44% */
@@ -429,6 +473,10 @@ html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 .foot img { height: 32px; width: auto; filter: var(--logo); }
 .foot address { display: grid; gap: 4px; justify-items: start; } /* links only as wide as their text, not the whole row */
 .foot a:hover { color: var(--fg); }
+.foot address a { display: inline-flex; align-items: center; min-height: 44px; } /* a thumb-sized target for every contact */
+.menu nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .18em; }
+/* light theme: over a photo zone the pill keeps the dark glass, so it never sits pale on a dark photo (site.js sets .on-photo) */
+html[data-theme="light"].on-photo .bar__end { --menu-bg: rgba(0, 0, 0, .72); --fg: #fff; --line: rgba(255, 255, 255, .22); }
 .foot nav { grid-column: 1 / -1; font-size: 14px; }
 
 /* reveal (visible without JS) */
@@ -583,10 +631,10 @@ html.low .is-on :is(.wh, .wg) { animation: none; opacity: 0; }
 .js .stage .subj { translate: 0 calc(var(--py, 0px) * .1); } /* the cut-out subject rides with the strip, off its plate */
 .js .stage .subj__layer.is-flat { translate: 0 calc(var(--py, 0px) * .6); scale: calc(1 + var(--p, 0) * .06); } /* no clean plate: stays on its photo (= .bg) */
 .js .stage .head, .js .hero > .hero__txt { translate: 0 calc(var(--py, 0px) * .4); }
-.js .stage .strip, .js .stage .descs, .js .stage .rail, .js .hero > .sheet { translate: 0 calc(var(--py, 0px) * .1); }
+.js .stage .strip, .js .stage .descs, .js .stage .rail, .js .stage .offer, .js .hero > .sheet { translate: 0 calc(var(--py, 0px) * .1); }
 .js .stage::after, .js .hero:not(.hero--plain)::after { content: ""; position: absolute; inset: 0; z-index: 5; background: #000; opacity: calc(var(--p, 0) * .85); pointer-events: none; }
 @media (prefers-reduced-motion: reduce) {
-  .js .stage .bg, .js .hero > .grade, .js .stage .words, .js .stage .subj, .js .stage .subj__layer, .js .stage .head, .js .hero > .hero__txt, .js .stage .strip, .js .stage .descs, .js .stage .rail, .js .hero > .sheet { translate: none; scale: none; }
+  .js .stage .bg, .js .hero > .grade, .js .stage .words, .js .stage .subj, .js .stage .subj__layer, .js .stage .head, .js .hero > .hero__txt, .js .stage .strip, .js .stage .descs, .js .stage .rail, .js .stage .offer, .js .hero > .sheet { translate: none; scale: none; }
   .js .stage::after, .js .hero:not(.hero--plain)::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .menu.is-open .menu__top .kbtn { animation: none; } }

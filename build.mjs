@@ -1,6 +1,7 @@
 // Securis — static site generator (zero dependencies).
 // node build.mjs  →  dist/   (URL structure identical to the live site)
-import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, readdirSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -8,6 +9,19 @@ const J = f => JSON.parse(readFileSync(new URL(`./data/${f}.json`, import.meta.u
 const site = J('site'), hizmetler = J('hizmetler'), bolgeler = J('bolgeler'), anasayfa = J('anasayfa'), gizlilik = J('gizlilik'), reviews = J('reviews');
 const STARS = Array(5).fill('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z"/></svg>').join('');
 const OUT = new URL('./dist/', import.meta.url);
+/* measurement: GA4 / Google Ads IDs in data/site.json "analytics"; empty = no tag, no banner, CSP unchanged */
+const AN = site.analytics || {}, TRACK = !!(AN.ga4 || AN.ads);
+const GOOGLE = { // what gtag.js + Ads conversions need, added to the CSP only when TRACK
+  'script-src': ['https://www.googletagmanager.com', 'https://*.googletagmanager.com', 'https://www.googleadservices.com', 'https://googleads.g.doubleclick.net', 'https://www.google.com'],
+  'connect-src': ["'self'", 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com', 'https://www.google.com', 'https://google.com', 'https://*.doubleclick.net', 'https://www.googleadservices.com', 'https://pagead2.googlesyndication.com'],
+  'img-src': ['https://*.google-analytics.com', 'https://*.googletagmanager.com', 'https://www.google.com', 'https://www.google.com.tr', 'https://*.doubleclick.net', 'https://www.googleadservices.com'],
+  'frame-src': ['https://*.doubleclick.net', 'https://www.googletagmanager.com'],
+};
+const CSP = !TRACK ? site.csp : (() => {
+  const d = new Map(site.csp.split(';').map(x => x.trim()).filter(Boolean).map(x => { const [k, ...v] = x.split(/\s+/); return [k, v]; }));
+  for (const [k, v] of Object.entries(GOOGLE)) d.set(k, [...new Set([...(d.get(k) || []), ...v])]);
+  return [...d].map(([k, v]) => `${k} ${v.join(' ')}`).join('; ') + ';';
+})();
 
 /* ---------- visual data per service (the world's accents + real/composited photos) ---------- */
 const SVC = {
@@ -15,7 +29,7 @@ const SVC = {
   'switch-konfigurasyonu': { img: 'switch.jpg', accent: '#0284c7', label: 'SWITCH', meta: ['POE', 'VLAN', 'PORT ETİKETLEME'], credit: 'RUIJIE · TP-LINK', brands: 'Ruijie ve TP-Link' },
   'firewall-yapilandirma': { img: 'firewall.jpg', hero: 'firewall-wide.jpg', accent: '#dc2626', label: 'FIREWALL', meta: ['ERİŞİM KURALLARI', 'PORT YÖNLENDİRME', 'VPN'], credit: 'FORTINET · FORTIGATE', brands: 'Fortinet (FortiGate)' },
   'access-point-kurulumu': { img: 'ap-saha.jpg', accent: '#059669', label: 'WI-FI', meta: ['SİNYAL ANALİZİ', 'TEK AĞ · ROAMING', 'MİSAFİR AĞI'], credit: 'SAHADAN · KENDİ KURULUMUMUZ', brands: 'TP-Link Omada ve Ruijie' },
-  'depolama-yedekleme': { img: 'nas.jpg', accent: '#7c3aed', label: 'NAS · YEDEK', meta: ['RAID', 'OTOMATİK YEDEK', 'İKİNCİ KOPYA'], credit: 'QNAP · NAS · RAID', brands: 'QNAP' },
+  'depolama-yedekleme': { img: 'nas.jpg', accent: '#7c3aed', label: 'NAS · YEDEK', meta: ['RAID', 'OTOMATİK YEDEK', 'İKİNCİ KOPYA'], credit: 'QNAP · NAS · RAID', brands: 'QNAP', grade: [.35, .2] }, // the full purple read as gaming RGB on a black NAS
 };
 const ORDER = ['ip-kamera-sistemleri', 'switch-konfigurasyonu', 'firewall-yapilandirma', 'access-point-kurulumu', 'depolama-yedekleme']; // NVR is part of the camera service
 const H = Object.fromEntries(hizmetler.map(h => [h.slug, h]));
@@ -27,6 +41,7 @@ const SLIDES = [
 SLIDES.splice(1, 0, { t: 'Endüstriyel\nAlan', slug: 'ip-kamera-sistemleri', word: 'SAHA', img: 'saha-endustriyel.jpg', accent: '#6b7280', credit: 'SAHADAN · KENDİ KURULUMUMUZ', meta: ['FABRİKA', 'DEPO', 'ŞANTİYE'],
   d: 'Fabrika, depo ve şantiyede kamera; kablo tavasına, tavana, direğe, alan neyi gerektiriyorsa. Çok noktalı projelerde kurulum süresi keşifte birlikte netleşir.' });
 
+const REGION_IMG = { silivri: 'kamera.jpg', catalca: 'saha-endustriyel.jpg', buyukcekmece: 'ap-saha.jpg', beylikduzu: 'nvr.jpg', corlu: 'saha-endustriyel.jpg', cerkezkoy: 'nas.jpg', marmaraereglisi: 'ap-saha.jpg', kapakli: 'nvr.jpg', tekirdag: 'kamera.jpg' }; // full-resolution frames only: the 720p video frames blur as a full-width hero
 const TIMES = { silivri: '10–20', catalca: '30–40', buyukcekmece: '25–35', beylikduzu: '35–45', corlu: '35–45', cerkezkoy: '45–55', marmaraereglisi: '25–35', kapakli: '45–55', tekirdag: '50–60' };
 const B = Object.fromEntries(bolgeler.map(b => [b.slug, b]));
 /* local-SEO anchors: [service page → district ("Çatalca güvenlik kamerası"), district page → service] */
@@ -35,7 +50,7 @@ const KW = {
   'switch-konfigurasyonu': ['bilgi işlem altyapısı', 'Switch ve network altyapısı'],
   'firewall-yapilandirma': ['firewall kurulumu', 'FortiGate firewall kurulumu'],
   'access-point-kurulumu': ['Wi-Fi kurulumu', 'Access point ve Wi-Fi kurulumu'],
-  'depolama-yedekleme': ['NAS ve yedekleme', 'NAS kurulumu ve veri yedekleme'],
+  'depolama-yedekleme': ['veri yedekleme', 'Veri yedekleme ve NAS kurulumu'],
 };
 
 /* ---------- helpers ---------- */
@@ -97,7 +112,7 @@ function head({ title, description, path = '/', robots = site.robotsDefault, ogD
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="${esc(site.csp)}">
+<meta http-equiv="Content-Security-Policy" content="${esc(CSP)}">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 ${noCanonical ? '' : `<link rel="canonical" href="${canonical}">`}
@@ -123,13 +138,13 @@ ${social ? `<meta property="og:type" content="website">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;100,600;100,700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 ${preload || ''}
 <link rel="stylesheet" href="/site.css">
 <script>(function(d){d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}d.dataset.theme=t||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');if(d.dataset.theme==='light')document.querySelector('meta[name=theme-color]').content='#f2f3f4'})(document.documentElement)</script>
-<script>/* hafif mod: yazılım WebGL (donanım hızlandırması kapalı) ya da süren <40fps → efektler sadeleşir */(function(d){var low=0;function go(w){if(low)return;low=1;d.classList.add('low');d.dataset.low=w;dispatchEvent(new Event('sec:low'))}try{var g=document.createElement('canvas').getContext('webgl');if(!g)go('nogl');else{var x=g.getExtension('WEBGL_debug_renderer_info'),r=x?g.getParameter(x.UNMASKED_RENDERER_WEBGL):'';if(/swiftshader|llvmpipe|software|basic render/i.test(r))go('soft');var l=g.getExtension('WEBGL_lose_context');if(l)l.loseContext()}}catch(e){}var ts=[],last=0,bad=0;function f(n){if(low)return;if(last&&!document.hidden){var dt=n-last;if(dt<250){ts.push(dt);if(ts.length>=60){ts.sort(function(a,b){return a-b});bad=ts[30]>24?bad+1:0;ts=[];if(bad>=2)go('slow')}}}last=n;requestAnimationFrame(f)}setTimeout(function(){requestAnimationFrame(f)},2500)})(document.documentElement);</script>
+<script>/* hafif mod: yazılım WebGL, veri tasarrufu ya da takılan kareler (p75 > 22 ms veya %10 kare > 40 ms, iki pencere üst üste) → efektler sadeleşir */(function(d){var low=0;function go(w){if(low)return;low=1;d.classList.add('low');d.dataset.low=w;dispatchEvent(new Event('sec:low'))}try{var g=document.createElement('canvas').getContext('webgl');if(!g)go('nogl');else{var x=g.getExtension('WEBGL_debug_renderer_info'),r=x?g.getParameter(x.UNMASKED_RENDERER_WEBGL):'';if(/swiftshader|llvmpipe|software|basic render/i.test(r))go('soft');var c=navigator.connection;if(c&&c.saveData)go('save');var l=g.getExtension('WEBGL_lose_context');if(l)l.loseContext()}}catch(e){}var ts=[],last=0,bad=0;function f(n){if(low)return;if(last&&!document.hidden){var dt=n-last;if(dt<250){ts.push(dt);if(ts.length>=60){var j=0;for(var i=0;i<60;i++)if(ts[i]>40)j++;ts.sort(function(a,b){return a-b});bad=(ts[45]>22||j>=6)?bad+1:0;ts=[];if(bad>=2)go('slow')}}}last=n;requestAnimationFrame(f)}setTimeout(function(){requestAnimationFrame(f)},2500)})(document.documentElement);</script>
+${TRACK ? `<script src="/track.js" defer data-ga4="${esc(AN.ga4 || '')}" data-ads="${esc(AN.ads || '')}" data-ads-wa="${esc(AN.adsWhatsapp || '')}" data-ads-call="${esc(AN.adsCall || '')}"></script>` : ''}
 ${jsonLd ? `<script type="application/ld+json">\n${serialize(jsonLd)}\n</script>` : ''}
 </head>`;
 }
@@ -226,9 +241,10 @@ const footer = () => `
     <img src="/securis-logo-320.png" alt="Securis" width="320" height="98" loading="lazy">
     <address>
       <a href="${site.mapUrl}" target="_blank" rel="noopener noreferrer">${esc(site.address.footerLine)}</a>
-      <span><a href="tel:${P1.e164}">${P1.display}</a> · <a href="tel:${P2.e164}">${P2.display}</a> · <a href="mailto:${site.email}">${site.email}</a> · <a class="foot__ig" href="${site.instagram}" target="_blank" rel="noopener noreferrer">${I.ig}${site.instagramHandle}</a></span>
+      <span class="foot__tel">Arayın ya da WhatsApp'tan yazın, iki hat da açık: <a href="tel:${P1.e164}">${P1.display}</a> · <a href="tel:${P2.e164}">${P2.display}</a></span>
+      <span><a href="mailto:${site.email}">${site.email}</a> · <a class="foot__ig" href="${site.instagram}" target="_blank" rel="noopener noreferrer">${I.ig}${site.instagramHandle}</a></span>
     </address>
-    <nav aria-label="Alt menü"><a href="/gizlilik-politikasi/">Gizlilik Politikası</a> · <span>© ${site.copyrightYear} Securis</span></nav>
+    <nav aria-label="Alt menü"><a href="/gizlilik-politikasi/">Gizlilik Politikası</a> · ${TRACK ? '<button class="foot__consent" type="button" data-consent-open>Çerez tercihleri</button> · ' : ''}<span>© ${site.copyrightYear} Securis</span></nav>
   </div>
 </footer>
 <script src="/site.js" defer></script>
@@ -246,41 +262,58 @@ const revBg = r => REV_BG[r.name] || ['kurulum-sonu.jpg', '#1f2937'];
 /** reviewer avatar: the self-hosted Google profile photo when reviews.json has one, else the initial */
 const revAv = r => `<span class="rev__av" aria-hidden="true">${r.avatar ? `<img src="${esc(r.avatar)}" alt="" width="96" height="96" loading="lazy">` : esc([...r.name.trim()][0].toLocaleUpperCase('tr'))}</span>`;
 
+/* subpage proof: Google traffic lands on service and region pages, so the rating and one fitting review sit right under their hero */
+const PROOF = { 'ip-kamera-sistemleri': 'Berk Dogar', 'switch-konfigurasyonu': 'Furkan Eryesil', 'firewall-yapilandirma': 'Büyükçekmece Kooperatif', 'access-point-kurulumu': 'Göktuğ Demir', 'depolama-yedekleme': 'Neslihan Balik',
+  silivri: 'Cem E', catalca: 'Boss Kurt', buyukcekmece: 'Büyükçekmece Kooperatif', beylikduzu: 'Deniz Şengül', corlu: 'Furkan Eryesil', cerkezkoy: 'Göktuğ Demir', marmaraereglisi: 'Mehmet Buğra Foto', kapakli: 'omer', tekirdag: 'Berk Dogar' };
+const proof = key => {
+  const r = reviews.items.find(x => x.name === PROOF[key]);
+  if (!r) throw new Error(`proof: no review "${PROOF[key]}" for ${key}`);
+  return `
+  <section class="sec proof" aria-labelledby="proof-h">
+    <h2 class="proof__score" id="proof-h"><b>${reviews.rating}<span class="sr"> / 5</span></b> <span class="revs__stars" aria-hidden="true">${STARS}</span> <a href="${reviews.url}" target="_blank" rel="noopener noreferrer">Google'da ${reviews.count} yorum ${I.arrow}</a></h2>
+    <blockquote class="proof__q"><p>${esc(r.text)}</p><footer><b>${esc(r.name)}</b> <span class="mono">· GOOGLE YORUMU</span></footer></blockquote>
+  </section>`;
+};
+
 /* ---------- pages ---------- */
 function home() {
-  const title = 'Silivri Kamera Sistemleri ve Network Kurulumu | Securis';
-  const description = "Silivri, Tekirdağ ve Çatalca'da IP kamera sistemleri, firewall ve network kurulumu. Ücretsiz keşif, hafta 7 gün destek. Hemen teklif alın.";
+  const title = "Securis: Silivri'de Kamera, Network ve Firewall Kurulumu"; // brand + umbrella; the camera page owns "güvenlik kamerası kurulumu"
+  const description = "Silivri, Tekirdağ ve Çatalca'da IP kamera sistemleri, firewall ve network kurulumu. Ücretsiz keşif, haftanın 7 günü destek. Hemen teklif alın.";
   const jsonLd = { '@context': 'https://schema.org', '@graph': [
     localBusiness(), webSite(),
-    crumbs([{ name: 'Ana Sayfa', item: `${site.url}/` }, { name: 'Hizmetler', item: `${site.url}/#services` }, { name: 'Hizmet Bölgeleri', item: `${site.url}/#region` }], `${site.url}/#breadcrumb`),
     ...hizmetler.map(h => ({ '@type': 'Service', '@id': abs(`/hizmetler/${h.slug}/#service`), serviceType: h.anaSayfaSchema.serviceType, name: h.anaSayfaSchema.name, description: h.anaSayfaSchema.description, url: abs(`/hizmetler/${h.slug}/`), provider: { '@id': BUSINESS_ID }, areaServed: cities() })),
     faqPage(anasayfa.sss.items, `${site.url}/#faq`),
   ] };
-  return `${head({ title, description, robots: site.robotsHome, ogDescription: "Silivri, Tekirdağ ve Çatalca'da IP kamera sistemleri, firewall ve network kurulumu. Ücretsiz keşif, hafta 7 gün destek.", twitterDescription: 'IP kamera, firewall ve network kurulumu. Silivri, Tekirdağ, Çatalca ve çevresi. Ücretsiz keşif.', ogImageAlt: site.ogImageAltHome, geo: true, jsonLd, preload: preloadUrl(one(SLIDES[0].img)) })}
+  return `${head({ title, description, robots: site.robotsHome, ogDescription: "Silivri, Tekirdağ ve Çatalca'da IP kamera sistemleri, firewall ve network kurulumu. Ücretsiz keşif, haftanın 7 günü destek.", twitterDescription: 'IP kamera, firewall ve network kurulumu. Silivri, Tekirdağ, Çatalca ve çevresi. Ücretsiz keşif.', ogImageAlt: site.ogImageAltHome, geo: true, jsonLd, preload: preloadUrl(one(SLIDES[0].img)) })}
 <body class="is-home">
 ${bar()}
 <main id="main">
   <section class="stage" id="services" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Securis hizmetleri">
-    <h1 class="sr">Silivri, Tekirdağ ve Çatalca'da kamera sistemleri ve network kurulumu</h1>
+    <div class="offer">
+      <h1>Silivri, Tekirdağ ve Çatalca'da kamera sistemleri ve network kurulumu</h1>
+      <p class="note mono">${esc(upperTR(site.ctaNote))}</p>
+      ${btns(site.defaultWhatsappText)}
+      <p class="note__price">${esc(site.priceNote)}</p>
+    </div>
     <div class="bg" id="bg" aria-hidden="true"><div class="bg__layer is-on"><img src="${one(SLIDES[0].img)}" alt="" fetchpriority="high">${gradeI(SLIDES[0].accent, SLIDES[0].g)}</div></div>
     <div class="wash" aria-hidden="true"></div>
     <div class="words" aria-hidden="true"><div class="words__track" id="words"></div></div>
     <div class="subj" id="subj" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
     <div class="head">
-      <p class="title" id="title" aria-live="off"></p>
-      <p class="credit mono" id="credit"></p>
-      <div class="meta mono" id="meta"></div>
+      <p class="title" id="title" aria-live="off">${SLIDES[0].t.split('\n').map(l => `<span><span>${esc(l)}</span></span>`).join(' ')}</p>
+      <p class="credit mono" id="credit"><span>${esc(SLIDES[0].credit)}</span></p>
+      <div class="meta mono" id="meta">${SLIDES[0].meta.map(m => `<span>${esc(m)}</span>`).join('')}</div>
       <i class="head__br" aria-hidden="true"></i>
       <a class="more mono" id="more" href="/hizmetler/ip-kamera-sistemleri/">HİZMETİ İNCELE ${I.arrow}</a>
     </div>
     <div class="strip"><div class="track" id="track"></div></div>
-    <div class="descs"><div class="descs__track" id="descs"></div></div>
+    <div class="descs"><div class="descs__track" id="descs"><div class="desc is-on"><b>01 — ${esc(SLIDES[0].word)}</b><p><span>${esc(SLIDES[0].d)}</span></p></div></div></div>
     <div class="rail mono"><div class="rail__in" aria-hidden="true"><div class="rail__nums"><span id="cur">01</span><span id="tot">06</span></div><div class="rail__line"><i id="thumb"></i></div></div><button class="rail__pause" id="pause" type="button" aria-pressed="false" aria-label="Otomatik geçişi durdur"><svg class="hold" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2h3.5v12H3zM9.5 2H13v12H9.5z"/></svg><svg class="play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg></button></div>
     <noscript><ul class="nojs">${ORDER.map(s => `<li><a href="/hizmetler/${s}/">${esc(H[s].kisaAd)}</a></li>`).join('')}</ul></noscript>
   </section>
 
   <section class="sec members" aria-labelledby="svc-h">
-    <div class="sec__head"><h2 id="svc-h">Beş iş, tek ekip.</h2><p>Kamerayı, arkasındaki ağı ve kayıt cihazını aynı ekip kurar; arızada "kameracı" ile "internetçi" arasında kalmazsınız.</p></div>
+    <div class="sec__head"><h2 id="svc-h">Tüm sistem, tek ekip.</h2><p>Kamerayı, arkasındaki ağı ve kayıt cihazını aynı ekip kurar; arızada "kameracı" ile "internetçi" arasında kalmazsınız.</p></div>
     <ul class="members__list">${ORDER.map((s, i) => `<li><a href="/hizmetler/${s}/" data-img="${one(SVC[s].img, 960)}" style="--accent:${SVC[s].accent}">${pic(SVC[s].img, fit(SVC[s].img, '64px', '64px'), ' class="members__thumb" loading="lazy"')}<span class="members__n mono">${String(i + 1).padStart(2, '0')}</span><span class="members__name">${esc(H[s].kisaAd)}</span><span class="members__line">${esc(H[s].kisaAciklama)}</span>${I.arrow}</a></li>`).join('')}</ul>
     <div class="follower" aria-hidden="true"><img src="${one(SVC[ORDER[0]].img, 960)}" alt=""><i class="c"></i><i class="m"></i></div>
   </section>
@@ -305,7 +338,7 @@ ${bar()}
   </section>
 
   <section class="sec" id="region" aria-labelledby="reg-h">
-    <div class="sec__head"><h2 id="reg-h">Silivri'den dokuz ilçeye.</h2><p>Aynı ekip, aynı servis süresi. Süreler Silivri'deki merkezimizden ortalama yol süresidir.</p></div>
+    <div class="sec__head"><h2 id="reg-h">Silivri'den dokuz ilçeye.</h2><p>Her ilçeye aynı ekip gelir. Süreler Silivri'deki merkezimizden ortalama yol süresidir.</p></div>
     ${regionGrid(bolgeler.map(b => b.slug))}
   </section>
 
@@ -315,6 +348,7 @@ ${bar()}
   </section>
   ${closeCta(site.defaultWhatsappText)}
 </main>
+<div class="dock" role="region" aria-label="Hızlı iletişim"><p class="dock__note mono">ÜCRETSİZ KEŞİF: SİLİVRİ, ÇATALCA, TEKİRDAĞ</p>${btns(site.defaultWhatsappText)}</div>
 ${footer()}
 <script type="application/json" id="slides">${JSON.stringify(SLIDES.map(s => ({ ...s, card: one(s.img, 960), bg: one(s.img), fg: layer(s.img, 'fg'), plate: layer(s.img, 'plate') }))).replace(/</g, '\\u003c')}</script>
 <script src="/carousel.js" defer></script>
@@ -325,9 +359,10 @@ ${footer()}
 function servicePage(h) {
   const path = `/hizmetler/${h.slug}/`, url = abs(path), v = SVC[h.slug];
   const jsonLd = { '@context': 'https://schema.org', '@graph': [
+    localBusiness(),
     { '@type': 'Service', '@id': `${url}#service`, serviceType: h.kisaAd, name: h.h1, description: h.description, url, provider: { '@id': BUSINESS_ID }, areaServed: cities() },
     webPage(url, h.title, h.description),
-    crumbs([{ name: 'Ana Sayfa', item: `${site.url}/` }, { name: 'Hizmetler', item: `${site.url}/#services` }, { name: h.breadcrumbName, item: url }]),
+    crumbs([{ name: 'Ana Sayfa', item: `${site.url}/` }, { name: h.breadcrumbName, item: url }]),
     faqPage(h.sss.items),
   ] };
   return `${head({ title: h.title, description: h.description, path, jsonLd, preload: v.hero ? preloadImg(v.hero, v.img) : preloadImg(v.img) })}
@@ -342,9 +377,11 @@ ${bar(h.whatsappText)}
       <p class="lead">${esc(h.lead)}</p>
       ${btns(h.whatsappText)}
       <p class="note mono">${esc(upperTR(site.ctaNote))}</p>
+      <p class="note__price">${esc(site.priceNote)}</p>
     </div>
     ${sheet(h.slug, 'Diğer hizmetler')}
   </section>
+${proof(h.slug)}
 
   <section class="sec" aria-labelledby="det-h">
     <div class="sec__head"><h2 id="det-h">${esc(site.labels.hizmetDetayTitle)}</h2><p>Çalıştığımız markalar: ${esc(v.brands)}. Marka seçimi keşifte, alanın ihtiyacına ve bütçeye göre netleşir.</p></div>
@@ -369,26 +406,29 @@ ${footer()}
 function regionPage(b) {
   const path = `/bolgeler/${b.slug}/`, url = abs(path);
   const jsonLd = { '@context': 'https://schema.org', '@graph': [
+    localBusiness(),
     webPage(url, b.title, b.description, { primaryImageOfPage: { '@type': 'ImageObject', url: abs(site.ogImage) } }),
-    crumbs([{ name: 'Ana Sayfa', item: `${site.url}/` }, { name: 'Bölgeler', item: `${site.url}/#region` }, { name: b.ad, item: url }]),
+    crumbs([{ name: 'Ana Sayfa', item: `${site.url}/` }, { name: b.ad, item: url }]),
     ...b.hizmetDetay.map(d => ({ '@type': 'Service', '@id': `${url}#${d.slug}`, name: d.h3, serviceType: H[d.slug].anaSayfaSchema.serviceType, description: d.p, url, provider: { '@id': BUSINESS_ID }, areaServed: place(b), isRelatedTo: { '@id': abs(`/hizmetler/${d.slug}/#service`) } })),
     faqPage(b.sss.items),
   ] };
-  return `${head({ title: b.title, description: b.description, path, jsonLd, preload: preloadImg('saha-endustriyel.jpg') })}
+  return `${head({ title: b.title, description: b.description, path, jsonLd, preload: preloadImg(REGION_IMG[b.slug]) })}
 <body style="--accent:#1d4ed8">
 ${bar(b.whatsappText)}
 <main id="main">
   <section class="hero">
-    ${grade('saha-endustriyel.jpg', '#1d4ed8')}
+    ${grade(REGION_IMG[b.slug], '#1d4ed8', undefined, undefined, undefined, [.5, .3])}
     <div class="hero__txt">
       <nav class="crumb" aria-label="Site haritası"><a href="/">Ana sayfa</a> / <a href="/#region">Bölgeler</a> / <span aria-current="page">${esc(b.ad)}</span></nav>
       <h1>${words(b.h1)}</h1>
       <p class="lead">${esc(b.lead)}</p>
       ${btns(b.whatsappText)}
       <p class="note mono">${esc(upperTR(site.ctaNote))} · MERKEZDEN ${TIMES[b.slug]} DK</p>
+      <p class="note__price">${esc(site.priceNote)}</p>
     </div>
     ${sheet(null, esc(b.hizmetlerTitle))}
   </section>
+${proof(b.slug)}
 
   <section class="sec" aria-labelledby="pro-h">
     <div class="sec__head"><h2 id="pro-h">${esc(b.profil.title)}</h2></div>
@@ -417,7 +457,7 @@ ${footer()}
 
 function privacyPage() {
   const { title, description } = gizlilik, path = '/gizlilik-politikasi/', url = abs(path);
-  const jsonLd = { '@context': 'https://schema.org', '@graph': [webPage(url, title, description), crumbs([{ name: 'Ana Sayfa', item: `${site.url}/` }, { name: 'Gizlilik Politikası', item: url }])] };
+  const jsonLd = { '@context': 'https://schema.org', '@graph': [localBusiness(), webPage(url, title, description), crumbs([{ name: 'Ana Sayfa', item: `${site.url}/` }, { name: 'Gizlilik Politikası', item: url }])] };
   const link = t => esc(t).replace('{email}', `<a href="mailto:${site.email}">${site.email}</a>`).replace('{phone}', `<a href="tel:${P1.e164}">${P1.display}</a>`).replace('{address}', esc(site.address.footerLine));
   return `${head({ title, description, path, jsonLd })}
 <body class="is-legal">
@@ -431,7 +471,7 @@ ${bar(gizlilik.whatsappText)}
       <p class="note mono">${esc(upperTR(gizlilik.updated))}</p>
     </div>
   </section>
-  ${gizlilik.sections.map((s, i) => `<section class="sec sec--narrow" aria-labelledby="g${i}"><div class="sec__head"><h2 id="g${i}">${esc(s.h2)}</h2></div><div class="prose">${s.p.map(p => `<p>${link(p)}</p>`).join('')}</div>${s.cards ? `<ul class="cards">${s.cards.map(c => `<li><h3>${esc(c.h3)}</h3><p>${esc(c.p)}</p></li>`).join('')}</ul>` : ''}</section>`).join('')}
+  ${gizlilik.sections.map(s => (s.id === 'cerez' && TRACK ? { ...s, p: gizlilik.cerezTracked } : s)).map((s, i) => `<section class="sec sec--narrow"${s.id ? ` id="${s.id}"` : ''} aria-labelledby="g${i}"><div class="sec__head"><h2 id="g${i}">${esc(s.h2)}</h2></div><div class="prose">${s.p.map(p => `<p>${link(p)}</p>`).join('')}</div>${s.cards ? `<ul class="cards">${s.cards.map(c => `<li><h3>${esc(c.h3)}</h3><p>${esc(c.p)}</p></li>`).join('')}</ul>` : ''}</section>`).join('')}
 </main>
 ${footer()}
 </body></html>`;
@@ -468,20 +508,26 @@ function movedPage(to, h1) {
 }
 
 function sitemap() {
-  const lastmod = new Date().toLocaleDateString('sv-SE'); // local date, YYYY-MM-DD
+  const today = new Date().toLocaleDateString('sv-SE'); // local date, YYYY-MM-DD
+  const LM = new URL('./data/lastmod.json', import.meta.url), seen = existsSync(LM) ? JSON.parse(readFileSync(LM, 'utf8')) : {};
+  const lastmodOf = loc => { const h = PAGE_HASH[loc], p = seen[loc]; const d = p && p.h === h ? p.d : today; seen[loc] = { h, d }; return d; };
   const urls = [{ loc: '/', f: 'weekly', p: '1.0' }, ...hizmetler.map(h => ({ loc: `/hizmetler/${h.slug}/`, f: 'monthly', p: '0.8' })), ...bolgeler.map(b => ({ loc: `/bolgeler/${b.slug}/`, f: 'monthly', p: '0.7' })), { loc: '/gizlilik-politikasi/', f: 'yearly', p: '0.3' }];
-  return `<?xml version="1.0" encoding="UTF-8"?>
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url>\n    <loc>${abs(u.loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${u.f}</changefreq>\n    <priority>${u.p}</priority>\n  </url>`).join('\n')}
+${urls.map(u => `  <url>\n    <loc>${abs(u.loc)}</loc>\n    <lastmod>${lastmodOf(u.loc)}</lastmod>\n    <changefreq>${u.f}</changefreq>\n    <priority>${u.p}</priority>\n  </url>`).join('\n')}
 </urlset>
 `;
+  const next = JSON.stringify(seen, null, 2) + '\n';
+  if (!existsSync(LM) || readFileSync(LM, 'utf8') !== next) writeFileSync(LM, next);
+  return xml;
 }
 
 /* ---------- write ---------- */
 mkdirSync(OUT, { recursive: true });
 for (const e of readdirSync(OUT)) rmSync(new URL(e, OUT), { recursive: true, force: true }); // empty, keep the dir (a dev server may hold it)
 cpSync(new URL('./public/', import.meta.url), OUT, { recursive: true, filter: s => !/\.(jpg|webp)\.json$/.test(s) }); // provenance notes stay in the repo
-const put = (p, s) => { const f = fileURLToPath(new URL(p, OUT)); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, s); };
+const PAGE_HASH = {}; // sitemap loc → sha1 of its HTML
+const put = (p, s) => { const f = fileURLToPath(new URL(p, OUT)); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, s); if (p.endsWith('index.html')) PAGE_HASH['/' + p.replace(/index\.html$/, '')] = createHash('sha1').update(s).digest('hex'); };
 put('index.html', home());
 hizmetler.forEach(h => put(`hizmetler/${h.slug}/index.html`, servicePage(h)));
 bolgeler.forEach(b => put(`bolgeler/${b.slug}/index.html`, regionPage(b)));

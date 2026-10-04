@@ -1,0 +1,66 @@
+{
+  "/": {
+    "h": "34b759a9036de9195a9b4daf03ed1f2d6d2e037b",
+    "d": "2026-10-04"
+  },
+  "/hizmetler/ip-kamera-sistemleri/": {
+    "h": "a9c5acdbe37a532464327ca9f7e8d38148eb14f3",
+    "d": "2026-10-04"
+  },
+  "/hizmetler/firewall-yapilandirma/": {
+    "h": "1f75bf670a1e977721bac5aeed9b146a81d4fc98",
+    "d": "2026-10-04"
+  },
+  "/hizmetler/switch-konfigurasyonu/": {
+    "h": "ee84a9a4526dffc8299616aa3d5b9262dfac7131",
+    "d": "2026-10-04"
+  },
+  "/hizmetler/access-point-kurulumu/": {
+    "h": "c16d56e455569a9125537777833a70cfb10e4578",
+    "d": "2026-10-04"
+  },
+  "/hizmetler/depolama-yedekleme/": {
+    "h": "d705afac31e18673abe0b5b932f34cf8f59371b9",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/silivri/": {
+    "h": "591fe9bf84ce2a66f0c47c1c8372fe52d0b35428",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/catalca/": {
+    "h": "095dea0e618ae696a58bd986e1c530e8f6f20fb5",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/buyukcekmece/": {
+    "h": "6e5eb8522a86f170e2e0fad31109726c13aadd59",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/beylikduzu/": {
+    "h": "50c69d05e4ff76463efb1594b48196b33266ce22",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/corlu/": {
+    "h": "afc965c453924090608005ff9f848d2bd1727520",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/cerkezkoy/": {
+    "h": "3f94db110619a12657bcc9c7955fccce9122191b",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/marmaraereglisi/": {
+    "h": "68985a4e128a550b9a95845003c761bce45305f0",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/kapakli/": {
+    "h": "8c014eca945693316de2a9491a5540df399f6aaa",
+    "d": "2026-10-04"
+  },
+  "/bolgeler/tekirdag/": {
+    "h": "ca4ceace30e4c9d8dfa9318536e19afdf0d4d1fe",
+    "d": "2026-10-04"
+  },
+  "/gizlilik-politikasi/": {
+    "h": "b78432d0a1a048ef53c8749e7b5f9d6c74dca0cc",
+    "d": "2026-10-04"
+  }
+}

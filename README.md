@@ -48,6 +48,8 @@ SEO-PLAN.md        anahtar kelime planı ve site dışı SEO adımları
 - **Yorum ekleme** → `data/reviews.json`. Profil fotoğrafı için
   `public/assets/reviews/<ad>.webp` kaydedip kayda `"avatar"` alanı ekleyin.
 - **İlçe veya hizmet içeriği** → `data/bolgeler.json` / `data/hizmetler.json`.
+- **Fontlar** → `public/fonts/` (kendi sunucumuzdan, Google Fonts yok). `data/lastmod.json` build tarafından yazılır: sitemap tarihi yalnızca sayfanın HTML'i değişince güncellenir; bu dosyayı commit edin.
+- **Ölçüm (GA4 / Google Ads)** → `data/site.json` içindeki `analytics`: `ga4` (G-...), `ads` (AW-...), `adsWhatsapp` / `adsCall` (Ads dönüşüm etiketleri). Boş bırakılırsa hiçbir etiket, çerez penceresi ya da CSP değişikliği olmaz. Dolunca çerez onayı (KVKK), CSP ve `public/track.js` kendiliğinden devreye girer; WhatsApp ve telefon tıklamaları `whatsapp_click` / `phone_click` olayı ve Ads dönüşümü olarak gider. Reklamdan (gclid) gelenlerin WhatsApp mesajına her durumda "(Google reklamı)" eklenir.
 
 ## Dikkat edilmesi gerekenler
 

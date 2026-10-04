@@ -18,7 +18,7 @@ Intent groups (the same keyword families are used on every page):
 
 NVR, kayıt cihazı and kamera kaydı belong to CAM since 2026-10-03 (a camera installer does the NVR too). The old `/hizmetler/nvr-depolama/` URL is a noindex page with a 0-second refresh to `/hizmetler/ip-kamera-sistemleri/`; Search Console should show it as a redirect within a few weeks.
 
-District × intent. Every cell points to the **district page**, and each page has its own H3 section for that intent:
+District × intent. Every cell points to the **district page**, and each page has its own H3 section for that intent. Since 2026-10-04 the FW, WIFI and NAS headings use searcher wording: "<İlçe> işyeri ağ güvenliği ve firewall kurulumu", "<İlçe>: Wi-Fi çekmiyor mu? Access point kurulumu", "<İlçe> veri yedekleme ve NAS kurulumu" (district × firewall/NAS searches are near zero; "wifi çekmiyor", "veri yedekleme" and "işyeri ağ güvenliği" are what people type). Breadcrumb JSON-LD is two levels (Ana Sayfa → page) without fragment hops; the home page carries none.
 
 | District (URL) | CAM (+ NVR) | FW | NET / bilgi işlem | WIFI | NAS | Page angle (unique copy) |
 |---|---|---|---|---|---|---|
@@ -46,7 +46,7 @@ Home (`/`) stays the brand + "Silivri kamera sistemleri" page. It links to every
 
 ## 3. Structured data (per page type)
 
-- All pages: LocalBusiness `#business` (NAP from `data/site.json`, `geo`, `hasMap`, `sameAs` Maps + Instagram, `areaServed` = 9 districts as City with `containedInPlace` İstanbul/Tekirdağ). Opening hours are left out on purpose (owner request).
+- All pages (since 2026-10-04, previously home only): LocalBusiness `#business` (NAP from `data/site.json`, `geo`, `hasMap`, `sameAs` Maps + Instagram, `areaServed` = 9 districts as City with `containedInPlace` İstanbul/Tekirdağ). Opening hours are left out on purpose (owner request).
 - District pages: WebPage, BreadcrumbList, 5 × Service (`areaServed` = that district, `provider` → `#business`, `isRelatedTo` → the service page's Service), FAQPage identical to the visible FAQ.
 - Service pages: Service (areaServed = 9 districts), WebPage, BreadcrumbList, FAQPage.
 - No AggregateRating/Review markup anywhere. Google does not show self-serving review stars, and the Google reviews on the home page stay plain HTML. `node audit.mjs` fails the build if one appears.

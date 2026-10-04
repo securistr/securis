@@ -8,7 +8,7 @@
     "description": "Silivri, Çatalca, Büyükçekmece ve Tekirdağ'da güvenlik kamerası ve IP kamera sistemi kurulumu: keşif, kablolama, NVR ve telefondan izleme. Ücretsiz keşif.",
     "heroBadge": "Kamera Sistemleri",
     "h1": "Silivri ve Çevresinde Güvenlik Kamerası Kurulumu",
-    "lead": "Ev, ofis ve fabrika alanlarınız için yüksek çözünürlüklü IP kamera sistemleri kuruyoruz. Temiz kablolama, doğru açı planlaması ve arıza durumunda hızlı yerinde teknik destekle sisteminizi teslim ediyoruz.",
+    "lead": "Ev, site, ofis ve fabrika alanlarınız için yüksek çözünürlüklü IP kamera sistemleri kuruyoruz. Temiz kablolama, doğru açı planlaması ve arıza durumunda hızlı yerinde teknik destekle sisteminizi teslim ediyoruz.",
     "whatsappText": "Merhaba, kamera sistemi keşfi için bilgi almak istiyorum.",
     "detayKartlari": [
       {
@@ -17,7 +17,7 @@
       },
       {
         "h3": "Profesyonel Montaj ve Kablolama",
-        "p": "Dahua ve Hikvision marka IP kameraları temiz kablo tesisatıyla, görüntü kirliliği yaratmadan monte ediyoruz."
+        "p": "IP kameraları monte ediyor, kabloları kanal içinden, görüntü kirliliği yaratmadan döşüyoruz."
       },
       {
         "h3": "NVR ve Kayıt Kapasitesi",
@@ -25,7 +25,7 @@
       },
       {
         "h3": "Bakım ve Arıza Desteği",
-        "p": "Kurulum sonrası 1 yıl servis garantisi ve arızalarda maksimum 3 saatte yerinde müdahale sağlıyoruz."
+        "p": "Kurulumdan sonraki 1 yıl, bizden kaynaklı ya da konnektörün su alması gibi küçük arızalarda ücret almıyoruz; hafta sonu dahil arızalara en geç 3 saatte yerinde müdahale ediyoruz."
       }
     ],
     "sss": {
@@ -38,6 +38,10 @@
         {
           "q": "Kurulum ne kadar sürer?",
           "a": "Standart bir ev veya ofis kurulumu genellikle 1 gün içinde tamamlanır. Fabrika veya çok noktalı projelerde süre keşif sonrası netleşir."
+        },
+        {
+          "q": "Site veya apartman için kamera sistemi kuruyor musunuz?",
+          "a": "Evet. Site ve apartmanlarda giriş, otopark, çevre ve ortak alanlar için sistemi kuruyor, kayıtlara kimlerin erişeceğini yönetimle birlikte belirliyoruz."
         },
         {
           "q": "Kayıtları telefonumdan izleyebilir miyim?",
@@ -54,6 +58,10 @@
         {
           "q": "Elektrik kesintisinde kayıtlar silinir mi?",
           "a": "Hayır, diske yazılmış kayıtlar kesintiden etkilenmez. Kesinti sırasında kayda devam edilmesi için kesintisiz güç kaynağı (UPS) öneriyoruz."
+        },
+        {
+          "q": "Başka bir firmanın kurduğu kamera sistemine servis veriyor musunuz?",
+          "a": "Evet. Görüntü gelmeyen kamera, kayıt yapmayan NVR ya da telefondan izlenemeyen sistem gibi arızalarda mevcut sisteminizi yerinde inceleyip sorunu tespit ediyor ve onarıyoruz; gerekirse yeni kamera veya kayıt cihazıyla genişletiyoruz."
         }
       ]
     },
@@ -199,6 +207,10 @@
     "sss": {
       "title": "Access Point Kurulumu Hakkında Merak Edilenler",
       "items": [
+        {
+          "q": "Wi-Fi bazı odalarda çekmiyor; modem değiştirmek ya da güçlendirici almak çözer mi?",
+          "a": "Çoğu zaman hayır. Modem tek noktadan yayın yapar; duvarlar ve katlar sinyali zayıflatır. Kablosuz güçlendiriciler zayıf sinyali tekrarladığı için hızı da düşürür. Kalıcı çözüm, sinyal ölçümüyle belirlenen noktalara kabloyla bağlanan access point'ler ve hepsinin tek ağ adı altında çalışmasıdır."
+        },
         {
           "q": "Kaç access point'e ihtiyacım var?",
           "a": "Bu; alanın metrekaresine, duvar yapısına ve eş zamanlı kullanıcı sayısına göre değişir. Yerinde keşifle net sayıyı belirliyoruz."

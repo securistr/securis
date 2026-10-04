@@ -9,6 +9,7 @@
   const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
   const pad2 = n => String(n).padStart(2, '0');
 
+  descs.textContent = ''; // the server-rendered first description (for no-JS) gives way to the full track
   ITEMS.forEach((it, i) => {
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'card'; b.dataset.i = i;
@@ -17,7 +18,7 @@
     b.addEventListener('click', e => { if (!suppressClick || e.detail === 0) go(i); }); // detail 0 = keyboard, never a swipe
     track.appendChild(b);
     descs.insertAdjacentHTML('beforeend', `<div class="desc" aria-hidden="true"><b>${pad2(i + 1)} — ${it.word}</b><p><span>${it.d}</span></p></div>`);
-    words.insertAdjacentHTML('beforeend', `<span lang="en"><svg class="wsvg" aria-hidden="true"><text class="wb">${it.word}</text><text class="wh">${it.word}</text><text class="wg">${it.word}</text></svg></span>`);
+    words.insertAdjacentHTML('beforeend', `<span lang="en"><svg class="wsvg" aria-hidden="true"><text class="wb">${it.word}</text></svg></span>`);
   });
   const cards = [...track.children], descEls = [...descs.children], wordEls = [...words.children];
   $('tot').textContent = pad2(ITEMS.length);
@@ -49,7 +50,7 @@
     const cs = getComputedStyle(wordEls[0]);
     ink.font = `${cs.fontWeight} 100px ${cs.fontFamily}`;
     let asc = 0, desc = 0, wide = 0; // ink box at 100px (letter-spacing -.04em comes off the advance)
-    ITEMS.forEach(it => { const m = ink.measureText(it.word); asc = Math.max(asc, m.actualBoundingBoxAscent); desc = Math.max(desc, m.actualBoundingBoxDescent); wide = Math.max(wide, m.width - 4 * [...it.word].length); });
+    ITEMS.forEach(it => { const m = ink.measureText(it.word); asc = Math.max(asc, m.actualBoundingBoxAscent); desc = Math.max(desc, m.actualBoundingBoxDescent); wide = Math.max(wide, m.width - 4 * [...it.word].length + 30 * (it.word.split(' ').length - 1)); });
     const fs = clamp(Math.min((bottom - top) / ((asc + desc) / 100), (W - pad - wordsL) / (wide / 100)), 24, titleSize * 2);
     stage.style.setProperty('--wfs', fs.toFixed(1) + 'px'); stage.style.setProperty('--wl', wordsL + 'px');
     fitWords();
@@ -202,12 +203,13 @@
   let hover = false, focused = false, held = false; // hover and focus pause separately: the mouse leaving never un-pauses a keyboard user
   const pauseBtn = $('pause');
   if (reduce) pauseBtn.hidden = true;
-  pauseBtn.addEventListener('click', () => { held = !held; pauseBtn.setAttribute('aria-pressed', held); });
+  let lap = ITEMS.length; // autoplay runs one lap, back to the first slide, then rests; play starts another lap
+  pauseBtn.addEventListener('click', () => { held = !held; if (!held) lap = ITEMS.length; pauseBtn.setAttribute('aria-pressed', held); });
   stage.addEventListener('pointerenter', () => { hover = true; });
   stage.addEventListener('pointerleave', () => { hover = false; });
   stage.addEventListener('focusin', () => { focused = true; });
   stage.addEventListener('focusout', () => { focused = false; });
-  if (!reduce) setInterval(() => { if (!held && !hover && !focused && !dragging && !document.hidden && scrollY < innerHeight * 0.5 && performance.now() - lastUser > 4900) go(index === last ? 0 : index + 1, true); }, 5000); // 1.5s dissolve + 2.5s hold
+  if (!reduce) setInterval(() => { if (!held && !hover && !focused && !dragging && !document.hidden && scrollY < innerHeight * 0.5 && performance.now() - lastUser > 4900) { go(index === last ? 0 : index + 1, true); if (--lap <= 0) { held = true; pauseBtn.setAttribute('aria-pressed', true); } } }, 5000); // 1.5s dissolve + 2.5s hold
 
   /* backdrop: WebGL "noise morph". An fbm field, biased by the incoming frame's luminance, decides when each
      pixel flips; the two frames drift vertically against each other; quintic ease. One persistent .c/.m grade
@@ -217,8 +219,8 @@
      noise mask and the photo's accent grade + stage wash baked in — which is copied into the .subj canvas that sits
      under the outline words. A subject without a clean plate is sampled where its photo is now (it tracks .bg's
      parallax), so it never doubles; one with a plate sits in .subj and parallaxes at the strip's speed. */
-  const DUR = 1500, KB = 6000; // dissolve; slow zoom 1.42 → 1.28, the same as the CSS layer
-  const zoomAt = t => 1.42 - 0.14 * clamp(t / KB, 0, 1);
+  const DUR = 1500, KB = 3500; // dissolve; slow zoom 1.36 → 1.28, the same as the CSS layer — it ends inside the 5 s autoplay, so the loop idles between slides
+  const zoomAt = t => 1.36 - 0.08 * clamp(t / KB, 0, 1);
   const ease = t => (t < 0.5 ? 16 * t ** 5 : 1 - (-2 * t + 2) ** 5 / 2);
   const bez = x => { let lo = 0, hi = 1, t = x; for (let k = 0; k < 20; k++) { t = (lo + hi) / 2; if (3 * (1 - t) ** 2 * t * .83 + 3 * (1 - t) * t * t * .17 + t ** 3 < x) lo = t; else hi = t; } return 3 * (1 - t) * t * t + t ** 3; }; // the grade's CSS cubic-bezier(.83, 0, .17, 1)
   const rgb = h => [1, 3, 5].map(k => parseInt(h.slice(k, k + 2), 16) / 255);
@@ -321,6 +323,7 @@ void main() {
     const none = upload(null); // a slide without a cutout samples this clear pixel
 
     const tex = [], cut = [], asked = [], cutAsked = [], at = []; // at[i]: when slide i came on, drives its zoom
+    const coarse = matchMedia('(pointer: coarse)').matches;
     const grade = ['c', 'm'].map(k => { const i = document.createElement('i'); i.className = k; return i; });
     let cur = -1, prev = -1, t0 = 0, dir = 1, want = 0, wantDir = 1, raf = 0, onScreen = true, dead = false, cutClear = false;
     let accA = [0, 0, 0], accB = [0, 0, 0], accT0 = -Infinity;
@@ -390,8 +393,9 @@ void main() {
       if (first) { // the server-rendered img stays on top until this very frame is drawn
         bg.prepend(cv, ...grade); subj.prepend(fcv); resize(); draw(now);
         bg.querySelectorAll('.bg__layer').forEach(l => l.remove());
-        (window.requestIdleCallback || setTimeout)(() => ITEMS.forEach((_, j) => { load(j); loadCut(j); }));
+        if (!coarse) (window.requestIdleCallback || setTimeout)(() => ITEMS.forEach((_, j) => { load(j); loadCut(j); })); // desktops warm every slide once
       }
+      if (coarse) (window.requestIdleCallback || setTimeout)(() => { const n = (i + 1) % ITEMS.length; load(n); loadCut(n); }); // phones fetch only the next one
       kick();
     }
     function resize() {

@@ -109,7 +109,7 @@
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let cur = 0, held = false, hover = false, focus = false, onScreen = false, seen = false, timer = 0;
     grade[0].before(cv);
-    const morph = window.createMorph?.(cv, items.map(li => li.dataset.img), { zoom: [1.12, 1.02], zoomMs: 8000 });
+    const morph = window.createMorph?.(cv, items.map(li => li.dataset.img), { zoom: [1.08, 1.02], zoomMs: 4500 });
     revs.setAttribute('aria-live', 'off'); items[0].classList.add('is-on'); sec.classList.add('is-rot'); ctl.hidden = false; pauseBtn.hidden = reduce;
 
     // long quotes are clamped; the toggle shows only where the clamp actually cuts (re-checked on resize)
@@ -242,4 +242,41 @@
     el.classList.add('mb'); seen.observe(el);
   });
   /* ==== /MOTION B ==== */
+
+  /* the menu marks the page you are on */
+  document.querySelectorAll('.menu nav a[href^="/"]').forEach(a => { if (a.pathname === location.pathname) a.setAttribute('aria-current', 'page'); });
+
+  /* light theme: the top pill stays dark while it sits over a photo zone */
+  const zones = document.querySelectorAll('.stage, .hero:not(.hero--plain), .close, .revs');
+  if (zones.length) {
+    const over = new Set(); let io;
+    const watch = () => {
+      io?.disconnect(); over.clear();
+      io = new IntersectionObserver(es => {
+        es.forEach(e => (e.isIntersecting ? over.add(e.target) : over.delete(e.target)));
+        document.documentElement.classList.toggle('on-photo', over.size > 0);
+      }, { rootMargin: `0px 0px -${Math.max(0, innerHeight - 90)}px 0px` }); // the top 90px strip, where the pill lives
+      zones.forEach(z => io.observe(z));
+    };
+    watch(); addEventListener('resize', watch);
+  }
+
+  /* Google Ads visitors: the WhatsApp message says so, so the chat shows which leads came from the ads.
+     Read from this page's own address only — no cookie, no storage — and the visitor can delete it before sending. */
+  if (/[?&](gclid|gbraid|wbraid)=/.test(location.search)) document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="https://wa.me/"]'); if (!a) return;
+    const u = new URL(a.href), t = u.searchParams.get('text') || '';
+    if (!t.includes('(Google reklamı)')) { u.searchParams.set('text', `${t} (Google reklamı)`); a.href = u.href; }
+  }, true);
+
+  /* home dock (phones/tablets): the bottom contact bar steps aside while the closing band or the footer, which carry the same contacts, is on screen */
+  const dock = document.querySelector('.dock');
+  if (dock) {
+    const shown = new Set();
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => (e.isIntersecting ? shown.add(e.target) : shown.delete(e.target)));
+      dock.classList.toggle('is-off', shown.size > 0);
+    });
+    document.querySelectorAll('.close, .foot').forEach(el => io.observe(el));
+  }
 })();

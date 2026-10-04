@@ -4,7 +4,8 @@
   "whatsappText": "Merhaba, gizlilik politikası hakkında bir soru sormak istiyorum.",
   "h1": "Gizlilik Politikası ve KVKK Aydınlatma Metni",
   "lead": "Bu sayfa, securis.com.tr'yi ziyaret ettiğinizde hangi verilerin nasıl işlendiğini, hangi üçüncü taraf servislerin kullanıldığını ve 6698 sayılı Kişisel Verilerin Korunması Kanunu (\"KVKK\") kapsamındaki haklarınızı açıklar.",
-  "updated": "Son güncelleme: 26 Eylül 2026",
+  "updated": "Son güncelleme: 4 Ekim 2026",
+  "cerezTracked": ["Sitemizde, yalnızca siz \"Kabul et\" dediğinizde Google Analytics 4 ve Google Ads ölçüm çerezleri çalışır. Bu çerezler, sitemizin kaç kişi tarafından ziyaret edildiğini, hangi sayfaların okunduğunu ve reklamlarımızdan gelen ziyaretlerin WhatsApp veya telefonla bize ulaşıp ulaşmadığını ölçmek için kullanılır; reklam kişiselleştirmesi için kullanılmaz.","Onay verdiğinizde IP adresiniz, tarayıcı ve cihaz bilgileriniz ile sitedeki etkileşimleriniz Google'a (Google Ireland Ltd. ve Google LLC) iletilir ve yurt dışında işlenebilir. Onay vermezseniz hiçbir ölçüm kodu yüklenmez ve çerez kaydedilmez. Tercihiniz tarayıcınızda (localStorage) saklanır; sayfanın altındaki \"Çerez tercihleri\" bağlantısından istediğiniz zaman değiştirebilirsiniz.","Google reklamımıza tıklayarak gelip \"WhatsApp'tan Yaz\" butonuna bastığınızda, hazır mesajın sonuna \"(Google reklamı)\" ifadesi eklenir; bu sayede hangi mesajın reklamdan geldiğini görebiliriz. Bunun için çerez ya da tarayıcı depolaması kullanılmaz ve ifadeyi göndermeden önce silebilirsiniz."],
   "sections": [
     {
       "h2": "Kimsiniz, bizimle nasıl iletişime geçebilirsiniz?",
@@ -14,15 +15,15 @@
       "h2": "Sitede hangi harici servisler kullanılıyor?",
       "p": ["Sitemizi daha hızlı ve işlevsel hale getirmek için aşağıdaki üçüncü taraf servislerden faydalanıyoruz. Bu servislerin her biri kendi gizlilik politikasına tabidir:"],
       "cards": [
-        { "h3": "Google Fonts", "p": "Sitede kullanılan Archivo ve JetBrains Mono yazı tipleri Google sunucularından yükleniyor. Sayfayı ziyaret ettiğinizde tarayıcınız bu yazı tiplerini indirmek için Google'ın sunucularına bağlanır; bu sırada IP adresiniz Google'a iletilir." },
         { "h3": "WhatsApp", "p": "\"WhatsApp'tan Yaz\" butonlarına tıkladığınızda wa.me üzerinden WhatsApp uygulamasına yönlendirilirsiniz. Bu noktadan itibaren WhatsApp'ın (Meta) kendi gizlilik politikası geçerli olur; biz bu platformun veri işleme süreçlerini kontrol etmeyiz." },
         { "h3": "Google Haritalar", "p": "Alt bilgideki adres bağlantısı sizi Google Haritalar'a yönlendirir. Bu harici sitede Google'ın kendi gizlilik politikası geçerlidir." },
         { "h3": "Instagram", "p": "Alt bilgideki Instagram bağlantısı, hesabımızın bulunduğu instagram.com adresine yönlendirir. Instagram (Meta) kendi gizlilik politikasına tabidir." }
       ]
     },
     {
+      "id": "cerez",
       "h2": "Çerez kullanımı",
-      "p": ["Şu an sitemizde herhangi bir analytics/istatistik servisi veya birinci taraf çerez kullanılmamaktadır. Bu sayfa, ileride bu durum değişirse (örn. bir ölçüm aracı eklenirse) güncellenecektir."]
+      "p": ["Şu an sitemizde herhangi bir analytics/istatistik servisi veya birinci taraf çerez kullanılmamaktadır. Bu sayfa, ileride bu durum değişirse (örn. bir ölçüm aracı eklenirse) güncellenecektir.", "Google reklamımıza tıklayarak gelip \"WhatsApp'tan Yaz\" butonuna bastığınızda, hazır mesajın sonuna \"(Google reklamı)\" ifadesi eklenir; bu sayede hangi mesajın reklamdan geldiğini görebiliriz. Bunun için çerez ya da tarayıcı depolaması kullanılmaz ve ifadeyi göndermeden önce silebilirsiniz."]
     },
     {
       "h2": "Bizimle iletişime geçtiğinizde ne olur?",

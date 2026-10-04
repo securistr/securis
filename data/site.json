@@ -62,16 +62,18 @@
   "ogImageAlt": "Securis Ağ ve Kamera Güvenlik Sistemleri",
   "ogImageAltHome": "Securis Ağ ve Kamera Güvenlik Sistemleri - kamera, firewall ve network kurulumu",
   "copyrightYear": 2026,
-  "csp": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self';",
+  "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'self';",
   "fontsHref": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400&display=swap",
   "robotsHome": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   "robotsDefault": "index, follow, max-image-preview:large, max-snippet:-1",
-  "defaultWhatsappText": "Merhaba, kamera sistemi keşfi için bilgi almak istiyorum.",
+  "defaultWhatsappText": "Merhaba, ücretsiz keşif için bilgi almak istiyorum.",
   "secondaryWhatsappText": "Merhaba, kamera sistemi hakkında bilgi almak istiyorum.",
   "ctaNote": "Ücretsiz keşif · Taahhüt yok",
+  "priceNote": "Fiyat, ihtiyacınızı yerinde gördükten sonra netleşir.",
+  "analytics": { "ga4": "", "ads": "", "adsWhatsapp": "", "adsCall": "" },
   "ctaBand": {
     "h2": "Ücretsiz Keşif için Bize Ulaşın",
-    "p": "Aynı hafta içinde yerinde keşif, arızada 3 saat içinde müdahale."
+    "p": "Aynı hafta içinde yerinde keşif; hafta sonu dahil arızada 3 saat içinde müdahale."
   },
   "labels": {
     "sss": "Sık Sorulan Sorular",
@@ -81,7 +83,7 @@
     "detaylar": "Detaylar",
     "bolgeler": "Bölgeler",
     "mahalleLabel": "Hizmet verdiğimiz mahalle ve semtler:",
-    "yakinBolgelerDesc": "Aynı ekip ve aynı servis süresiyle komşu ilçelere de gidiyoruz.",
+    "yakinBolgelerDesc": "Aynı ekiple komşu ilçelere de gidiyoruz.",
     "hizmetBolgeTitle": "Bu Hizmeti Verdiğimiz 9 İlçe",
     "hizmetBolgeDesc": "Trakya ve İstanbul Batı bölgesindeki dokuz ilçeye yerinde hizmet götürüyoruz.",
     "hizmetDetayTitle": "Neler Yapıyoruz?",
