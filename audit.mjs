@@ -9,7 +9,7 @@ import { join, sep } from 'node:path';
 
 const DIST = 'dist', LIVE = join('..', '..', 'SEC GÜNCEL', 'dist'), SITE = 'https://securis.com.tr';
 const walk = d => readdirSync(d).flatMap(f => statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]);
-const pages = walk(DIST).filter(f => f.endsWith('.html'));
+const pages = walk(DIST).filter(f => f.endsWith('.html') && !/[\\/]google[0-9a-f]+\.html$/.test(f)); // Search Console verification files are not pages
 const hard = [], info = [];
 const tag = (h, re) => (h.match(re) || [])[1] || '';
 const norm = s => s.replace(/&#39;|&apos;|&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
