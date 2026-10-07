@@ -101,7 +101,7 @@ const localBusiness = () => ({
   hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Hizmetler', itemListElement: hizmetler.map(h => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: h.anaSayfaSchema.name } })) },
   alternateName: site.alternateName, hasMap: site.mapUrl,
 });
-const webSite = () => ({ '@type': 'WebSite', '@id': WEBSITE_ID, url: `${site.url}/`, name: site.name, inLanguage: site.inLanguage, publisher: { '@id': BUSINESS_ID } });
+const webSite = () => ({ '@type': 'WebSite', '@id': WEBSITE_ID, url: `${site.url}/`, name: site.siteName, alternateName: [site.name, 'securis.com.tr'], inLanguage: site.inLanguage, publisher: { '@id': BUSINESS_ID } });
 const webPage = (url, name, description, extra = {}) => ({ '@type': 'WebPage', '@id': url, url, name, description, inLanguage: site.inLanguage, isPartOf: { '@id': WEBSITE_ID }, about: { '@id': BUSINESS_ID }, ...extra });
 
 /* ---------- shared chrome ---------- */
