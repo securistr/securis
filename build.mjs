@@ -13,7 +13,7 @@ const OUT = new URL('./dist/', import.meta.url);
 const AN = site.analytics || {}, TRACK = !!(AN.ga4 || AN.ads);
 const GOOGLE = { // what gtag.js + Ads conversions need, added to the CSP only when TRACK
   'script-src': ['https://www.googletagmanager.com', 'https://*.googletagmanager.com', 'https://www.googleadservices.com', 'https://googleads.g.doubleclick.net', 'https://www.google.com'],
-  'connect-src': ["'self'", 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com', 'https://www.google.com', 'https://google.com', 'https://*.doubleclick.net', 'https://www.googleadservices.com', 'https://pagead2.googlesyndication.com'],
+  'connect-src': ["'self'", 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://analytics.google.com', 'https://*.googletagmanager.com', 'https://www.google.com', 'https://google.com', 'https://*.doubleclick.net', 'https://www.googleadservices.com', 'https://pagead2.googlesyndication.com'],
   'img-src': ['https://*.google-analytics.com', 'https://*.googletagmanager.com', 'https://www.google.com', 'https://www.google.com.tr', 'https://*.doubleclick.net', 'https://www.googleadservices.com'],
   'frame-src': ['https://*.doubleclick.net', 'https://www.googletagmanager.com'],
 };
