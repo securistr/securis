@@ -25,8 +25,8 @@ const CSP = !TRACK ? site.csp : (() => {
 
 /* ---------- visual data per service (the world's accents + real/composited photos) ---------- */
 const SVC = {
-  'ip-kamera-sistemleri': { img: 'kamera.jpg', accent: '#c2410c', label: 'IP KAMERA', meta: ['KÖR NOKTA ANALİZİ', 'NVR KAYIT', 'CEPTEN İZLEME'], credit: 'DAHUA · HIKVISION · MILESIGHT', brands: 'Dahua, Hikvision ve Milesight', grade: [.3, .15] }, // [color, multiply] opacity: a light warm cast instead of the full re-grade
-  'switch-konfigurasyonu': { img: 'switch.jpg', accent: '#0284c7', label: 'SWITCH', meta: ['POE', 'VLAN', 'PORT ETİKETLEME'], credit: 'RUIJIE · TP-LINK', brands: 'Ruijie ve TP-Link' },
+  'ip-kamera-sistemleri': { img: 'kamera.jpg', accent: '#0284c7', label: 'IP KAMERA', meta: ['KÖR NOKTA ANALİZİ', 'NVR KAYIT', 'CEPTEN İZLEME'], credit: 'DAHUA · HIKVISION · MILESIGHT', brands: 'Dahua, Hikvision ve Milesight', grade: [.3, .15] }, // [color, multiply] opacity: a light cast instead of the full re-grade
+  'switch-konfigurasyonu': { img: 'switch.jpg', accent: '#c2410c', label: 'SWITCH', meta: ['POE', 'VLAN', 'PORT ETİKETLEME'], credit: 'RUIJIE · TP-LINK', brands: 'Ruijie ve TP-Link' },
   'firewall-yapilandirma': { img: 'firewall.jpg', hero: 'firewall-wide.jpg', accent: '#dc2626', label: 'FIREWALL', meta: ['ERİŞİM KURALLARI', 'PORT YÖNLENDİRME', 'VPN'], credit: 'FORTINET · FORTIGATE', brands: 'Fortinet (FortiGate)' },
   'access-point-kurulumu': { img: 'ap-saha.jpg', accent: '#059669', label: 'WI-FI', meta: ['SİNYAL ANALİZİ', 'TEK AĞ · ROAMING', 'MİSAFİR AĞI'], credit: 'SAHADAN · KENDİ KURULUMUMUZ', brands: 'TP-Link Omada ve Ruijie' },
   'depolama-yedekleme': { img: 'nas.jpg', accent: '#7c3aed', label: 'NAS · YEDEK', meta: ['RAID', 'OTOMATİK YEDEK', 'İKİNCİ KOPYA'], credit: 'QNAP · NAS · RAID', brands: 'QNAP', grade: [.35, .2] }, // the full purple read as gaming RGB on a black NAS
@@ -252,11 +252,11 @@ const footer = () => `
 
 /* Google reviews stage: each review dissolves in over the real frame closest to what it talks about, graded to that service */
 const REV_BG = {
-  'Neslihan Balik': ['nvr.jpg', '#c2410c'], 'Büyükçekmece Kooperatif': ['saha/saha-kablolama.jpg', '#a16207'], 'Boss Kurt': ['ap-saha.jpg', '#059669'],
-  'Furkan Eryesil': ['saha/saha-servis.jpg', '#c2410c'], 'Göktuğ Demir': ['ap-saha.jpg', '#059669'], 'Mehmet Buğra Foto': ['switch.jpg', '#0284c7'],
-  'Berk Dogar': ['kamera.jpg', '#c2410c'], 'omer': ['saha/saha-dis-cephe.jpg', '#b45309'], 'Cem E': ['saha/saha-kablolama.jpg', '#a16207'],
+  'Neslihan Balik': ['nvr.jpg', '#0284c7'], 'Büyükçekmece Kooperatif': ['saha/saha-kablolama.jpg', '#a16207'], 'Boss Kurt': ['ap-saha.jpg', '#059669'],
+  'Furkan Eryesil': ['saha/saha-servis.jpg', '#c2410c'], 'Göktuğ Demir': ['ap-saha.jpg', '#059669'], 'Mehmet Buğra Foto': ['switch.jpg', '#c2410c'],
+  'Berk Dogar': ['kamera.jpg', '#0284c7'], 'omer': ['saha/saha-dis-cephe.jpg', '#b45309'], 'Cem E': ['saha/saha-kablolama.jpg', '#a16207'],
   'Emre ÖZEN': ['saha/saha-servis.jpg', '#c2410c'], 'Deniz Şengül': ['kurulum-sonu.jpg', '#1f2937'], 'Mehmet Kalaycı': ['saha-endustriyel.jpg', '#6b7280'],
-  'Harun Tahtacı': ['kamera.jpg', '#c2410c'],
+  'Harun Tahtacı': ['kamera.jpg', '#0284c7'],
 };
 const revBg = r => REV_BG[r.name] || ['kurulum-sonu.jpg', '#1f2937'];
 /** reviewer avatar: the self-hosted Google profile photo when reviews.json has one, else the initial */

@@ -48,9 +48,9 @@
     const top = Math.max(...rows) + g, bottom = (phone ? $('more').offsetTop : strip.offsetTop) - g;
     wordsL = phone ? pad : anchor() - cardW / 2;
     const cs = getComputedStyle(wordEls[0]);
-    ink.font = `${cs.fontWeight} 100px ${cs.fontFamily}`;
-    let asc = 0, desc = 0, wide = 0; // ink box at 100px (letter-spacing -.04em comes off the advance)
-    ITEMS.forEach(it => { const m = ink.measureText(it.word); asc = Math.max(asc, m.actualBoundingBoxAscent); desc = Math.max(desc, m.actualBoundingBoxDescent); wide = Math.max(wide, m.width - 4 * [...it.word].length + 30 * (it.word.split(' ').length - 1)); });
+    ink.font = `${cs.fontWeight} 100px ${cs.fontFamily}`; ink.fontKerning = 'none';
+    let asc = 0, desc = 0, wide = 0; // ink box at 100px, kerning off like the CSS (letter-spacing .02em adds to the advance)
+    ITEMS.forEach(it => { const m = ink.measureText(it.word); asc = Math.max(asc, m.actualBoundingBoxAscent); desc = Math.max(desc, m.actualBoundingBoxDescent); wide = Math.max(wide, m.width + 2 * [...it.word].length + 30 * (it.word.split(' ').length - 1)); });
     const fs = clamp(Math.min((bottom - top) / ((asc + desc) / 100), (W - pad - wordsL) / (wide / 100)), 24, titleSize * 2);
     stage.style.setProperty('--wfs', fs.toFixed(1) + 'px'); stage.style.setProperty('--wl', wordsL + 'px');
     fitWords();

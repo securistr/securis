@@ -23,9 +23,9 @@ colors:
   photo-rule: "rgba(255, 255, 255, .22)"
   button-hover: "#e9e9e9"
   red-pencil: "#ff3b30"
-  grade-camera: "#c2410c"
+  grade-camera: "#0284c7"
   grade-storage: "#7c3aed"
-  grade-switch: "#0284c7"
+  grade-switch: "#c2410c"
   grade-firewall: "#dc2626"
   grade-wifi: "#059669"
   grade-field: "#6b7280"
@@ -155,7 +155,7 @@ Density is low at the top (one frame, one title, one lead, two buttons) and beco
 A monochrome interface in two printings whose only colour comes from grading photographs to one accent per service.
 
 ### Primary
-- **Service Grades** (camera, storage, switch, firewall, Wi-Fi, regions): never used as flat UI fills or text. Each is applied twice over its photo, once as `mix-blend-mode: color` and once as `multiply` at .55 opacity, so the image takes on that service's hue. Two grades run light through `SVC.grade` in build.mjs: camera (color .3, multiply .15; a white camera on a pale wall turned into a flat red field) and storage (color .35, multiply .2; the full purple read as gaming RGB on a black NAS). One grade per page hero: service pages use their service, region pages use the regions blue, the home backdrop cross-fades to the focused slide's grade. The members follower and the projects stage re-grade their photo to the hovered item's accent.
+- **Service Grades** (camera, storage, switch, firewall, Wi-Fi, regions): never used as flat UI fills or text. Each is applied twice over its photo, once as `mix-blend-mode: color` and once as `multiply` at .55 opacity, so the image takes on that service's hue. Two grades run light through `SVC.grade` in build.mjs: camera (color .3, multiply .15; a white camera on a pale wall turned into a flat colour field; camera and switch swapped hues on 2026-10-11, the landing slide read brown) and storage (color .35, multiply .2; the full purple read as gaming RGB on a black NAS). One grade per page hero: service pages use their service, region pages use the regions blue, the home backdrop cross-fades to the focused slide's grade. The members follower and the projects stage re-grade their photo to the hovered item's accent.
 - **Field Grey** (grade-field): the grade of the home page's industrial-site frame, the one slide that is not a service.
 - **Close Slate** (grade-close): the grade of the closing band's finished-install photo on every content page.
 

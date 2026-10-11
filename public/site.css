@@ -188,7 +188,7 @@ address { font-style: normal; }
 .words { position: absolute; z-index: 3; left: 0; right: 0; top: calc(var(--top) - var(--title) * 1.6); pointer-events: none;
   -webkit-mask-image: linear-gradient(90deg, transparent calc(var(--wl, 0px) - 30px), #000 var(--wl, 0px)); mask-image: linear-gradient(90deg, transparent calc(var(--wl, 0px) - 30px), #000 var(--wl, 0px)); }
 .words__track { display: flex; white-space: nowrap; will-change: transform; }
-.words__track span { font: 700 var(--wfs, calc(var(--title) * 1.4))/1 var(--f); letter-spacing: -.04em; padding-right: .35em; }
+.words__track span { font: 700 var(--wfs, calc(var(--title) * 1.4))/1 var(--f); letter-spacing: .02em; font-kerning: none; padding-right: .35em; } /* tight tracking + pair kerning crossed the outlines (K·A, W·A) */
 /* outline words as SVG: a faint contour, plus light that runs along every letter's outline on the active word */
 .wsvg { display: block; overflow: visible; }
 .wsvg text { font: inherit; letter-spacing: inherit; word-spacing: .3em; fill: none; }

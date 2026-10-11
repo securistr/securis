@@ -8,7 +8,7 @@
   "cerezTracked": ["Sitemizde, yalnızca siz \"Kabul et\" dediğinizde Google Analytics 4 ve Google Ads ölçüm çerezleri çalışır. Bu çerezler, sitemizin kaç kişi tarafından ziyaret edildiğini, hangi sayfaların okunduğunu ve reklamlarımızdan gelen ziyaretlerin WhatsApp veya telefonla bize ulaşıp ulaşmadığını ölçmek için kullanılır; reklam kişiselleştirmesi için kullanılmaz.","Onay verdiğinizde IP adresiniz, tarayıcı ve cihaz bilgileriniz ile sitedeki etkileşimleriniz Google'a (Google Ireland Ltd. ve Google LLC) iletilir ve yurt dışında işlenebilir. Onay vermezseniz hiçbir ölçüm kodu yüklenmez ve çerez kaydedilmez. Tercihiniz tarayıcınızda (localStorage) saklanır; sayfanın altındaki \"Çerez tercihleri\" bağlantısından istediğiniz zaman değiştirebilirsiniz.","Google reklamımıza tıklayarak gelip \"WhatsApp'tan Yaz\" butonuna bastığınızda, hazır mesajın sonuna \"(Google reklamı)\" ifadesi eklenir; bu sayede hangi mesajın reklamdan geldiğini görebiliriz. Bunun için çerez ya da tarayıcı depolaması kullanılmaz ve ifadeyi göndermeden önce silebilirsiniz."],
   "sections": [
     {
-      "h2": "Kimsiniz, bizimle nasıl iletişime geçebilirsiniz?",
+      "h2": "Biz kimiz, bize nasıl ulaşabilirsiniz?",
       "p": ["Bu internet sitesi, Securis Ağ ve Kamera Güvenlik Sistemleri (\"Securis\", \"biz\") tarafından işletilmektedir. KVKK uyarınca veri sorumlusu sıfatıyla hareket ediyoruz. Bize {email} adresinden veya {phone} numarasından ulaşabilirsiniz. Adresimiz: {address}."]
     },
     {
